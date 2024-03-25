@@ -14,7 +14,7 @@ public class Birthday {
 
     public static final String MESSAGE_CONSTRAINTS = "Birthday should be in dd-MMM-yyyy format";
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
-    public static final String INPUT_DATE_PATTERN = "dd-MMM-yyyy";
+    public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
     public final Optional<Date> birthday;
 
     /**

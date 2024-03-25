@@ -24,24 +24,25 @@ public class BirthdayTest {
         assertTrue(Birthday.isValidBirthday(" ")); // spaces only
 
         // missing parts
-        // assertFalse(Birthday.isValidBirthday("1")); // missing month
-        assertFalse(Birthday.isValidBirthday("31-June")); // missing year
-        assertFalse(Birthday.isValidBirthday("June-2002")); // missing day
+        assertFalse(Birthday.isValidBirthday("1")); // missing month
+        assertFalse(Birthday.isValidBirthday("31June")); // missing year
+        assertFalse(Birthday.isValidBirthday("June2002")); // missing day
 
         // invalid parts
-        assertFalse(Birthday.isValidBirthday("29-Feb-2023")); // not a leap year
+        assertFalse(Birthday.isValidBirthday("29Feb2023")); // not a leap year
+        assertFalse(Birthday.isValidBirthday("1-jan-2001")); // not supposed to have '-'
 
         // valid email
-        assertTrue(Birthday.isValidBirthday("29-Feb-2024")); // leap year
-        assertTrue(Birthday.isValidBirthday("12-May-2003"));
+        assertTrue(Birthday.isValidBirthday("29Feb2024")); // leap year
+        assertTrue(Birthday.isValidBirthday("12May2003"));
     }
 
     @Test
     public void equals() {
-        Birthday birthday = new Birthday("14-mar-1706"); // pi day!
+        Birthday birthday = new Birthday("14mar1706"); // pi day!
 
         // same values -> returns true
-        assertTrue(birthday.equals(new Birthday("14-mar-1706")));
+        assertTrue(birthday.equals(new Birthday("14mar1706")));
 
         // same object -> returns true
         assertTrue(birthday.equals(birthday));
@@ -53,6 +54,6 @@ public class BirthdayTest {
         assertFalse(birthday.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(birthday.equals(new Birthday("13-mar-1706")));
+        assertFalse(birthday.equals(new Birthday("13mar1706")));
     }
 }
