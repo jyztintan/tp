@@ -2,18 +2,15 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.birthday.Birthday;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Birthday;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Family;
 import seedu.address.model.person.Income;
@@ -170,6 +167,11 @@ public class ParserUtil {
         return new Remark(trimmedRemark);
     }
 
+    /**
+     * Parses a {@code String birthday} into a {@code Birthday}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     */
     public static Birthday parseBirthday(String birthday) throws ParseException {
         if (!Birthday.isValidBirthday(birthday)) {
             throw new ParseException(Birthday.MESSAGE_CONSTRAINTS);

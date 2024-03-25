@@ -1,4 +1,4 @@
-package seedu.address.model.birthday;
+package seedu.address.model.person;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -7,15 +7,14 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
 
-import static seedu.address.commons.util.AppUtil.checkArgument;
-
 /**
  * Represents a remark in the address book.
  */
 public class Birthday {
 
     public static final String MESSAGE_CONSTRAINTS = "Birthday should be in dd-MMM-yyyy format";
-    public static final DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+    public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
+    public static final String INPUT_DATE_PATTERN = "dd-MMM-yyyy";
     public final Optional<Date> birthday;
 
     /**
@@ -25,7 +24,8 @@ public class Birthday {
      */
     public Birthday(String birthday) {
         // checkArgument(isValidBirthday(birthday));
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
+        formatter.setLenient(false);
         Optional<Date> birthdayDate;
         try {
             birthdayDate = Optional.of(formatter.parse(birthday));
@@ -36,13 +36,17 @@ public class Birthday {
         this.birthday = birthdayDate;
     }
 
+    /**
+     * Returns if a given string is a valid birthday.
+     */
     public static boolean isValidBirthday(String birthday) {
-        if (birthday.isBlank()) {
+        if (birthday.isBlank() || birthday.equals("")) {
             return true;
         }
         // todo: conduct check without using try-catch block for better code quality
         try {
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+            SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
+            formatter.setLenient(false);
             formatter.parse(birthday.trim());
             return true;
         } catch (ParseException e) {
@@ -82,7 +86,7 @@ public class Birthday {
      */
     public String toStringWithRepresentation() {
         if (birthday.isPresent()) {
-            return "Birthday: " + df.format(birthday.get());
+            return "Birthday: " + DATE_FORMAT.format(birthday.get());
         } else {
             return "No specified Birthday.";
         }

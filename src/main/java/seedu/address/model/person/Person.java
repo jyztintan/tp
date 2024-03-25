@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.birthday.Birthday;
 import seedu.address.model.remark.Remark;
 import seedu.address.model.tag.Tag;
 
