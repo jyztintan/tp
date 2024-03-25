@@ -256,11 +256,11 @@ public class EditCommand extends Command {
         }
 
         public void setRemark(Remark remark) {
-            this.remark = (remark != null) ? remark : null;
+            this.remark = remark;
         }
 
         public Optional<Remark> getRemark() {
-            return (remark != null) ? Optional.of(remark) : Optional.empty();
+            return Optional.ofNullable(remark);
         }
 
         @Override
@@ -300,11 +300,11 @@ public class EditCommand extends Command {
         }
 
         public void setBirthday(Birthday birthday) {
-            this.birthday = (birthday != null) ? birthday : null;
+            this.birthday = birthday;
         }
 
         public Optional<Birthday> getBirthday() {
-            return (birthday != null) ? Optional.of(birthday) : Optional.empty();
+            return Optional.ofNullable(birthday);
         }
     }
 }
