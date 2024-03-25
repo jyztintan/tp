@@ -13,6 +13,7 @@ import seedu.realodex.model.person.Name;
 public class DeleteCommandParser implements Parser<DeleteCommand> {
 
     String INDEX_AND_NAME_PROVIDED = "Please provide either an index or a name, not both.";
+    String NO_FIELDS_PROVIDED = "Please provide either an index or a name.";
     DeleteCommand deleteCommand;
     Name name;
     Index index;
@@ -46,6 +47,8 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             deleteCommand = new DeleteCommand(index);
         } else if (namePrefixPresent(argMultimap) && index != null) {
             throw new ParseException(INDEX_AND_NAME_PROVIDED);
+        } else {
+            throw new ParseException(NO_FIELDS_PROVIDED);
         }
         return deleteCommand;
     }
