@@ -43,7 +43,7 @@ public class ArgumentMultimap {
         return values.isEmpty() ? Optional.empty() : Optional.of(values.get(values.size() - 1));
     }
 
-    public Optional<String> getRemarkValue(Prefix prefix) {
+    public Optional<String> getValueOrDefault(Prefix prefix) {
         List<String> values = getAllValues(prefix);
         return values.isEmpty() ? Optional.of("") : Optional.of(values.get(values.size() - 1));
     }

@@ -23,6 +23,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.birthday.Birthday;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Family;
@@ -113,10 +114,11 @@ public class EditCommand extends Command {
         Family updatedFamily = editPersonDescriptor.getFamily().orElse(personToEdit.getFamily());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
+        Birthday updatedBirthday = editPersonDescriptor.getBirthday().orElse(personToEdit.getBirthday());
 
         return new Person(updatedName, updatedPhone, updatedIncome,
                           updatedEmail, updatedAddress, updatedFamily,
-                          updatedTags, updatedRemark);
+                          updatedTags, updatedRemark, updatedBirthday);
     }
 
     @Override
@@ -156,6 +158,7 @@ public class EditCommand extends Command {
         private Family family;
         private Set<Tag> tags;
         private Remark remark;
+        private Birthday birthday;
 
         public EditPersonDescriptor() {}
 
@@ -172,6 +175,7 @@ public class EditCommand extends Command {
             setFamily(toCopy.family);
             setTags(toCopy.tags);
             setRemark(toCopy.remark);
+            setBirthday(toCopy.birthday);
         }
 
         /**
@@ -286,6 +290,14 @@ public class EditCommand extends Command {
                     .add("family", family)
                     .add("tags", tags)
                     .toString();
+        }
+
+        public void setBirthday(Birthday birthday) {
+            this.birthday = (birthday != null) ? birthday : null;
+        }
+
+        public Optional<Birthday> getBirthday() {
+            return (birthday != null) ? Optional.of(birthday) : Optional.empty();
         }
     }
 }

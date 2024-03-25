@@ -1,16 +1,21 @@
 package seedu.address.storage;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.swing.text.html.Option;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.birthday.Birthday;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Family;
@@ -36,6 +41,7 @@ class JsonAdaptedPerson {
     private final String family;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final String remark;
+    private final String birthday;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -48,7 +54,8 @@ class JsonAdaptedPerson {
                              @JsonProperty("address") String address,
                              @JsonProperty("family") String family,
                              @JsonProperty("tags") List<JsonAdaptedTag> tags,
-                             @JsonProperty("remark") String remark) {
+                             @JsonProperty("remark") String remark,
+                             @JsonProperty("birthday") String birthday) {
         this.name = name;
         this.phone = phone;
         this.income = income;
@@ -59,6 +66,7 @@ class JsonAdaptedPerson {
             this.tags.addAll(tags);
         }
         this.remark = Objects.requireNonNullElse(remark, "");
+        this.birthday = Objects.requireNonNullElse(birthday, "");
     }
 
     /**
@@ -75,6 +83,7 @@ class JsonAdaptedPerson {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         remark = source.getRemark().toString();
+        birthday = source.getBirthday().toString();
     }
 
     /**
@@ -139,8 +148,9 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final Remark modelRemark = new Remark(remark);
+        final Birthday modelBirthday = new Birthday(birthday);
 
         return new Person(modelName, modelPhone, modelIncome, modelEmail, modelAddress, modelFamily,
-                modelTags, modelRemark);
+                modelTags, modelRemark, modelBirthday);
     }
 }
