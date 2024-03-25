@@ -12,6 +12,11 @@ import seedu.address.model.person.Name;
  */
 public class DeleteCommandParser implements Parser<DeleteCommand> {
 
+    String INDEX_AND_NAME_PROVIDED = "Please provide either an index or a name, not both.";
+    DeleteCommand deleteCommand;
+    Name name;
+    Index index;
+
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
      * and returns a DeleteCommand object for execution.
@@ -19,14 +24,30 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      */
     public DeleteCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME);
+        String trimmed = args;
+
+        // Parse name if present
         if (namePrefixPresent(argMultimap)) {
-            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-            return new DeleteCommand(name);
-        } else {
-            Index index = ParserUtil.parseIndex(args);
-            return new DeleteCommand(index);
+            name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+            trimmed = args.replace("n/" + name.fullName, "");
         }
 
+        // Parse index if present
+        try {
+            index = ParserUtil.parseIndex(trimmed);
+        } catch (ParseException pe) {
+            index = null;
+        }
+
+        if (namePrefixPresent(argMultimap) && index == null) {
+            name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+            deleteCommand = new DeleteCommand(name);
+        } else if (!namePrefixPresent(argMultimap) && index != null) {
+            deleteCommand = new DeleteCommand(index);
+        } else if (namePrefixPresent(argMultimap) && index != null) {
+            throw new ParseException(INDEX_AND_NAME_PROVIDED);
+        }
+        return deleteCommand;
     }
 
     /**
