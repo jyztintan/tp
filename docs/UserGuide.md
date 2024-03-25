@@ -23,7 +23,7 @@ If you can type fast, RDX can get your contact management tasks done faster than
 
 1. Copy the file to the folder you want to use as the _home folder_ for your Realodex.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar realodex.jar` 
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar realodex.jar`
 command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
@@ -53,15 +53,14 @@ command to run the application.<br>
 
 ### Adding a client: `add`
 
-Adds a client to the Realodex. Note that `TAG` is optional, and that you may input the parameters in any order (e.g. if 
-the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable). You may
-also have multiple tags per client.
+Adds a client to the Realodex. Note that Name, Address, Income, Phone Number, Family Size, Email and Tag are compulsory. You may input the parameters in any order (e.g. if 
+the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable). A client can be a buyer, seller or both. This should be reflected by tagging `t/buyer` and/or `t/seller`.
 
-Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY [t/TAG]...`
+Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG ...`
 
 Examples:
-* `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/friends t/owesMoney`
-* `add n/Betsy Crowe a/Newgate Prison i/$0 f/1 p/94859694 e/betsyc@rocketmail.com`
+* `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer`
+* `add n/Betsy Crowe a/Newgate Prison i/$0 f/1 p/94859694 e/betsyc@rocketmail.com t/seller`
 
 ### Deleting a client : `delete`
 
