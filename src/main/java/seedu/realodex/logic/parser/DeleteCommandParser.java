@@ -32,12 +32,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         }
 
         // Parse index if present
-        Index index;
-        try {
-            index = ParserUtil.parseIndex(trimmed);
-        } catch (ParseException pe) {
-            index = null;
-        }
+        Index index = ParserUtil.parseIndex(trimmed);
 
         DeleteCommand deleteCommand;
         if (namePrefixPresent(argMultimap) && index == null) {
