@@ -25,7 +25,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         String trimmed = args;
 
         // Parse name if present
-        Name name;
+        Name name = null;
         if (namePrefixPresent(argMultimap)) {
             name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
             trimmed = args.replace("n/" + name.fullName, "");
