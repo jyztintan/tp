@@ -31,16 +31,21 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
             trimmed = args.replace("n/" + name.fullName, "");
         }
 
-        // Parse index if present
-        Index index = ParserUtil.parseIndex(trimmed);
+        Index index = null;
+        String checkPreamble = argMultimap.getPreamble();
+        if (!checkPreamble.isBlank()) {
+            index = ParserUtil.parseIndex(trimmed);
+        }
+
+
 
         DeleteCommand deleteCommand;
-        if (namePrefixPresent(argMultimap) && index == null) {
+        if (namePrefixPresent(argMultimap) && checkPreamble.isBlank()) {
             assert name != null;
             deleteCommand = new DeleteCommand(name);
-        } else if (!namePrefixPresent(argMultimap) && index != null) {
+        } else if (!namePrefixPresent(argMultimap) && !checkPreamble.isBlank()) {
             deleteCommand = new DeleteCommand(index);
-        } else if (namePrefixPresent(argMultimap) && index != null) {
+        } else if (namePrefixPresent(argMultimap) && !checkPreamble.isBlank()) {
             throw new ParseException(MESSAGE_INDEX_AND_NAME_PROVIDED);
         } else {
             throw new ParseException(MESSAGE_NO_FIELDS_PROVIDED);
