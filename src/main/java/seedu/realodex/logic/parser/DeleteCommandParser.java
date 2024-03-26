@@ -41,7 +41,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
 
         DeleteCommand deleteCommand;
         if (namePrefixPresent(argMultimap) && index == null) {
-            name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+            assert name != null //remove this if the checks fail or smth codecov might be problem
             deleteCommand = new DeleteCommand(name);
         } else if (!namePrefixPresent(argMultimap) && index != null) {
             deleteCommand = new DeleteCommand(index);
