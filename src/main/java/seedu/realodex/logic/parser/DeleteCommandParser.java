@@ -46,9 +46,9 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         } else if (!namePrefixPresent(argMultimap) && index != null) {
             deleteCommand = new DeleteCommand(index);
         } else if (namePrefixPresent(argMultimap) && index != null) {
-            throw new ParseException(MESSAGE_INDEX_AND_NAME_PROVIDED + "\n" + DeleteCommand.MESSAGE_DELETE_HELP);
+            throw new ParseException(MESSAGE_INDEX_AND_NAME_PROVIDED);
         } else {
-            throw new ParseException(MESSAGE_NO_FIELDS_PROVIDED + "\n" + DeleteCommand.MESSAGE_DELETE_HELP);
+            throw new ParseException(MESSAGE_NO_FIELDS_PROVIDED);
         }
         return deleteCommand;
     }
