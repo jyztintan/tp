@@ -12,8 +12,8 @@ import seedu.realodex.model.person.Name;
  */
 public class DeleteCommandParser implements Parser<DeleteCommand> {
 
-    public static final String INDEX_AND_NAME_PROVIDED = "Please provide either an index or a name, not both.";
-    public static final String NO_FIELDS_PROVIDED = "Please provide either an index or a name.";
+    public static final String MESSAGE_INDEX_AND_NAME_PROVIDED = "Please provide either an index or a name, not both.";
+    public static final String MESSAGE_NO_FIELDS_PROVIDED = "Please provide either an index or a name.";
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
@@ -26,7 +26,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         String trimmed = args;
 
         // Parse name if present
-        Name name;
+        Name name = null;
         if (namePrefixPresent(argMultimap)) {
             name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
             trimmed = args.replace("n/" + name.fullName, "");
@@ -42,14 +42,14 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
 
         DeleteCommand deleteCommand;
         if (namePrefixPresent(argMultimap) && index == null) {
-            name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+            assert name != null //remove this if the checks fail or smth codecov might be problem
             deleteCommand = new DeleteCommand(name);
         } else if (!namePrefixPresent(argMultimap) && index != null) {
             deleteCommand = new DeleteCommand(index);
         } else if (namePrefixPresent(argMultimap) && index != null) {
-            throw new ParseException(INDEX_AND_NAME_PROVIDED);
+            throw new ParseException(INDEX_AND_NAME_PROVIDED + "\n" + DeleteCommand.MESSAGE_DELETE_HELP);
         } else {
-            throw new ParseException(NO_FIELDS_PROVIDED);
+            throw new ParseException(NO_FIELDS_PROVIDED + "\n" + DeleteCommand.MESSAGE_DELETE_HELP);
         }
         return deleteCommand;
     }
