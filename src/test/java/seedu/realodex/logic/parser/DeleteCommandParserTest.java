@@ -1,8 +1,8 @@
 package seedu.realodex.logic.parser;
 
+import static seedu.realodex.logic.commands.DeleteCommand.MESSAGE_NO_FIELDS_PROVIDED;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.realodex.logic.parser.DeleteCommandParser.NO_FIELDS_PROVIDED;
 import static seedu.realodex.testutil.Assert.assertThrows;
 import static seedu.realodex.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -42,16 +42,16 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(NO_FIELDS_PROVIDED, DeleteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(MESSAGE_NO_FIELDS_PROVIDED, DeleteCommand.MESSAGE_USAGE));
     }
 
     @Test
     public void parse_nameAndIndex_throwsParseException() {
-        assertParseFailure(parser, "1 n/James", String.format(DeleteCommandParser.INDEX_AND_NAME_PROVIDED));
+        assertParseFailure(parser, "1 n/James", String.format(DeleteCommand.MESSAGE_INDEX_AND_NAME_PROVIDED));
     }
 
     @Test
     public void parse_noFields_throwsParseException() {
-        assertParseFailure(parser, "", String.format(NO_FIELDS_PROVIDED));
+        assertParseFailure(parser, "", String.format(MESSAGE_NO_FIELDS_PROVIDED));
     }
 }
