@@ -93,7 +93,7 @@
 
     -fx-background-image: url("/images/realodex_icon.png");
     -fx-background-color:transparent;
-    -fx-background-size: 80% auto; /* Adjusts the image's width to fit the container width */
+    -fx-background-size: auto 90%; /* Adjusts the image's width to fit the container width */
     -fx-background-repeat: no-repeat; /* Prevents the image from repeating */
     -fx-background-position: center; /* Centers the image in the container */
 
@@ -108,7 +108,7 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: rgba(101, 101, 101, 0.9);
+    -fx-background-color: rgba(101, 101, 101, 0.92);
 }
 
 .list-cell:filled:odd {
