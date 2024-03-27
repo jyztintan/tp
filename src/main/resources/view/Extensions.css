@@ -5,6 +5,7 @@
 
 .list-cell:empty {
     /* Empty cells will not have alternating colours */
+    /*-fx-background-image: url("images/realodex_icon.png");*/
     -fx-background: #383838;
 }
 
