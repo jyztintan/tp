@@ -29,6 +29,11 @@ public class DeleteCommandParserTest {
     }
 
     @Test
+    public void parse_invalidIndex_throwsParseException() {
+        assertParseFailure(parser, "-1", String.format(NO_FIELDS_PROVIDED, DeleteCommand.MESSAGE_USAGE));
+    }
+
+    @Test
     public void parse_validName_returnsDeleteCommand() {
         assertParseSuccess(parser, " n/James", new DeleteCommand(new Name("James")));
     }
@@ -43,5 +48,10 @@ public class DeleteCommandParserTest {
     @Test
     public void parse_invalidArgs_throwsParseException() {
         assertParseFailure(parser, "a", String.format(NO_FIELDS_PROVIDED, DeleteCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_indexAndNameProvided_throwsParseException() {
+        assertParseFailure(parser, "1 n/James", DeleteCommandParser.INDEX_AND_NAME_PROVIDED);
     }
 }
