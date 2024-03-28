@@ -92,8 +92,8 @@ public class DeleteCommandTest {
     @Test
     public void execute_invalidNameFilteredList_throwsCommandException() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
-
         Person personToDelete = new PersonBuilder().withName("b").build();
+
         DeleteCommand deleteCommand = new DeleteCommand(personToDelete.getName());
 
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_NAME);
