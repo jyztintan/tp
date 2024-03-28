@@ -2,7 +2,7 @@ package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.realodex.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
+import static seedu.realodex.logic.parser.DeleteCommandParser.NO_FIELDS_PROVIDED;
 import static seedu.realodex.testutil.Assert.assertThrows;
 import static seedu.realodex.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -42,6 +42,6 @@ public class DeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_INDEX, DeleteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "a", String.format(NO_FIELDS_PROVIDED, DeleteCommand.MESSAGE_USAGE));
     }
 }
