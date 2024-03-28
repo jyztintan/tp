@@ -81,6 +81,10 @@ public class ArgumentMultimap {
         }
     }
 
+    public boolean containsPrefix(Prefix prefix) {
+        return argMultimap.containsKey(prefix);
+    }
+
     //this will always return true for the PREFIX_REMARK due to its special nature
     public Prefix findPresentPrefix(Prefix...prefixes) {
         for (Prefix prefix : prefixes) {
