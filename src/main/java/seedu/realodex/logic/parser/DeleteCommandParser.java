@@ -23,29 +23,32 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME);
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
         String trimmed = args;
-
         // Parse name if present
         Name name = null;
         if (namePrefixPresent(argMultimap)) {
             name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
             trimmed = args.replace("n/" + name.fullName, "");
         }
-
-        // Parse index if present
-        Index index = ParserUtil.parseIndex(trimmed);
-
-        DeleteCommand deleteCommand;
-        if (namePrefixPresent(argMultimap) && index == null) {
+        Index index = null;
+        String checkPreamble = argMultimap.getPreamble();
+        if (!checkPreamble.isBlank()) {
+            index = ParserUtil.parseIndex(trimmed);
+        }
+        return createDeleteCommand(argMultimap, name, index, checkPreamble);
+    }
+    private DeleteCommand createDeleteCommand(ArgumentMultimap argMultimap, Name name, Index index,
+                                              String checkPreamble)
+            throws ParseException {
+        if (namePrefixPresent(argMultimap) && checkPreamble.isBlank()) {
             assert name != null;
-            deleteCommand = new DeleteCommand(name);
-        } else if (!namePrefixPresent(argMultimap) && index != null) {
-            deleteCommand = new DeleteCommand(index);
-        } else if (namePrefixPresent(argMultimap) && index != null) {
+            return new DeleteCommand(name);
+        } else if (!namePrefixPresent(argMultimap) && !checkPreamble.isBlank()) {
+            return new DeleteCommand(index);
+        } else if (namePrefixPresent(argMultimap) && !checkPreamble.isBlank()) {
             throw new ParseException(MESSAGE_INDEX_AND_NAME_PROVIDED);
         } else {
             throw new ParseException(MESSAGE_NO_FIELDS_PROVIDED);
         }
-        return deleteCommand;
     }
 
     /**
