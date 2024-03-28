@@ -36,9 +36,9 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         }
         return createDeleteCommand(argMultimap, name, index, checkPreamble);
     }
+
     private DeleteCommand createDeleteCommand(ArgumentMultimap argMultimap, Name name, Index index,
-                                              String checkPreamble)
-            throws ParseException {
+                                              String checkPreamble) throws ParseException {
         if (namePrefixPresent(argMultimap) && checkPreamble.isBlank()) {
             assert name != null;
             return new DeleteCommand(name);
