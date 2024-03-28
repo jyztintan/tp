@@ -91,7 +91,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         Remark remark;
-        remark = ParserUtil.parseRemark(argMultimap.getRemarkValue(PREFIX_REMARK).orElseThrow());
+        remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).orElseThrow());
 
         // If any parsing operation fails, throw a ParseException with the accumulated error messages
         if (errorMessageBuilder.length() > 0) {
