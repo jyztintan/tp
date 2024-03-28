@@ -39,10 +39,10 @@ public class BirthdayTest {
 
     @Test
     public void equals() {
-        Birthday birthday = new Birthday("14mar1706"); // pi day!
+        Birthday birthday = new Birthday("14mar1592"); // pi day!
 
         // same values -> returns true
-        assertTrue(birthday.equals(new Birthday("14mar1706")));
+        assertTrue(birthday.equals(new Birthday("14mar1592")));
 
         // same object -> returns true
         assertTrue(birthday.equals(birthday));

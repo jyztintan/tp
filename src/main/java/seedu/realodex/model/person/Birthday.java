@@ -8,29 +8,27 @@ import java.util.Locale;
 import java.util.Optional;
 
 /**
- * Represents a remark in the Realodex
+ * Represents a Birthday in the Realodex
  */
 public class Birthday {
 
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in dd-MMM-yyyy format";
-    public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in "+ INPUT_DATE_PATTERN + " format";
+    public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     public final Optional<Date> birthday;
 
     /**
-     * Constructs a {@code Remark}.
+     * Constructs a {@code Birthday}.
      *
      * @param birthday A valid birthday.
      */
     public Birthday(String birthday) {
-        // checkArgument(isValidBirthday(birthday));
         SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
         formatter.setLenient(false);
         Optional<Date> birthdayDate;
         try {
             birthdayDate = Optional.of(formatter.parse(birthday));
         } catch (ParseException e) {
-            // will only reach here with empty string, other cases have been caught in isValidBirthday
             birthdayDate = Optional.empty();
         }
         this.birthday = birthdayDate;
@@ -43,10 +41,10 @@ public class Birthday {
         if (birthday.isBlank() || birthday.equals("")) {
             return true;
         }
-        // todo: conduct check without using try-catch block for better code quality
         try {
             SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
             formatter.setLenient(false);
+            assert(!birthday.equals(""));
             formatter.parse(birthday.trim());
             return true;
         } catch (ParseException e) {
