@@ -2,8 +2,10 @@ package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.realodex.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +13,10 @@ import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
+import seedu.realodex.model.person.predicates.TagsMatchPredicate;
+import seedu.realodex.model.tag.Tag;
+
+import java.util.Set;
 
 public class FilterCommandParserTest {
 
@@ -33,6 +39,34 @@ public class FilterCommandParserTest {
         String userInput = " r/Loves cats";
         FilterCommand expectedCommand = new FilterCommand(new RemarkContainsKeyphrasePredicate("Loves cats"));
         assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_validArgsWithTag_returnsFilterCommand() {
+        String userInput = " t/buyer";
+        Set<Tag> predicateTags = Set.of(new Tag("buyer"));
+        FilterCommand expectedCommand = new FilterCommand(new TagsMatchPredicate(predicateTags));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_validArgsWithTwoTags_returnsFilterCommand() {
+        String userInput = " t/Buyer t/Seller";
+        Set<Tag> predicateTags = Set.of(new Tag("buyer"), new Tag("seller"));
+        FilterCommand expectedCommand = new FilterCommand(new TagsMatchPredicate(predicateTags));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_validArgsWithThreeTags_throwsParseException() {
+        String userInput = " t/Buyer t/Seller t/Buyer";
+        assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TAG));
+    }
+
+    @Test
+    void parse_invalidTagFormat_throwsParseException() {
+        String userInput = " t/Buyer$";
+        assertThrows(IllegalArgumentException.class, () -> new Tag(userInput));
     }
 
     @Test

@@ -18,7 +18,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_NAME = "The client name provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
-                "Multiple values specified for the following single-valued field(s): ";
+                "Too many values specified for the following single-valued field(s): ";
     public static final String MESSAGE_MISSING_PREFIXES = "Missing compulsory prefixes in the command! "
             + "Prefixes That Are Missed Are: ";
 
