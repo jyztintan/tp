@@ -299,7 +299,7 @@ public class AddCommandParserTest {
         // invalid family
         assertParseFailure(parser, validExpectedPersonString + INVALID_FAMILY_DESC,
                            Messages.getErrorMessageForDuplicatePrefixes(PREFIX_FAMILY));
-        // invalid family
+        // invalid birthday
         assertParseFailure(parser, validExpectedPersonString + INVALID_BIRTHDAY_DESC,
                            Messages.getErrorMessageForDuplicatePrefixes(PREFIX_BIRTHDAY));
     }
