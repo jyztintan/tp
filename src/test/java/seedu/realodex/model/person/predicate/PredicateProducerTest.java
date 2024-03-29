@@ -9,6 +9,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.commands.FilterCommand;
+import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
@@ -49,6 +50,16 @@ class PredicateProducerTest {
                 predicateProducer.createPredicate(PREFIX_NAME, keyphrase));
 
         assertTrue(exception.getMessage().contains(FilterCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    void createPredicate_assertionErrorWhenInvalidPrefix() {
+        PredicateProducer predicateProducer = new PredicateProducer();
+        Prefix unhandledPrefix = new Prefix("unhandled/", "");
+
+        ClassLoader.getSystemClassLoader().setDefaultAssertionStatus(true);
+
+        assertThrows(AssertionError.class, () -> predicateProducer.createPredicate(unhandledPrefix, "keyphrase"));
     }
 
 }
