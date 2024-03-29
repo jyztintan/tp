@@ -4,10 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS_CAPS;
-<<<<<<< HEAD
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
-=======
->>>>>>> master
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL_CAPS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
