@@ -8,6 +8,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +16,12 @@ import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
+import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.PredicateProducer;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
+import seedu.realodex.model.person.predicates.TagsMatchPredicate;
+import seedu.realodex.model.tag.Tag;
 import seedu.realodex.testutil.PersonBuilder;
 
 class PredicateProducerTest {
@@ -60,6 +64,22 @@ class PredicateProducerTest {
 
         Person bob = new PersonBuilder().withName("Bob").withTags("buyer", "seller").build();
         assertTrue(predicateProducer.createPredicate(PREFIX_TAG, keyphrases).test(bob));
+    }
+
+    @Test
+    void createMatchTagPredicate_validTagStrings_assertionErrorWhenInvalidPrefix() {
+        PredicateProducer predicateProducer = new PredicateProducer();
+        List<String> keyphrases = List.of("buyer", "seller");
+        Set<Tag> tagString = Set.of(new Tag("buyer"), new Tag("seller"));
+        assertEquals(predicateProducer.createMatchTagsPredicate(keyphrases), new TagsMatchPredicate(tagString));
+    }
+
+    @Test
+    void createMatchTagPredicate_invalidTagString_assertionErrorWhenInvalidPrefix() {
+        PredicateProducer predicateProducer = new PredicateProducer();
+        List<String> keyphrases = List.of("customer");
+
+        assertThrows(AssertionError.class, () -> predicateProducer.createMatchTagsPredicate(keyphrases));
     }
 
     @Test

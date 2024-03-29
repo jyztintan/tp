@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -19,17 +20,20 @@ public class TagsMatchPredicateTest {
 
     @Test
     public void equals() {
-        String firstPredicateKeyphrase = "first";
-        String secondPredicateKeyphrase = "first second";
+        Set<Tag> firstTagSet = Set.of(new Tag("buyer"));
+        Set<Tag> secondTagSet = Set.of(new Tag("seller"));
+        Set<Tag> thirdTagSet = Set.of(new Tag("buyer"), new Tag("seller"));
 
-        NameContainsKeyphrasePredicate firstPredicate = new NameContainsKeyphrasePredicate(firstPredicateKeyphrase);
-        NameContainsKeyphrasePredicate secondPredicate = new NameContainsKeyphrasePredicate(secondPredicateKeyphrase);
+
+        TagsMatchPredicate firstPredicate = new TagsMatchPredicate(firstTagSet);
+        TagsMatchPredicate secondPredicate = new TagsMatchPredicate(secondTagSet);
+        TagsMatchPredicate thirdPredicate = new TagsMatchPredicate(thirdTagSet);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        NameContainsKeyphrasePredicate firstPredicateCopy = new NameContainsKeyphrasePredicate(firstPredicateKeyphrase);
+        TagsMatchPredicate firstPredicateCopy = new TagsMatchPredicate(firstTagSet);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -40,6 +44,9 @@ public class TagsMatchPredicateTest {
 
         // different person -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
+
+        // stricter vs less-strict predicate
+        assertFalse(firstPredicate.equals(thirdPredicate));
     }
 
     @Test
