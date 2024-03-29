@@ -34,7 +34,7 @@ public class Prefix {
      */
     public Prefix(String prefix) {
         this.prefix = prefix;
-        this.prefixDescription = prefixDescriptionMap.get(prefix.toLowerCase());
+        this.prefixDescription = prefixDescriptionMap.getOrDefault(prefix.toLowerCase(), "");
     }
 
     /**
