@@ -5,6 +5,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.realodex.logic.commands.FilterCommand;
@@ -33,9 +34,9 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         checkNoDuplicatePrefix(prefixChecker);
 
         Prefix presentPrefix = prefixChecker.findPresentPrefix(POSSIBLE_PREFIXES);
-        String keyphrase = argMultimap.getValue(presentPrefix).get().trim();
+        List<String> keyphrases = argMultimap.getAllValues(presentPrefix);
         PredicateProducer predicateProducer = new PredicateProducer();
-        Predicate<Person> predicate = predicateProducer.createPredicate(presentPrefix, keyphrase);
+        Predicate<Person> predicate = predicateProducer.createPredicate(presentPrefix, keyphrases);
 
         return new FilterCommand(predicate);
     }
