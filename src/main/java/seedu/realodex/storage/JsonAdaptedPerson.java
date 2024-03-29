@@ -12,13 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.realodex.commons.exceptions.IllegalValueException;
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.Phone;
-import seedu.realodex.model.remark.Remark;
+import seedu.realodex.model.person.Remark;
 import seedu.realodex.model.tag.Tag;
 
 /**
@@ -36,6 +37,7 @@ class JsonAdaptedPerson {
     private final String family;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final String remark;
+    private final String birthday;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -48,7 +50,8 @@ class JsonAdaptedPerson {
                              @JsonProperty("address") String address,
                              @JsonProperty("family") String family,
                              @JsonProperty("tags") List<JsonAdaptedTag> tags,
-                             @JsonProperty("remark") String remark) {
+                             @JsonProperty("remark") String remark,
+                             @JsonProperty("birthday") String birthday) {
         this.name = name;
         this.phone = phone;
         this.income = income;
@@ -59,6 +62,7 @@ class JsonAdaptedPerson {
             this.tags.addAll(tags);
         }
         this.remark = Objects.requireNonNullElse(remark, "");
+        this.birthday = Objects.requireNonNullElse(birthday, "");
     }
 
     /**
@@ -75,6 +79,7 @@ class JsonAdaptedPerson {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         remark = source.getRemark().toString();
+        birthday = source.getBirthday().toString();
     }
 
     /**
@@ -139,8 +144,9 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final Remark modelRemark = new Remark(remark);
+        final Birthday modelBirthday = new Birthday(birthday);
 
         return new Person(modelName, modelPhone, modelIncome, modelEmail, modelAddress, modelFamily,
-                modelTags, modelRemark);
+                modelTags, modelRemark, modelBirthday);
     }
 }

@@ -8,7 +8,8 @@
     "address" : "123, Jurong West Ave 6, #08-111",
     "family" : "4",
     "tags" : [ "buyer" ],
-    "remark" : "this is a remark"
+    "remark" : "this is a remark",
+    "birthday" : "3June2003"
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
@@ -17,7 +18,8 @@
     "address" : "311, Clementi Ave 2, #02-25",
     "family" : "4",
     "tags" : [ "seller", "buyer" ],
-    "remark" : ""
+    "remark" : "",
+    "birthday" : ""
   }, {
     "name" : "Carl Kurz",
     "phone" : "95352563",
@@ -26,7 +28,8 @@
     "address" : "wall street",
     "family" : "4",
     "tags" : ["buyer"],
-    "remark" : "Carl was supposed to start with a K, but the doctor misspelled when he was born"
+    "remark" : "Carl was supposed to start with a K, but the doctor misspelled when he was born",
+    "birthday" : "06Jun2006"
   }, {
     "name" : "Daniel Meier",
     "phone" : "87652533",
@@ -35,7 +38,8 @@
     "address" : "10th street",
     "family" : "4",
     "tags" : [ "buyer" ],
-    "remark" : "White VANS"
+    "remark" : "White VANS",
+    "birthday" : "25Dec1999"
   }, {
     "name" : "Elle Meyer",
     "phone" : "9482224",
@@ -44,7 +48,8 @@
     "address" : "michegan ave",
     "family" : "4",
     "tags" : [ "buyer"],
-    "remark" : ""
+    "remark" : "",
+    "birthday" : "1Jan2004"
   }, {
     "name" : "Fiona Kunz",
     "phone" : "9482427",
@@ -53,7 +58,8 @@
     "address" : "little tokyo",
     "family" : "4",
     "tags" : ["seller" ],
-    "remark" : ""
+    "remark" : "",
+    "birthday": "3Jun2003"
   }, {
     "name" : "George Best",
     "phone" : "9482442",
@@ -62,6 +68,7 @@
     "address" : "4th street",
     "family" : "4",
     "tags" : ["buyer" ],
-    "remark" : "Fun fact: George's brother's name is \"The\"."
+    "remark" : "Fun fact: George's brother's name is \"The\".",
+    "birthday" : "23Apr1983"
   } ]
 }

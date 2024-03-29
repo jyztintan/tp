@@ -1,6 +1,7 @@
 package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
@@ -16,13 +17,14 @@ import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.AddCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.Phone;
-import seedu.realodex.model.remark.Remark;
+import seedu.realodex.model.person.Remark;
 import seedu.realodex.model.tag.Tag;
 
 /**
@@ -38,7 +40,8 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME,
-                                           PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_FAMILY, PREFIX_TAG, PREFIX_REMARK);
+                                           PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_FAMILY,
+                                           PREFIX_TAG, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         Prefix[] listOfCompulsoryPrefixTags = argMultimap.returnListOfCompulsoryTags(PREFIX_NAME, PREFIX_ADDRESS,
                                                                                      PREFIX_INCOME, PREFIX_PHONE,
@@ -53,7 +56,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL,
-                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_REMARK);
+                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         StringBuilder errorMessageBuilder = new StringBuilder();
         ParserUtilResult<Name> nameStored =
@@ -91,7 +94,14 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         Remark remark;
-        remark = ParserUtil.parseRemark(argMultimap.getRemarkValue(PREFIX_REMARK).orElseThrow());
+
+        remark = ParserUtil.parseRemark(argMultimap.getValueOrDefault(PREFIX_REMARK).orElseThrow());
+
+        ParserUtilResult<Birthday> birthdayStored = ParserUtil
+                .parseBirthdayReturnStored(argMultimap
+                                                   .getValueOrDefault(PREFIX_BIRTHDAY)
+                                                   .orElseThrow());
+
 
         // If any parsing operation fails, throw a ParseException with the accumulated error messages
         if (errorMessageBuilder.length() > 0) {
@@ -105,7 +115,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = emailStored.returnStoredResult();
         Address address = addressStored.returnStoredResult();
         Family family = familyStored.returnStoredResult();
-        Person person = new Person(name, phone, income, email, address, family, tagList, remark);
+        Birthday birthday = birthdayStored.returnStoredResult();
+        Person person = new Person(name, phone, income, email, address, family, tagList, remark, birthday);
         return new AddCommand(person);
     }
 

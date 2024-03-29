@@ -1,5 +1,7 @@
 package seedu.realodex.logic.parser;
 
+import static seedu.realodex.logic.commands.DeleteCommand.MESSAGE_INDEX_AND_NAME_PROVIDED;
+import static seedu.realodex.logic.commands.DeleteCommand.MESSAGE_NO_FIELDS_PROVIDED;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 
 import seedu.realodex.commons.core.index.Index;
@@ -12,12 +14,6 @@ import seedu.realodex.model.person.Name;
  */
 public class DeleteCommandParser implements Parser<DeleteCommand> {
 
-    String INDEX_AND_NAME_PROVIDED = "Please provide either an index or a name, not both.";
-    String NO_FIELDS_PROVIDED = "Please provide either an index or a name.";
-    DeleteCommand deleteCommand;
-    Name name;
-    Index index;
-
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
      * and returns a DeleteCommand object for execution.
@@ -25,39 +21,39 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      */
     public DeleteCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME);
-        String trimmed = args;
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
 
-        // Parse name if present
-        if (namePrefixPresent(argMultimap)) {
-            name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-            trimmed = args.replace("n/" + name.fullName, "");
-        }
+        Name name = parseName(argMultimap);
+        Index index = parseIndex(argMultimap);
 
-        // Parse index if present
-        try {
-            index = ParserUtil.parseIndex(trimmed);
-        } catch (ParseException pe) {
-            index = null;
-        }
-
-        if (namePrefixPresent(argMultimap) && index == null) {
-            name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-            deleteCommand = new DeleteCommand(name);
-        } else if (!namePrefixPresent(argMultimap) && index != null) {
-            deleteCommand = new DeleteCommand(index);
-        } else if (namePrefixPresent(argMultimap) && index != null) {
-            throw new ParseException(INDEX_AND_NAME_PROVIDED);
-        } else {
-            throw new ParseException(NO_FIELDS_PROVIDED);
-        }
-        return deleteCommand;
+        return createDeleteCommand(name, index);
     }
 
-    /**
-     * Returns true if there is a PREFIX_NAME in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean namePrefixPresent(ArgumentMultimap argumentMultimap) {
-        return argumentMultimap.getValue(PREFIX_NAME).isPresent();
+    private Name parseName(ArgumentMultimap argMultimap) throws ParseException {
+        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+            String fullName = argMultimap.getValue(PREFIX_NAME).get();
+            return ParserUtil.parseName(fullName);
+        }
+        return null;
+    }
+
+    private Index parseIndex(ArgumentMultimap argMultimap) throws ParseException {
+        String preamble = argMultimap.getPreamble();
+        if (!preamble.isBlank()) {
+            return ParserUtil.parseIndex(preamble);
+        }
+        return null;
+    }
+
+    private DeleteCommand createDeleteCommand(Name name, Index index) throws ParseException {
+        if (name != null && index != null) {
+            throw new ParseException(MESSAGE_INDEX_AND_NAME_PROVIDED);
+        } else if (name != null) {
+            return new DeleteCommand(name);
+        } else if (index != null) {
+            return new DeleteCommand(index);
+        } else {
+            throw new ParseException(MESSAGE_NO_FIELDS_PROVIDED);
+        }
     }
 }
