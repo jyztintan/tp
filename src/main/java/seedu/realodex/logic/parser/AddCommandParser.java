@@ -99,7 +99,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         ParserUtilResult<Birthday> birthdayStored = ParserUtil
                 .parseBirthdayReturnStored(argMultimap
-                                                   .getValue(PREFIX_BIRTHDAY)
+                                                   .getValueOrDefault(PREFIX_BIRTHDAY)
                                                    .orElseThrow());
 
 
