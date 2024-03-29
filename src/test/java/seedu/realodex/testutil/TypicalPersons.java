@@ -2,6 +2,7 @@ package seedu.realodex.testutil;
 
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_AMY;
@@ -88,6 +89,7 @@ public class TypicalPersons {
             .withFamily(VALID_FAMILY_BOB)
             .withTags(VALID_TAG_BOB)
             .withRemark(VALID_REMARK_BOB)
+            .withBirthday(VALID_BIRTHDAY_BOB)
             .build();
 
     public static final String KEYPHRASE_MATCHING_MEIER = "Meier"; // A keyphrase that matches MEIER

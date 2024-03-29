@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS_CAPS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL_CAPS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
@@ -55,6 +56,7 @@ public class CommandTestUtil {
     public static final String VALID_TAG_BOB = "seller";
     public static final String VALID_REMARK_AMY = "This is a remark";
     public static final String VALID_REMARK_BOB = "Testing remark";
+    public static final String VALID_BIRTHDAY_BOB = "01May2023";
 
     public static final String NAME_DESC_AMY_CAPS = " " + PREFIX_NAME + VALID_NAME_AMY_FIRST_LETTER_CAPS;
     public static final String NAME_DESC_AMY_NON_CAPS = " " + PREFIX_NAME + VALID_NAME_AMY_NON_CAPS;
@@ -82,6 +84,7 @@ public class CommandTestUtil {
     public static final String REMARK_DESC_AMY = " " + PREFIX_REMARK + VALID_REMARK_AMY;
     public static final String REMARK_DESC_BOB = " " + PREFIX_REMARK + VALID_REMARK_BOB;
     public static final String REMARK_DESC_BOB_PREFIX_CAPS = " " + PREFIX_REMARK_CAPS + VALID_REMARK_BOB;
+    public static final String BIRTHDAY_DESC_BOB = " " + PREFIX_BIRTHDAY + VALID_BIRTHDAY_BOB;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_INCOME_DESC = " " + PREFIX_INCOME + "-1"; // Income must be positive, >= 0

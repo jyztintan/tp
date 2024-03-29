@@ -97,7 +97,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Remark remark;
         remark = ParserUtil.parseRemark(argMultimap.getValueOrDefault(PREFIX_REMARK).orElseThrow());
 
-        ParserUtilResult<Birthday> birthdayStored = ParserUtil.parseBirthdayReturnStored(argMultimap.getValue(PREFIX_BIRTHDAY).orElseThrow());
+        ParserUtilResult<Birthday> birthdayStored = ParserUtil
+                .parseBirthdayReturnStored(argMultimap
+                                                   .getValue(PREFIX_BIRTHDAY)
+                                                   .orElseThrow());
 
 
         // If any parsing operation fails, throw a ParseException with the accumulated error messages

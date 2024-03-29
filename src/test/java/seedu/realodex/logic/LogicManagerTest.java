@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.realodex.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.realodex.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.BIRTHDAY_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_AMY;
@@ -170,7 +171,9 @@ public class LogicManagerTest {
 
         // Triggers the saveRealodex method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY_CAPS + PHONE_DESC_AMY
-                + INCOME_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY;
+                + INCOME_DESC_AMY + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY
+                + TAG_DESC_AMY + BIRTHDAY_DESC_BOB;
         Person expectedPerson = new PersonBuilder(AMY_NAME_CAPS).withTags(VALID_TAG_AMY).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedPerson);

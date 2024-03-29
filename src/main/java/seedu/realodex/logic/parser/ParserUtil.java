@@ -307,6 +307,15 @@ public class ParserUtil {
         return new Birthday(birthday);
     }
 
+
+    /**
+     * Parses a {@code String birthday} into a {@code Birthday}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param birthday The birthday string to parse.
+     * @return A ParserUtilResult containing the parsed Birthday or an exception message.
+     * @throws ParseException if the given {@code birthday} is invalid.
+     */
     public static ParserUtilResult<Birthday> parseBirthdayReturnStored(String birthday) throws ParseException {
         if (!Birthday.isValidBirthday(birthday)) {
             return new ParserUtilResult<>(Birthday.MESSAGE_CONSTRAINTS, new Birthday());
