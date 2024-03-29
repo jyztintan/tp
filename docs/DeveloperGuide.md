@@ -162,7 +162,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Filter by Name feature
+``### Filter by Name feature
 
 #### Implementation
 
@@ -195,43 +195,31 @@ Cons: May return too many results for very short keyphrases.
 Pros: Precise filtering.
 
 Cons: Less flexible; users must remember exact names.
+``
 
-
-### Filter by Remarks feature
+### Sort by Birthday feature
 
 ####  Implementation
 
-Similar to the "Filter by Name" feature, the "Filter by Remarks" feature enables users to filter persons based on the remarks associated with them. The core components for this feature are:
-- FilterCommand: A command that, when executed, updates the filtered person list based on the predicate.
-- RemarksContainsKeyphrasePredicate: Tests whether a person's remarks contain the given keyphrase.
+The "Sort by Birthday" feature enables users to sort persons based on their birthday associated with them, if any. The core components for this feature are:
+- SortCommand: A command that, when executed, updates the sorted person list based on the predicate.
 
 #### Example Usage Scenario
 1. User launches the application, and the list of persons is loaded.
-2. User executes filter r/Important, aiming to filter out persons with "Important" in their remarks.
-3. LogicManager parses the command into a FilterCommand with a RemarksContainsKeyphrasePredicate.
-4. The FilterCommand is executed, filtering the list based on the predicate.
-5. The UI reflects only those persons with "Important" in their remarks.
+2. User executes `sort`, aiming to sort persons by birthday
+3. LogicManager parses the command into a SortCommand.
+4. The SortCommand is executed, sorting the list based on the predicate.
+5. The UI sorts the persons by birthday, with the next upcoming birthday first, and all persons without birthdays will not show up. 
 
 #### Design considerations:
 
 Aspect: Matching of remarks
 
-__Alternative 1 (current choice): Support partial matches for remarks, similar to the "Filter by Name" feature.__
+__Alternative 1 (current choice): Support sort by other days besides Today.__
 
 Pros: Allows for more flexible searches.
 
-Cons: Could return many results if the keyphrase is common.
-
-__Alternative 2: Match remarks exactly.__
-
-Pros: Ensures that only entries with exact remark matches are shown.
-Cons: Users need to remember the exact remarks.
-
-The following sequence diagram shows the interactions for the scenario where the user issues the filter command.
-
-<puml src="diagrams/filter/FilterClass.puml" alt="Sequence Diagram for Filter Command"/>
-
-<puml src="diagrams/filter/FilterParserClass.puml" alt="Sequence Diagram for Filter Command"/>
+Cons: May be difficult to understand
 
 ### \[Proposed\] Undo/redo feature
 
