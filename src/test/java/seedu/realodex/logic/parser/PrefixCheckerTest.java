@@ -1,12 +1,15 @@
 package seedu.realodex.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -103,6 +106,39 @@ public class PrefixCheckerTest {
         PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
 
         assertThrows(ParseException.class, () -> prefixChecker.checkNoDuplicatePrefix(PREFIX_NAME, PREFIX_EMAIL));
+    }
+
+    @Test
+    void findPresentPrefix_whenSinglePrefixPresent_returnsCorrectPrefix() {
+        // Setup ArgumentMultimap with a single prefix
+        String argsString = " n/John Doe";
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME);
+        PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
+
+        Prefix result = prefixChecker.findPresentPrefix(PREFIX_NAME, PREFIX_EMAIL);
+        assertEquals(PREFIX_NAME, result);
+    }
+
+    @Test
+    void findPresentPrefix_whenMultiplePrefixesPresent_returnsFirstPresentPrefix() {
+        // Setup ArgumentMultimap with multiple prefixes
+        String argsString = " n/John Doe r/Loves cats";
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME, PREFIX_REMARK);
+        PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
+
+        Prefix result = prefixChecker.findPresentPrefix(PREFIX_NAME, PREFIX_REMARK);
+        assertEquals(PREFIX_NAME, result);
+    }
+
+    @Test
+    void findPresentPrefix_whenNoPrefixesPresent_returnsNull() {
+        // Setup ArgumentMultimap with no prefixes
+        String argsString = " Just some text without prefixes";
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString);
+        PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
+
+        Prefix result = prefixChecker.findPresentPrefix(PREFIX_NAME, PREFIX_REMARK);
+        assertNull(result);
     }
 
 }
