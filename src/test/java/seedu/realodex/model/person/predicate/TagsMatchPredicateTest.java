@@ -1,17 +1,19 @@
 package seedu.realodex.model.person.predicate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
 import seedu.realodex.model.tag.Tag;
 import seedu.realodex.testutil.PersonBuilder;
 
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TagsMatchPredicateTest {
 
@@ -95,7 +97,7 @@ public class TagsMatchPredicateTest {
     @Test
     void test_personTagsDontMatchMultiplePredicateTags_returnsFalse() {
 
-        Set<Tag> predicateTags = Set.of(new Tag("buyer"), new Tag( "seller"));
+        Set<Tag> predicateTags = Set.of(new Tag("buyer"), new Tag("seller"));
         TagsMatchPredicate predicate = new TagsMatchPredicate(predicateTags);
 
         Person person = new PersonBuilder().withTags("seller").build();
@@ -105,7 +107,7 @@ public class TagsMatchPredicateTest {
 
     @Test
     public void toStringMethod() {
-        Set<Tag> tagSet = Set.of(new Tag("buyer"), new Tag( "seller"));
+        Set<Tag> tagSet = Set.of(new Tag("buyer"), new Tag("seller"));
         TagsMatchPredicate predicate = new TagsMatchPredicate(tagSet);
         String expected = TagsMatchPredicate.class.getCanonicalName() + "{Tag Set=" + tagSet + "}";
         assertEquals(expected, predicate.toString());

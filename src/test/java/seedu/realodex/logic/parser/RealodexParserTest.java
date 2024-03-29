@@ -7,6 +7,8 @@ import static seedu.realodex.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.realodex.testutil.Assert.assertThrows;
 import static seedu.realodex.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.commands.AddCommand;
@@ -28,8 +30,6 @@ import seedu.realodex.model.tag.Tag;
 import seedu.realodex.testutil.EditPersonDescriptorBuilder;
 import seedu.realodex.testutil.PersonBuilder;
 import seedu.realodex.testutil.PersonUtil;
-
-import java.util.Set;
 
 public class RealodexParserTest {
 

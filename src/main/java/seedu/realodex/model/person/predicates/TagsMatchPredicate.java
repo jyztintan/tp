@@ -1,11 +1,12 @@
 package seedu.realodex.model.person.predicates;
 
+import java.util.Set;
+import java.util.function.Predicate;
+
 import seedu.realodex.commons.util.ToStringBuilder;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.tag.Tag;
 
-import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * Tests that a {@code Person}'s {@code Name} contains the keyphrase given.

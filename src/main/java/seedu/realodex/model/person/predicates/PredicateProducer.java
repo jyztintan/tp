@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.ParserUtil;
@@ -41,8 +40,10 @@ public class PredicateProducer {
      * This method is called during the construction of the {@code PredicateProducer} instance.
      */
     private void initialize() {
-        predicateMap.put(PREFIX_NAME, keyphrases -> new NameContainsKeyphrasePredicate(keyphrases.get(keyphrases.size() - 1)));
-        predicateMap.put(PREFIX_REMARK, keyphrases -> new RemarkContainsKeyphrasePredicate(keyphrases.get(keyphrases.size() - 1)));
+        predicateMap.put(PREFIX_NAME, keyphrases ->
+                new NameContainsKeyphrasePredicate(keyphrases.get(keyphrases.size() - 1)));
+        predicateMap.put(PREFIX_REMARK, keyphrases ->
+                new RemarkContainsKeyphrasePredicate(keyphrases.get(keyphrases.size() - 1)));
         predicateMap.put(PREFIX_TAG, this::createMatchTagsPredicate);
     }
 
@@ -55,7 +56,7 @@ public class PredicateProducer {
      * @param keyphrases The list of keyphrases to be used in the predicate for testing {@code Person} objects.
      *                   For PREFIX_TAG, all keyphrases in the list are considered in creating the predicate.
      * @return A {@code Predicate<Person>} that tests if a {@code Person} object meets the specified criteria.
-     * @throws ParseException if the list of keyphrases is null, empty, contains empty strings, or if the prefix is unhandled.
+     * @throws ParseException if the list of keyphrases is null, empty, contains empty strings, or an unhandled prefix.
      */
     public Predicate<Person> createPredicate(Prefix prefix, List<String> keyphrases) throws ParseException {
         if (keyphrases == null || keyphrases.isEmpty() || keyphrases.stream().anyMatch(String::isEmpty)) {

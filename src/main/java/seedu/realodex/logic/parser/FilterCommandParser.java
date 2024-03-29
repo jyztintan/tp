@@ -6,14 +6,12 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.PredicateProducer;
-import seedu.realodex.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new FilterCommand object
@@ -49,7 +47,8 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      * @throws ParseException if there's an issue creating the predicate.
      */
 
-    private Predicate<Person> createPredicateForPrefix(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+    private Predicate<Person> createPredicateForPrefix(Prefix presentPrefix, List<String> keyphrases)
+            throws ParseException {
         checkValidTagsIfApplicable(presentPrefix, keyphrases);
         PredicateProducer predicateProducer = new PredicateProducer();
         return predicateProducer.createPredicate(presentPrefix, keyphrases);

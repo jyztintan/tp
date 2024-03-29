@@ -1,11 +1,12 @@
 package seedu.realodex.logic.parser;
 
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
+
 import java.util.stream.Stream;
 
 import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 /**
  * A utility class to check the presence and uniqueness of prefixes in an {@code ArgumentMultimap}.

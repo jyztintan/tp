@@ -21,7 +21,8 @@ public class FilterCommand extends Command {
 
     public static final String COMMAND_WORD = "filter";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all clients by specified field (name, remark, tag) "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Filters all clients by specified field (name, remark, tag) "
             + "with the specified keyphrase (non-empty, case-insensitive) "
             + "and displays them as a list with index numbers.\n"
             + "Note that although the fields are listed as optional, ONE field must strictly be present.\n"

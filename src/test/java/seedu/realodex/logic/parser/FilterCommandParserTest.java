@@ -7,6 +7,8 @@ import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseFailu
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.realodex.testutil.Assert.assertThrows;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.Messages;
@@ -15,8 +17,6 @@ import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
 import seedu.realodex.model.tag.Tag;
-
-import java.util.Set;
 
 public class FilterCommandParserTest {
 
