@@ -16,7 +16,6 @@ import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
-import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.PredicateProducer;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
