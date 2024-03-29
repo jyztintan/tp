@@ -14,7 +14,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_INCOME_CAPS = new Prefix("I/", "income");
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/", "address");
     public static final Prefix PREFIX_ADDRESS_CAPS = new Prefix("A/", "address");
-
     public static final Prefix PREFIX_EMAIL = new Prefix("e/", "email");
     public static final Prefix PREFIX_EMAIL_CAPS = new Prefix("E/", "email");
     public static final Prefix PREFIX_FAMILY = new Prefix("f/", "family");
@@ -24,5 +23,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_TAG_CAPS = new Prefix("T/", "tag");
     public static final Prefix PREFIX_REMARK = new Prefix("r/", "remark");
     public static final Prefix PREFIX_REMARK_CAPS = new Prefix("R/", "remark");
+    public static final Prefix PREFIX_BIRTHDAY = new Prefix("b/", "birthday");
+    public static final Prefix PREFIX_BIRTHDAY_CAPS = new Prefix("B/", "birthday");
 }
 

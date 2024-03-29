@@ -10,6 +10,7 @@ import seedu.realodex.commons.core.index.Index;
 import seedu.realodex.commons.util.StringUtil;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.Income;
@@ -292,5 +293,33 @@ public class ParserUtil {
     public static Remark parseRemark(String remark) {
         String trimmedRemark = remark.trim();
         return new Remark(trimmedRemark);
+    }
+
+    /**
+     * Parses a {@code String birthday} into a {@code Birthday}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     */
+    public static Birthday parseBirthday(String birthday) throws ParseException {
+        if (!Birthday.isValidBirthday(birthday)) {
+            throw new ParseException(Birthday.MESSAGE_CONSTRAINTS);
+        }
+        return new Birthday(birthday);
+    }
+
+
+    /**
+     * Parses a {@code String birthday} into a {@code Birthday}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param birthday The birthday string to parse.
+     * @return A ParserUtilResult containing the parsed Birthday or an exception message.
+     * @throws ParseException if the given {@code birthday} is invalid.
+     */
+    public static ParserUtilResult<Birthday> parseBirthdayReturnStored(String birthday) throws ParseException {
+        if (!Birthday.isValidBirthday(birthday)) {
+            return new ParserUtilResult<>(Birthday.MESSAGE_CONSTRAINTS, new Birthday());
+        }
+        return new ParserUtilResult<>("", new Birthday(birthday));
     }
 }
