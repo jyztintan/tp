@@ -35,10 +35,13 @@ public class BirthdayTest {
         // valid date
         assertTrue(Birthday.isValidBirthday("29Feb2024")); // leap year
         assertTrue(Birthday.isValidBirthday("12May2003"));
-
-        assertFalse(Birthday.isValidBirthday("01May2009233"));
         assertTrue(Birthday.isValidBirthday("08Aug1888"));
+
+        // invalid dates
+        assertFalse(Birthday.isValidBirthday("01May2009233"));
         assertFalse(Birthday.isValidBirthday("0"));
+        assertFalse(Birthday.isValidBirthday("1jan2032")); //cant be in future
+
     }
 
     @Test

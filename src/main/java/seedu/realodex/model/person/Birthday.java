@@ -14,7 +14,8 @@ import java.util.Optional;
 public class Birthday {
 
     public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + "format";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format\nDate "
+            + "should also not be in future years!";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     public final Optional<Date> birthday;
