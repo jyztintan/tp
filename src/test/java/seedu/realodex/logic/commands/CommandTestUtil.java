@@ -2,14 +2,7 @@ package seedu.realodex.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.realodex.logic.parser.CliSyntax.*;
 import static seedu.realodex.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -44,6 +37,8 @@ public class CommandTestUtil {
     public static final String VALID_TAG_BOB = "seller";
     public static final String VALID_REMARK_AMY = "This is a remark";
     public static final String VALID_REMARK_BOB = "Testing remark";
+    public static final String VALID_BIRTHDAY_AMY = "6Jun2006";
+    public static final String VALID_BIRTHDAY_BOB = "14Mar1592";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -61,6 +56,8 @@ public class CommandTestUtil {
     public static final String TAG_DESC_AMY = " " + PREFIX_TAG + VALID_TAG_AMY;
     public static final String REMARK_DESC_AMY = " " + PREFIX_REMARK + VALID_REMARK_AMY;
     public static final String REMARK_DESC_BOB = " " + PREFIX_REMARK + VALID_REMARK_BOB;
+    public static final String BIRTHDAY_DESC_AMY = " " + PREFIX_BIRTHDAY + VALID_BIRTHDAY_AMY;
+    public static final String BIRTHDAY_DESC_BOB = " " + PREFIX_BIRTHDAY + VALID_BIRTHDAY_BOB;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_INCOME_DESC = " " + PREFIX_INCOME + "-1"; // Income must be positive, >= 0

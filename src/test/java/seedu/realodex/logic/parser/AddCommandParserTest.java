@@ -1,46 +1,8 @@
 package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.realodex.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_FAMILY_DESC;
-import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_INCOME_DESC;
-import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.realodex.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
-import static seedu.realodex.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.realodex.logic.commands.CommandTestUtil.REMARK_DESC_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.REMARK_DESC_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.TAG_DESC_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.TAG_DESC_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_BOB;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
+import static seedu.realodex.logic.commands.CommandTestUtil.*;
+import static seedu.realodex.logic.parser.CliSyntax.*;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.realodex.testutil.TypicalPersons.AMY;
@@ -71,7 +33,7 @@ public class AddCommandParserTest {
         // whitespace only preamble
         assertParseSuccess(parser,
                            PREAMBLE_WHITESPACE + NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB,
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                 new AddCommand(expectedPerson));
 
 
@@ -80,7 +42,7 @@ public class AddCommandParserTest {
                 .build();
         assertParseSuccess(parser,
                 NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                        + TAG_DESC_BOB + TAG_DESC_AMY + REMARK_DESC_BOB,
+                        + TAG_DESC_BOB + TAG_DESC_AMY + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                 new AddCommand(expectedPersonMultipleTags));
 
         // three valid tags - all accepted
@@ -95,14 +57,15 @@ public class AddCommandParserTest {
                                    + TAG_DESC_BOB
                                    + TAG_DESC_AMY
                                    + TAG_DESC_BOB
-                                   + REMARK_DESC_BOB,
+                                   + REMARK_DESC_BOB
+                                   + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPersonMultipleTags));
     }
 
     @Test
     public void parse_repeatedNonTagValue_failure() {
         String validExpectedPersonString = NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB;
+                + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB;
 
         // multiple names
         assertParseFailure(parser, NAME_DESC_AMY + validExpectedPersonString,
@@ -132,13 +95,17 @@ public class AddCommandParserTest {
         assertParseFailure(parser, REMARK_DESC_AMY + validExpectedPersonString,
                            Messages.getErrorMessageForDuplicatePrefixes(PREFIX_REMARK));
 
+        //multiple birthdays
+        assertParseFailure(parser, BIRTHDAY_DESC_AMY + validExpectedPersonString,
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_BIRTHDAY));
+
         // multiple fields repeated
         assertParseFailure(parser,
                 validExpectedPersonString + PHONE_DESC_AMY + INCOME_DESC_AMY + EMAIL_DESC_AMY
                         + NAME_DESC_AMY + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + REMARK_DESC_AMY
                         + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_INCOME, PREFIX_ADDRESS, PREFIX_EMAIL,
-                                                             PREFIX_PHONE, PREFIX_FAMILY, PREFIX_REMARK));
+                                                             PREFIX_PHONE, PREFIX_FAMILY, PREFIX_REMARK, PREFIX_BIRTHDAY));
 
         // invalid value followed by valid value
 
@@ -255,7 +222,8 @@ public class AddCommandParserTest {
                 + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB
                 + FAMILY_DESC_BOB
-                + TAG_DESC_BOB, new AddCommand(expectedPerson));
+                + TAG_DESC_BOB
+                + BIRTHDAY_DESC_BOB, new AddCommand(expectedPerson));
 
         expectedPerson = new PersonBuilder(AMY).build();
         assertParseSuccess(parser, NAME_DESC_AMY
@@ -264,7 +232,8 @@ public class AddCommandParserTest {
                 + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY
                 + FAMILY_DESC_AMY
-                + TAG_DESC_AMY, new AddCommand(expectedPerson));
+                + TAG_DESC_AMY
+                + BIRTHDAY_DESC_AMY, new AddCommand(expectedPerson));
     }
 
     @Test

@@ -144,6 +144,10 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final Remark modelRemark = new Remark(remark);
+        if (!Birthday.isValidBirthday(birthday)) {
+            System.out.println(birthday);
+            throw new IllegalValueException(Birthday.MESSAGE_CONSTRAINTS);
+        }
         final Birthday modelBirthday = new Birthday(birthday);
 
         return new Person(modelName, modelPhone, modelIncome, modelEmail, modelAddress, modelFamily,

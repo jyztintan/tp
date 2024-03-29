@@ -135,6 +135,14 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Birthday} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withBirthday(String birthday) {
+        this.birthday = new Birthday(birthday);
+        return this;
+    }
+
     public Person build() {
         return new Person(name, phone, income, email, address, family, tags, remark, birthday);
     }

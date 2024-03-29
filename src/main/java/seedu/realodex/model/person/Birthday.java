@@ -3,6 +3,7 @@ package seedu.realodex.model.person;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class Birthday {
 
     public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
     public static final String MESSAGE_CONSTRAINTS = "Birthday should be in "+ INPUT_DATE_PATTERN + " format";
+    public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     public final Optional<Date> birthday;
 
@@ -44,7 +46,6 @@ public class Birthday {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
             formatter.setLenient(false);
-            assert(!birthday.equals(""));
             formatter.parse(birthday.trim());
             return true;
         } catch (ParseException e) {
@@ -76,7 +77,10 @@ public class Birthday {
      * Format state as text for viewing.
      */
     public String toString() {
-        return birthday.toString();
+        if (birthday.isPresent()) {
+            return INPUT_DATE_FORMATTER.format(birthday.get());
+        }
+        return "";
     }
 
     /**

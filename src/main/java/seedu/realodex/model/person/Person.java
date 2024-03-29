@@ -71,6 +71,9 @@ public class Person {
     public Remark getRemark() {
         return remark;
     }
+    public Birthday getBirthday() {
+        return birthday;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -141,8 +144,5 @@ public class Person {
                 .toString();
     }
 
-    public Birthday getBirthday() {
-        return birthday;
-    }
 }
 

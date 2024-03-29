@@ -1,25 +1,10 @@
 package seedu.realodex.testutil;
 
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_REMARK_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_BOB;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static seedu.realodex.logic.commands.CommandTestUtil.*;
 import seedu.realodex.model.Realodex;
 import seedu.realodex.model.person.Person;
 
@@ -41,37 +26,40 @@ public class TypicalPersons {
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withFamily("4")
-            .withTags("seller", "buyer").build();
+            .withTags("seller", "buyer").withBirthday("3Jun2003").build();
 
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz")
             .withPhone("95352563")
             .withIncome("30000")
             .withEmail("heinz@example.com").withAddress("wall street").withTags("buyer")
-            .withRemark("Carl was supposed to start with a K, but the doctor misspelled when he was born").build();
+            .withRemark("Carl was supposed to start with a K, but the doctor misspelled when he was born")
+            .withBirthday("6Jun2006").build();
 
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withIncome("40000")
             .withEmail("cornelia@example.com").withAddress("10th street").withTags("buyer")
-            .withRemark("White VANS").build();
+            .withRemark("White VANS").withBirthday("25Dec1999").build();
 
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
             .withIncome("50000")
-            .withEmail("werner@example.com").withAddress("michegan ave").withTags("buyer").build();
+            .withEmail("werner@example.com").withAddress("michegan ave").withTags("buyer")
+            .withBirthday("1Jan2004").build();
 
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz")
             .withPhone("9482427")
             .withIncome("60000")
-            .withEmail("lydia@example.com").withAddress("little tokyo").withTags("seller").build();
+            .withEmail("lydia@example.com").withAddress("little tokyo").withTags("seller")
+            .withBirthday("3Jun2003").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withIncome("70000")
             .withEmail("anna@example.com").withAddress("4th street").withTags("buyer")
-            .withRemark("Fun fact: George's brother's name is \"The\".").build();
+            .withRemark("Fun fact: George's brother's name is \"The\".").withBirthday("23Apr1983").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
             .withEmail("stefan@example.com").withAddress("little india").withTags("buyer").build();
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
-            .withEmail("hans@example.com").withAddress("chicago ave").withTags("buyer").build();
+            .withEmail("hans@example.com").withAddress("chicago ave").withTags("buyer").withBirthday("8Aug1888").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY)
@@ -79,7 +67,9 @@ public class TypicalPersons {
             .withIncome(VALID_INCOME_AMY)
             .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
             .withFamily(VALID_FAMILY_AMY)
-            .withTags(VALID_TAG_AMY).build();
+            .withTags(VALID_TAG_AMY)
+            .withBirthday(VALID_BIRTHDAY_AMY)
+            .build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB)
             .withPhone(VALID_PHONE_BOB)
             .withIncome(VALID_INCOME_BOB)
@@ -87,6 +77,7 @@ public class TypicalPersons {
             .withFamily(VALID_FAMILY_BOB)
             .withTags(VALID_TAG_BOB)
             .withRemark(VALID_REMARK_BOB)
+            .withBirthday(VALID_BIRTHDAY_BOB)
             .build();
 
     public static final String KEYPHRASE_MATCHING_MEIER = "Meier"; // A keyphrase that matches MEIER

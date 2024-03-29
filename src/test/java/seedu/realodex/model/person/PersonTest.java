@@ -111,6 +111,10 @@ public class PersonTest {
         // different remarks -> returns false
         editedAlice = new PersonBuilder(ALICE).withRemark(VALID_REMARK_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
+
+        // different birthday -> returns false
+        editedAlice = new PersonBuilder(ALICE).withRemark(VALID_REMARK_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
     }
 
     @Test
@@ -121,7 +125,8 @@ public class PersonTest {
                 + ", address=" + ALICE.getAddress()
                 + ", family=" + ALICE.getFamily()
                 + ", tags=" + ALICE.getTags()
-                + ", remark=" + ALICE.getRemark() + "}";
+                + ", remark=" + ALICE.getRemark()
+                + ", birthday=" + ALICE.getBirthday() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }
