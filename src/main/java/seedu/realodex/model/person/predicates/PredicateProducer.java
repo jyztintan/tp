@@ -64,7 +64,17 @@ public class PredicateProducer {
 
     }
 
-    //can only put one tag for now
+    /**
+     * Creates a predicate to evaluate if a {@link Person} has specific tag(s).
+     * The predicate checks if the set of tags associated with a person includes the tag(s)
+     * created from the provided string.
+     *
+     * @param string The string from which tag(s) are created. These tag(s) are then used
+     *               in the predicate to check against a person's tags.
+     * @return A {@code Predicate<Person>} that tests whether a person's tags include
+     *         the tag(s) created from the provided string. The predicate returns {@code true}
+     *         if the person's tags contain the specified tag(s), and {@code false} otherwise.
+     */
     public Predicate<Person> createMatchTagsPredicate(String string) {
         Set<Tag> personTags = Set.of(new Tag(string));
         return new TagsMatchPredicate(personTags);
