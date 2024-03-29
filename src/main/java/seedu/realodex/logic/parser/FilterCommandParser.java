@@ -3,6 +3,7 @@ package seedu.realodex.logic.parser;
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.function.Predicate;
 
@@ -16,7 +17,7 @@ import seedu.realodex.model.person.predicates.PredicateProducer;
  */
 public class FilterCommandParser implements Parser<FilterCommand> {
 
-    private static final Prefix[] POSSIBLE_PREFIXES = { PREFIX_NAME, PREFIX_REMARK };
+    private static final Prefix[] POSSIBLE_PREFIXES = { PREFIX_NAME, PREFIX_REMARK, PREFIX_TAG };
     /**
      * Parses the given {@code String} of arguments in the context of the FilterCommand
      * and returns a FilterCommand object for execution.
@@ -68,7 +69,6 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      * @throws ParseException if the preamble is not empty.
      */
     private void checkEmptyPreamble(PrefixChecker prefixChecker) throws ParseException {
-        // Check for at least one prefix present and no empty preamble
         if (!prefixChecker.checkEmptyPreamble()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }

@@ -3,9 +3,11 @@ package seedu.realodex.model.person.predicates;
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -13,6 +15,7 @@ import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
+import seedu.realodex.model.tag.Tag;
 
 /**
  * A factory class to produce different types of {@code Predicate<Person>} based on a given prefix and keyphrase.
@@ -37,6 +40,7 @@ public class PredicateProducer {
     private void initialize() {
         predicateMap.put(PREFIX_NAME, NameContainsKeyphrasePredicate::new);
         predicateMap.put(PREFIX_REMARK, RemarkContainsKeyphrasePredicate::new);
+        predicateMap.put(PREFIX_TAG, this::createMatchTagsPredicate);
     }
 
     /**
@@ -58,6 +62,12 @@ public class PredicateProducer {
         assert(predicateCreator != null);
         return predicateCreator.apply(keyphrase.trim());
 
+    }
+
+    //can only put one tag for now
+    public Predicate<Person> createMatchTagsPredicate(String string) {
+        Set<Tag> personTags = Set.of(new Tag(string));
+        return new TagsMatchPredicate(personTags);
     }
 
 }
