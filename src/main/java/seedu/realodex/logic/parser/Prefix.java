@@ -1,5 +1,6 @@
 package seedu.realodex.logic.parser;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -10,18 +11,30 @@ import java.util.stream.Stream;
  * E.g. 't/' in 'add James t/ friend'.
  */
 public class Prefix {
+    private static final HashMap<String, String> prefixDescriptionMap = new HashMap<>();
     private final String prefix;
     private final String prefixDescription;
+    static {
+        // Populate the HashMap with key-value pairs
+        prefixDescriptionMap.put("n/", "NAME");
+        prefixDescriptionMap.put("p/", "PHONE");
+        prefixDescriptionMap.put("i/", "INCOME");
+        prefixDescriptionMap.put("a/", "ADDRESS");
+        prefixDescriptionMap.put("e/", "EMAIL");
+        prefixDescriptionMap.put("f/", "FAMILY");
+        prefixDescriptionMap.put("t/", "TAG");
+        prefixDescriptionMap.put("r/", "REMARK");
+        prefixDescriptionMap.put("b/", "BIRTHDAY");
+    }
 
     /**
      * Constructs a Prefix object with the given prefix and its representation.
      *
      * @param prefix The prefix string.
-     * @param prefixDescription The string representation of the prefix.
      */
-    public Prefix(String prefix, String prefixDescription) {
+    public Prefix(String prefix) {
         this.prefix = prefix;
-        this.prefixDescription = prefixDescription.toUpperCase();
+        this.prefixDescription = prefixDescriptionMap.get(prefix.toLowerCase());
     }
 
     /**
