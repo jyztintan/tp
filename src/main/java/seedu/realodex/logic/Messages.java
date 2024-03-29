@@ -58,8 +58,6 @@ public class Messages {
         person.getTags().forEach(builder::append);
         builder.append("; Remark: ")
                 .append(person.getRemark());
-        builder.append("; Birthday: ")
-                .append(person.getBirthday());
         return builder.toString();
     }
 

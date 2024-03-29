@@ -3,7 +3,6 @@ package seedu.realodex.model.person;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
@@ -13,14 +12,13 @@ import java.util.Optional;
  */
 public class Birthday {
 
-    public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in "+ INPUT_DATE_PATTERN + " format";
-    public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in dd-MMM-yyyy format";
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
+    public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
     public final Optional<Date> birthday;
 
     /**
-     * Constructs a {@code Birthday}.
+     * Constructs a {@code Remark}.
      *
      * @param birthday A valid birthday.
      */
@@ -31,6 +29,7 @@ public class Birthday {
         try {
             birthdayDate = Optional.of(formatter.parse(birthday));
         } catch (ParseException e) {
+            // will only reach here with empty string, other cases have been caught in isValidBirthday
             birthdayDate = Optional.empty();
         }
         this.birthday = birthdayDate;
@@ -81,10 +80,7 @@ public class Birthday {
      * Format state as text for viewing.
      */
     public String toString() {
-        if (birthday.isPresent()) {
-            return INPUT_DATE_FORMATTER.format(birthday.get());
-        }
-        return "";
+        return birthday.toString();
     }
 
     /**

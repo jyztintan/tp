@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static seedu.realodex.logic.commands.CommandTestUtil.*;
 import seedu.realodex.model.Realodex;
 import seedu.realodex.model.person.Person;
 
@@ -76,7 +75,8 @@ public class TypicalPersons {
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
             .withEmail("stefan@example.com").withAddress("little india").withTags("buyer").build();
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
-            .withEmail("hans@example.com").withAddress("chicago ave").withTags("buyer").withBirthday("8Aug1888").build();
+            .withEmail("hans@example.com").withAddress("chicago ave")
+            .withTags("buyer").withBirthday("8Aug1888").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY_NAME_CAPS = new PersonBuilder().withName(VALID_NAME_AMY_FIRST_LETTER_CAPS)
@@ -85,7 +85,6 @@ public class TypicalPersons {
             .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
             .withFamily(VALID_FAMILY_AMY)
             .withTags(VALID_TAG_AMY)
-            .withBirthday(VALID_BIRTHDAY_AMY)
             .build();
 
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB_FIRST_LETTER_CAPS)

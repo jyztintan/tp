@@ -71,9 +71,6 @@ public class Person {
     public Remark getRemark() {
         return remark;
     }
-    public Birthday getBirthday() {
-        return birthday;
-    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -119,14 +116,13 @@ public class Person {
                 && family.equals(otherPerson.family)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
-                && remark.equals(otherPerson.remark)
-                && birthday.equals(otherPerson.birthday);
+                && remark.equals(otherPerson.remark);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, income, email, address, family, tags, remark, birthday);
+        return Objects.hash(name, phone, income, email, address, family, tags, remark);
     }
 
     @Override
@@ -140,9 +136,11 @@ public class Person {
                 .add("family", family)
                 .add("tags", tags)
                 .add("remark", remark)
-                .add("birthday", birthday)
                 .toString();
     }
 
+    public Birthday getBirthday() {
+        return birthday;
+    }
 }
 
