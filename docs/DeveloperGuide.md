@@ -233,6 +233,42 @@ The following sequence diagram shows the interactions for the scenario where the
 
 <puml src="diagrams/filter/FilterParserClass.puml" alt="Sequence Diagram for Filter Command"/>
 
+### Help feature
+
+####  Implementation
+
+The Help feature provides help to the user by giving details on how all commands are used in a new window. 
+The core components for this feature are:
+- HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
+prints the help message in the Main Window for the requested command, depending on user input.
+- HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
+correct action (the type of help to give, in this case help for all commands).
+
+#### Example Usage Scenario
+1. User launches the application.
+2. User executes `help`, wanting to get the help for all commands.
+3. LogicManager instantiates a RealodexPraser, which parses the command into a HelpCommand.
+4. The HelpCommand is executed, showing a new window with help for all the features in Realodex.
+5. The GUI reflects that the help window is currently open.
+
+### Help by command feature
+
+####  Implementation
+
+The Help by command feature provides help to the user for an individual command specified by the user.
+The core components for this feature are:
+- HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
+  prints the help message in the Main Window for the requested command, depending on user input.
+- HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
+  correct action (the type of help to give, in this case for individual commands).
+
+#### Example Usage Scenario 
+1. User launches the application.
+2. User executes `COMMAND help`, wanting to get the help for only specified `COMMAND`.
+3. LogicManager instantiates a RealodexPraser, which parses the command into a HelpCommand with appropriate parameters.
+4. The HelpCommand is executed, printing the help message for the specified `COMMAND` in the GUI.
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -533,6 +569,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. Realodex displays an empty list and shows a message indicating that no matches were found.
 
       Use case ends.
+
+**Use case: Getting help**
+
+**MSS**
+
+1. User requests for help.
+2. Realodex displays a new window showing a summary of how all features are used with examples. 
+
+   Use case ends.
+
+
+**MSS**
+
+1. User requests for help for a specific command.
+2. A string summarising how that individual command is used with examples is displayed on the main window.
+
+**Extensions**
+
+* 1a. The requested command does not exist.
+
+    * 1a1. Realodex shows an error message command does not exist.
+
+      Use case ends.
+
   
 ### Non-Functional Requirements
 
