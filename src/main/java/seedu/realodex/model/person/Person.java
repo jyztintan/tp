@@ -135,6 +135,7 @@ public class Person {
                 .add("family", family)
                 .add("tags", tags)
                 .add("remark", remark)
+                .add("birthday", birthday)
                 .toString();
     }
 

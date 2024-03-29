@@ -17,6 +17,7 @@ import seedu.realodex.logic.commands.ExitCommand;
 import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.commands.HelpCommand;
 import seedu.realodex.logic.commands.ListCommand;
+import seedu.realodex.logic.commands.SortCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 
 /**
@@ -102,6 +103,9 @@ public class RealodexParser {
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand("");
+
+        case SortCommand.COMMAND_WORD:
+            return new SortCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

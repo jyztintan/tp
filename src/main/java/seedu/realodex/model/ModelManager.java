@@ -1,9 +1,11 @@
 package seedu.realodex.model;
 
 import static java.util.Objects.requireNonNull;
+import javafx.collections.transformation.SortedList;
 import static seedu.realodex.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -18,10 +20,14 @@ import seedu.realodex.model.person.Person;
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
+    private static final Comparator<Person> COMPARATOR_DEFAULT = (x,y) -> 0;
 
     private final Realodex realodex;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final SortedList<Person> sortedPersons;
+    private ObservableList<Person> lastFilteredOrSortedPersons;
+    private boolean justFiltered = true;
 
     /**
      * Initializes a ModelManager with the given realodex and userPrefs.
@@ -34,6 +40,8 @@ public class ModelManager implements Model {
         this.realodex = new Realodex(realodex);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.realodex.getPersonList());
+        sortedPersons = new SortedList<>(this.realodex.getPersonList());
+        lastFilteredOrSortedPersons = filteredPersons;
     }
 
     public ModelManager() {
@@ -102,6 +110,7 @@ public class ModelManager implements Model {
     public void addPerson(Person person) {
         realodex.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateSortedPersonList(COMPARATOR_DEFAULT);
     }
 
     @Override
@@ -123,9 +132,31 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Person> getSortedPersonList() {
+        return sortedPersons;
+    }
+
+    @Override
+    public ObservableList<Person> getLastFilteredOrSortedPersonList() {
+//        return lastFilteredOrSortedPersons;
+        if (justFiltered) {
+            return filteredPersons;
+        } return sortedPersons;
+    }
+    @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+        justFiltered = true;
+        lastFilteredOrSortedPersons = getFilteredPersonList();
+    }
+
+    @Override
+    public void updateSortedPersonList(Comparator<Person> comparator) {
+        requireNonNull(comparator);
+        sortedPersons.setComparator(comparator);
+        justFiltered = false;
+        lastFilteredOrSortedPersons = getSortedPersonList();
     }
 
     @Override
@@ -142,7 +173,8 @@ public class ModelManager implements Model {
         ModelManager otherModelManager = (ModelManager) other;
         return realodex.equals(otherModelManager.realodex)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+                && filteredPersons.equals(otherModelManager.filteredPersons)
+                && sortedPersons.equals(otherModelManager.sortedPersons);
     }
 
 }

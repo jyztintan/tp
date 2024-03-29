@@ -33,6 +33,11 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
 
+    /** Returns an unmodifiable view of the sorted list of persons */
+    ObservableList<Person> getSortedPersonList();
+
+    ObservableList<Person> getPersonList();
+
     /**
      * Returns the user prefs' realodex file path.
      */

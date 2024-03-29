@@ -1,6 +1,7 @@
 package seedu.realodex.model;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -79,9 +80,20 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
 
+    /** Returns an unmodifiable view of the sorted person list */
+    ObservableList<Person> getSortedPersonList();
+
+    ObservableList<Person> getLastFilteredOrSortedPersonList();
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Updates the comparator of the sorted person list to sort by the given {@code comparator}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateSortedPersonList(Comparator<Person> comparator);
 }
