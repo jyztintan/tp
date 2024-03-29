@@ -6,6 +6,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import seedu.realodex.logic.commands.FilterCommand;
@@ -124,11 +125,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         if (!presentPrefix.equals(PREFIX_TAG)) {
             return;
         }
-        for (String keyphrase : keyphrases) {
-            if (!Tag.isValidTagName(keyphrase)) {
-                throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
-            }
-        }
+        ParserUtil.parseTags(keyphrases);
     }
 
 }

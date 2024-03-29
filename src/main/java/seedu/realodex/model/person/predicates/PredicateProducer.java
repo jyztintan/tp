@@ -14,6 +14,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import seedu.realodex.logic.commands.FilterCommand;
+import seedu.realodex.logic.parser.ParserUtil;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
@@ -79,8 +80,13 @@ public class PredicateProducer {
      *         if the person's tags contain the specified tag(s), and {@code false} otherwise.
      */
     public Predicate<Person> createMatchTagsPredicate(List<String> tagStrings) {
-        Set<Tag> tagSet = tagStrings.stream().map(Tag::new).collect(Collectors.toSet());
-        return new TagsMatchPredicate(tagSet);
+        try {
+            Set<Tag> tagSet = ParserUtil.parseTags(tagStrings);
+            return new TagsMatchPredicate(tagSet);
+        } catch (ParseException e) {
+            assert false;
+        }
+        return null;
     }
 
 
