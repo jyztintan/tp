@@ -2,6 +2,7 @@ package seedu.realodex.testutil;
 
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_AMY;

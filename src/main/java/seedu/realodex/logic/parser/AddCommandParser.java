@@ -56,7 +56,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL,
-                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_REMARK);
+                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         StringBuilder errorMessageBuilder = new StringBuilder();
         ParserUtilResult<Name> nameStored =
@@ -93,10 +93,14 @@ public class AddCommandParser implements Parser<AddCommand> {
             errorMessageBuilder.append("Error parsing tags: ").append(e.getMessage()).append("\n");
         }
 
-        Person person = new Person(name, phone, income, email, address, family, tagList, remark, birthday);
-
         Remark remark;
-        remark = ParserUtil.parseRemark(argMultimap.getRemarkValue(PREFIX_REMARK).orElseThrow());
+        remark = ParserUtil.parseRemark(argMultimap.getValueOrDefault(PREFIX_REMARK).orElseThrow());
+
+        ParserUtilResult<Birthday> birthdayStored = ParserUtil
+                .parseBirthdayReturnStored(argMultimap
+                                                   .getValue(PREFIX_BIRTHDAY)
+                                                   .orElseThrow());
+
 
         // If any parsing operation fails, throw a ParseException with the accumulated error messages
         if (errorMessageBuilder.length() > 0) {
@@ -110,7 +114,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = emailStored.returnStoredResult();
         Address address = addressStored.returnStoredResult();
         Family family = familyStored.returnStoredResult();
-        Person person = new Person(name, phone, income, email, address, family, tagList, remark);
+        Birthday birthday = birthdayStored.returnStoredResult();
+        Person person = new Person(name, phone, income, email, address, family, tagList, remark, birthday);
         return new AddCommand(person);
     }
 

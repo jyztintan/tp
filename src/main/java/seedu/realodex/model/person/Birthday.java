@@ -36,6 +36,10 @@ public class Birthday {
         this.birthday = birthdayDate;
     }
 
+    public Birthday() {
+        this.birthday = Optional.empty();
+    }
+
     /**
      * Returns if a given string is a valid birthday.
      */
