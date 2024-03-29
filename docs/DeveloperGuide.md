@@ -174,8 +174,8 @@ The key components involved in this feature include:
 - NameContainsKeyphrasePredicate: A predicate that tests whether a person's name contains the given keyphrase.
 
 #### Example Usage Scenario
-1. The user launches the application and the Model is initialized with the initial list of persons.
-2.  The user executes the command filter n/John, intending to filter out persons whose names contain "John".
+1. The user launches the application and the Model is initialized with the initial list of persons. 
+2. The user executes the command filter n/John, intending to filter out persons whose names contain "John".
 3. `LogicManager` parses the command, creating a FilterCommand with a NameContainsKeyphrasePredicate initialized with "John".
 4. `FilterCommand` is executed, using the predicate to filter the list of persons.
 5. The UI is updated to show only the persons whose names contain "John".
