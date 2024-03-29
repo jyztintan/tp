@@ -86,7 +86,7 @@ public class PrefixChecker {
      * @return {@code true} if the prefix is considered a duplicate (considering the allowed exceptions),
      *         {@code false} otherwise.
      */
-    private boolean isDuplicatePrefix(Prefix prefix) {
+    public boolean isDuplicatePrefix(Prefix prefix) {
         assert(prefix != null);
         if (isSpecialCasePrefix(prefix)) {
             return argumentMultimap.containsPrefix(prefix) && argumentMultimap.getAllValues(prefix).size() > 2;
@@ -103,7 +103,7 @@ public class PrefixChecker {
      * @param prefix The {@link Prefix} to be checked.
      * @return {@code true} if the prefix is a special case, {@code false} otherwise.
      */
-    private boolean isSpecialCasePrefix(Prefix prefix) {
+    public boolean isSpecialCasePrefix(Prefix prefix) {
         assert(prefix != null);
         return prefix.equals(PREFIX_TAG);
     }

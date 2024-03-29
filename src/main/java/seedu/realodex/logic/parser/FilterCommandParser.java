@@ -12,6 +12,7 @@ import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.PredicateProducer;
+import seedu.realodex.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new FilterCommand object
@@ -29,16 +30,40 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, POSSIBLE_PREFIXES);
         PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
 
-        checkEmptyPreamble(prefixChecker);
-        checkOnlyOnePrefixTypePresent(prefixChecker);
-        checkNoDuplicatePrefix(prefixChecker);
+        validateInput(prefixChecker);
 
         Prefix presentPrefix = prefixChecker.findPresentPrefix(POSSIBLE_PREFIXES);
         List<String> keyphrases = argMultimap.getAllValues(presentPrefix);
-        PredicateProducer predicateProducer = new PredicateProducer();
-        Predicate<Person> predicate = predicateProducer.createPredicate(presentPrefix, keyphrases);
+        Predicate<Person> predicate = createPredicateForPrefix(presentPrefix, keyphrases);
 
         return new FilterCommand(predicate);
+    }
+
+    /**
+     * Creates the appropriate predicate based on the provided prefix and keyphrases.
+     *
+     * @param presentPrefix The prefix determining the type of predicate to create.
+     * @param keyphrases The list of keyphrases to use in the predicate.
+     * @return A predicate corresponding to the prefix and keyphrases.
+     * @throws ParseException if there's an issue creating the predicate.
+     */
+
+    private Predicate<Person> createPredicateForPrefix(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+        checkValidTagsIfApplicable(presentPrefix, keyphrases);
+        PredicateProducer predicateProducer = new PredicateProducer();
+        return predicateProducer.createPredicate(presentPrefix, keyphrases);
+    }
+
+    /**
+     * Validates the input arguments using various checks to ensure conformity to syntax requirements.
+     *
+     * @param prefixChecker The PrefixChecker to use for validation checks.
+     * @throws ParseException if validation fails.
+     */
+    private void validateInput(PrefixChecker prefixChecker) throws ParseException {
+        checkEmptyPreamble(prefixChecker);
+        checkOnlyOnePrefixTypePresent(prefixChecker);
+        checkNoDuplicatePrefix(prefixChecker);
     }
 
     /**
@@ -85,6 +110,25 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      */
     private void checkNoDuplicatePrefix(PrefixChecker prefixChecker) throws ParseException {
         prefixChecker.checkNoDuplicatePrefix(POSSIBLE_PREFIXES);
+    }
+
+    /**
+     * Validates tag keyphrases if the present prefix is for tags. Each keyphrase must conform
+     * to tag naming constraints.
+     *
+     * @param presentPrefix The prefix to check if it's tag-related.
+     * @param keyphrases The list of keyphrases representing potential tags.
+     * @throws ParseException if any tag keyphrase is invalid.
+     */
+    private void checkValidTagsIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+        if (!presentPrefix.equals(PREFIX_TAG)) {
+            return;
+        }
+        for (String keyphrase : keyphrases) {
+            if (!Tag.isValidTagName(keyphrase)) {
+                throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+            }
+        }
     }
 
 }

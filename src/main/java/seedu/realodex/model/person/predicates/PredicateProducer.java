@@ -80,7 +80,8 @@ public class PredicateProducer {
      */
     public Predicate<Person> createMatchTagsPredicate(List<String> tagStrings) {
         Set<Tag> tagSet = tagStrings.stream().map(Tag::new).collect(Collectors.toSet());
-        return person -> tagSet.stream().allMatch(tag -> person.getTags().contains(tag));
+        return new TagsMatchPredicate(tagSet);
     }
+
 
 }
