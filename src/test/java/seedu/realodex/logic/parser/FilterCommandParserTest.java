@@ -50,13 +50,24 @@ public class FilterCommandParserTest {
     }
 
     @Test
+    void parse_invalidArgsWithTag_throwsParseException() {
+        String userInput = " t/customer";
+        assertParseFailure(parser, userInput, Tag.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
     void parse_validArgsWithTwoTags_returnsFilterCommand() {
-        String userInput = " t/Buyer t/Seller";
+        String userInput = " t/Buyer t/SELLER";
         Set<Tag> predicateTags = Set.of(new Tag("buyer"), new Tag("seller"));
         FilterCommand expectedCommand = new FilterCommand(new TagsMatchPredicate(predicateTags));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
+    @Test
+    void parse_oneValidOneInvalidTag_throwsParseException() {
+        String userInput = " t/Buyer t/customer";
+        assertParseFailure(parser, userInput, Tag.MESSAGE_CONSTRAINTS);
+    }
     @Test
     void parse_validArgsWithThreeTags_throwsParseException() {
         String userInput = " t/Buyer t/Seller t/Buyer";
