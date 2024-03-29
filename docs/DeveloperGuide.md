@@ -162,6 +162,77 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Filter by Name feature
+
+#### Implementation
+
+The Filter by Name feature allows users to filter the list of persons in Realodex based on their names. 
+It is implemented using a predicate that checks if a person's name contains the keyphrase provided by the user. 
+The key components involved in this feature include:
+
+- FilterCommand: A command that, when executed, updates the filtered person list based on the predicate.
+- NameContainsKeyphrasePredicate: A predicate that tests whether a person's name contains the given keyphrase.
+
+#### Example Usage Scenario
+1. The user launches the application and the Model is initialized with the initial list of persons. 
+2. The user executes the command filter n/John, intending to filter out persons whose names contain "John".
+3. `LogicManager` parses the command, creating a FilterCommand with a NameContainsKeyphrasePredicate initialized with "John".
+4. `FilterCommand` is executed, using the predicate to filter the list of persons.
+5. The UI is updated to show only the persons whose names contain "John".
+
+#### Design considerations
+
+Aspect: Handling of partial names
+
+**Alternative 1 (current choice): Allow partial matches of names. For example, filter n/Jo will match "John", "Joanna", etc.**
+
+Pros: More flexible search.
+
+Cons: May return too many results for very short keyphrases.
+
+**Alternative 2: Require exact matches.**
+
+Pros: Precise filtering.
+
+Cons: Less flexible; users must remember exact names.
+
+
+### Filter by Remarks feature
+
+####  Implementation
+
+Similar to the "Filter by Name" feature, the "Filter by Remarks" feature enables users to filter persons based on the remarks associated with them. The core components for this feature are:
+- FilterCommand: A command that, when executed, updates the filtered person list based on the predicate.
+- RemarksContainsKeyphrasePredicate: Tests whether a person's remarks contain the given keyphrase.
+
+#### Example Usage Scenario
+1. User launches the application, and the list of persons is loaded.
+2. User executes filter r/Important, aiming to filter out persons with "Important" in their remarks.
+3. LogicManager parses the command into a FilterCommand with a RemarksContainsKeyphrasePredicate.
+4. The FilterCommand is executed, filtering the list based on the predicate.
+5. The UI reflects only those persons with "Important" in their remarks.
+
+#### Design considerations:
+
+Aspect: Matching of remarks
+
+__Alternative 1 (current choice): Support partial matches for remarks, similar to the "Filter by Name" feature.__
+
+Pros: Allows for more flexible searches.
+
+Cons: Could return many results if the keyphrase is common.
+
+__Alternative 2: Match remarks exactly.__
+
+Pros: Ensures that only entries with exact remark matches are shown.
+Cons: Users need to remember the exact remarks.
+
+The following sequence diagram shows the interactions for the scenario where the user issues the filter command.
+
+<puml src="diagrams/filter/FilterClass.puml" alt="Sequence Diagram for Filter Command"/>
+
+<puml src="diagrams/filter/FilterParserClass.puml" alt="Sequence Diagram for Filter Command"/>
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -418,22 +489,51 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 2a1. Realodex shows an empty list.
   * Use case ends.
 
-**Use case: Filter**
+**Use case: Filter by Name**
 
 **MSS**
 
-1.  User requests to filter user with input substring.
-2.  Realodex shows the list of all clients with name including the input substring.
+1. User requests to filter clients by providing a name substring. 
+2. Realodex filters and displays a list of all clients whose names include the input substring.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. No contact found with a name including the name input
-  * 2a1. Realodex shows an empty list.
-  * Use case ends.
+* 1a. The input substring is empty.
 
+    * 1a1. Realodex shows an error message indicating that the filter criteria cannot be empty.
 
+        Use case ends.
+
+* 1b. No clients' names match the input substring.
+
+    * 1b1. Realodex displays an empty list and shows a message indicating that no matches were found.
+        
+      Use case ends.
+
+**Use case: Filter by Remarks**
+
+**MSS**
+
+1. User requests to filter clients by providing a remark substring. 
+2. Realodex filters and displays a list of all clients whose remarks include the input substring.
+   Use case ends.
+
+**Extensions**
+
+* 1a. The input substring is empty.
+
+    * 1a1. Realodex shows an error message indicating that the filter criteria cannot be empty.
+
+      Use case ends.
+
+* 1b. No clients' remarks match the input substring.
+
+    * 1b1. Realodex displays an empty list and shows a message indicating that no matches were found.
+
+      Use case ends.
+  
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
