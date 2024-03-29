@@ -174,6 +174,7 @@ public class LogicManagerTest {
                 + INCOME_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY + FAMILY_DESC_AMY
                 + TAG_DESC_AMY + BIRTHDAY_DESC_BOB;
+
         Person expectedPerson = new PersonBuilder(AMY_NAME_CAPS).withTags(VALID_TAG_AMY).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedPerson);

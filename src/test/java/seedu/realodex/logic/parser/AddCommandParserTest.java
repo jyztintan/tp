@@ -395,6 +395,7 @@ public class AddCommandParserTest {
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
                                    + TAG_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
+
         // invalid email
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "email") + Email.MESSAGE_CONSTRAINTS;
         assertParseFailure(parser,
