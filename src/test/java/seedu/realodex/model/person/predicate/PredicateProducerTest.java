@@ -55,7 +55,7 @@ class PredicateProducerTest {
     @Test
     void createPredicate_assertionErrorWhenInvalidPrefix() {
         PredicateProducer predicateProducer = new PredicateProducer();
-        Prefix unhandledPrefix = new Prefix("unhandled/", "");
+        Prefix unhandledPrefix = new Prefix("unhandled/");
 
         ClassLoader.getSystemClassLoader().setDefaultAssertionStatus(true);
 
