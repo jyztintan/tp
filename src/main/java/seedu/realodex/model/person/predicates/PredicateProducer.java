@@ -46,14 +46,15 @@ public class PredicateProducer {
     }
 
     /**
-     * Creates and returns a {@code Predicate<Person>} based on the provided prefix and keyphrase.
-     * The predicate tests whether a given {@code Person} object meets the criteria
-     * defined by the keyphrase associated with the prefix.
+     * Creates and returns a {@code Predicate<Person>} based on the provided prefix and list of keyphrases.
+     * The predicate tests whether a given {@code Person} object meets the criteria defined by the keyphrases
+     * associated with the prefix. For PREFIX_NAME and PREFIX_REMARK, only one keyphrase should be present.
      *
      * @param prefix The {@code Prefix} that specifies the type of predicate to create.
-     * @param keyphrases The keyphrase to be used in the predicate for testing {@code Person} objects.
-     * @return A {@code Predicate<Person>} that tests if a {@code Person} object meets the criteria.
-     * @throws ParseException if the keyphrase is null or empty, or if the prefix is unhandled.
+     * @param keyphrases The list of keyphrases to be used in the predicate for testing {@code Person} objects.
+     *                   For PREFIX_TAG, all keyphrases in the list are considered in creating the predicate.
+     * @return A {@code Predicate<Person>} that tests if a {@code Person} object meets the specified criteria.
+     * @throws ParseException if the list of keyphrases is null, empty, contains empty strings, or if the prefix is unhandled.
      */
     public Predicate<Person> createPredicate(Prefix prefix, List<String> keyphrases) throws ParseException {
         if (keyphrases == null || keyphrases.isEmpty() || keyphrases.stream().anyMatch(String::isEmpty)) {

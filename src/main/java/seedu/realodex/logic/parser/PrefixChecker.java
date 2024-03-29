@@ -34,40 +34,21 @@ public class PrefixChecker {
      * @return {@code true} if any prefix exceeds its allowed occurrence limit, {@code false} otherwise.
      */
     public boolean anyPrefixesPresent(Prefix... prefixes) {
+        assert(prefixes != null);
         return Stream.of(prefixes).anyMatch(this::isPrefixPresent);
     }
 
     /**
-     * Determines if more than one of the provided prefixes are present in the {@code ArgumentMultimap}.
+     * Determines if more than one type of prefixes are present in the {@code ArgumentMultimap}.
      *
      * @param prefixes The prefixes to check.
      * @return {@code true} if more than one prefix is present, {@code false} otherwise.
      */
-    public boolean moreThanOnePrefixPresent(Prefix... prefixes) {
-        return Stream.of(prefixes)
-                .anyMatch(prefix -> isExceedingAllowedOccurrences(prefix));
+    public boolean moreThanOnePrefixTypePresent(Prefix... prefixes) {
+        assert (prefixes != null);
+        return Stream.of(prefixes).filter(this::isPrefixPresent).count() > 1;
     }
 
-
-    /**
-     * Determines whether the occurrence count of a given prefix in the argument multimap exceeds the allowed limit.
-     * Special case prefixes, identified by {@code isSpecialCasePrefix}, are permitted a higher occurrence count than
-     * regular prefixes. This method accounts for such distinctions in its check.
-     *
-     * @param prefix The {@link Prefix} whose occurrences are to be checked.
-     * @return {@code true} if the occurrence count for the prefix exceeds its allowed limit, {@code false} otherwise.
-     */
-    private boolean isExceedingAllowedOccurrences(Prefix prefix) {
-        long count = argumentMultimap.getAllValues(prefix).size();
-
-        if (isSpecialCasePrefix(prefix)) {
-            // Allow up to 2 instances for special case prefixes
-            return count > 2;
-        } else {
-            // Only allow 1 instance for regular prefixes
-            return count > 1;
-        }
-    }
 
     /**
      * Checks if the preamble (text before the first valid prefix) of the {@code ArgumentMultimap} is empty.
@@ -86,6 +67,7 @@ public class PrefixChecker {
      * @throws ParseException If duplicates are found, except for the allowed exceptions.
      */
     public void checkNoDuplicatePrefix(Prefix... prefixes) throws ParseException {
+        assert(prefixes != null);
         Prefix[] duplicatedPrefixes = Stream.of(prefixes)
                 .filter(this::isDuplicatePrefix)
                 .distinct()
@@ -105,6 +87,7 @@ public class PrefixChecker {
      *         {@code false} otherwise.
      */
     private boolean isDuplicatePrefix(Prefix prefix) {
+        assert(prefix != null);
         if (isSpecialCasePrefix(prefix)) {
             return argumentMultimap.containsPrefix(prefix) && argumentMultimap.getAllValues(prefix).size() > 2;
         } else {
@@ -121,6 +104,7 @@ public class PrefixChecker {
      * @return {@code true} if the prefix is a special case, {@code false} otherwise.
      */
     private boolean isSpecialCasePrefix(Prefix prefix) {
+        assert(prefix != null);
         return prefix.equals(PREFIX_TAG);
     }
 
@@ -131,6 +115,7 @@ public class PrefixChecker {
      * @return {@code true} if the prefix is present, {@code false} otherwise.
      */
     public boolean isPrefixPresent(Prefix prefix) {
+        assert(prefix != null);
         return argumentMultimap.containsPrefix(prefix);
     }
 
@@ -142,6 +127,7 @@ public class PrefixChecker {
      * @return The first present prefix, or {@code null} if none are present.
      */
     public Prefix findPresentPrefix(Prefix...prefixes) {
+        assert(prefixes != null);
         for (Prefix prefix : prefixes) {
             if (isPrefixPresent(prefix)) {
                 return prefix;

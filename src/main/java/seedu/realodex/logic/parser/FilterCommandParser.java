@@ -30,7 +30,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
 
         checkEmptyPreamble(prefixChecker);
-        checkOnlyOnePrefixPresent(prefixChecker);
+        checkOnlyOnePrefixTypePresent(prefixChecker);
         checkNoDuplicatePrefix(prefixChecker);
 
         Prefix presentPrefix = prefixChecker.findPresentPrefix(POSSIBLE_PREFIXES);
@@ -49,12 +49,12 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      * @param prefixChecker the {@link PrefixChecker} used to validate the presence of prefixes.
      * @throws ParseException if no prefixes are present or more than one prefix is found.
      */
-    private void checkOnlyOnePrefixPresent(PrefixChecker prefixChecker) throws ParseException {
+    private void checkOnlyOnePrefixTypePresent(PrefixChecker prefixChecker) throws ParseException {
         // Check for at least one prefix present and no empty preamble
         if (!prefixChecker.anyPrefixesPresent(POSSIBLE_PREFIXES)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }
-        if (prefixChecker.moreThanOnePrefixPresent(POSSIBLE_PREFIXES)) {
+        if (prefixChecker.moreThanOnePrefixTypePresent(POSSIBLE_PREFIXES)) {
             throw new ParseException(String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_FILTER_CONFLICT
             ));

@@ -50,7 +50,7 @@ public class PrefixCheckerTest {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME, PREFIX_EMAIL);
         PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
 
-        assertTrue(prefixChecker.moreThanOnePrefixPresent(PREFIX_NAME, PREFIX_EMAIL));
+        assertTrue(prefixChecker.moreThanOnePrefixTypePresent(PREFIX_NAME, PREFIX_EMAIL));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class PrefixCheckerTest {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME);
         PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
 
-        assertFalse(prefixChecker.moreThanOnePrefixPresent(PREFIX_NAME, PREFIX_EMAIL));
+        assertFalse(prefixChecker.moreThanOnePrefixTypePresent(PREFIX_NAME, PREFIX_EMAIL));
     }
 
     @Test
