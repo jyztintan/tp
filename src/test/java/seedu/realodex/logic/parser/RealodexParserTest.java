@@ -23,9 +23,13 @@ import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
+import seedu.realodex.model.person.predicates.TagsMatchPredicate;
+import seedu.realodex.model.tag.Tag;
 import seedu.realodex.testutil.EditPersonDescriptorBuilder;
 import seedu.realodex.testutil.PersonBuilder;
 import seedu.realodex.testutil.PersonUtil;
+
+import java.util.Set;
 
 public class RealodexParserTest {
 
@@ -91,6 +95,14 @@ public class RealodexParserTest {
         FilterCommand command = (FilterCommand) parser.parseCommand(
                 FilterCommand.COMMAND_WORD + " r/" + keyphrase);
         assertEquals(new FilterCommand(new RemarkContainsKeyphrasePredicate(keyphrase)), command);
+    }
+
+    @Test
+    public void parseCommand_filterByTags() throws Exception {
+        Set<Tag> tagString = Set.of(new Tag("buyer"), new Tag("seller"));
+        FilterCommand command = (FilterCommand) parser.parseCommand(
+                FilterCommand.COMMAND_WORD + " t/buyer " + "t/seller");
+        assertEquals(new FilterCommand(new TagsMatchPredicate(tagString)), command);
     }
 
     @Test
