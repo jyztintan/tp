@@ -2,6 +2,7 @@ package seedu.realodex.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
@@ -32,7 +33,8 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "ADDRESS "
             + PREFIX_FAMILY + "FAMILY "
             + PREFIX_TAG + "BUYER/SELLER "
-            + "[" + PREFIX_REMARK + "REMARK]\n"
+            + "[" + PREFIX_REMARK + "REMARK]"
+            + "[" + PREFIX_BIRTHDAY + "BIRTHDAY]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_PHONE + "98765432 "
@@ -42,15 +44,17 @@ public class AddCommand extends Command {
             + PREFIX_FAMILY + "4 "
             + PREFIX_TAG + "buyer "
             + PREFIX_TAG + "seller "
-            + PREFIX_REMARK + "Has 3 cats.";
+            + PREFIX_REMARK + "Has 3 cats. "
+            + PREFIX_BIRTHDAY + "01May2009";
 
     public static final String MESSAGE_SUCCESS = "New client added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This client already exists in Realodex";
     public static final String MESSAGE_ADD_HELP = "Add Command: Adds a client to Realodex. You may input client"
-            + " details in any order. Remarks are optional to input.\n"
-            + "Format: add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK]\n"
+            + " details in any order. Remarks and Birthday are optional fields to input.\n"
+            + "Format: add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK] [b/BIRTHDAY]\n"
             + "Example: add n/John Doe p/98765432 i/10000 e/johndoe@gmail.com a/Jurong Central 1 f/5 t/Buyer "
-            + "r/Likes Italian food.\n";
+            + "r/Likes Italian food "
+            + "b/01May2009\n";
 
     private final Person toAdd;
 

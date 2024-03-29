@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_BOB;
@@ -45,6 +47,7 @@ public class PersonTest {
                 .withFamily(VALID_FAMILY_BOB)
                 .withTags(VALID_TAG_AMY)
                 .withRemark(VALID_REMARK_AMY)
+                .withBirthday(VALID_BIRTHDAY_AMY)
                 .build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
@@ -111,6 +114,10 @@ public class PersonTest {
         // different remarks -> returns false
         editedAlice = new PersonBuilder(ALICE).withRemark(VALID_REMARK_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
+
+        // different birthday -> returns false
+        editedAlice = new PersonBuilder(ALICE).withBirthday(VALID_BIRTHDAY_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
     }
 
     @Test
@@ -121,7 +128,8 @@ public class PersonTest {
                 + ", address=" + ALICE.getAddress()
                 + ", family=" + ALICE.getFamily()
                 + ", tags=" + ALICE.getTags()
-                + ", remark=" + ALICE.getRemark() + "}";
+                + ", remark=" + ALICE.getRemark()
+                + ", birthday=" + ALICE.getBirthday() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }

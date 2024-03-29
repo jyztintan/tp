@@ -43,6 +43,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setFamily(person.getFamily());
         descriptor.setTags(person.getTags());
         descriptor.setRemark(person.getRemark());
+        descriptor.setBirthday(person.getBirthday());
     }
 
     /**

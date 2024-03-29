@@ -32,9 +32,13 @@ public class BirthdayTest {
         assertFalse(Birthday.isValidBirthday("29Feb2023")); // not a leap year
         assertFalse(Birthday.isValidBirthday("1-jan-2001")); // not supposed to have '-'
 
-        // valid email
+        // valid date
         assertTrue(Birthday.isValidBirthday("29Feb2024")); // leap year
         assertTrue(Birthday.isValidBirthday("12May2003"));
+
+        assertFalse(Birthday.isValidBirthday("01May2009233"));
+        assertTrue(Birthday.isValidBirthday("08Aug1888"));
+        assertFalse(Birthday.isValidBirthday("0"));
     }
 
     @Test

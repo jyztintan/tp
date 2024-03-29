@@ -145,7 +145,9 @@ class JsonAdaptedPerson {
 
         final Remark modelRemark = new Remark(remark);
         final Birthday modelBirthday = new Birthday(birthday);
-
+        if (!Birthday.isValidBirthday(birthday)) {
+            throw new IllegalValueException(Birthday.MESSAGE_CONSTRAINTS);
+        }
         return new Person(modelName, modelPhone, modelIncome, modelEmail, modelAddress, modelFamily,
                 modelTags, modelRemark, modelBirthday);
     }

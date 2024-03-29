@@ -4,7 +4,9 @@ import static seedu.realodex.logic.Messages.MESSAGE_MISSING_PREFIXES;
 import static seedu.realodex.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB_PREFIX_CAPS;
+import static seedu.realodex.logic.commands.CommandTestUtil.BIRTHDAY_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.BIRTHDAY_DESC_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.BIRTHDAY_DESC_BOB_PREFIX_CAPS;
 import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_BOB_PREFIX_CAPS;
@@ -15,6 +17,7 @@ import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_BOB_PREFIX_CAPS;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
+import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_BIRTHDAY_DESC;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_FAMILY_DESC;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_INCOME_DESC;
@@ -45,6 +48,7 @@ import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_BOB;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
@@ -62,6 +66,7 @@ import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.AddCommand;
 import seedu.realodex.logic.commands.CommandTestUtil;
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.Income;
@@ -173,19 +178,28 @@ public class AddCommandParserTest {
                                    + TAG_DESC_BOB + REMARK_DESC_BOB_PREFIX_CAPS + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
+        // birthday prefix caps
+        assertParseSuccess(parser,
+                           NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
+                                   + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB_PREFIX_CAPS,
+                           new AddCommand(expectedPerson));
+
         // all fields prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB_PREFIX_CAPS + PHONE_DESC_BOB_PREFIX_CAPS
                                    + INCOME_DESC_BOB_PREFIX_CAPS + EMAIL_DESC_BOB_PREFIX_CAPS
                                    + ADDRESS_DESC_BOB_PREFIX_CAPS + FAMILY_DESC_BOB_PREFIX_CAPS
-                                   + TAG_DESC_BOB_PREFIX_CAPS + REMARK_DESC_BOB_PREFIX_CAPS + BIRTHDAY_DESC_BOB,
+                                   + TAG_DESC_BOB_PREFIX_CAPS
+                                   + REMARK_DESC_BOB_PREFIX_CAPS
+                                   + BIRTHDAY_DESC_BOB_PREFIX_CAPS,
                            new AddCommand(expectedPerson));
     }
 
     @Test
     public void parse_repeatedNonTagValue_failure() {
         String validExpectedPersonString = NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB;
+                + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB;
 
         // multiple names
         assertParseFailure(parser, NAME_DESC_AMY_CAPS + validExpectedPersonString,
@@ -215,13 +229,20 @@ public class AddCommandParserTest {
         assertParseFailure(parser, REMARK_DESC_AMY + validExpectedPersonString,
                            Messages.getErrorMessageForDuplicatePrefixes(PREFIX_REMARK));
 
+        //multiple birthday
+        assertParseFailure(parser, BIRTHDAY_DESC_AMY + validExpectedPersonString,
+                           Messages.getErrorMessageForDuplicatePrefixes(PREFIX_BIRTHDAY));
+
         // multiple fields repeated
         assertParseFailure(parser,
                 validExpectedPersonString + PHONE_DESC_AMY + INCOME_DESC_AMY + EMAIL_DESC_AMY
-                        + NAME_DESC_AMY_CAPS + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + REMARK_DESC_AMY
+                        + NAME_DESC_AMY_CAPS + ADDRESS_DESC_AMY + FAMILY_DESC_AMY
+                        + REMARK_DESC_AMY
+                        + BIRTHDAY_DESC_AMY
                         + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_INCOME, PREFIX_ADDRESS, PREFIX_EMAIL,
-                                                             PREFIX_PHONE, PREFIX_FAMILY, PREFIX_REMARK));
+                                                             PREFIX_PHONE, PREFIX_FAMILY,
+                                                             PREFIX_REMARK, PREFIX_BIRTHDAY));
 
         // invalid value followed by valid value
 
@@ -249,6 +270,10 @@ public class AddCommandParserTest {
         assertParseFailure(parser, INVALID_FAMILY_DESC + validExpectedPersonString,
                            Messages.getErrorMessageForDuplicatePrefixes(PREFIX_FAMILY));
 
+        // invalid birthday
+        assertParseFailure(parser, INVALID_BIRTHDAY_DESC + validExpectedPersonString,
+                           Messages.getErrorMessageForDuplicatePrefixes(PREFIX_BIRTHDAY));
+
         // valid value followed by invalid value
 
         // invalid name
@@ -274,6 +299,9 @@ public class AddCommandParserTest {
         // invalid family
         assertParseFailure(parser, validExpectedPersonString + INVALID_FAMILY_DESC,
                            Messages.getErrorMessageForDuplicatePrefixes(PREFIX_FAMILY));
+        // invalid family
+        assertParseFailure(parser, validExpectedPersonString + INVALID_BIRTHDAY_DESC,
+                           Messages.getErrorMessageForDuplicatePrefixes(PREFIX_BIRTHDAY));
     }
 
     @Test
@@ -349,7 +377,26 @@ public class AddCommandParserTest {
                 + ADDRESS_DESC_AMY
                 + FAMILY_DESC_AMY
                 + TAG_DESC_AMY
-                + BIRTHDAY_DESC_BOB, new AddCommand(expectedPerson));
+                + BIRTHDAY_DESC_AMY, new AddCommand(expectedPerson));
+
+        expectedPerson = new PersonBuilder(BOB).withBirthday("").build();
+        assertParseSuccess(parser, NAME_DESC_BOB
+                + PHONE_DESC_BOB
+                + INCOME_DESC_BOB
+                + EMAIL_DESC_BOB
+                + ADDRESS_DESC_BOB
+                + FAMILY_DESC_BOB
+                + TAG_DESC_BOB
+                + REMARK_DESC_BOB, new AddCommand(expectedPerson));
+
+        expectedPerson = new PersonBuilder(AMY_NAME_CAPS).withBirthday("").build();
+        assertParseSuccess(parser, NAME_DESC_AMY_CAPS
+                + PHONE_DESC_AMY
+                + INCOME_DESC_AMY
+                + EMAIL_DESC_AMY
+                + ADDRESS_DESC_AMY
+                + FAMILY_DESC_AMY
+                + TAG_DESC_AMY, new AddCommand(expectedPerson));
     }
 
     @Test
@@ -357,12 +404,12 @@ public class AddCommandParserTest {
         Person expectedPerson = new PersonBuilder(AMY_NAME_CAPS).build();
         String validExpectedNonCapitalizedAmyString =
                 NAME_DESC_AMY_NON_CAPS + PHONE_DESC_AMY + INCOME_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY + BIRTHDAY_DESC_BOB;
+                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY + BIRTHDAY_DESC_AMY;
         assertParseSuccess(parser, validExpectedNonCapitalizedAmyString, new AddCommand(expectedPerson));
 
         String validExpectedVaryingCapitalizedAmyString =
                 NAME_DESC_AMY_VARYING_CAPS + PHONE_DESC_AMY + INCOME_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY + BIRTHDAY_DESC_BOB;
+                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY + BIRTHDAY_DESC_AMY;
         assertParseSuccess(parser, validExpectedVaryingCapitalizedAmyString, new AddCommand(expectedPerson));
     }
 
@@ -429,6 +476,14 @@ public class AddCommandParserTest {
                                    + INVALID_TAG_DESC + TAG_DESC_BOB
                                    + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
+        // invalid birthday
+        expectedFailureMessageFormatted = String.format(expectedFailureMessage, "birthday")
+                + Birthday.MESSAGE_CONSTRAINTS;
+        assertParseFailure(parser,
+                           NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB
+                                   + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
+                                   + TAG_DESC_BOB + INVALID_BIRTHDAY_DESC, expectedFailureMessageFormatted);
+
     }
 
     @Test
@@ -464,6 +519,26 @@ public class AddCommandParserTest {
                            INVALID_NAME_DESC + INVALID_PHONE_DESC + INCOME_DESC_BOB
                                    + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC + FAMILY_DESC_BOB
                                    + TAG_DESC_BOB + BIRTHDAY_DESC_BOB,
+                           expectedFailureMessageFormatted);
+
+        // Four invalid values both failures reported
+        expectedFailureMessageFormatted =
+                String.format(expectedFailureMessage, "name")
+                        + Name.MESSAGE_CONSTRAINTS
+                        + "\n"
+                        + String.format(expectedFailureMessage, "phone")
+                        + Phone.MESSAGE_CONSTRAINTS
+                        + "\n"
+                        + String.format(expectedFailureMessage, "address")
+                        + Address.MESSAGE_CONSTRAINTS
+                        + "\n"
+                        + String.format(expectedFailureMessage, "birthday")
+                        + Birthday.MESSAGE_CONSTRAINTS;
+
+        assertParseFailure(parser,
+                           INVALID_NAME_DESC + INVALID_PHONE_DESC + INCOME_DESC_BOB
+                                   + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC + FAMILY_DESC_BOB
+                                   + TAG_DESC_BOB + INVALID_BIRTHDAY_DESC,
                            expectedFailureMessageFormatted);
     }
 }

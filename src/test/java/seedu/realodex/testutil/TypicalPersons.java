@@ -2,6 +2,7 @@ package seedu.realodex.testutil;
 
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
@@ -35,7 +36,8 @@ public class TypicalPersons {
             .withPhone("94351253")
             .withFamily("4")
             .withTags("buyer")
-            .withRemark("this is a remark").build();
+            .withRemark("this is a remark")
+            .withBirthday("3Jun2003").build();
 
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withIncome("20000")
@@ -76,7 +78,7 @@ public class TypicalPersons {
             .withEmail("stefan@example.com").withAddress("little india").withTags("buyer").build();
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
             .withEmail("hans@example.com").withAddress("chicago ave")
-            .withTags("buyer").withBirthday("8Aug1888").build();
+            .withTags("buyer").withBirthday("23Apr1983").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY_NAME_CAPS = new PersonBuilder().withName(VALID_NAME_AMY_FIRST_LETTER_CAPS)
@@ -85,6 +87,7 @@ public class TypicalPersons {
             .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
             .withFamily(VALID_FAMILY_AMY)
             .withTags(VALID_TAG_AMY)
+            .withBirthday(VALID_BIRTHDAY_AMY)
             .build();
 
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB_FIRST_LETTER_CAPS)

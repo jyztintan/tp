@@ -316,7 +316,7 @@ public class ParserUtil {
      * @return A ParserUtilResult containing the parsed Birthday or an exception message.
      * @throws ParseException if the given {@code birthday} is invalid.
      */
-    public static ParserUtilResult<Birthday> parseBirthdayReturnStored(String birthday) throws ParseException {
+    public static ParserUtilResult<Birthday> parseBirthdayReturnStored(String birthday) {
         if (!Birthday.isValidBirthday(birthday)) {
             return new ParserUtilResult<>(Birthday.MESSAGE_CONSTRAINTS, new Birthday());
         }
