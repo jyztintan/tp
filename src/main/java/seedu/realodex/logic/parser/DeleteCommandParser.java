@@ -1,5 +1,7 @@
 package seedu.realodex.logic.parser;
 
+import static seedu.realodex.logic.commands.DeleteCommand.MESSAGE_INDEX_AND_NAME_PROVIDED;
+import static seedu.realodex.logic.commands.DeleteCommand.MESSAGE_NO_FIELDS_PROVIDED;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 
 import seedu.realodex.commons.core.index.Index;
@@ -19,21 +21,39 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      */
     public DeleteCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME);
-        if (namePrefixPresent(argMultimap)) {
-            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-            return new DeleteCommand(name);
-        } else {
-            Index index = ParserUtil.parseIndex(args);
-            return new DeleteCommand(index);
-        }
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
 
+        Name name = parseName(argMultimap);
+        Index index = parseIndex(argMultimap);
+
+        return createDeleteCommand(name, index);
     }
 
-    /**
-     * Returns true if there is a PREFIX_NAME in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean namePrefixPresent(ArgumentMultimap argumentMultimap) {
-        return argumentMultimap.getValue(PREFIX_NAME).isPresent();
+    private Name parseName(ArgumentMultimap argMultimap) throws ParseException {
+        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+            String fullName = argMultimap.getValue(PREFIX_NAME).get();
+            return ParserUtil.parseName(fullName);
+        }
+        return null;
+    }
+
+    private Index parseIndex(ArgumentMultimap argMultimap) throws ParseException {
+        String preamble = argMultimap.getPreamble();
+        if (!preamble.isBlank()) {
+            return ParserUtil.parseIndex(preamble);
+        }
+        return null;
+    }
+
+    private DeleteCommand createDeleteCommand(Name name, Index index) throws ParseException {
+        if (name != null && index != null) {
+            throw new ParseException(MESSAGE_INDEX_AND_NAME_PROVIDED);
+        } else if (name != null) {
+            return new DeleteCommand(name);
+        } else if (index != null) {
+            return new DeleteCommand(index);
+        } else {
+            throw new ParseException(MESSAGE_NO_FIELDS_PROVIDED);
+        }
     }
 }
