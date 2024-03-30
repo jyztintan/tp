@@ -14,7 +14,7 @@ import seedu.realodex.testutil.PersonBuilder;
 public class SortingFunctionalityTest {
 
     @Test
-    public void SortingFunctionality_test() {
+    public void sortingFunctionality_test() {
 
         LocalDate today = LocalDate.now();
         LocalDate date1 = today.minusDays(100); // 265 days to bday
