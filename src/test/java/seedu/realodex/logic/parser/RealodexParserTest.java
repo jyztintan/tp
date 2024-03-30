@@ -20,8 +20,9 @@ import seedu.realodex.logic.commands.HelpCommand;
 import seedu.realodex.logic.commands.ListCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Name;
-import seedu.realodex.model.person.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.Person;
+import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
+import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.testutil.EditPersonDescriptorBuilder;
 import seedu.realodex.testutil.PersonBuilder;
 import seedu.realodex.testutil.PersonUtil;
@@ -77,17 +78,67 @@ public class RealodexParserTest {
     }
 
     @Test
-    public void parseCommand_filter() throws Exception {
+    public void parseCommand_filterByName() throws Exception {
         String keyphrase = "foo bar baz";
         FilterCommand command = (FilterCommand) parser.parseCommand(
-                FilterCommand.COMMAND_WORD + " " + keyphrase);
+                FilterCommand.COMMAND_WORD + " n/" + keyphrase);
         assertEquals(new FilterCommand(new NameContainsKeyphrasePredicate(keyphrase)), command);
+    }
+
+    @Test
+    public void parseCommand_filterByRemark() throws Exception {
+        String keyphrase = "foo bar baz";
+        FilterCommand command = (FilterCommand) parser.parseCommand(
+                FilterCommand.COMMAND_WORD + " r/" + keyphrase);
+        assertEquals(new FilterCommand(new RemarkContainsKeyphrasePredicate(keyphrase)), command);
     }
 
     @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
+    }
+
+    @Test
+    public void parseCommand_add_help() throws Exception {
+        assertTrue(parser.parseCommand("add help") instanceof HelpCommand);
+        HelpCommand expected = new HelpCommand("add");
+        assertEquals(parser.parseCommand("add help"), expected);
+    }
+
+    @Test
+    public void parseCommand_clear_help() throws Exception {
+        assertTrue(parser.parseCommand("clearRealodex help") instanceof HelpCommand);
+        HelpCommand expected = new HelpCommand("clearRealodex");
+        assertEquals(parser.parseCommand("clearRealodex help"), expected);
+    }
+
+    @Test
+    public void parseCommand_delete_help() throws Exception {
+        assertTrue(parser.parseCommand("delete help") instanceof HelpCommand);
+        HelpCommand expected = new HelpCommand("delete");
+        assertEquals(parser.parseCommand("delete help"), expected);
+    }
+
+    @Test
+    public void parseCommand_edit_help() throws Exception {
+        assertTrue(parser.parseCommand("edit help") instanceof HelpCommand);
+        HelpCommand expected = new HelpCommand("edit");
+        assertEquals(parser.parseCommand("edit help"), expected);
+    }
+
+    @Test
+    public void parseCommand_filter_help() throws Exception {
+        assertTrue(parser.parseCommand("filter help") instanceof HelpCommand);
+        HelpCommand expected = new HelpCommand("filter");
+        assertEquals(parser.parseCommand("filter help"), expected);
+    }
+
+    @Test
+    public void parseCommand_list_help() throws Exception {
+        assertTrue(parser.parseCommand("list help") instanceof HelpCommand);
+        HelpCommand expected = new HelpCommand("list");
+        assertEquals(parser.parseCommand("list help"), expected);
     }
 
     @Test

@@ -14,7 +14,7 @@
 ## **Acknowledgements**
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
-https://se-education.org/addressbook-level3/DeveloperGuide.html
+https://ay2324s2-cs2103t-w10-1.github.io/tp/DeveloperGuide.html
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -105,7 +105,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
+1. When `Logic` is called upon to execute a command, it is passed to an `RealodexParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
@@ -116,7 +116,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+* When called upon to parse a user command, the `RealodexParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `RealodexParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
@@ -134,7 +134,7 @@ The `Model` component,
 
 <box type="info" seamless>
 
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the Realodex, which `Person` references. This allows Realodex to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
 <puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
 
@@ -149,12 +149,12 @@ The `Model` component,
 
 The `Storage` component,
 * can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* inherits from both `RealodexStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.realodex.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -162,98 +162,131 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### \[Proposed\] Undo/redo feature
+``### Filter by Name feature
 
-#### Proposed Implementation
+#### Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
+The Filter by Name feature allows users to filter the list of persons in Realodex based on their names. 
+It is implemented using a predicate that checks if a person's name contains the keyphrase provided by the user. 
+The key components involved in this feature include:
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+- FilterCommand: A command that, when executed, updates the filtered person list based on the predicate.
+- NameContainsKeyphrasePredicate: A predicate that tests whether a person's name contains the given keyphrase.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+#### Example Usage Scenario
+1. The user launches the application and the Model is initialized with the initial list of persons. 
+2. The user executes the command filter n/John, intending to filter out persons whose names contain "John".
+3. `LogicManager` parses the command, creating a FilterCommand with a NameContainsKeyphrasePredicate initialized with "John".
+4. `FilterCommand` is executed, using the predicate to filter the list of persons.
+5. The UI is updated to show only the persons whose names contain "John".
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+#### Design considerations
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
+Aspect: Handling of partial names
 
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
+**Alternative 1 (current choice): Allow partial matches of names. For example, filter n/Jo will match "John", "Joanna", etc.**
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Pros: More flexible search.
 
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
+Cons: May return too many results for very short keyphrases.
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+**Alternative 2: Require exact matches.**
 
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
+Pros: Precise filtering.
 
-<box type="info" seamless>
+Cons: Less flexible; users must remember exact names.
+``
 
-**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
+### Sort by Birthday feature
 
-</box>
+####  Implementation
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+The "Sort by Birthday" feature enables users to sort persons based on their birthday associated with them, if any. The core components for this feature are:
+- SortCommand: A command that, when executed, updates the sorted person list based on the predicate.
 
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</box>
-
-The following sequence diagram shows how an undo operation goes through the `Logic` component:
-
-<puml src="diagrams/UndoSequenceDiagram-Logic.puml" alt="UndoSequenceDiagram-Logic" />
-
-<box type="info" seamless>
-
-**Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</box>
-
-Similarly, how an undo operation goes through the `Model` component is shown below:
-
-<puml src="diagrams/UndoSequenceDiagram-Model.puml" alt="UndoSequenceDiagram-Model" />
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</box>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<puml src="diagrams/CommitActivityDiagram.puml" width="250" />
+#### Example Usage Scenario
+1. User launches the application, and the list of persons is loaded.
+2. User executes `sort`, aiming to sort persons by birthday
+3. LogicManager parses the command into a SortCommand.
+4. The SortCommand is executed, sorting the list based on the predicate.
+5. The UI sorts the persons by birthday, with the next upcoming birthday first, and all persons without birthdays will not show up. 
 
 #### Design considerations:
 
-**Aspect: How undo & redo executes:**
+Aspect: Matching of remarks
 
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+__Alternative 1 (current choice): Support sort by other days besides Today.__
 
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+Pros: Allows for more flexible searches.
 
-_{more aspects and alternatives to be added}_
+Cons: May be difficult to understand
+
+### Help feature
+
+####  Implementation
+
+The Help feature provides help to the user by giving details on how all commands are used in a new window. 
+The core components for this feature are:
+- HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
+prints the help message in the Main Window for the requested command, depending on user input.
+- HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
+correct action (the type of help to give, in this case help for all commands).
+
+#### Example Usage Scenario
+1. User launches the application.
+2. User executes `help`, wanting to get the help for all commands.
+3. LogicManager instantiates a RealodexParser, which parses the command into a HelpCommand.
+4. The HelpCommand is executed, showing a new window with help for all the features in Realodex.
+5. The GUI reflects that the help window is currently open.
+
+#### Design Considerations
+
+Aspect: Information to include in the Help Window
+
+__Alternative 1 (current choice): Includes summary of ways to use all commands.__
+
+Pros: User does not need to leave the app to get the appropriate help, and can visit the UG if he/she needs more information.
+
+Cons: May be lengthy and hard to find when the set of commands added becomes larger in the future.
+
+__Alternative 2: Only include link to User Guide in the help window.__
+
+Pros: Help window does not have too much information.
+
+Cons: User will need to leave the application and look at a website everytime they require help which can be inconvenient.
+
+### Help by command feature
+
+####  Implementation
+
+The Help by command feature provides help to the user for an individual command specified by the user.
+The core components for this feature are:
+- HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
+  prints the help message in the Main Window for the requested command, depending on user input.
+- HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
+  correct action (the type of help to give, in this case for individual commands).
+
+#### Example Usage Scenario 
+1. User launches the application.
+2. User executes `COMMAND help`, wanting to get the help for only specified `COMMAND`.
+3. LogicManager instantiates a RealodexPraser, which parses the command into a HelpCommand with appropriate parameters.
+4. The HelpCommand is executed, printing the help message for the specified `COMMAND` in the GUI.
+
+#### Design Considerations
+
+Aspect: Method to request for help
+
+__Alternative 1 (current choice): Format is `COMMAND help`.__
+
+Pros: Intuitive syntax for the user, and is consistent with other CLI-based applications.
+
+Cons: Harder to implement and maintain as a Developer as awareness of how other commands are currently being parsed is needed to preserve functionality.
+
+__Alternative 2: Format is `help COMMAND`.__
+
+Pros: Easy to implement as all functionality can be contained within help-related classes only.
+
+Cons: Syntax may not be as intuitive.
 
 ### \[Proposed\] Data archiving
 
@@ -322,7 +355,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `Realodex` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is Realodex and the **Actor** is the user, unless specified otherwise)
 
 **Use case: Creating a user profile**
 
@@ -418,22 +451,75 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 2a1. Realodex shows an empty list.
   * Use case ends.
 
-**Use case: Filter**
+**Use case: Filter by Name**
 
 **MSS**
 
-1.  User requests to filter user with input substring.
-2.  Realodex shows the list of all clients with name including the input substring.
+1. User requests to filter clients by providing a name substring. 
+2. Realodex filters and displays a list of all clients whose names include the input substring.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. No contact found with a name including the name input
-  * 2a1. Realodex shows an empty list.
-  * Use case ends.
+* 1a. The input substring is empty.
+
+    * 1a1. Realodex shows an error message indicating that the filter criteria cannot be empty.
+
+        Use case ends.
+
+* 1b. No clients' names match the input substring.
+
+    * 1b1. Realodex displays an empty list and shows a message indicating that no matches were found.
+        
+      Use case ends.
+
+**Use case: Filter by Remarks**
+
+**MSS**
+
+1. User requests to filter clients by providing a remark substring. 
+2. Realodex filters and displays a list of all clients whose remarks include the input substring.
+   Use case ends.
+
+**Extensions**
+
+* 1a. The input substring is empty.
+
+    * 1a1. Realodex shows an error message indicating that the filter criteria cannot be empty.
+
+      Use case ends.
+
+* 1b. No clients' remarks match the input substring.
+
+    * 1b1. Realodex displays an empty list and shows a message indicating that no matches were found.
+
+      Use case ends.
+
+**Use case: Getting help**
+
+**MSS**
+
+1. User requests for help.
+2. Realodex displays a new window showing a summary of how all features are used with examples. 
+
+   Use case ends.
 
 
+**MSS**
+
+1. User requests for help for a specific command.
+2. A string summarising how that individual command is used with examples is displayed on the main window.
+
+**Extensions**
+
+* 1a. The requested command does not exist.
+
+    * 1a1. Realodex shows an error message command does not exist.
+
+      Use case ends.
+
+  
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.

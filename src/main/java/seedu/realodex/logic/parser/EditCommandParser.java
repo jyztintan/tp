@@ -70,7 +70,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_HOUSINGTYPE).isPresent()) {
             editPersonDescriptor.setHousingType(ParserUtil.parseHousingType(argMultimap.getValue(PREFIX_HOUSINGTYPE).get()));
         }
-        if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
+        if (argMultimap.containsPrefix(PREFIX_REMARK)) {
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
         }
         if (!editPersonDescriptor.isAnyFieldEdited()) {

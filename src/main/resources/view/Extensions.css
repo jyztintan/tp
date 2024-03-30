@@ -1,11 +1,10 @@
 
 .error {
-    -fx-text-fill: #d06651 !important; /* The error class should always override the default text-fill style */
+    -fx-text-fill: #d90000 !important; /* The error class should always override the default text-fill style */
 }
 
 .list-cell:empty {
-    /* Empty cells will not have alternating colours */
-    -fx-background: #383838;
+    -fx-background: rgba(56, 56, 56, 0);
 }
 
 .tag-selector {

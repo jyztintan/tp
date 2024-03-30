@@ -1,6 +1,7 @@
 package seedu.realodex.testutil;
 
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
@@ -45,6 +46,7 @@ public class PersonUtil {
         );
         sb.append(PREFIX_HOUSINGTYPE + person.getHousingType().toString() + " ");
         sb.append(PREFIX_REMARK + person.getRemark().toString() + " ");
+        sb.append(PREFIX_BIRTHDAY + person.getBirthday().toString() + " ");
         return sb.toString();
     }
 

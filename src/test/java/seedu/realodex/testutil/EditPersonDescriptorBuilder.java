@@ -12,7 +12,7 @@ import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.Phone;
-import seedu.realodex.model.remark.Remark;
+import seedu.realodex.model.person.Remark;
 import seedu.realodex.model.tag.Tag;
 
 /**
@@ -43,6 +43,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setFamily(person.getFamily());
         descriptor.setTags(person.getTags());
         descriptor.setRemark(person.getRemark());
+        descriptor.setBirthday(person.getBirthday());
     }
 
     /**

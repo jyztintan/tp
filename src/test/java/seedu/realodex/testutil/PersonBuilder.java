@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.HousingType;
@@ -11,7 +12,7 @@ import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.Phone;
-import seedu.realodex.model.remark.Remark;
+import seedu.realodex.model.person.Remark;
 import seedu.realodex.model.tag.Tag;
 import seedu.realodex.model.util.SampleDataUtil;
 
@@ -28,6 +29,8 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final Tag DEFAULT_TAG = new Tag("buyer");
     public static final String DEFAULT_HOUSINGTYPE = "";
+    public static final String DEFAULT_REMARK = "";
+    public static final String DEFAULT_BIRTHDAY = "";
 
     private Name name;
     private Phone phone;
@@ -38,6 +41,7 @@ public class PersonBuilder {
     private Set<Tag> tags;
     private HousingType housingType;
     private Remark remark;
+    private Birthday birthday;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -52,7 +56,8 @@ public class PersonBuilder {
         tags = new HashSet<>();
         tags.add(DEFAULT_TAG);
         housingType = new HousingType(DEFAULT_HOUSINGTYPE);
-        remark = new Remark("");
+        remark = new Remark(DEFAULT_REMARK);
+        birthday = new Birthday(DEFAULT_BIRTHDAY);
     }
 
     /**
@@ -68,6 +73,7 @@ public class PersonBuilder {
         tags = new HashSet<>(personToCopy.getTags());
         housingType = personToCopy.getHousingType();
         remark = personToCopy.getRemark();
+        birthday = personToCopy.getBirthday();
     }
 
     /**
@@ -141,8 +147,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Birthday} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withBirthday(String birthday) {
+        this.birthday = new Birthday(birthday);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, income, email, address, family, tags, housingType, remark);
+        return new Person(name, phone, income, email, address, family, tags, housingType, remark, birthday);
     }
 
 }
