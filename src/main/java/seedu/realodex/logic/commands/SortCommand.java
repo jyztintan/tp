@@ -31,15 +31,15 @@ public class SortCommand extends Command {
     private final Comparator<Person> comparator = new Comparator<Person>() {
         @Override
         public int compare(Person o1, Person o2) {
-            return -1;
+//            return -1;
 //            return o1.getName().toString().compareTo(o2.getName().toString());
-//            Optional<Date> b1 = o1.getBirthday().birthday;
-//            Optional<Date> b2 = o1.getBirthday().birthday;
-//
-//            if (!b1.isPresent()) {
-//                return 0;
-//            }
-//            return b1.get().compareTo(b2.orElse(b1.get()));
+            Optional<Date> b1 = o1.getBirthday().birthday;
+            Optional<Date> b2 = o1.getBirthday().birthday;
+
+            if (!b1.isPresent()) {
+                return -1;
+            }
+            return b1.get().compareTo(b2.orElse(b1.get()));
         }
     };
 

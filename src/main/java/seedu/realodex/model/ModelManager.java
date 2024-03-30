@@ -138,10 +138,10 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Person> getLastFilteredOrSortedPersonList() {
-//        return lastFilteredOrSortedPersons;
-        if (justFiltered) {
-            return filteredPersons;
-        } return sortedPersons;
+        return lastFilteredOrSortedPersons;
+//        if (justFiltered) {
+//            return filteredPersons;
+//        } return sortedPersons;
     }
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
@@ -155,7 +155,6 @@ public class ModelManager implements Model {
     public void updateSortedPersonList(Comparator<Person> comparator) {
         requireNonNull(comparator);
         sortedPersons.setComparator(comparator);
-        justFiltered = false;
         lastFilteredOrSortedPersons = getSortedPersonList();
     }
 
@@ -164,6 +163,7 @@ public class ModelManager implements Model {
         if (other == this) {
             return true;
         }
+
 
         // instanceof handles nulls
         if (!(other instanceof ModelManager)) {
