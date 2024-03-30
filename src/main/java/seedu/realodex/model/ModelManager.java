@@ -26,8 +26,6 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final SortedList<Person> sortedPersons;
-    private ObservableList<Person> lastFilteredOrSortedPersons;
-    private boolean justFiltered = true;
 
     /**
      * Initializes a ModelManager with the given realodex and userPrefs.
@@ -41,7 +39,6 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.realodex.getPersonList());
         sortedPersons = new SortedList<>(this.realodex.getPersonList());
-        lastFilteredOrSortedPersons = filteredPersons;
     }
 
     public ModelManager() {
@@ -138,24 +135,30 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Person> getLastFilteredOrSortedPersonList() {
-        return lastFilteredOrSortedPersons;
-//        if (justFiltered) {
-//            return filteredPersons;
-//        } return sortedPersons;
+        return null;
     }
+
+    //
+//    @Override
+//    public ObservableList<Person> getLastFilteredOrSortedPersonList() {
+////        return lastFilteredOrSortedPersons;
+////        if (justFiltered) {
+////            return filteredPersons;
+////        } return sortedPersons;
+//    }
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
-        justFiltered = true;
-        lastFilteredOrSortedPersons = getFilteredPersonList();
+//        justFiltered = true;
+//        lastFilteredOrSortedPersons = getFilteredPersonList();
     }
 
     @Override
     public void updateSortedPersonList(Comparator<Person> comparator) {
         requireNonNull(comparator);
         sortedPersons.setComparator(comparator);
-        lastFilteredOrSortedPersons = getSortedPersonList();
+//        lastFilteredOrSortedPersons = getSortedPersonList();
     }
 
     @Override
