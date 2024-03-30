@@ -7,6 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.logging.Logger;
+
+import seedu.realodex.commons.core.LogsCenter;
 
 /**
  * Represents a Birthday in the Realodex
@@ -18,8 +21,8 @@ public class Birthday {
             + "should also not be in future years!";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
+    private static final Logger logger = LogsCenter.getLogger(Birthday.class);
     public final Optional<Date> birthday;
-
     /**
      * Constructs a {@code Birthday}.
      *
@@ -44,11 +47,11 @@ public class Birthday {
     public Birthday() {
         SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
         formatter.setLenient(false);
-        Optional<Date> birthdayDate;
+        Optional<Date> birthdayDate = Optional.empty();
         try {
             birthdayDate = Optional.of(formatter.parse("01May2023"));
-        } catch (ParseException e) {
-            birthdayDate = Optional.empty();
+        } catch (ParseException ignored) {
+            logger.fine("This part of birthday should not be executed");
         }
         this.birthday = birthdayDate;
     }

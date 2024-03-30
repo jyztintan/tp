@@ -1,5 +1,6 @@
 package seedu.realodex.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.testutil.Assert.assertThrows;
@@ -62,5 +63,12 @@ public class BirthdayTest {
 
         // different values -> returns false
         assertFalse(birthday.equals(new Birthday("13mar1706")));
+    }
+
+    @Test
+    public void birthdayDefaultConstructor_equalsDefault() {
+        Birthday defaultBirthday = new Birthday();
+        Birthday birthdayWithDefaultValue = new Birthday("01May2023");
+        assertEquals(defaultBirthday, birthdayWithDefaultValue);
     }
 }
