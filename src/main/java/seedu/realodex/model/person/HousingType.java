@@ -68,7 +68,7 @@ public class HousingType {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + housingType.toString() + ']';
+        return housingType.toString();
     }
 
 }
