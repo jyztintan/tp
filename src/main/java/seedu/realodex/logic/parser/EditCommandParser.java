@@ -5,6 +5,7 @@ import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -30,7 +31,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_FAMILY, PREFIX_TAG, PREFIX_REMARK);
+                        PREFIX_FAMILY, PREFIX_TAG, PREFIX_HOUSINGTYPE, PREFIX_REMARK);
 
         Index index;
 
@@ -41,7 +42,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_ADDRESS,
-                PREFIX_FAMILY, PREFIX_REMARK);
+                PREFIX_FAMILY, PREFIX_HOUSINGTYPE, PREFIX_REMARK);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -65,6 +66,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         if (argMultimap.getValue(PREFIX_TAG).isPresent()) {
             editPersonDescriptor.setTags(ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG)));
+        }
+        if (argMultimap.getValue(PREFIX_HOUSINGTYPE).isPresent()) {
+            editPersonDescriptor.setHousingType(ParserUtil.parseHousingType(argMultimap.getValue(PREFIX_HOUSINGTYPE).get()));
         }
         if (argMultimap.getValue(PREFIX_REMARK).isPresent()) {
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));

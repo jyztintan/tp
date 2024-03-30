@@ -54,7 +54,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_FAMILY + "FAMILY] "
             + "[" + PREFIX_TAG + "TAG]"
-            + "[" + PREFIX_HOUSINGTYPE + "HOUSINGTYPE]"
+            + "[" + PREFIX_HOUSINGTYPE + "HOUSING_TYPE]"
             + "[" + PREFIX_REMARK + "REMARK]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -120,7 +120,7 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Family updatedFamily = editPersonDescriptor.getFamily().orElse(personToEdit.getFamily());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        HousingType updatedHousingType = personToEdit.getHousingType();
+        HousingType updatedHousingType = editPersonDescriptor.getHousingType().orElse(personToEdit.getHousingType());
         Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
 
         return new Person(updatedName, updatedPhone, updatedIncome,
@@ -292,6 +292,7 @@ public class EditCommand extends Command {
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(family, otherEditPersonDescriptor.family)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags)
+                    && Objects.equals(housingType, otherEditPersonDescriptor.housingType)
                     && Objects.equals(remark, otherEditPersonDescriptor.remark);
         }
 
@@ -305,6 +306,7 @@ public class EditCommand extends Command {
                     .add("address", address)
                     .add("family", family)
                     .add("tags", tags)
+                    .add("housingType", housingType)
                     .add("remark", remark)
                     .toString();
         }
