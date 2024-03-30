@@ -12,6 +12,7 @@ import static seedu.realodex.logic.commands.CommandTestUtil.NAME_DESC_AMY_CAPS;
 import static seedu.realodex.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.TAG_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.HOUSINGTYPE_DESC_AMY;
 import static seedu.realodex.testutil.Assert.assertThrows;
 import static seedu.realodex.testutil.TypicalPersons.AMY_NAME_CAPS;
 
@@ -173,7 +174,7 @@ public class LogicManagerTest {
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY_CAPS + PHONE_DESC_AMY
                 + INCOME_DESC_AMY + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY + FAMILY_DESC_AMY
-                + TAG_DESC_AMY + BIRTHDAY_DESC_AMY;
+                + TAG_DESC_AMY + HOUSINGTYPE_DESC_AMY + BIRTHDAY_DESC_AMY;
 
         Person expectedPerson = new PersonBuilder(AMY_NAME_CAPS).withTags(VALID_TAG_AMY).build();
         ModelManager expectedModel = new ModelManager();

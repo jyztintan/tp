@@ -16,6 +16,7 @@ import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Phone;
@@ -204,8 +205,7 @@ public class JsonAdaptedPersonTest {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_INCOME, VALID_EMAIL, VALID_ADDRESS,
                                       VALID_FAMILY, VALID_TAGS, INVALID_HOUSINGTYPE, VALID_REMARK, VALID_BIRTHDAY);
-        String expectedMessage = "Housing type is invalid";
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, HousingType.MESSAGE_CONSTRAINTS, person::toModelType);
     }
 
 }

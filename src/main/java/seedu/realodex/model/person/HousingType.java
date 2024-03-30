@@ -69,6 +69,11 @@ public class HousingType {
     }
 
     @Override
+    public String toString() {
+        return housingType.toString();
+    }
+
+    @Override
     public int hashCode() {
         return housingType.hashCode();
     }

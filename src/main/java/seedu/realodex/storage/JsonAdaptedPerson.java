@@ -64,7 +64,7 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
-        this.housingType = housingType;
+        this.housingType = Objects.requireNonNullElse(housingType, "");;
         this.remark = Objects.requireNonNullElse(remark, "");
         this.birthday = birthday;
     }
@@ -151,6 +151,9 @@ class JsonAdaptedPerson {
         if (housingType == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                                                           HousingType.class.getSimpleName()));
+        }
+        if (!HousingType.isValidHousingType(housingType)) {
+            throw new IllegalValueException(HousingType.MESSAGE_CONSTRAINTS);
         }
         final HousingType modelHousingType = new HousingType(housingType);
 

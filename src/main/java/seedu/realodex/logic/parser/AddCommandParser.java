@@ -57,7 +57,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL,
-                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_REMARK, PREFIX_BIRTHDAY);
+                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_HOUSINGTYPE, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         StringBuilder errorMessageBuilder = new StringBuilder();
         ParserUtilResult<Name> nameStored =
@@ -95,7 +95,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         ParserUtilResult<HousingType> housingTypeStored =
-                ParserUtil.parseHousingTypeReturnStored(argMultimap.getValue(PREFIX_HOUSINGTYPE).orElseThrow());
+                ParserUtil.parseHousingTypeReturnStored(argMultimap.getValueOrDefault(PREFIX_HOUSINGTYPE).orElseThrow());
         housingTypeStored.buildErrorMessage(errorMessageBuilder, "housing type");
 
         Remark remark;

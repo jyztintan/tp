@@ -55,7 +55,7 @@ public class TypicalPersons {
             .withPhone("95352563")
             .withIncome("30000")
             .withEmail("heinz@example.com").withAddress("wall street").withTags("buyer")
-            .withHousingType("Condominium")
+            .withHousingType("HDB")
             .withRemark("Carl was supposed to start with a K, but the doctor misspelled when he was born")
             .withBirthday("6Jun2006").build();
 
