@@ -137,6 +137,14 @@ public class PrefixCheckerTest {
     }
 
     @Test
+    public void isDuplicatePrefix_nullPrefix_assertsError() {
+        String argsString = " n/John Doe n/Jane Doe ";
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME);
+        PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
+
+        assertThrows(AssertionError.class, () -> prefixChecker.isDuplicatePrefix(null));
+    }
+    @Test
     public void isDuplicatePrefix_regularPrefixWithDuplicates_returnsTrue() {
         String argsString = " n/John Doe n/Jane Doe ";
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME);
@@ -173,15 +181,39 @@ public class PrefixCheckerTest {
     }
 
     @Test
+    public void isSpecialCasePrefix_nullPrefix_assertsError() {
+        PrefixChecker prefixChecker = new PrefixChecker(new ArgumentMultimap());
+        assertThrows(AssertionError.class, () -> prefixChecker.isSpecialCasePrefix(null));
+    }
+
+    @Test
     public void isSpecialCasePrefix_tagPrefix_returnsTrue() {
         PrefixChecker prefixChecker = new PrefixChecker(new ArgumentMultimap());
         assertTrue(prefixChecker.isSpecialCasePrefix(PREFIX_TAG));
     }
 
     @Test
-    public void isSpecialCasePrefix_nonTagPrefix_returnsFalse() {
-        PrefixChecker prefixChecker = new PrefixChecker(new ArgumentMultimap());
-        assertFalse(prefixChecker.isSpecialCasePrefix(PREFIX_NAME));
+    public void isPrefixPresent_presentPrefix_returnsTrue() {
+        String argsString = " n/John Doe r/has 3 cats. ";
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME, PREFIX_REMARK);
+        PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
+        assertTrue(prefixChecker.isPrefixPresent(PREFIX_NAME));
+    }
+
+    @Test
+    public void isPrefixPresent_nonPresentPrefix_returnsTrue() {
+        String argsString = " n/John Doe ";
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME, PREFIX_REMARK);
+        PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
+        assertFalse(prefixChecker.isPrefixPresent(PREFIX_REMARK));
+    }
+
+    @Test
+    public void isPrefixPresent_nullPrefix_assertsError() {
+        String argsString = " n/John Doe ";
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, PREFIX_NAME, PREFIX_REMARK);
+        PrefixChecker prefixChecker = new PrefixChecker(argMultimap);
+        assertThrows(AssertionError.class, () -> prefixChecker.isPrefixPresent(null));
     }
 
     @Test

@@ -35,7 +35,6 @@ public class PrefixChecker {
      * @return {@code true} if any prefix exceeds its allowed occurrence limit, {@code false} otherwise.
      */
     public boolean anyPrefixesPresent(Prefix... prefixes) {
-        assert(prefixes != null);
         return Stream.of(prefixes).anyMatch(this::isPrefixPresent);
     }
 
@@ -46,7 +45,6 @@ public class PrefixChecker {
      * @return {@code true} if more than one prefix is present, {@code false} otherwise.
      */
     public boolean moreThanOnePrefixTypePresent(Prefix... prefixes) {
-        assert (prefixes != null);
         return Stream.of(prefixes).filter(this::isPrefixPresent).count() > 1;
     }
 
@@ -68,7 +66,6 @@ public class PrefixChecker {
      * @throws ParseException If duplicates are found, except for the allowed exceptions.
      */
     public void checkNoDuplicatePrefix(Prefix... prefixes) throws ParseException {
-        assert(prefixes != null);
         Prefix[] duplicatedPrefixes = Stream.of(prefixes)
                 .filter(this::isDuplicatePrefix)
                 .distinct()
@@ -87,7 +84,7 @@ public class PrefixChecker {
      * @return {@code true} if the prefix is considered a duplicate (considering the allowed exceptions),
      *         {@code false} otherwise.
      */
-    public boolean isDuplicatePrefix(Prefix prefix) {
+    protected boolean isDuplicatePrefix(Prefix prefix) {
         assert(prefix != null);
         if (isSpecialCasePrefix(prefix)) {
             return argumentMultimap.containsPrefix(prefix) && argumentMultimap.getAllValues(prefix).size() > 2;
@@ -104,7 +101,7 @@ public class PrefixChecker {
      * @param prefix The {@link Prefix} to be checked.
      * @return {@code true} if the prefix is a special case, {@code false} otherwise.
      */
-    public boolean isSpecialCasePrefix(Prefix prefix) {
+    protected boolean isSpecialCasePrefix(Prefix prefix) {
         assert(prefix != null);
         return prefix.equals(PREFIX_TAG);
     }
@@ -115,7 +112,7 @@ public class PrefixChecker {
      * @param prefix The prefix to check for presence.
      * @return {@code true} if the prefix is present, {@code false} otherwise.
      */
-    public boolean isPrefixPresent(Prefix prefix) {
+    protected boolean isPrefixPresent(Prefix prefix) {
         assert(prefix != null);
         return argumentMultimap.containsPrefix(prefix);
     }
@@ -128,7 +125,6 @@ public class PrefixChecker {
      * @return The first present prefix, or {@code null} if none are present.
      */
     public Prefix findPresentPrefix(Prefix...prefixes) {
-        assert(prefixes != null);
         for (Prefix prefix : prefixes) {
             if (isPrefixPresent(prefix)) {
                 return prefix;
