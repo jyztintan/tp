@@ -69,38 +69,10 @@ public class Birthday {
             formatter.setLenient(false);
             Date parsedDate = formatter.parse(birthday.trim());
             Date currentDate = new Date();
-            if (!(parsedDate.after(currentDate)) && defensiveCheckIsValidBirthday(birthday)) {
+            if (!(parsedDate.after(currentDate))) {
                 return true;
             }
             return false;
-        } catch (ParseException e) {
-            return false;
-        }
-    }
-
-    protected static boolean defensiveCheckIsValidBirthday(String birthday) {
-        try {
-            SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
-            formatter.setLenient(false);
-            Date parsedDate = formatter.parse(birthday.trim());
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(parsedDate);
-            int year = cal.get(Calendar.YEAR);
-            int month = cal.get(Calendar.MONTH);
-            int day = cal.get(Calendar.DAY_OF_MONTH);
-
-            int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-            if (!(year >= 1000 && year <= currentYear)) {
-                return false;
-            }
-            if (!(month >= Calendar.JANUARY && month <= Calendar.DECEMBER)) {
-                return false;
-            }
-            int maxDaysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-            if (!(day >= 1 && day <= maxDaysInMonth)) {
-                return false;
-            }
-            return true;
         } catch (ParseException e) {
             return false;
         }

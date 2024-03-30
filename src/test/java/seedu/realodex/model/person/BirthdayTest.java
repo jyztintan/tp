@@ -60,43 +60,6 @@ public class BirthdayTest {
     }
 
     @Test
-    public void defensiveCheckIsValidBirthday_test() {
-        // null date
-        assertThrows(NullPointerException.class, () -> Birthday.defensiveCheckIsValidBirthday(null));
-
-        // missing parts
-        assertFalse(Birthday.defensiveCheckIsValidBirthday("1")); // missing month
-        assertFalse(Birthday.defensiveCheckIsValidBirthday("31June")); // missing year
-        assertFalse(Birthday.defensiveCheckIsValidBirthday("June2002")); // missing day
-
-        // invalid parts
-        assertFalse(Birthday.defensiveCheckIsValidBirthday("29Feb2023")); // not a leap year
-        assertFalse(Birthday.defensiveCheckIsValidBirthday("31June2023")); // June does not have 31 days
-        assertFalse(Birthday.defensiveCheckIsValidBirthday("1-jan-2001")); // not supposed to have '-'
-
-        // valid date
-        assertTrue(Birthday.defensiveCheckIsValidBirthday("29Feb2024")); // leap year
-        assertTrue(Birthday.defensiveCheckIsValidBirthday("12May2003"));
-        assertTrue(Birthday.defensiveCheckIsValidBirthday("08Aug1888"));
-
-        // invalid dates
-        assertFalse(Birthday.defensiveCheckIsValidBirthday("01May2009233"));
-        assertFalse(Birthday.defensiveCheckIsValidBirthday("0"));
-
-        // creating future dates
-        LocalDate today = LocalDate.now();
-        LocalDate tomorrow = today.plusDays(1);
-        LocalDate futureDate = today.plusYears(10);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
-        String tomorrowFormatted = tomorrow.format(formatter);
-        String futureFormatted = futureDate.format(formatter);
-
-        // future dates
-        assertFalse(Birthday.defensiveCheckIsValidBirthday(tomorrowFormatted)); //cant be in future days
-        assertFalse(Birthday.defensiveCheckIsValidBirthday(futureFormatted)); //cant be in future years
-    }
-
-    @Test
     public void equals_test() {
         Birthday birthday = new Birthday("14mar1706"); // pi day!
 
