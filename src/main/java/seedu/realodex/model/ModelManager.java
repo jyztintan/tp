@@ -122,6 +122,11 @@ public class ModelManager implements Model {
         return filteredPersons;
     }
 
+    public ObservableList<Person> getCopyOfInternalListOfUniquePersonsList() {
+        return realodex.getCopyOfInternalListOfUniquePersonsList();
+    }
+
+
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
