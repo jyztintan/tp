@@ -49,10 +49,12 @@ public class FilterCommandParser implements Parser<FilterCommand> {
 
     private Predicate<Person> createPredicateForPrefix(Prefix presentPrefix, List<String> keyphrases)
             throws ParseException {
+        checkValidNameIfApplicable(presentPrefix, keyphrases);
         checkValidTagsIfApplicable(presentPrefix, keyphrases);
         PredicateProducer predicateProducer = new PredicateProducer();
         return predicateProducer.createPredicate(presentPrefix, keyphrases);
     }
+
 
     /**
      * Validates the input arguments using various checks to ensure conformity to syntax requirements.
@@ -110,6 +112,22 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      */
     private void checkNoDuplicatePrefix(PrefixChecker prefixChecker) throws ParseException {
         prefixChecker.checkNoDuplicatePrefix(POSSIBLE_PREFIXES);
+    }
+
+    /**
+     * Validates name keyphrase if the present prefix is for a name. Each keyphrase must conform
+     * to Name constraints.
+     *
+     * @param presentPrefix The prefix to check if it's tag-related.
+     * @param keyphrases The list of keyphrases representing potential tags.
+     * @throws ParseException if any tag keyphrase is invalid.
+     */
+    private void checkValidNameIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+        if (!presentPrefix.equals(PREFIX_NAME)) {
+            return;
+        }
+        String name = keyphrases.get(keyphrases.size() - 1);
+        ParserUtil.parseName(name);
     }
 
     /**

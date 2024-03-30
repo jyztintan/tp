@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.FilterCommand;
+import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
@@ -32,6 +33,11 @@ public class FilterCommandParserTest {
         String userInput = " n/Alice";
         FilterCommand expectedCommand = new FilterCommand(new NameContainsKeyphrasePredicate("Alice"));
         assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_invalidArgsWithName_throwsParseException() {
+        assertParseFailure(parser, " n/#$@%^", Name.MESSAGE_CONSTRAINTS);
     }
 
     @Test
