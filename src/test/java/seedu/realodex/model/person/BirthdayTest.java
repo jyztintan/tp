@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.testutil.Assert.assertThrows;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -113,11 +114,10 @@ public class BirthdayTest {
     }
 
     @Test
-    public void toStringWithRepresentation_birthdayPresent_returnsRepresentation() {
+    public void toStringWithRepresentation_birthdayPresent_returnsRepresentation() throws ParseException {
         // Set birthday to 2000-01-01
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2000, Calendar.JANUARY, 1);
-        Date birthdayDate = calendar.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy");
+        Date birthdayDate = formatter.parse("01Jan2000");
 
         // Create Birthday object with birthday present
         Birthday birthday = new Birthday();
