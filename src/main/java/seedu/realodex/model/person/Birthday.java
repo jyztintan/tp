@@ -143,9 +143,9 @@ public class Birthday {
         return birthday.map(date -> "Birthday: " + DATE_FORMAT.format(date)).orElse("No specified Birthday.");
     }
 
-    public Date getDate() {
+    /*public Date getDate() {
         return birthday.orElse(null);
-    }
+    }*/
 
     /**
      * Returns the number of days from the current system date to the birthday.
@@ -186,7 +186,7 @@ public class Birthday {
         if (this.birthday.isPresent()) {
             return getDaysUntilBirthday() + " More Days Till Their Birthday!";
         }
-        return "No days till an unspecified birthday!";
+        return "Birthday is unspecified!";
     }
 
     private Calendar returnInstanceOfCalendar(Date date) {
@@ -200,4 +200,3 @@ public class Birthday {
     }
 
 }
-//@@author

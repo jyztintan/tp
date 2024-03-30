@@ -18,8 +18,8 @@ public class SortCommand extends Command {
             + "Example: sort";
 
     public static final String MESSAGE_SORT_HELP = "Sort Command: "
-            + "Sorts clients their birthday"
-            + "Format: sort]\n"
+            + "Sorts clients by their birthday\n"
+            + "Format: sort\n"
             + "Example: sort\n";
 
     public static final String MESSAGE_SUCCESS = "Sorted list by days to their birthday!";
@@ -46,9 +46,9 @@ public class SortCommand extends Command {
      *
      * @return a string representation of this command
      */
-    @Override
+    /*@Override
     public String toString() {
         return new ToStringBuilder(this)
                 .toString();
-    }
+    }*/
 }

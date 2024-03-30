@@ -8,6 +8,7 @@ import static seedu.realodex.testutil.Assert.assertThrows;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,17 @@ public class BirthdayTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Birthday(null));
+    }
+
+    @Test
+    public void getBirthday_test() {
+        Birthday birthday = new Birthday("15Jun2023");
+        Birthday emptyBirthday = new Birthday("");
+        String dateString = "15Jun2023";
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy", Locale.ENGLISH);
+
+        assertEquals(dateString, formatter.format(birthday.getBirthday().orElse(null)));
+        assertEquals(Optional.empty(), emptyBirthday.getBirthday());
     }
 
     @Test
@@ -85,7 +97,7 @@ public class BirthdayTest {
 
         // Set birthday to 2023-01-15
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy");
-        Date birthdayDate = formatter.parse("15Jan2023");
+        Date birthdayDate = formatter.parse("15Jan2001");
 
         // Create Birthday object with birthday in future
         Birthday birthday = new Birthday();
@@ -103,7 +115,7 @@ public class BirthdayTest {
 
         // Set birthday to 2022-12-15
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy");
-        Date birthdayDate = formatter.parse("15Dec2022");
+        Date birthdayDate = formatter.parse("15Dec2001");
 
         // Create Birthday object with birthday passed in current year
         Birthday birthday = new Birthday();
@@ -150,7 +162,7 @@ public class BirthdayTest {
         birthday.setBirthday(Optional.empty());
 
         // Test
-        assertEquals("No days till an unspecified birthday!", birthday.getDaysUntilBirthdayWithRepresentation());
+        assertEquals("Birthday is unspecified!", birthday.getDaysUntilBirthdayWithRepresentation());
     }
 
 

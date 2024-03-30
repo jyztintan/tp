@@ -7,6 +7,7 @@ import static seedu.realodex.logic.commands.EditCommand.MESSAGE_EDIT_HELP;
 import static seedu.realodex.logic.commands.ExitCommand.MESSAGE_EXIT_HELP;
 import static seedu.realodex.logic.commands.FilterCommand.MESSAGE_FILTER_HELP;
 import static seedu.realodex.logic.commands.ListCommand.MESSAGE_LIST_HELP;
+import static seedu.realodex.logic.commands.SortCommand.MESSAGE_SORT_HELP;
 
 import java.util.logging.Logger;
 
@@ -49,6 +50,7 @@ public class HelpWindow extends UiPart<Stage> {
                 + MESSAGE_EDIT_HELP + "\n"
                 + MESSAGE_LIST_HELP + "\n"
                 + MESSAGE_FILTER_HELP + "\n"
+                + MESSAGE_SORT_HELP + "\n"
                 + MESSAGE_EXIT_HELP + "\n"
                 + HELP_MESSAGE);
     }
