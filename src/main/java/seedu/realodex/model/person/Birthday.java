@@ -23,6 +23,7 @@ public class Birthday {
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
     public final Optional<Date> birthday;
+
     /**
      * Constructs a {@code Birthday}.
      *
@@ -90,6 +91,39 @@ public class Birthday {
         }
     }
 
+    /**
+     * Returns the day of the birthday.
+     */
+    public int getDay() {
+        return birthday.map(date -> {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            return cal.get(Calendar.DAY_OF_MONTH);
+        }).orElse(0); // Return 0 if no birthday date is present
+    }
+
+    /**
+     * Returns the month of the birthday.
+     */
+    public int getMonth() {
+        return birthday.map(date -> {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            return cal.get(Calendar.MONTH) + 1; // Add 1 because Calendar months are zero-based
+        }).orElse(0); // Return 0 if no birthday date is present
+    }
+
+    /**
+     * Returns the year of the birthday.
+     */
+    public int getYear() {
+        return birthday.map(date -> {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            return cal.get(Calendar.YEAR);
+        }).orElse(0); // Return 0 if no birthday date is present
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -121,10 +155,6 @@ public class Birthday {
      * Format state as text for representation.
      */
     public String toStringWithRepresentation() {
-        if (birthday.isPresent()) {
-            return "Birthday: " + DATE_FORMAT.format(birthday.get());
-        } else {
-            return "No specified Birthday.";
-        }
+        return birthday.map(date -> "Birthday: " + DATE_FORMAT.format(date)).orElse("No specified Birthday.");
     }
 }
