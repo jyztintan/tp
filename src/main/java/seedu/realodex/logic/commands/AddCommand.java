@@ -54,7 +54,8 @@ public class AddCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PERSON = "This client already exists in Realodex";
     public static final String MESSAGE_ADD_HELP = "Add Command: Adds a client to Realodex. You may input client"
             + " details in any order. Remarks and Birthday are optional fields to input.\n"
-            + "Format: add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSING_TYPE [r/REMARK] [b/BIRTHDAY]\n"
+            + "Format: add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSING_TYPE [r/REMARK] "
+            + "[b/BIRTHDAY]\n"
             + "Example: add n/John Doe p/98765432 i/10000 e/johndoe@gmail.com a/Jurong Central 1 f/5 t/Buyer "
             + "h/HDB r/Likes Italian food b/01May2009\n";
 
