@@ -13,6 +13,8 @@ import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_BOB_PREFI
 import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_BOB_PREFIX_CAPS;
+import static seedu.realodex.logic.commands.CommandTestUtil.HOUSINGTYPE_DESC_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.HOUSINGTYPE_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_BOB_PREFIX_CAPS;
@@ -51,6 +53,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -88,7 +91,7 @@ public class AddCommandParserTest {
                            PREAMBLE_WHITESPACE + NAME_DESC_BOB
                                    + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB
-                                   + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                 new AddCommand(expectedPerson));
 
 
@@ -97,7 +100,7 @@ public class AddCommandParserTest {
                 .build();
         assertParseSuccess(parser,
                 NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                        + TAG_DESC_BOB + TAG_DESC_AMY + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                        + TAG_DESC_BOB + TAG_DESC_AMY + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                 new AddCommand(expectedPersonMultipleTags));
 
         // three valid tags - all accepted
@@ -112,6 +115,7 @@ public class AddCommandParserTest {
                                    + TAG_DESC_BOB
                                    + TAG_DESC_AMY
                                    + TAG_DESC_BOB
+                                   + HOUSINGTYPE_DESC_BOB
                                    + REMARK_DESC_BOB
                                    + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPersonMultipleTags));
@@ -126,63 +130,63 @@ public class AddCommandParserTest {
                            PREAMBLE_WHITESPACE + NAME_DESC_BOB_PREFIX_CAPS
                                    + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB
-                                   + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // phone prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB_PREFIX_CAPS + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB
-                                   + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // income prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB_PREFIX_CAPS + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB
-                                   + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // email prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB_PREFIX_CAPS
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB
-                                   + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // address prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB_PREFIX_CAPS + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // family prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB_PREFIX_CAPS
-                                   + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // tag prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB_PREFIX_CAPS + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB_PREFIX_CAPS + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // remark prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + REMARK_DESC_BOB_PREFIX_CAPS + BIRTHDAY_DESC_BOB,
+                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB_PREFIX_CAPS + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // birthday prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB_PREFIX_CAPS,
+                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB_PREFIX_CAPS,
                            new AddCommand(expectedPerson));
 
         // all fields prefix caps
@@ -190,7 +194,7 @@ public class AddCommandParserTest {
                            NAME_DESC_BOB_PREFIX_CAPS + PHONE_DESC_BOB_PREFIX_CAPS
                                    + INCOME_DESC_BOB_PREFIX_CAPS + EMAIL_DESC_BOB_PREFIX_CAPS
                                    + ADDRESS_DESC_BOB_PREFIX_CAPS + FAMILY_DESC_BOB_PREFIX_CAPS
-                                   + TAG_DESC_BOB_PREFIX_CAPS
+                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB_PREFIX_CAPS
                                    + REMARK_DESC_BOB_PREFIX_CAPS
                                    + BIRTHDAY_DESC_BOB_PREFIX_CAPS,
                            new AddCommand(expectedPerson));
@@ -199,7 +203,7 @@ public class AddCommandParserTest {
     @Test
     public void parse_repeatedNonTagValue_failure() {
         String validExpectedPersonString = NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB;
+                + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB;
 
         // multiple names
         assertParseFailure(parser, NAME_DESC_AMY_CAPS + validExpectedPersonString,
@@ -236,12 +240,11 @@ public class AddCommandParserTest {
         // multiple fields repeated
         assertParseFailure(parser,
                 validExpectedPersonString + PHONE_DESC_AMY + INCOME_DESC_AMY + EMAIL_DESC_AMY
-                        + NAME_DESC_AMY_CAPS + ADDRESS_DESC_AMY + FAMILY_DESC_AMY
-                        + REMARK_DESC_AMY
-                        + BIRTHDAY_DESC_AMY
+                        + NAME_DESC_AMY_CAPS + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + HOUSINGTYPE_DESC_AMY
+                        + REMARK_DESC_AMY + BIRTHDAY_DESC_AMY
                         + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_INCOME, PREFIX_ADDRESS, PREFIX_EMAIL,
-                                                             PREFIX_PHONE, PREFIX_FAMILY,
+                                                             PREFIX_PHONE, PREFIX_FAMILY, PREFIX_HOUSINGTYPE,
                                                              PREFIX_REMARK, PREFIX_BIRTHDAY));
 
         // invalid value followed by valid value
@@ -299,6 +302,11 @@ public class AddCommandParserTest {
         // invalid family
         assertParseFailure(parser, validExpectedPersonString + INVALID_FAMILY_DESC,
                            Messages.getErrorMessageForDuplicatePrefixes(PREFIX_FAMILY));
+
+        //invalid housing type
+        assertParseFailure(parser, validExpectedPersonString + INVALID_FAMILY_DESC,
+                           Messages.getErrorMessageForDuplicatePrefixes(PREFIX_FAMILY));
+
         // invalid birthday
         assertParseFailure(parser, validExpectedPersonString + INVALID_BIRTHDAY_DESC,
                            Messages.getErrorMessageForDuplicatePrefixes(PREFIX_BIRTHDAY));
@@ -366,6 +374,7 @@ public class AddCommandParserTest {
                 + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB
                 + FAMILY_DESC_BOB
+                + HOUSINGTYPE_DESC_BOB
                 + TAG_DESC_BOB
                 + BIRTHDAY_DESC_BOB, new AddCommand(expectedPerson));
 
@@ -377,6 +386,7 @@ public class AddCommandParserTest {
                 + ADDRESS_DESC_AMY
                 + FAMILY_DESC_AMY
                 + TAG_DESC_AMY
+                + HOUSINGTYPE_DESC_AMY
                 + BIRTHDAY_DESC_AMY, new AddCommand(expectedPerson));
 
         expectedPerson = new PersonBuilder(BOB).withBirthday("").build();
@@ -387,6 +397,7 @@ public class AddCommandParserTest {
                 + ADDRESS_DESC_BOB
                 + FAMILY_DESC_BOB
                 + TAG_DESC_BOB
+                + HOUSINGTYPE_DESC_BOB
                 + REMARK_DESC_BOB, new AddCommand(expectedPerson));
 
         expectedPerson = new PersonBuilder(AMY_NAME_CAPS).withBirthday("").build();
@@ -396,7 +407,8 @@ public class AddCommandParserTest {
                 + EMAIL_DESC_AMY
                 + ADDRESS_DESC_AMY
                 + FAMILY_DESC_AMY
-                + TAG_DESC_AMY, new AddCommand(expectedPerson));
+                + TAG_DESC_AMY
+                + HOUSINGTYPE_DESC_AMY, new AddCommand(expectedPerson));
     }
 
     @Test
@@ -404,12 +416,12 @@ public class AddCommandParserTest {
         Person expectedPerson = new PersonBuilder(AMY_NAME_CAPS).build();
         String validExpectedNonCapitalizedAmyString =
                 NAME_DESC_AMY_NON_CAPS + PHONE_DESC_AMY + INCOME_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY + BIRTHDAY_DESC_AMY;
+                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY + HOUSINGTYPE_DESC_AMY + BIRTHDAY_DESC_AMY;
         assertParseSuccess(parser, validExpectedNonCapitalizedAmyString, new AddCommand(expectedPerson));
 
         String validExpectedVaryingCapitalizedAmyString =
                 NAME_DESC_AMY_VARYING_CAPS + PHONE_DESC_AMY + INCOME_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY + BIRTHDAY_DESC_AMY;
+                + ADDRESS_DESC_AMY + FAMILY_DESC_AMY + TAG_DESC_AMY + HOUSINGTYPE_DESC_AMY + BIRTHDAY_DESC_AMY;
         assertParseSuccess(parser, validExpectedVaryingCapitalizedAmyString, new AddCommand(expectedPerson));
     }
 
@@ -425,7 +437,7 @@ public class AddCommandParserTest {
                                    + PHONE_DESC_BOB
                                    + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid phone
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "phone") + Phone.MESSAGE_CONSTRAINTS;
@@ -433,14 +445,14 @@ public class AddCommandParserTest {
                            NAME_DESC_BOB + INVALID_PHONE_DESC
                                    + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid income
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "income") + Income.MESSAGE_CONSTRAINTS;
         assertParseFailure(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_INCOME_DESC + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
 
         // invalid email
@@ -449,7 +461,7 @@ public class AddCommandParserTest {
                            NAME_DESC_BOB + PHONE_DESC_BOB
                                    + INCOME_DESC_BOB + INVALID_EMAIL_DESC + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
                                    + CommandTestUtil.TAG_DESC_BOB
-                                   + TAG_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid address
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "address")
@@ -458,7 +470,7 @@ public class AddCommandParserTest {
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB
                                    + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC + FAMILY_DESC_BOB
                                    + CommandTestUtil.TAG_DESC_BOB
-                                   + TAG_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB,
                            expectedFailureMessageFormatted);
 
         // invalid family
@@ -466,14 +478,14 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
                                    + ADDRESS_DESC_BOB + INVALID_FAMILY_DESC
-                                   + TAG_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid tag
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "tags") + Tag.MESSAGE_CONSTRAINTS;
         assertParseFailure(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB
                                    + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + INVALID_TAG_DESC + TAG_DESC_BOB
+                                   + INVALID_TAG_DESC + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB
                                    + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid birthday
@@ -482,7 +494,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB
                                    + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + INVALID_BIRTHDAY_DESC, expectedFailureMessageFormatted);
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + INVALID_BIRTHDAY_DESC, expectedFailureMessageFormatted);
 
     }
 
@@ -501,7 +513,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                            INVALID_NAME_DESC + PHONE_DESC_BOB + INCOME_DESC_BOB
                                    + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC
-                                   + FAMILY_DESC_BOB + TAG_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + FAMILY_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB,
                            expectedFailureMessageFormatted);
 
         // three invalid values both failures reported
@@ -518,7 +530,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                            INVALID_NAME_DESC + INVALID_PHONE_DESC + INCOME_DESC_BOB
                                    + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB,
                            expectedFailureMessageFormatted);
 
         // Four invalid values both failures reported
@@ -538,7 +550,7 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                            INVALID_NAME_DESC + INVALID_PHONE_DESC + INCOME_DESC_BOB
                                    + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + INVALID_BIRTHDAY_DESC,
+                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + INVALID_BIRTHDAY_DESC,
                            expectedFailureMessageFormatted);
     }
 }

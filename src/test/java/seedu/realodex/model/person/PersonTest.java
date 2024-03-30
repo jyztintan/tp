@@ -128,6 +128,7 @@ public class PersonTest {
                 + ", address=" + ALICE.getAddress()
                 + ", family=" + ALICE.getFamily()
                 + ", tags=" + ALICE.getTags()
+                + ", housingType=" + ALICE.getHousingType()
                 + ", remark=" + ALICE.getRemark()
                 + ", birthday=" + ALICE.getBirthday() + "}";
         assertEquals(expected, ALICE.toString());

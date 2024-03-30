@@ -10,6 +10,8 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL_CAPS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY_CAPS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE_CAPS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME_CAPS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
@@ -85,6 +87,9 @@ public class CommandTestUtil {
     public static final String TAG_DESC_BOB = " " + PREFIX_TAG + VALID_TAG_BOB;
     public static final String TAG_DESC_BOB_PREFIX_CAPS = " " + PREFIX_TAG_CAPS + VALID_TAG_BOB;
     public static final String TAG_DESC_AMY = " " + PREFIX_TAG + VALID_TAG_AMY;
+    public static final String HOUSINGTYPE_DESC_BOB = " " + PREFIX_HOUSINGTYPE + VALID_HOUSINGTYPE_BOB;
+    public static final String HOUSINGTYPE_DESC_AMY = " " + PREFIX_HOUSINGTYPE + VALID_HOUSINGTYPE_AMY;
+    public static final String HOUSINGTYPE_DESC_AMY_PREFIX_CAPS = " " + PREFIX_HOUSINGTYPE_CAPS + VALID_HOUSINGTYPE_AMY;
     public static final String REMARK_DESC_AMY = " " + PREFIX_REMARK + VALID_REMARK_AMY;
     public static final String REMARK_DESC_BOB = " " + PREFIX_REMARK + VALID_REMARK_BOB;
     public static final String REMARK_DESC_BOB_PREFIX_CAPS = " " + PREFIX_REMARK_CAPS + VALID_REMARK_BOB;
