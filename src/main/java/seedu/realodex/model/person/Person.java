@@ -115,7 +115,8 @@ public class Person {
                 && family.equals(otherPerson.family)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
-                && remark.equals(otherPerson.remark);
+                && remark.equals(otherPerson.remark)
+                && birthday.equals(otherPerson.birthday);
     }
 
     @Override

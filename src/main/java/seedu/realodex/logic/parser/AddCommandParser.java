@@ -101,6 +101,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 .parseBirthdayReturnStored(argMultimap
                                                    .getValueOrDefault(PREFIX_BIRTHDAY)
                                                    .orElseThrow());
+        birthdayStored.buildErrorMessage(errorMessageBuilder, "birthday");
 
 
         // If any parsing operation fails, throw a ParseException with the accumulated error messages
