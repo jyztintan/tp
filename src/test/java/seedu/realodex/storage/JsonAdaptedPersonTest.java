@@ -131,7 +131,7 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_nullAddress_throwsIllegalValueException() {
         JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_INCOME, VALID_EMAIL, null,
-                                                         VALID_FAMILY, VALID_TAGS, VALID_HOUSINGTYPE, VALID_REMARK);
+                                                         VALID_FAMILY, VALID_TAGS, VALID_HOUSINGTYPE, VALID_REMARK, VALID_BIRTHDAY);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -174,7 +174,7 @@ public class JsonAdaptedPersonTest {
     public void toModelType_invalidBirthday_throwsIllegalValueException() {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_INCOME, VALID_EMAIL, VALID_ADDRESS,
-                                      VALID_FAMILY, VALID_TAGS, VALID_REMARK, INVALID_BIRTHDAY);
+                                      VALID_FAMILY, VALID_TAGS, VALID_HOUSINGTYPE, VALID_REMARK, INVALID_BIRTHDAY);
         String expectedMessage = Birthday.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -188,6 +188,7 @@ public class JsonAdaptedPersonTest {
                                                          VALID_ADDRESS,
                                                          VALID_FAMILY,
                                                          VALID_TAGS,
+                                                         VALID_HOUSINGTYPE,
                                                          VALID_REMARK,
                                                          null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Birthday.class.getSimpleName());
@@ -202,7 +203,7 @@ public class JsonAdaptedPersonTest {
     public void toModelType_invalidHousingType_throwsIllegalValueException() {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_INCOME, VALID_EMAIL, VALID_ADDRESS,
-                                      VALID_FAMILY, VALID_TAGS, INVALID_HOUSINGTYPE, VALID_REMARK);
+                                      VALID_FAMILY, VALID_TAGS, INVALID_HOUSINGTYPE, VALID_REMARK, VALID_BIRTHDAY);
         String expectedMessage = "Housing type is invalid";
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }

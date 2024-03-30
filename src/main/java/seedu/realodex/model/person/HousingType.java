@@ -10,7 +10,7 @@ import static seedu.realodex.commons.util.AppUtil.checkArgument;
 public class HousingType {
 
     public static final String MESSAGE_CONSTRAINTS = "Housing type should be either 'HDB', 'CONDOMINIUM', "
-            + "'LANDED_PROPERTY' or 'GOOD_CLASS_BUNGALOW'";
+            + "'LANDED PROPERTY' or 'GOOD CLASS BUNGALOW'";
     public static final String VALIDATION_REGEX = "[\\p{Alnum} ]+";
     private House housingType;
 
@@ -29,7 +29,7 @@ public class HousingType {
     public HousingType(String housingType) {
         requireNonNull(housingType);
         checkArgument(isValidHousingType(housingType), MESSAGE_CONSTRAINTS);
-        this.housingType = House.valueOf(housingType.toUpperCase());
+        this.housingType = House.valueOf(housingType.toUpperCase().replace(" ", "_"));
     }
 
     /**
@@ -45,12 +45,12 @@ public class HousingType {
     }
 
     /**
-     * Returns a string representation of the family size with additional descriptive text.
+     * Returns a string representation of the housing type with additional descriptive text.
      *
      * @return A string representation with descriptive text.
      */
     public String toStringWithRepresentation() {
-        return "Preferred housing type is " + housingType;
+        return "Preferred housing type is " + housingType.toString();
     }
 
     @Override
@@ -72,12 +72,4 @@ public class HousingType {
     public int hashCode() {
         return housingType.hashCode();
     }
-
-    /**
-     * Format state as text for viewing.
-     */
-    public String toString() {
-        return housingType.toString();
-    }
-
 }

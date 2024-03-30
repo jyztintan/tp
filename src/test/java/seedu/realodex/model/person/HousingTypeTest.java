@@ -14,7 +14,7 @@ public class HousingTypeTest {
     }
 
     @Test
-    public void constructor_invalidTagName_throwsIllegalArgumentException() {
+    public void constructor_invalidHousingType_throwsIllegalArgumentException() {
         String invalidHousingType = "";
         assertThrows(IllegalArgumentException.class, () -> new HousingType(invalidHousingType));
     }
