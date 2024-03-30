@@ -3,9 +3,8 @@ package seedu.realodex.model.person.sorting;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.realodex.model.person.Person;
-import seedu.realodex.model.person.Birthday;
-import seedu.realodex.model.person.sorting.BirthdayComparator;
 import seedu.realodex.testutil.PersonBuilder;
 
 public class BirthdayComparatorTest {
