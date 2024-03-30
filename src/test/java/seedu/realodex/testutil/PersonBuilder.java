@@ -28,7 +28,7 @@ public class PersonBuilder {
     public static final String DEFAULT_FAMILY = "4";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final Tag DEFAULT_TAG = new Tag("buyer");
-    public static final String DEFAULT_HOUSINGTYPE = "";
+    public static final String DEFAULT_HOUSINGTYPE = "HDB";
     public static final String DEFAULT_REMARK = "";
     public static final String DEFAULT_BIRTHDAY = "";
 

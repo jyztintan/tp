@@ -55,6 +55,8 @@ public class CommandTestUtil {
     public static final String VALID_FAMILY_BOB = "4";
     public static final String VALID_TAG_AMY = "buyer";
     public static final String VALID_TAG_BOB = "seller";
+    public static final String VALID_HOUSINGTYPE_AMY = "HDB";
+    public static final String VALID_HOUSINGTYPE_BOB = "Condominium";
     public static final String VALID_REMARK_AMY = "This is a remark";
     public static final String VALID_REMARK_BOB = "Testing remark";
     public static final String VALID_BIRTHDAY_AMY = "6Jun2006";

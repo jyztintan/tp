@@ -148,6 +148,10 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
+        if (housingType == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                                                          HousingType.class.getSimpleName()));
+        }
         final HousingType modelHousingType = new HousingType(housingType);
 
         final Remark modelRemark = new Remark(remark);
