@@ -1,14 +1,12 @@
 package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.realodex.logic.commands.FilterCommand;
+import static seedu.realodex.logic.parser.CliSyntax.*;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.PredicateProducer;
@@ -118,9 +116,9 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      * Validates name keyphrase if the present prefix is for a name. Each keyphrase must conform
      * to Name constraints.
      *
-     * @param presentPrefix The prefix to check if it's tag-related.
-     * @param keyphrases The list of keyphrases representing potential tags.
-     * @throws ParseException if any tag keyphrase is invalid.
+     * @param presentPrefix The prefix to check if it's name-related.
+     * @param keyphrases The list of keyphrases representing potential names.
+     * @throws ParseException if any name keyphrase is invalid.
      */
     private void checkValidNameIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
         if (!presentPrefix.equals(PREFIX_NAME)) {
@@ -143,6 +141,22 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             return;
         }
         ParserUtil.parseTags(keyphrases);
+    }
+
+    /**
+     * Validates month keyphrase if the present prefix is for a birthday. Each keyphrase must conform
+     * to the format "MMM".
+     *
+     * @param presentPrefix The prefix to check if it's month-related.
+     * @param keyphrases The list of keyphrases representing potential months.
+     * @throws ParseException if any month keyphrase is invalid.
+     */
+    private void checkValidBirthdayIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+        if (!presentPrefix.equals(PREFIX_BIRTHDAY)) {
+            return;
+        }
+        String name = keyphrases.get(keyphrases.size() - 1);
+        ParserUtil.parseMonth(name);
     }
 
 }
