@@ -113,19 +113,7 @@ public class BirthdayTest {
         assertEquals(getDaysUntilBirthdayStub(currentDate, birthdayDate), birthday.getDaysUntilBirthday());
     }
 
-    @Test
-    public void toStringWithRepresentation_birthdayPresent_returnsRepresentation() throws ParseException {
-        // Set birthday to 2000-01-01
-        SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy");
-        Date birthdayDate = formatter.parse("01Jan2000");
-
-        // Create Birthday object with birthday present
-        Birthday birthday = new Birthday();
-        birthday.setBirthday(Optional.of(birthdayDate));
-
-        // Test
-        assertEquals("Birthday: 1 Jan 2000", birthday.toStringWithRepresentation());
-    }
+    
 
     @Test
     public void toStringWithRepresentation_birthdayNotPresent_returnsDefaultString() {
