@@ -17,11 +17,12 @@ import seedu.realodex.commons.core.LogsCenter;
 public class Birthday {
 
     public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format\nDate "
-            + "should also not be in future years and no earlier than year 1000!";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format\n"
+            + "A valid date should be given, and it cannot be in the future and no earlier than year 1000.";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
+
     public final Optional<Date> birthday;
     /**
      * Constructs a {@code Birthday}.
@@ -67,27 +68,37 @@ public class Birthday {
             SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
             formatter.setLenient(false);
             Date parsedDate = formatter.parse(birthday.trim());
+            Date currentDate = new Date();
 
-            // Validate the month (1-12)
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(parsedDate);
-            int month = cal.get(Calendar.MONTH);
-            if (month >= Calendar.JANUARY && month <= Calendar.DECEMBER) {
-                // Validate the day (1-31)
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                if (day >= 1 && day <= 31) {
-                    // Validate the year (e.g., not in the future)
-                    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-                    int year = cal.get(Calendar.YEAR);
-                    if (year >= 1000 && year <= currentYear) {
-                        return true;
-                    }
-                }
+            if (!(parsedDate.after(currentDate)) && defensiveCheckIsValidBirthday(parsedDate)) {
+                return true;
             }
             return false;
+
         } catch (ParseException e) {
             return false;
         }
+    }
+
+    private static boolean defensiveCheckIsValidBirthday(Date parsedDate) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(parsedDate);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        if (!(year >= 1000 && year <= currentYear)) {
+            return false;
+        }
+        if (!(month >= Calendar.JANUARY && month <= Calendar.DECEMBER)) {
+            return false;
+        }
+        int maxDaysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        if (!(day >= 1 && day <= maxDaysInMonth)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
