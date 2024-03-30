@@ -1,7 +1,7 @@
 package seedu.realodex.logic.commands;
 
 import javafx.collections.ObservableList;
-import seedu.realodex.commons.util.ToStringBuilder;
+//import seedu.realodex.commons.util.ToStringBuilder;
 import seedu.realodex.logic.commands.exceptions.CommandException;
 import seedu.realodex.model.Model;
 import seedu.realodex.model.Realodex;
@@ -41,7 +41,7 @@ public class SortCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
-    /**
+    /*/**
      * Returns a string representation of this command.
      *
      * @return a string representation of this command
