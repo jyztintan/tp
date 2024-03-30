@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
+//@@author 4llysa
 public class BirthdayTest {
 
     @Test
@@ -199,6 +200,5 @@ public class BirthdayTest {
         toReturn.set(Calendar.MILLISECOND, 0);
         return toReturn;
     }
-
-
 }
+//@@author

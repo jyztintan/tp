@@ -14,6 +14,7 @@ import seedu.realodex.commons.core.LogsCenter;
 /**
  * Represents a Birthday in the Realodex
  */
+//@@author 4llysa
 public class Birthday {
 
     public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
@@ -199,3 +200,4 @@ public class Birthday {
     }
 
 }
+//@@author
