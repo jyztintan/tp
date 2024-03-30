@@ -1,17 +1,16 @@
 package seedu.realodex.logic.commands;
 
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
-
 import javafx.collections.ObservableList;
 import seedu.realodex.commons.util.ToStringBuilder;
-import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.exceptions.CommandException;
 import seedu.realodex.model.Model;
 import seedu.realodex.model.Realodex;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.sorting.BirthdayComparator;
 
+/**
+ * Command to sort clients by their birthday.
+ */
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
 
@@ -25,15 +24,28 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Sorted list by days to their birthday!";
 
+    /**
+     * Executes the sort command to sort clients by their birthday.
+     *
+     * @param model the current model of the application
+     * @return the result of the execution
+     * @throws CommandException if an error occurs during execution
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        ObservableList<Person> copiedInternalListForSorting = model.getCopyOfInternalListOfUniquePersonsList();
         Realodex realodexToUpdate = (Realodex) model.getRealodex();
+        ObservableList<Person> copiedInternalListForSorting =
+                realodexToUpdate.getCopyOfInternalListOfUniquePersonsList();
         copiedInternalListForSorting.sort(new BirthdayComparator());
         realodexToUpdate.setPersons(copiedInternalListForSorting);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
+    /**
+     * Returns a string representation of this command.
+     *
+     * @return a string representation of this command
+     */
     @Override
     public String toString() {
         return new ToStringBuilder(this)

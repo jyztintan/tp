@@ -99,6 +99,9 @@ public class RealodexParser {
             return new ListCommand();
 
         case SortCommand.COMMAND_WORD:
+            if (isHelp) {
+                return new HelpCommandParser().parse(commandWord);
+            }
             return new SortCommand();
 
         case ExitCommand.COMMAND_WORD:

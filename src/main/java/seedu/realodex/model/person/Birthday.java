@@ -164,9 +164,6 @@ public class Birthday {
 
     /**
      * Returns the number of days from the current system date to the birthday.
-     */
-    /**
-     * Returns the number of days from the current system date to the birthday.
      * If the birthday has already passed this year, it returns the number of days
      * from the current date of next year to the birthday.
      */
@@ -174,14 +171,22 @@ public class Birthday {
         Date currentDate = new Date(); // Current system date
         Date birthdayDate = birthday.orElse(currentDate); // If birthday is not present, use current date
 
-        // Remove a time component from the dates for accurate comparison
+        // Remove time component from the dates for accurate comparison
         Calendar currentCal = returnInstanceOfCalendar(currentDate);
         Calendar birthdayCal = returnInstanceOfCalendar(birthdayDate);
 
+        int currentYear = currentCal.get(Calendar.YEAR);
+        int currentMonth = currentCal.get(Calendar.MONTH);
+        int currentDay = currentCal.get(Calendar.DAY_OF_MONTH);
+        int birthdayMonth = birthdayCal.get(Calendar.MONTH);
+        int birthdayDay = birthdayCal.get(Calendar.DAY_OF_MONTH);
+
         // Check if the birthday has already passed this year
-        if (currentCal.after(birthdayCal)) {
-            // If yes, set the birthday year to next year
-            birthdayCal.add(Calendar.YEAR, 1);
+        if (currentMonth > birthdayMonth || (currentMonth == birthdayMonth && currentDay > birthdayDay)) {
+            // If yes, set the birthday year to the next year
+            birthdayCal.set(Calendar.YEAR, currentYear + 1);
+        } else {
+            birthdayCal.set(Calendar.YEAR, currentYear);
         }
 
         // Calculate the difference in milliseconds between the two dates and convert it to days
@@ -189,8 +194,14 @@ public class Birthday {
         return diff / (1000 * 60 * 60 * 24); // Convert milliseconds to days
     }
 
+
+
+
     public String getDaysUntilBirthdayWithRepresentation() {
-        return getDaysUntilBirthday() + "More Days Till Their Birthday!";
+        if (this.birthday.isPresent()) {
+            return getDaysUntilBirthday() + " More Days Till Their Birthday!";
+        }
+        return "No days till an unspecified birthday!";
     }
 
     private Calendar returnInstanceOfCalendar(Date date) {
@@ -202,4 +213,5 @@ public class Birthday {
         toReturn.set(Calendar.MILLISECOND, 0);
         return toReturn;
     }
+
 }
