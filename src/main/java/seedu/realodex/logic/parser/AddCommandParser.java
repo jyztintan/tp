@@ -94,6 +94,10 @@ public class AddCommandParser implements Parser<AddCommand> {
             errorMessageBuilder.append("Error parsing tags: ").append(e.getMessage()).append("\n");
         }
 
+        ParserUtilResult<HousingType> housingTypeStored =
+                ParserUtil.parseHousingTypeReturnStored(argMultimap.getValue(PREFIX_HOUSINGTYPE).orElseThrow());
+        housingTypeStored.buildErrorMessage(errorMessageBuilder, "housing type");
+
         Remark remark;
 
         remark = ParserUtil.parseRemark(argMultimap.getValueOrDefault(PREFIX_REMARK).orElseThrow());
@@ -117,8 +121,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = emailStored.returnStoredResult();
         Address address = addressStored.returnStoredResult();
         Family family = familyStored.returnStoredResult();
+        HousingType housingType = housingTypeStored.returnStoredResult();
         Birthday birthday = birthdayStored.returnStoredResult();
-        Person person = new Person(name, phone, income, email, address, family, tagList, remark, birthday);
+        Person person = new Person(name, phone, income, email, address, family, tagList, housingType, remark, birthday);
         return new AddCommand(person);
     }
 

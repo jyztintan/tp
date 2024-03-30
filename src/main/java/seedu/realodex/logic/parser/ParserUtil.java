@@ -302,6 +302,22 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String housingType} into a {@code HousingType}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param housingType The housing type string to parse.
+     * @return A ParserUtilResult containing the parsed HousingType or an exception message.
+     */
+    public static ParserUtilResult<HousingType> parseHousingTypeReturnStored(String housingType) {
+        requireNonNull(housingType);
+        String trimmedHousingType = housingType.trim();
+        if (!HousingType.isValidHousingType(trimmedHousingType)) {
+            return new ParserUtilResult<>(HousingType.MESSAGE_CONSTRAINTS, new HousingType(trimmedHousingType));
+        }
+        return new ParserUtilResult<>("", new HousingType(housingType));
+    }
+
+    /**
      * Parses a {@code String remark} into a {@code Remark}.
      * Leading and trailing whitespaces will be trimmed.
      *
