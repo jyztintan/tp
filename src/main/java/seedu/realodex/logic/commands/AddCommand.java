@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -32,6 +33,7 @@ public class AddCommand extends Command {
             + PREFIX_ADDRESS + "ADDRESS "
             + PREFIX_FAMILY + "FAMILY "
             + PREFIX_TAG + "BUYER/SELLER "
+            + PREFIX_HOUSINGTYPE + "HOUSING_TYPE "
             + "[" + PREFIX_REMARK + "REMARK]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
@@ -42,15 +44,16 @@ public class AddCommand extends Command {
             + PREFIX_FAMILY + "4 "
             + PREFIX_TAG + "buyer "
             + PREFIX_TAG + "seller "
+            + PREFIX_HOUSINGTYPE + "HDB "
             + PREFIX_REMARK + "Has 3 cats.";
 
     public static final String MESSAGE_SUCCESS = "New client added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This client already exists in Realodex";
     public static final String MESSAGE_ADD_HELP = "Add Command: Adds a client to Realodex. You may input client"
             + " details in any order. Remarks are optional to input.\n"
-            + "Format: add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK]\n"
+            + "Format: add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSING_TYPE [r/REMARK]\n"
             + "Example: add n/John Doe p/98765432 i/10000 e/johndoe@gmail.com a/Jurong Central 1 f/5 t/Buyer "
-            + "r/Likes Italian food.\n";
+            + "h/HDB r/Likes Italian food.\n";
 
     private final Person toAdd;
 

@@ -126,6 +126,9 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code HousingType} of the {@code Person} that we are building.
+     */
     public PersonBuilder withHousingType(String housingType) {
         this.housingType = new HousingType(housingType);
         return this;

@@ -9,20 +9,29 @@ import static seedu.realodex.commons.util.AppUtil.checkArgument;
  */
 public class HousingType {
 
-    public static final String MESSAGE_CONSTRAINTS = "Housing type should be either 'HDB', 'CONDOMINIUM', " +
-            "'LANDED_PROPERTY' or 'GOOD_CLASS_BUNGALOW'";
+    public static final String MESSAGE_CONSTRAINTS = "Housing type should be either 'HDB', 'CONDOMINIUM', "
+            + "'LANDED_PROPERTY' or 'GOOD_CLASS_BUNGALOW'";
     public static final String VALIDATION_REGEX = "[\\p{Alnum} ]+";
     private House housingType;
+
+    /**
+     * Represents the different types of houses.
+     */
     public enum House {
         HDB, CONDOMINIUM, LANDED_PROPERTY, GOOD_CLASS_BUNGALOW
     }
 
+    /**
+     * Constructs a {@code HousingType}.
+     *
+     * @param housingType A valid housing type.
+     */
     public HousingType(String housingType) {
         requireNonNull(housingType);
         checkArgument(isValidHousingType(housingType), MESSAGE_CONSTRAINTS);
         this.housingType = House.valueOf(housingType.toUpperCase());
     }
-    
+
     /**
      * Returns true if a given string is a valid tag name.
      */
