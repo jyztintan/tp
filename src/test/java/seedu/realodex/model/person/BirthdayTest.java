@@ -5,8 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.testutil.Assert.assertThrows;
 
-import org.junit.jupiter.api.Test;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Optional;
 
+import org.junit.jupiter.api.Test;
 
 public class BirthdayTest {
 
@@ -71,4 +75,145 @@ public class BirthdayTest {
         Birthday birthdayWithDefaultValue = new Birthday("01May2023");
         assertEquals(defaultBirthday, birthdayWithDefaultValue);
     }
+
+    @Test
+    public void getDaysUntilBirthday_birthdayInFuture_returnsCorrectDays() throws java.text.ParseException {
+        // Set current date to 2023-01-01
+        Calendar currentCalendar = Calendar.getInstance();
+        Date currentDate = currentCalendar.getTime();
+
+        // Set birthday to 2023-01-15
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy");
+        Date birthdayDate = formatter.parse("15Jan2023");
+
+        // Create Birthday object with birthday in future
+        Birthday birthday = new Birthday();
+        birthday.setBirthday(Optional.of(birthdayDate));
+
+        // Test
+        assertEquals(getDaysUntilBirthdayStub(currentDate, birthdayDate), birthday.getDaysUntilBirthday());
+    }
+
+    @Test
+    public void getDaysUntilBirthday_birthdayPassedInCurrentYear_returnsCorrectDays() throws java.text.ParseException {
+        // Set current date to 2023-01-01
+        Calendar currentCalendar = Calendar.getInstance();
+        Date currentDate = currentCalendar.getTime();
+
+        // Set birthday to 2022-12-15
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy");
+        Date birthdayDate = formatter.parse("15Dec2022");
+
+        // Create Birthday object with birthday passed in current year
+        Birthday birthday = new Birthday();
+        birthday.setBirthday(Optional.of(birthdayDate));
+
+        // Test
+        assertEquals(getDaysUntilBirthdayStub(currentDate, birthdayDate), birthday.getDaysUntilBirthday());
+    }
+
+    @Test
+    public void toStringWithRepresentation_birthdayPresent_returnsRepresentation() {
+        // Set birthday to 2000-01-01
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2000, Calendar.JANUARY, 1);
+        Date birthdayDate = calendar.getTime();
+
+        // Create Birthday object with birthday present
+        Birthday birthday = new Birthday();
+        birthday.setBirthday(Optional.of(birthdayDate));
+
+        // Test
+        assertEquals("Birthday: 1 Jan 2000", birthday.toStringWithRepresentation());
+    }
+
+    @Test
+    public void toStringWithRepresentation_birthdayNotPresent_returnsDefaultString() {
+        // Create Birthday object with birthday not present
+        Birthday birthday = new Birthday();
+        birthday.setBirthday(Optional.empty());
+
+        // Test
+        assertEquals("No specified Birthday.", birthday.toStringWithRepresentation());
+    }
+
+    @Test
+    public void getDaysUntilBirthdayWithRepresentation_birthdayPresent_returnsDaysRepresentation() {
+        // Set current date to 2023-01-01
+        Calendar currentCalendar = Calendar.getInstance();
+        Date currentDate = currentCalendar.getTime();
+
+        // Set birthday to 2023-01-15
+        Calendar birthdayCalendar = Calendar.getInstance();
+        birthdayCalendar.set(2023, Calendar.JANUARY, 15);
+        Date birthdayDate = birthdayCalendar.getTime();
+
+        // Create Birthday object with birthday present
+        Birthday birthday = new Birthday();
+        birthday.setBirthday(Optional.of(birthdayDate));
+
+        // Test
+        assertEquals(getDaysUntilBirthdayWithRepresentationStub(currentDate, birthdayDate),
+                     birthday.getDaysUntilBirthdayWithRepresentation());
+    }
+
+    @Test
+    public void getDaysUntilBirthdayWithRepresentation_birthdayNotPresent_returnsDefaultString() {
+        // Create Birthday object with birthday not present
+        Birthday birthday = new Birthday();
+        birthday.setBirthday(Optional.empty());
+
+        // Test
+        assertEquals("No days till an unspecified birthday!", birthday.getDaysUntilBirthdayWithRepresentation());
+    }
+
+
+
+
+    /**
+     * Returns the number of days from the current system date to the birthday.
+     * If the birthday has already passed this year, it returns the number of days
+     * from the current date of next year to the birthday.
+     */
+    public Long getDaysUntilBirthdayStub(Date currentDate, Date birthdayDate) {
+        // Remove time component from the dates for accurate comparison
+        Calendar currentCal = returnInstanceOfCalendar(currentDate);
+        Calendar birthdayCal = returnInstanceOfCalendar(birthdayDate);
+
+        int currentYear = currentCal.get(Calendar.YEAR);
+        int currentMonth = currentCal.get(Calendar.MONTH);
+        int currentDay = currentCal.get(Calendar.DAY_OF_MONTH);
+        int birthdayMonth = birthdayCal.get(Calendar.MONTH);
+        int birthdayDay = birthdayCal.get(Calendar.DAY_OF_MONTH);
+
+        // Check if the birthday has already passed this year
+        if (currentMonth > birthdayMonth || (currentMonth == birthdayMonth && currentDay > birthdayDay)) {
+            // If yes, set the birthday year to the next year
+            birthdayCal.set(Calendar.YEAR, currentYear + 1);
+        } else {
+            birthdayCal.set(Calendar.YEAR, currentYear);
+        }
+
+        // Calculate the difference in milliseconds between the two dates and convert it to days
+        long diff = birthdayCal.getTimeInMillis() - currentCal.getTimeInMillis();
+        return diff / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+    }
+
+    public String getDaysUntilBirthdayWithRepresentationStub(Date currentDate, Date birthdayDate) {
+        return getDaysUntilBirthdayStub(currentDate, birthdayDate) + " More Days Till Their Birthday!";
+
+    }
+
+
+    private Calendar returnInstanceOfCalendar(Date date) {
+        Calendar toReturn = Calendar.getInstance();
+        toReturn.setTime(date);
+        toReturn.set(Calendar.HOUR_OF_DAY, 0);
+        toReturn.set(Calendar.MINUTE, 0);
+        toReturn.set(Calendar.SECOND, 0);
+        toReturn.set(Calendar.MILLISECOND, 0);
+        return toReturn;
+    }
+
+
 }

@@ -1,8 +1,14 @@
 package seedu.realodex.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.realodex.testutil.TypicalPersons.getTypicalRealodex;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import seedu.realodex.logic.commands.SortCommand;
+
 import seedu.realodex.logic.commands.exceptions.CommandException;
 import seedu.realodex.model.Model;
 import seedu.realodex.model.ModelManager;
@@ -10,11 +16,6 @@ import seedu.realodex.model.Realodex;
 import seedu.realodex.model.UserPrefs;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.sorting.BirthdayComparator;
-import java.util.ArrayList;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.realodex.testutil.TypicalPersons.getTypicalRealodex;
 
 public class SortCommandTest {
     private final Model model = new ModelManager(getTypicalRealodex(), new UserPrefs());

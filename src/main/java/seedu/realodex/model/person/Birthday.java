@@ -22,7 +22,7 @@ public class Birthday {
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
-    public final Optional<Date> birthday;
+    private Optional<Date> birthday;
 
     /**
      * Constructs a {@code Birthday}.
@@ -55,6 +55,23 @@ public class Birthday {
             logger.fine("This part of birthday should not be executed");
         }
         this.birthday = birthdayDate;
+    }
+    /**
+     * Returns the optional birthday date.
+     *
+     * @return The optional birthday date.
+     */
+    public Optional<Date> getBirthday() {
+        return birthday;
+    }
+
+    /**
+     * Sets the optional birthday date.
+     *
+     * @param birthday The optional birthday date to set.
+     */
+    public void setBirthday(Optional<Date> birthday) {
+        this.birthday = birthday;
     }
 
     /**
@@ -89,39 +106,6 @@ public class Birthday {
         } catch (ParseException e) {
             return false;
         }
-    }
-
-    /**
-     * Returns the day of the birthday.
-     */
-    public int getDay() {
-        return birthday.map(date -> {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            return cal.get(Calendar.DAY_OF_MONTH);
-        }).orElse(0); // Return 0 if no birthday date is present
-    }
-
-    /**
-     * Returns the month of the birthday.
-     */
-    public int getMonth() {
-        return birthday.map(date -> {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            return cal.get(Calendar.MONTH) + 1; // Add 1 because Calendar months are zero-based
-        }).orElse(0); // Return 0 if no birthday date is present
-    }
-
-    /**
-     * Returns the year of the birthday.
-     */
-    public int getYear() {
-        return birthday.map(date -> {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            return cal.get(Calendar.YEAR);
-        }).orElse(0); // Return 0 if no birthday date is present
     }
 
     @Override
