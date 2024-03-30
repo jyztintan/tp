@@ -18,6 +18,7 @@ import seedu.realodex.logic.commands.ExitCommand;
 import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.commands.HelpCommand;
 import seedu.realodex.logic.commands.ListCommand;
+import seedu.realodex.logic.commands.SortCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -145,6 +146,19 @@ public class RealodexParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_sort_help() throws Exception {
+        assertTrue(parser.parseCommand("sort help") instanceof HelpCommand);
+        HelpCommand expected = new HelpCommand("sort");
+        assertEquals(parser.parseCommand("sort help"), expected);
+    }
+
+    @Test
+    public void parseCommand_sort() throws Exception {
+        assertTrue(parser.parseCommand(SortCommand.COMMAND_WORD) instanceof SortCommand);
+        assertTrue(parser.parseCommand(SortCommand.COMMAND_WORD ) instanceof SortCommand);
     }
 
     @Test
