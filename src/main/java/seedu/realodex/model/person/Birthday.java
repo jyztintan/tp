@@ -157,4 +157,10 @@ public class Birthday {
     public String toStringWithRepresentation() {
         return birthday.map(date -> "Birthday: " + DATE_FORMAT.format(date)).orElse("No specified Birthday.");
     }
+
+    public Date getDate() {
+        return birthday.orElse(null);
+    }
+
+    
 }

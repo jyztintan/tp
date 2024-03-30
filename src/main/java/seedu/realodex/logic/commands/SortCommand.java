@@ -3,8 +3,11 @@ package seedu.realodex.logic.commands;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 
+import javafx.collections.ObservableList;
+import seedu.realodex.commons.util.ToStringBuilder;
 import seedu.realodex.logic.commands.exceptions.CommandException;
 import seedu.realodex.model.Model;
+import seedu.realodex.model.person.Person;
 
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
@@ -19,6 +22,13 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        ObservableList<Person> copiedInternalListForSorting = model.getCopyOfInternalListOfUniquePersonsList();
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .toString();
     }
 }
