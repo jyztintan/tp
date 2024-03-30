@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.realodex.commons.exceptions.IllegalValueException;
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.Income;
@@ -27,6 +28,8 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_FAMILY = "0";
     private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_BIRTHDAY = "01May20022";
+
 
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
@@ -164,5 +167,32 @@ public class JsonAdaptedPersonTest {
                                       VALID_FAMILY, invalidTags, VALID_REMARK, VALID_BIRTHDAY);
         assertThrows(IllegalValueException.class, person::toModelType);
     }
+    @Test
+    public void toModelType_invalidBirthday_throwsIllegalValueException() {
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_INCOME, VALID_EMAIL, VALID_ADDRESS,
+                                      VALID_FAMILY, VALID_TAGS, VALID_REMARK, INVALID_BIRTHDAY);
+        String expectedMessage = Birthday.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullBirthday_throwsIllegalValueException() {
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME,
+                                                         VALID_PHONE,
+                                                         VALID_INCOME,
+                                                         VALID_EMAIL,
+                                                         VALID_ADDRESS,
+                                                         VALID_FAMILY,
+                                                         VALID_TAGS,
+                                                         VALID_REMARK,
+                                                         null);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Birthday.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+    }
+
+
+
+
 
 }

@@ -62,7 +62,7 @@ class JsonAdaptedPerson {
             this.tags.addAll(tags);
         }
         this.remark = Objects.requireNonNullElse(remark, "");
-        this.birthday = Objects.requireNonNullElse(birthday, "");
+        this.birthday = birthday;
     }
 
     /**
@@ -144,8 +144,14 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final Remark modelRemark = new Remark(remark);
+        if (birthday == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                                                          Birthday.class.getSimpleName()));
+        }
+        if (!Birthday.isValidBirthday(birthday)) {
+            throw new IllegalValueException(Birthday.MESSAGE_CONSTRAINTS);
+        }
         final Birthday modelBirthday = new Birthday(birthday);
-
         return new Person(modelName, modelPhone, modelIncome, modelEmail, modelAddress, modelFamily,
                 modelTags, modelRemark, modelBirthday);
     }

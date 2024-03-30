@@ -1,5 +1,6 @@
 package seedu.realodex.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.testutil.Assert.assertThrows;
@@ -32,9 +33,16 @@ public class BirthdayTest {
         assertFalse(Birthday.isValidBirthday("29Feb2023")); // not a leap year
         assertFalse(Birthday.isValidBirthday("1-jan-2001")); // not supposed to have '-'
 
-        // valid email
+        // valid date
         assertTrue(Birthday.isValidBirthday("29Feb2024")); // leap year
         assertTrue(Birthday.isValidBirthday("12May2003"));
+        assertTrue(Birthday.isValidBirthday("08Aug1888"));
+
+        // invalid dates
+        assertFalse(Birthday.isValidBirthday("01May2009233"));
+        assertFalse(Birthday.isValidBirthday("0"));
+        assertFalse(Birthday.isValidBirthday("1jan2032")); //cant be in future
+
     }
 
     @Test
@@ -55,5 +63,12 @@ public class BirthdayTest {
 
         // different values -> returns false
         assertFalse(birthday.equals(new Birthday("13mar1706")));
+    }
+
+    @Test
+    public void birthdayDefaultConstructor_equalsDefault() {
+        Birthday defaultBirthday = new Birthday();
+        Birthday birthdayWithDefaultValue = new Birthday("01May2023");
+        assertEquals(defaultBirthday, birthdayWithDefaultValue);
     }
 }

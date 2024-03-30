@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.realodex.logic.parser.ParserUtil.parseAddressReturnStored;
+import static seedu.realodex.logic.parser.ParserUtil.parseBirthdayReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parseEmailReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parseFamilyReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parseIncomeReturnStored;
@@ -21,6 +22,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.Income;
@@ -54,6 +56,8 @@ public class ParserUtilTest {
 
     private static final String VALID_REMARK_ONE = "I am Denzel Washington";
     private static final String VALID_REMARK_TWO = "I am Al Pacino";
+    private static final String VALID_BIRTHDAY = "01May2009";
+    private static final String INVALID_BIRTHDAY = "01May20090";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -439,5 +443,20 @@ public class ParserUtilTest {
         String remarkWithWhitespace = WHITESPACE + VALID_REMARK_ONE + WHITESPACE;
         Remark expectedRemark = new Remark(VALID_REMARK_ONE);
         assertEquals(expectedRemark, ParserUtil.parseRemark(remarkWithWhitespace));
+    }
+
+    @Test
+    public void parseBirthday_validBirthday_returnsParserUtilBirthday() {
+        String validBirthday = VALID_BIRTHDAY;
+        ParserUtilResult<Birthday> birthdayStored = parseBirthdayReturnStored(validBirthday);
+        assertEquals(birthdayStored.returnStoredResult(), new Birthday(validBirthday));
+        assertEquals(birthdayStored.returnExceptionMessage(), "");
+    }
+
+    @Test
+    public void parseBirthday_invalidBirthday_returnsParserUtilBirthday() {
+        ParserUtilResult<Birthday> birthdayStored = parseBirthdayReturnStored(INVALID_BIRTHDAY);
+        assertEquals(birthdayStored.returnStoredResult(), new Birthday());
+        assertEquals(birthdayStored.returnExceptionMessage(), Birthday.MESSAGE_CONSTRAINTS);
     }
 }
