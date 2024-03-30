@@ -162,5 +162,40 @@ public class Birthday {
         return birthday.orElse(null);
     }
 
-    
+    /**
+     * Returns the number of days from the current system date to the birthday.
+     */
+    /**
+     * Returns the number of days from the current system date to the birthday.
+     * If the birthday has already passed this year, it returns the number of days
+     * from the current date of next year to the birthday.
+     */
+    public Long getDaysUntilBirthday() {
+        Date currentDate = new Date(); // Current system date
+        Date birthdayDate = birthday.orElse(currentDate); // If birthday is not present, use current date
+
+        // Remove a time component from the dates for accurate comparison
+        Calendar currentCal = returnInstanceOfCalendar(currentDate);
+        Calendar birthdayCal = returnInstanceOfCalendar(birthdayDate);
+
+        // Check if the birthday has already passed this year
+        if (currentCal.after(birthdayCal)) {
+            // If yes, set the birthday year to next year
+            birthdayCal.add(Calendar.YEAR, 1);
+        }
+
+        // Calculate the difference in milliseconds between the two dates and convert it to days
+        long diff = birthdayCal.getTimeInMillis() - currentCal.getTimeInMillis();
+        return diff / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+    }
+
+    private Calendar returnInstanceOfCalendar(Date date) {
+        Calendar toReturn = Calendar.getInstance();
+        toReturn.setTime(date);
+        toReturn.set(Calendar.HOUR_OF_DAY, 0);
+        toReturn.set(Calendar.MINUTE, 0);
+        toReturn.set(Calendar.SECOND, 0);
+        toReturn.set(Calendar.MILLISECOND, 0);
+        return toReturn;
+    }
 }
