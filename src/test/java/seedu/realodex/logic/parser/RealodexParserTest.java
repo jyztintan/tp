@@ -98,7 +98,22 @@ public class RealodexParserTest {
     }
 
     @Test
-    public void parseCommand_filterByTags() throws Exception {
+    public void parseCommand_filterByBuyerTag() throws Exception {
+        Set<Tag> tagString = Set.of(new Tag("buyer"));
+        FilterCommand command = (FilterCommand) parser.parseCommand(
+                FilterCommand.COMMAND_WORD + " t/buyer ");
+        assertEquals(new FilterCommand(new TagsMatchPredicate(tagString)), command);
+    }
+
+    @Test
+    public void parseCommand_filterBySellerTags() throws Exception {
+        Set<Tag> tagString = Set.of(new Tag("seller"));
+        FilterCommand command = (FilterCommand) parser.parseCommand(
+                FilterCommand.COMMAND_WORD + " t/seller");
+        assertEquals(new FilterCommand(new TagsMatchPredicate(tagString)), command);
+    }
+    @Test
+    public void parseCommand_filterByBuyerAndSellerTags() throws Exception {
         Set<Tag> tagString = Set.of(new Tag("buyer"), new Tag("seller"));
         FilterCommand command = (FilterCommand) parser.parseCommand(
                 FilterCommand.COMMAND_WORD + " t/buyer " + "t/seller");
