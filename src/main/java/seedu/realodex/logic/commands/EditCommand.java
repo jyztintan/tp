@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -27,6 +28,7 @@ import seedu.realodex.model.Model;
 import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -52,6 +54,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_FAMILY + "FAMILY] "
             + "[" + PREFIX_TAG + "TAG]"
+            + "[" + PREFIX_HOUSINGTYPE + "HOUSINGTYPE]"
             + "[" + PREFIX_REMARK + "REMARK]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -60,7 +63,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_HELP = "Edit Command: Edits a client's particulars through their "
             + "index number shown in the list.\n"
             + "Format: edit INDEX NUMBER [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] "
-            + "[t/TAG] [r/REMARK]\n"
+            + "[t/TAG] [h/HOUSING_TYPE] [r/REMARK]\n"
             + "Example: edit 3 n/John e/john@gmail.com f/5\n";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Client: %1$s";
@@ -117,11 +120,12 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Family updatedFamily = editPersonDescriptor.getFamily().orElse(personToEdit.getFamily());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        HousingType updatedHousingType = personToEdit.getHousingType();
         Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
 
         return new Person(updatedName, updatedPhone, updatedIncome,
                           updatedEmail, updatedAddress, updatedFamily,
-                          updatedTags, updatedRemark);
+                          updatedTags, updatedHousingType, updatedRemark);
     }
 
     @Override
@@ -160,6 +164,7 @@ public class EditCommand extends Command {
         private Address address;
         private Family family;
         private Set<Tag> tags;
+        private HousingType housingType;
         private Remark remark;
 
         public EditPersonDescriptor() {}
@@ -176,6 +181,7 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setFamily(toCopy.family);
             setTags(toCopy.tags);
+            setHousingType(toCopy.housingType);
             setRemark(toCopy.remark);
         }
 
@@ -183,7 +189,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, income, email, address, family, tags, remark);
+            return CollectionUtil.isAnyNonNull(name, phone, income, email, address, family, tags, housingType, remark);
         }
 
         public void setName(Name name) {
@@ -249,6 +255,14 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        public void setHousingType(HousingType housingType) {
+            this.housingType = housingType;
+        }
+
+        public Optional<HousingType> getHousingType() {
+            return Optional.ofNullable(housingType);
         }
 
         public void setRemark(Remark remark) {

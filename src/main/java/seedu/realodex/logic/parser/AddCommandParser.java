@@ -4,6 +4,7 @@ import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -18,6 +19,7 @@ import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -37,8 +39,8 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME,
-                                           PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_FAMILY, PREFIX_TAG, PREFIX_REMARK);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_ADDRESS,
+                        PREFIX_FAMILY, PREFIX_TAG, PREFIX_HOUSINGTYPE, PREFIX_REMARK);
 
         if (!arePrefixesPresent(argMultimap,
                                 PREFIX_NAME,
@@ -47,13 +49,14 @@ public class AddCommandParser implements Parser<AddCommand> {
                                 PREFIX_PHONE,
                                 PREFIX_FAMILY,
                                 PREFIX_EMAIL,
-                                PREFIX_TAG)
+                                PREFIX_TAG,
+                                PREFIX_HOUSINGTYPE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL,
-                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_REMARK);
+                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_HOUSINGTYPE, PREFIX_REMARK);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Income income = ParserUtil.parseIncome(argMultimap.getValue(PREFIX_INCOME).get());
@@ -61,9 +64,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Family family = ParserUtil.parseFamily(argMultimap.getValue(PREFIX_FAMILY).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        HousingType housingType = ParserUtil.parseHousingType(argMultimap.getValue(PREFIX_HOUSINGTYPE).get());
         Remark remark = ParserUtil.parseRemark(argMultimap.getRemarkValue(PREFIX_REMARK).get());
 
-        Person person = new Person(name, phone, income, email, address, family, tagList, remark);
+        Person person = new Person(name, phone, income, email, address, family, tagList, housingType, remark);
 
         return new AddCommand(person);
     }

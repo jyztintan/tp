@@ -6,6 +6,7 @@ import java.util.Set;
 import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -26,6 +27,7 @@ public class PersonBuilder {
     public static final String DEFAULT_FAMILY = "4";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final Tag DEFAULT_TAG = new Tag("buyer");
+    public static final String DEFAULT_HOUSINGTYPE = "";
 
     private Name name;
     private Phone phone;
@@ -34,6 +36,7 @@ public class PersonBuilder {
     private Address address;
     private Family family;
     private Set<Tag> tags;
+    private HousingType housingType;
     private Remark remark;
 
     /**
@@ -48,6 +51,7 @@ public class PersonBuilder {
         family = new Family(DEFAULT_FAMILY);
         tags = new HashSet<>();
         tags.add(DEFAULT_TAG);
+        housingType = new HousingType(DEFAULT_HOUSINGTYPE);
         remark = new Remark("");
     }
 
@@ -62,6 +66,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         family = personToCopy.getFamily();
         tags = new HashSet<>(personToCopy.getTags());
+        housingType = personToCopy.getHousingType();
         remark = personToCopy.getRemark();
     }
 
@@ -121,6 +126,10 @@ public class PersonBuilder {
         return this;
     }
 
+    public PersonBuilder withHousingType(String housingType) {
+        this.housingType = new HousingType(housingType);
+        return this;
+    }
     /**
      * Sets the {@code Remark} of the {@code Person} that we are building.
      */
@@ -130,7 +139,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, income, email, address, family, tags, remark);
+        return new Person(name, phone, income, email, address, family, tags, housingType, remark);
     }
 
 }

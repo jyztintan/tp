@@ -4,14 +4,14 @@ import static java.util.Objects.requireNonNull;
 import static seedu.realodex.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Tag in the realodex.
+ * Represents a Housing Type in the realodex.
  * Guarantees: immutable; name is valid as declared in {@link #isValidHousingType(String)}
  */
 public class HousingType {
 
     public static final String MESSAGE_CONSTRAINTS = "Housing type should be either 'HDB', 'CONDOMINIUM', " +
             "'LANDED_PROPERTY' or 'GOOD_CLASS_BUNGALOW'";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String VALIDATION_REGEX = "[\\p{Alnum} ]+";
     private House housingType;
     public enum House {
         HDB, CONDOMINIUM, LANDED_PROPERTY, GOOD_CLASS_BUNGALOW
@@ -35,6 +35,15 @@ public class HousingType {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns a string representation of the family size with additional descriptive text.
+     *
+     * @return A string representation with descriptive text.
+     */
+    public String toStringWithRepresentation() {
+        return "Preferred housing type is " + housingType;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -42,7 +51,7 @@ public class HousingType {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof House)) {
+        if (!(other instanceof HousingType)) {
             return false;
         }
 

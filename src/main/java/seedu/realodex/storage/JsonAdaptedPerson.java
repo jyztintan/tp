@@ -14,6 +14,7 @@ import seedu.realodex.commons.exceptions.IllegalValueException;
 import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -35,6 +36,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final String family;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String housingType;
     private final String remark;
 
     /**
@@ -48,6 +50,7 @@ class JsonAdaptedPerson {
                              @JsonProperty("address") String address,
                              @JsonProperty("family") String family,
                              @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                             @JsonProperty("housingType") String housingType,
                              @JsonProperty("remark") String remark) {
         this.name = name;
         this.phone = phone;
@@ -58,6 +61,7 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
+        this.housingType = housingType;
         this.remark = Objects.requireNonNullElse(remark, "");
     }
 
@@ -74,6 +78,7 @@ class JsonAdaptedPerson {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        housingType = source.getHousingType().toString();
         remark = source.getRemark().toString();
     }
 
@@ -138,9 +143,11 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
+        final HousingType modelHousingType = new HousingType(housingType);
+
         final Remark modelRemark = new Remark(remark);
 
         return new Person(modelName, modelPhone, modelIncome, modelEmail, modelAddress, modelFamily,
-                modelTags, modelRemark);
+                modelTags, modelHousingType, modelRemark);
     }
 }

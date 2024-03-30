@@ -8,6 +8,7 @@
     "address" : "123, Jurong West Ave 6, #08-111",
     "family" : "4",
     "tags" : [ "buyer" ],
+    "housing type" : "HDB",
     "remark" : "this is a remark"
   }, {
     "name" : "Benson Meier",
@@ -17,6 +18,7 @@
     "address" : "311, Clementi Ave 2, #02-25",
     "family" : "4",
     "tags" : [ "seller", "buyer" ],
+    "housing type" : "Condominium",
     "remark" : ""
   }, {
     "name" : "Carl Kurz",
@@ -26,6 +28,7 @@
     "address" : "wall street",
     "family" : "4",
     "tags" : ["buyer"],
+    "housing type" : "Landed property",
     "remark" : "Carl was supposed to start with a K, but the doctor misspelled when he was born"
   }, {
     "name" : "Daniel Meier",
@@ -35,6 +38,7 @@
     "address" : "10th street",
     "family" : "4",
     "tags" : [ "buyer" ],
+    "housing type" : "HDB",
     "remark" : "White VANS"
   }, {
     "name" : "Elle Meyer",
@@ -44,6 +48,7 @@
     "address" : "michegan ave",
     "family" : "4",
     "tags" : [ "buyer"],
+    "housing type" : "Condominium",
     "remark" : ""
   }, {
     "name" : "Fiona Kunz",
@@ -53,6 +58,7 @@
     "address" : "little tokyo",
     "family" : "4",
     "tags" : ["seller" ],
+    "housing type" : "Landed property",
     "remark" : ""
   }, {
     "name" : "George Best",
@@ -62,6 +68,7 @@
     "address" : "4th street",
     "family" : "4",
     "tags" : ["buyer" ],
+    "housing type" : "Good class bungalow",
     "remark" : "Fun fact: George's brother's name is \"The\"."
   } ]
 }

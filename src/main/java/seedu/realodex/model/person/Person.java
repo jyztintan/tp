@@ -25,14 +25,15 @@ public class Person {
     private final Address address;
     private final Family family;
     private final Set<Tag> tags = new HashSet<>();
+    private final HousingType housingType;
     private final Remark remark;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Income income, Email email, Address address,
-                  Family family, Set<Tag> tags, Remark remark) {
-        requireAllNonNull(name, phone, income, email, address, family, tags, remark);
+                  Family family, Set<Tag> tags, HousingType housingType, Remark remark) {
+        requireAllNonNull(name, phone, income, email, address, family, tags, housingType, remark);
         this.name = name;
         this.phone = phone;
         this.income = income;
@@ -40,6 +41,7 @@ public class Person {
         this.address = address;
         this.family = family;
         this.tags.addAll(tags);
+        this.housingType = housingType;
         this.remark = remark;
     }
 
@@ -79,6 +81,13 @@ public class Person {
     }
 
     /**
+     * Returns the housing type of the person.
+     */
+    public HousingType getHousingType() {
+        return housingType;
+    }
+
+    /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
      */
@@ -114,13 +123,14 @@ public class Person {
                 && family.equals(otherPerson.family)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
+                && housingType.equals(otherPerson.housingType)
                 && remark.equals(otherPerson.remark);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, income, email, address, family, tags, remark);
+        return Objects.hash(name, phone, income, email, address, family, tags, housingType, remark);
     }
 
     @Override
@@ -133,6 +143,7 @@ public class Person {
                 .add("address", address)
                 .add("family", family)
                 .add("tags", tags)
+                .add("housingType", housingType)
                 .add("remark", remark)
                 .toString();
     }
