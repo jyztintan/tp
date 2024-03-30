@@ -189,6 +189,10 @@ public class Birthday {
         return diff / (1000 * 60 * 60 * 24); // Convert milliseconds to days
     }
 
+    public String getDaysUntilBirthdayWithRepresentation() {
+        return getDaysUntilBirthday() + "More Days Till Their Birthday!";
+    }
+
     private Calendar returnInstanceOfCalendar(Date date) {
         Calendar toReturn = Calendar.getInstance();
         toReturn.setTime(date);
