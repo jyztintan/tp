@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.testutil.Assert.assertThrows;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -112,8 +111,6 @@ public class BirthdayTest {
         // Test
         assertEquals(getDaysUntilBirthdayStub(currentDate, birthdayDate), birthday.getDaysUntilBirthday());
     }
-
-    
 
     @Test
     public void toStringWithRepresentation_birthdayNotPresent_returnsDefaultString() {
