@@ -178,8 +178,21 @@ public class BirthdayTest {
         assertEquals("Birthday is unspecified!", birthday.getDaysUntilBirthdayWithRepresentation());
     }
 
+    @Test
+    public void hashCodeTest() {
+        Birthday birthday1 = new Birthday("27May2003");
+        Birthday birthday2 = new Birthday("27May2003");
+        Birthday birthday3 = new Birthday("6June2006");
 
+        // same object -> returns true
+        assertTrue(birthday1.hashCode() == birthday1.hashCode());
 
+        // same values -> returns true
+        assertTrue(birthday1.hashCode() == birthday2.hashCode());
+
+        // different values -> returns false
+        assertFalse(birthday1.hashCode() == birthday3.hashCode());
+    }
 
     /**
      * Returns the number of days from the current system date to the birthday.
