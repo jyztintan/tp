@@ -1,33 +1,47 @@
 package seedu.realodex.model.person.predicates;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 import java.util.function.Predicate;
+
+import javax.swing.text.html.Option;
 
 import seedu.realodex.commons.util.ToStringBuilder;
 import seedu.realodex.model.person.Person;
-
+import seedu.realodex.logic.parser.exceptions.ParseException;
 /**
- * Tests that a {@code Person}'s {@code Tag} contains the Tag(s) given.
+ * Tests that a {@code Person}'s {@code Birthday} is in the Month given.
  */
 public class BirthdayIsInMonthPredicate implements Predicate<Person> {
-    private final String month;
-    private final Date month;
-    private final SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
+    private final SimpleDateFormat monthFormat = new SimpleDateFormat("MMM");
+    private final Optional<Calendar> month;
+    public BirthdayIsInMonthPredicate(String monthName) {
+        Optional<Calendar> tempMonth;
+        Date monthDate;
+        try {
+            monthDate = monthFormat.parse(monthName);
+            tempMonth = Optional.of(Calendar.getInstance());
+            tempMonth.get().setTime(monthDate);
+        } catch (java.text.ParseException e) {
+            // will not reach here because check should have been done
+            tempMonth = Optional.empty();
+        }
 
-    public BirthdayIsInMonthPredicate(String monthName) throws ParseException {
-        java.util.Date monthDate = monthFormat.parse(monthName);
-        Calendar cal = Calendar.getInstance();
-        this.keyphrase = keyphrase;
+        this.month = tempMonth;
     }
 
     @Override
     public boolean test(Person person) {
-        String nameInLowerCase = person.getName().fullName.toLowerCase();
-        String keyphraseInLowerCase = keyphrase.toLowerCase();
-        return nameInLowerCase.contains(keyphraseInLowerCase);
+        Calendar personCalendar = Calendar.getInstance();
+        if (person.getBirthday().birthday.isEmpty()) {
+            return false;
+        } else {
+            assert(person.getBirthday().birthday.isPresent());
+            personCalendar.setTime(person.getBirthday().birthday.get());
+            return personCalendar.get(Calendar.MONTH) == month.get().get(Calendar.MONTH);
+        }
     }
 
     @Override
@@ -42,12 +56,12 @@ public class BirthdayIsInMonthPredicate implements Predicate<Person> {
         }
 
         BirthdayIsInMonthPredicate otherBirthdayIsInMonthPredicate = (BirthdayIsInMonthPredicate) other;
-        return month.equals(BirthdayIsInMonthPredicate.month);
+        return month.equals(otherBirthdayIsInMonthPredicate.month);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keyphrase", keyphrase).toString();
+        return new ToStringBuilder(this).add("month", monthFormat.format(month)).toString();
     }
 
 }

@@ -16,7 +16,7 @@ import seedu.realodex.model.person.predicates.PredicateProducer;
  */
 public class FilterCommandParser implements Parser<FilterCommand> {
 
-    private static final Prefix[] POSSIBLE_PREFIXES = { PREFIX_NAME, PREFIX_REMARK, PREFIX_TAG };
+    private static final Prefix[] POSSIBLE_PREFIXES = { PREFIX_NAME, PREFIX_REMARK, PREFIX_TAG, PREFIX_BIRTHDAY };
     /**
      * Parses the given {@code String} of arguments in the context of the FilterCommand
      * and returns a FilterCommand object for execution.
@@ -49,10 +49,10 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             throws ParseException {
         checkValidNameIfApplicable(presentPrefix, keyphrases);
         checkValidTagsIfApplicable(presentPrefix, keyphrases);
+        checkValidBirthdayIfApplicable(presentPrefix, keyphrases);
         PredicateProducer predicateProducer = new PredicateProducer();
         return predicateProducer.createPredicate(presentPrefix, keyphrases);
     }
-
 
     /**
      * Validates the input arguments using various checks to ensure conformity to syntax requirements.
@@ -155,8 +155,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         if (!presentPrefix.equals(PREFIX_BIRTHDAY)) {
             return;
         }
-        String name = keyphrases.get(keyphrases.size() - 1);
-        ParserUtil.parseMonth(name);
+        String month = keyphrases.get(keyphrases.size() - 1);
+        ParserUtil.parseMonth(month);
     }
-
 }

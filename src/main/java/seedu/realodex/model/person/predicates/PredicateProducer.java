@@ -1,9 +1,6 @@
 package seedu.realodex.model.person.predicates;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +10,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 import seedu.realodex.logic.commands.FilterCommand;
+import static seedu.realodex.logic.parser.CliSyntax.*;
 import seedu.realodex.logic.parser.ParserUtil;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
@@ -45,6 +43,8 @@ public class PredicateProducer {
         predicateMap.put(PREFIX_REMARK, keyphrases ->
                 new RemarkContainsKeyphrasePredicate(keyphrases.get(keyphrases.size() - 1)));
         predicateMap.put(PREFIX_TAG, this::createMatchTagsPredicate);
+        predicateMap.put(PREFIX_BIRTHDAY, keyphrases ->
+                new BirthdayIsInMonthPredicate(keyphrases.get(keyphrases.size() - 1)));
     }
 
     /**
@@ -66,7 +66,6 @@ public class PredicateProducer {
         Function<List<String>, Predicate<Person>> predicateCreator = predicateMap.get(prefix);
         assert(predicateCreator != null);
         return predicateCreator.apply(keyphrases);
-
     }
 
     /**
