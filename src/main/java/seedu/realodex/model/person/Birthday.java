@@ -3,6 +3,7 @@ package seedu.realodex.model.person;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import seedu.realodex.commons.core.LogsCenter;
 /**
  * Represents a Birthday in the Realodex
  */
+//@@author 4llysa
 public class Birthday {
 
     public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
@@ -21,8 +23,7 @@ public class Birthday {
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
-
-    public final Optional<Date> birthday;
+    private Optional<Date> birthday;
     /**
      * Constructs a {@code Birthday}.
      *
@@ -54,6 +55,23 @@ public class Birthday {
             logger.fine("This part of birthday should not be executed");
         }
         this.birthday = birthdayDate;
+    }
+    /**
+     * Returns the optional birthday date.
+     *
+     * @return The optional birthday date.
+     */
+    public Optional<Date> getBirthday() {
+        return birthday;
+    }
+
+    /**
+     * Sets the optional birthday date.
+     *
+     * @param birthday The optional birthday date to set.
+     */
+    public void setBirthday(Optional<Date> birthday) {
+        this.birthday = birthday;
     }
 
     /**
@@ -109,10 +127,56 @@ public class Birthday {
      * Format state as text for representation.
      */
     public String toStringWithRepresentation() {
-        if (birthday.isPresent()) {
-            return "Birthday: " + DATE_FORMAT.format(birthday.get());
-        } else {
-            return "No specified Birthday.";
-        }
+        return birthday.map(date -> "Birthday: " + DATE_FORMAT.format(date)).orElse("No specified Birthday.");
     }
+
+    /**
+     * Returns the number of days from the current system date to the birthday.
+     * If the birthday has already passed this year, it returns the number of days
+     * from the current date of next year to the birthday.
+     */
+    public Long getDaysUntilBirthday() {
+        Date currentDate = new Date(); // Current system date
+        Date birthdayDate = birthday.orElse(currentDate); // If birthday is not present, use current date
+
+        // Remove time component from the dates for accurate comparison
+        Calendar currentCal = returnInstanceOfCalendar(currentDate);
+        Calendar birthdayCal = returnInstanceOfCalendar(birthdayDate);
+
+        int currentYear = currentCal.get(Calendar.YEAR);
+        int currentMonth = currentCal.get(Calendar.MONTH);
+        int currentDay = currentCal.get(Calendar.DAY_OF_MONTH);
+        int birthdayMonth = birthdayCal.get(Calendar.MONTH);
+        int birthdayDay = birthdayCal.get(Calendar.DAY_OF_MONTH);
+
+        // Check if the birthday has already passed this year
+        if (currentMonth > birthdayMonth || (currentMonth == birthdayMonth && currentDay > birthdayDay)) {
+            // If yes, set the birthday year to the next year
+            birthdayCal.set(Calendar.YEAR, currentYear + 1);
+        } else {
+            birthdayCal.set(Calendar.YEAR, currentYear);
+        }
+
+        // Calculate the difference in milliseconds between the two dates and convert it to days
+        long diff = birthdayCal.getTimeInMillis() - currentCal.getTimeInMillis();
+        return diff / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+    }
+
+    public String getDaysUntilBirthdayWithRepresentation() {
+        if (this.birthday.isPresent()) {
+            return getDaysUntilBirthday() + " More Days Till Their Birthday!";
+        }
+        return "Birthday is unspecified!";
+    }
+
+    private Calendar returnInstanceOfCalendar(Date date) {
+        Calendar toReturn = Calendar.getInstance();
+        toReturn.setTime(date);
+        toReturn.set(Calendar.HOUR_OF_DAY, 0);
+        toReturn.set(Calendar.MINUTE, 0);
+        toReturn.set(Calendar.SECOND, 0);
+        toReturn.set(Calendar.MILLISECOND, 0);
+        return toReturn;
+    }
+
 }

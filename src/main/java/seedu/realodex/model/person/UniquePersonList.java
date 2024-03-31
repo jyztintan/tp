@@ -104,6 +104,12 @@ public class UniquePersonList implements Iterable<Person> {
         return internalUnmodifiableList;
     }
 
+    public ObservableList<Person> getInternalListCopy() {
+        ObservableList<Person> copyList = FXCollections.observableArrayList();
+        copyList.addAll(internalList);
+        return copyList;
+    }
+
     @Override
     public Iterator<Person> iterator() {
         return internalList.iterator();

@@ -48,6 +48,8 @@ public class PersonCard extends UiPart<Region> {
     private Label remark;
     @FXML
     private Label birthday;
+    @FXML
+    private Label birthdayDays;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -67,5 +69,6 @@ public class PersonCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName.toString())));
         remark.setText(person.getRemark().toStringWithRepresentation());
         birthday.setText(person.getBirthday().toStringWithRepresentation());
+        birthdayDays.setText(person.getBirthday().getDaysUntilBirthdayWithRepresentation());
     }
 }

@@ -108,6 +108,11 @@ public class Realodex implements ReadOnlyRealodex {
         return persons.asUnmodifiableObservableList();
     }
 
+
+    public ObservableList<Person> getCopyOfInternalListOfUniquePersonsList() {
+        return this.persons.getInternalListCopy();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

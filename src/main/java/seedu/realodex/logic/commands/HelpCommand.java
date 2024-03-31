@@ -6,6 +6,7 @@ import static seedu.realodex.logic.commands.DeleteCommand.MESSAGE_DELETE_HELP;
 import static seedu.realodex.logic.commands.EditCommand.MESSAGE_EDIT_HELP;
 import static seedu.realodex.logic.commands.FilterCommand.MESSAGE_FILTER_HELP;
 import static seedu.realodex.logic.commands.ListCommand.MESSAGE_LIST_HELP;
+import static seedu.realodex.logic.commands.SortCommand.MESSAGE_SORT_HELP;
 
 import seedu.realodex.model.Model;
 
@@ -48,7 +49,8 @@ public class HelpCommand extends Command {
 
         case "list":
             return new CommandResult(MESSAGE_LIST_HELP, false, false);
-
+        case "sort":
+            return new CommandResult(MESSAGE_SORT_HELP, false, false);
         default:
             return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
         }
