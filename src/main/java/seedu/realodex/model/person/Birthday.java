@@ -3,7 +3,6 @@ package seedu.realodex.model.person;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
@@ -17,11 +16,12 @@ import seedu.realodex.commons.core.LogsCenter;
 public class Birthday {
 
     public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format\nDate "
-            + "should also not be in future years and no earlier than year 1000!";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format\n"
+            + "A valid date should be given, and it cannot be in the future and no earlier than year 1000.";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
+
     public final Optional<Date> birthday;
     /**
      * Constructs a {@code Birthday}.
@@ -67,28 +67,16 @@ public class Birthday {
             SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
             formatter.setLenient(false);
             Date parsedDate = formatter.parse(birthday.trim());
-
-            // Validate the month (1-12)
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(parsedDate);
-            int month = cal.get(Calendar.MONTH);
-            if (month >= Calendar.JANUARY && month <= Calendar.DECEMBER) {
-                // Validate the day (1-31)
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                if (day >= 1 && day <= 31) {
-                    // Validate the year (e.g., not in the future)
-                    int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-                    int year = cal.get(Calendar.YEAR);
-                    if (year >= 1000 && year <= currentYear) {
-                        return true;
-                    }
-                }
+            Date currentDate = new Date();
+            if (!(parsedDate.after(currentDate))) {
+                return true;
             }
             return false;
         } catch (ParseException e) {
             return false;
         }
     }
+
 
     @Override
     public boolean equals(Object other) {
