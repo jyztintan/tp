@@ -1,7 +1,11 @@
 package seedu.realodex.model.person.predicates;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.realodex.testutil.PersonBuilder;
 
 class BirthdayIsInMonthPredicateTest {
@@ -32,7 +36,7 @@ class BirthdayIsInMonthPredicateTest {
     }
 
     @Test
-    public void test_BirthdayIsInMonth_returnsTrue() {
+    public void test_birthdayIsInMonth_returnsTrue() {
         // Keyphrase is valid month with 3 letters
         BirthdayIsInMonthPredicate predicate = new BirthdayIsInMonthPredicate("Jan");
         assertTrue(predicate.test(new PersonBuilder().withBirthday("1Jan2001").build()));
@@ -48,34 +52,6 @@ class BirthdayIsInMonthPredicateTest {
         // Mixed-case keyphrase
         predicate = new BirthdayIsInMonthPredicate("jAn");
         assertTrue(predicate.test(new PersonBuilder().withBirthday("1Jan2001").build()));
-    }
-
-    @Test
-    void and() {
-    }
-
-    @Test
-    void negate() {
-    }
-
-    @Test
-    void or() {
-    }
-
-    @Test
-    void isEqual() {
-    }
-
-    @Test
-    void not() {
-    }
-
-    @Test
-    void test1() {
-    }
-
-    @Test
-    void testEquals() {
     }
 
     @Test

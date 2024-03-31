@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.realodex.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -19,8 +18,6 @@ import seedu.realodex.model.person.Person;
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
-    private static final Comparator<Person> COMPARATOR_DEFAULT = (x,y) -> 0;
-
     private final Realodex realodex;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;

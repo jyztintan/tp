@@ -1,18 +1,17 @@
 package seedu.realodex.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.function.Predicate;
 
 import seedu.realodex.commons.util.ToStringBuilder;
 import seedu.realodex.logic.Messages;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 import seedu.realodex.model.Model;
 import seedu.realodex.model.person.Person;
-
 
 /**
  * Filters and lists all persons in realodex whose name contains the argument keyphrase.

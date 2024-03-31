@@ -1,12 +1,15 @@
 package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.realodex.logic.commands.FilterCommand;
-import static seedu.realodex.logic.parser.CliSyntax.*;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.predicates.PredicateProducer;

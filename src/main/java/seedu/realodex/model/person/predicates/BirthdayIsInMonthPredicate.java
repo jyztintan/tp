@@ -15,6 +15,11 @@ import seedu.realodex.model.person.Person;
 public class BirthdayIsInMonthPredicate implements Predicate<Person> {
     private final SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
     private final Optional<Calendar> month;
+
+    /**
+     * Creates object {@code BirthdayIsInMonthPredicate}
+     * @param monthName month to be tested
+     */
     public BirthdayIsInMonthPredicate(String monthName) {
         Optional<Calendar> tempMonth;
         Date monthDate;
