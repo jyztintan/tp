@@ -99,8 +99,9 @@ public class AddCommandParserTest {
         Person expectedPersonMultipleTags = new PersonBuilder(BOB).withTags(VALID_TAG_BOB, VALID_TAG_AMY)
                 .build();
         assertParseSuccess(parser,
-                NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                        + TAG_DESC_BOB + TAG_DESC_AMY + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+                        + FAMILY_DESC_BOB + TAG_DESC_BOB + TAG_DESC_AMY + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB
+                        + BIRTHDAY_DESC_BOB,
                 new AddCommand(expectedPersonMultipleTags));
 
         // three valid tags - all accepted
@@ -171,22 +172,22 @@ public class AddCommandParserTest {
         // tag prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB_PREFIX_CAPS + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + HOUSINGTYPE_DESC_BOB
+                                   + TAG_DESC_BOB_PREFIX_CAPS + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // remark prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB_PREFIX_CAPS + BIRTHDAY_DESC_BOB,
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB
+                                   + REMARK_DESC_BOB_PREFIX_CAPS + BIRTHDAY_DESC_BOB,
                            new AddCommand(expectedPerson));
 
         // birthday prefix caps
         assertParseSuccess(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB_PREFIX_CAPS,
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + HOUSINGTYPE_DESC_BOB + TAG_DESC_BOB
+                                   + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB_PREFIX_CAPS,
                            new AddCommand(expectedPerson));
 
         // all fields prefix caps
@@ -203,7 +204,8 @@ public class AddCommandParserTest {
     @Test
     public void parse_repeatedNonTagValue_failure() {
         String validExpectedPersonString = NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB + BIRTHDAY_DESC_BOB;
+                + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + REMARK_DESC_BOB
+                + BIRTHDAY_DESC_BOB;
 
         // multiple names
         assertParseFailure(parser, NAME_DESC_AMY_CAPS + validExpectedPersonString,
@@ -433,26 +435,23 @@ public class AddCommandParserTest {
         String expectedFailureMessageFormatted =
                 String.format(expectedFailureMessage, "name") + Name.MESSAGE_CONSTRAINTS;
         assertParseFailure(parser,
-                           INVALID_NAME_DESC
-                                   + PHONE_DESC_BOB
-                                   + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                           INVALID_NAME_DESC + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB
+                                   + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid phone
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "phone") + Phone.MESSAGE_CONSTRAINTS;
         assertParseFailure(parser,
-                           NAME_DESC_BOB + INVALID_PHONE_DESC
-                                   + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                           NAME_DESC_BOB + INVALID_PHONE_DESC + INCOME_DESC_BOB + EMAIL_DESC_BOB
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB
+                                   + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid income
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "income") + Income.MESSAGE_CONSTRAINTS;
         assertParseFailure(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_INCOME_DESC + EMAIL_DESC_BOB
-                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB
+                                   + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
 
         // invalid email
@@ -460,8 +459,8 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB
                                    + INCOME_DESC_BOB + INVALID_EMAIL_DESC + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + CommandTestUtil.TAG_DESC_BOB
-                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                                   + CommandTestUtil.TAG_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB
+                                   + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid address
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "address")
@@ -477,8 +476,8 @@ public class AddCommandParserTest {
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "family") + Family.MESSAGE_CONSTRAINTS;
         assertParseFailure(parser,
                            NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
-                                   + ADDRESS_DESC_BOB + INVALID_FAMILY_DESC
-                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
+                                   + ADDRESS_DESC_BOB + INVALID_FAMILY_DESC + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB
+                                   + BIRTHDAY_DESC_BOB, expectedFailureMessageFormatted);
 
         // invalid tag
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "tags") + Tag.MESSAGE_CONSTRAINTS;
@@ -492,9 +491,9 @@ public class AddCommandParserTest {
         expectedFailureMessageFormatted = String.format(expectedFailureMessage, "birthday")
                 + Birthday.MESSAGE_CONSTRAINTS;
         assertParseFailure(parser,
-                           NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB
-                                   + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + FAMILY_DESC_BOB
-                                   + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB + INVALID_BIRTHDAY_DESC, expectedFailureMessageFormatted);
+                           NAME_DESC_BOB + PHONE_DESC_BOB + INCOME_DESC_BOB + EMAIL_DESC_BOB
+                                   + ADDRESS_DESC_BOB + FAMILY_DESC_BOB + TAG_DESC_BOB + HOUSINGTYPE_DESC_BOB
+                                   + INVALID_BIRTHDAY_DESC, expectedFailureMessageFormatted);
 
     }
 

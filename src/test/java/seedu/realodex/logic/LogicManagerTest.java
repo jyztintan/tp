@@ -7,12 +7,12 @@ import static seedu.realodex.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.BIRTHDAY_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.HOUSINGTYPE_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.NAME_DESC_AMY_CAPS;
 import static seedu.realodex.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.TAG_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.HOUSINGTYPE_DESC_AMY;
 import static seedu.realodex.testutil.Assert.assertThrows;
 import static seedu.realodex.testutil.TypicalPersons.AMY_NAME_CAPS;
 

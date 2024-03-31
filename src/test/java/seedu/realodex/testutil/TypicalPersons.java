@@ -5,10 +5,11 @@ import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_AMY_FIRST_LETTER_CAPS;
@@ -18,8 +19,6 @@ import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_REMARK_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_AMY;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_BOB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,11 +76,13 @@ public class TypicalPersons {
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withIncome("70000")
             .withEmail("anna@example.com").withAddress("4th street").withTags("buyer")
-            .withHousingType("HDB").withRemark("Fun fact: George's brother's name is \"The\".").withBirthday("23Apr1983").build();
+            .withHousingType("HDB").withRemark("Fun fact: George's brother's name is \"The\".")
+            .withBirthday("23Apr1983").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
-            .withEmail("stefan@example.com").withAddress("little india").withTags("buyer").withHousingType("HDB").build();
+            .withEmail("stefan@example.com").withAddress("little india").withTags("buyer").withHousingType("HDB")
+            .build();
     public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
             .withEmail("hans@example.com").withAddress("chicago ave")
             .withTags("buyer").withHousingType("HDB").withBirthday("23Apr1983").build();
