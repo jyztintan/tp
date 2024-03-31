@@ -6,11 +6,9 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import javax.swing.text.html.Option;
-
 import seedu.realodex.commons.util.ToStringBuilder;
 import seedu.realodex.model.person.Person;
-import seedu.realodex.logic.parser.exceptions.ParseException;
+
 /**
  * Tests that a {@code Person}'s {@code Birthday} is in the Month given.
  */
@@ -25,7 +23,8 @@ public class BirthdayIsInMonthPredicate implements Predicate<Person> {
             tempMonth = Optional.of(Calendar.getInstance());
             tempMonth.get().setTime(monthDate);
         } catch (java.text.ParseException e) {
-            // will not reach here because check should have been done
+            // will not reach here because Parser checks for valid month
+            assert false;
             tempMonth = Optional.empty();
         }
 
@@ -61,7 +60,12 @@ public class BirthdayIsInMonthPredicate implements Predicate<Person> {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("month", monthFormat.format(month)).toString();
+        if (this.month.isPresent()) {
+            return new ToStringBuilder(this).add("month", monthFormat.format(month.get().getTime())).toString();
+        }
+        // will not reach here because Parser checks for valid month
+        assert false;
+        return new ToStringBuilder(this).add("month", "No month specified").toString();
     }
 
 }
