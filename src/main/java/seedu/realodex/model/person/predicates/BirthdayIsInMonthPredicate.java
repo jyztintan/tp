@@ -32,10 +32,10 @@ public class BirthdayIsInMonthPredicate implements Predicate<Person> {
             assert false;
             tempMonth = Optional.empty();
         }
-
         this.month = tempMonth;
     }
 
+    @Override
     public boolean test(Person person) {
         return person.getBirthday().getOptionalBirthday()
                 .map(birthday -> {
