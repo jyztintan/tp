@@ -37,4 +37,51 @@ public class HousingTypeTest {
         assertTrue(HousingType.isValidHousingType("good class bungalow")); // Tag converts string to uppercase
     }
 
+    @Test
+    public void toStringWithRepresentation() {
+        HousingType housingType1 = new HousingType("HDB");
+        assertTrue(housingType1.toStringWithRepresentation().contains("Preferred housing type is HDB"));
+
+        HousingType housingType2 = new HousingType("CONDOMINIUM");
+        assertTrue(housingType2.toStringWithRepresentation().contains("Preferred housing type is CONDOMINIUM"));
+
+        HousingType housingType3 = new HousingType("LANDED PROPERTY");
+        assertTrue(housingType3.toStringWithRepresentation().contains("Preferred housing type is LANDED_PROPERTY"));
+    }
+
+    @Test
+    public void equals() {
+        HousingType housingType1 = new HousingType("HDB");
+        HousingType housingType2 = new HousingType("HDB");
+        HousingType housingType3 = new HousingType("CONDOMINIUM");
+
+        // same object -> returns true
+        assertTrue(housingType1.equals(housingType1));
+
+        // same values -> returns true
+        assertTrue(housingType1.equals(housingType2));
+
+        // different types -> returns false
+        assertFalse(housingType1.equals(1));
+
+        // different values -> returns false
+        assertFalse(housingType1.equals(housingType3));
+    }
+
+    @Test
+    public void hashCodeTest() {
+        HousingType housingType1 = new HousingType("HDB");
+        HousingType housingType2 = new HousingType("HDB");
+        HousingType housingType3 = new HousingType("CONDOMINIUM");
+
+        // same object -> returns true
+        assertTrue(housingType1.hashCode() == housingType1.hashCode());
+
+        // same values -> returns true
+        assertTrue(housingType1.hashCode() == housingType2.hashCode());
+
+        // different values -> returns false
+        assertFalse(housingType1.hashCode() == housingType3.hashCode());
+    }
+
 }

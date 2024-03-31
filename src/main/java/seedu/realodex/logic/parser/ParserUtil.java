@@ -312,7 +312,7 @@ public class ParserUtil {
         requireNonNull(housingType);
         String trimmedHousingType = housingType.trim();
         if (!HousingType.isValidHousingType(trimmedHousingType)) {
-            return new ParserUtilResult<>(HousingType.MESSAGE_CONSTRAINTS, new HousingType(trimmedHousingType));
+            return new ParserUtilResult<>(HousingType.MESSAGE_CONSTRAINTS, new HousingType());
         }
         return new ParserUtilResult<>("", new HousingType(housingType));
     }

@@ -8,6 +8,7 @@ import seedu.realodex.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -101,6 +102,15 @@ public class EditPersonDescriptorBuilder {
     public EditPersonDescriptorBuilder withTags(String... tags) {
         Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
         descriptor.setTags(tagSet);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Housing type} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withHousingType(String housingType) {
+        HousingType h = new HousingType(housingType);
+        descriptor.setHousingType(h);
         return this;
     }
 

@@ -7,10 +7,13 @@ import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.FAMILY_DESC_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.HOUSINGTYPE_DESC_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.HOUSINGTYPE_DESC_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.INCOME_DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_FAMILY_DESC;
+import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_HOUSINGTYPE_DESC;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_INCOME_DESC;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.realodex.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
@@ -26,6 +29,8 @@ import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_AMY_FIRST_LETTER_CAPS;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
@@ -57,6 +62,7 @@ import seedu.realodex.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Phone;
@@ -106,6 +112,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_FAMILY_DESC, Family.MESSAGE_CONSTRAINTS); // invalid family
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
+        assertParseFailure(parser, "1" + INVALID_HOUSINGTYPE_DESC, HousingType.MESSAGE_CONSTRAINTS); // invalid housing type
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
@@ -136,6 +143,7 @@ public class EditCommandParserTest {
                 + NAME_DESC_AMY_CAPS
                 + FAMILY_DESC_BOB
                 + TAG_DESC_BOB
+                + HOUSINGTYPE_DESC_BOB
                 + REMARK_DESC_BOB;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
@@ -146,6 +154,7 @@ public class EditCommandParserTest {
                 .withAddress(VALID_ADDRESS_AMY)
                 .withFamily(VALID_FAMILY_BOB)
                 .withTags(VALID_TAG_BOB)
+                .withHousingType(VALID_HOUSINGTYPE_BOB)
                 .withRemark(VALID_REMARK_BOB)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -208,6 +217,12 @@ public class EditCommandParserTest {
         // 1 tag
         userInput = targetIndex.getOneBased() + TAG_DESC_BOB;
         descriptor = new EditPersonDescriptorBuilder().withTags(VALID_TAG_BOB).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // housing type
+        userInput = targetIndex.getOneBased() + HOUSINGTYPE_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withHousingType(VALID_HOUSINGTYPE_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 

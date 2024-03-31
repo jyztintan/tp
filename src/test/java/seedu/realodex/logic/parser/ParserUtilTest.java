@@ -443,9 +443,9 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseHousingType_validValueWithoutWhitespace_returnsEmail() throws Exception {
+    public void parseHousingType_validValueWithoutWhitespace_returnsHousingType() throws Exception {
         HousingType expectedHousingType = new HousingType(VALID_HOUSINGTYPE);
-        assertEquals(expectedHousingType, ParserUtil.parseEmail(VALID_HOUSINGTYPE));
+        assertEquals(expectedHousingType, ParserUtil.parseHousingType(VALID_HOUSINGTYPE));
     }
 
     @Test
@@ -459,14 +459,14 @@ public class ParserUtilTest {
     public void parseHousingType_validHousingType_returnsParserUtilHousingType() {
         String validHousingType = VALID_HOUSINGTYPE;
         ParserUtilResult<HousingType> housingTypeStored = parseHousingTypeReturnStored(validHousingType);
-        assertEquals(housingTypeStored.returnStoredResult(), new Email(validHousingType));
+        assertEquals(housingTypeStored.returnStoredResult(), new HousingType(validHousingType));
         assertEquals(housingTypeStored.returnExceptionMessage(), "");
     }
 
     @Test
     public void parseHousingType_invalidHousingType_returnsParserUtilHousingType() {
         ParserUtilResult<HousingType> housingTypeStored = parseHousingTypeReturnStored(INVALID_HOUSINGTYPE);
-        assertEquals(housingTypeStored.returnStoredResult(), new HousingType(INVALID_HOUSINGTYPE));
+        assertEquals(housingTypeStored.returnStoredResult(), new HousingType());
         assertEquals(housingTypeStored.returnExceptionMessage(), HousingType.MESSAGE_CONSTRAINTS);
     }
 

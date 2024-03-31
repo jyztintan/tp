@@ -32,6 +32,10 @@ public class HousingType {
         this.housingType = House.valueOf(housingType.toUpperCase().replace(" ", "_"));
     }
 
+    public HousingType() {
+        this.housingType = House.HDB;
+    }
+
     /**
      * Returns true if a given string is a valid tag name.
      */
