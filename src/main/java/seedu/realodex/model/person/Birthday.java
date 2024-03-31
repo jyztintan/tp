@@ -28,7 +28,7 @@ public class Birthday {
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
-    private Optional<Date> optionalBirthday;
+    private final Optional<Date> optionalBirthday;
     /**
      * Constructs a {@code Birthday}.
      *
@@ -41,7 +41,6 @@ public class Birthday {
         try {
             birthdayDate = Optional.of(formatter.parse(birthday));
         } catch (ParseException e) {
-            // will only reach here with empty string, other cases have been caught in isValidBirthday
             birthdayDate = Optional.empty();
         }
         this.optionalBirthday = birthdayDate;
@@ -51,15 +50,7 @@ public class Birthday {
      * Constructs a default {@code Birthday}.
      */
     public Birthday() {
-        SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
-        formatter.setLenient(false);
-        Optional<Date> birthdayDate = Optional.empty();
-        try {
-            birthdayDate = Optional.of(formatter.parse("01May2023"));
-        } catch (ParseException ignored) {
-            logger.fine("This part of birthday should not be executed");
-        }
-        this.optionalBirthday = birthdayDate;
+        this("");
     }
     /**
      * Returns the optional birthday date.
@@ -68,15 +59,6 @@ public class Birthday {
      */
     public Optional<Date> getOptionalBirthday() {
         return optionalBirthday;
-    }
-
-    /**
-     * Sets the optional birthday date.
-     *
-     * @param optionalBirthday The optional birthday date to set.
-     */
-    public void setOptionalBirthday(Optional<Date> optionalBirthday) {
-        this.optionalBirthday = optionalBirthday;
     }
 
     /**
