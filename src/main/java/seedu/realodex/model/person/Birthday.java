@@ -17,8 +17,13 @@ import seedu.realodex.commons.core.LogsCenter;
 public class Birthday {
 
     public static final String INPUT_DATE_PATTERN = "ddMMMMyyyy";
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format\nDate "
-            + "should also not be in future years and no earlier than year 1000!";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format. Date "
+            + "should also not be in future years and no earlier than year 1000!\n"
+            + "Example: b/6Sep2006 or b/6September2006";
+
+    // for filter purposes
+    public static final String FILTER_MONTH_MESSAGE_CONSTRAINTS = "Filter by Birth Month should be in MMMM format.\n"
+            + "Example: b/Sep or b/September";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
