@@ -36,17 +36,16 @@ public class BirthdayIsInMonthPredicate implements Predicate<Person> {
         this.month = tempMonth;
     }
 
-    @Override
     public boolean test(Person person) {
-        Calendar personCalendar = Calendar.getInstance();
-        if (person.getBirthday().getOptionalBirthday().isEmpty()) {
-            return false;
-        } else {
-            assert(person.getBirthday().getOptionalBirthday().isPresent());
-            personCalendar.setTime(person.getBirthday().getOptionalBirthday().get());
-            return personCalendar.get(Calendar.MONTH) == month.get().get(Calendar.MONTH);
-        }
+        return person.getBirthday().getOptionalBirthday()
+                .map(birthday -> {
+                    Calendar personCalendar = Calendar.getInstance();
+                    personCalendar.setTime(birthday);
+                    return personCalendar.get(Calendar.MONTH) == month.map(m -> m.get(Calendar.MONTH)).orElse(-1);
+                })
+                .orElse(false);
     }
+
 
     @Override
     public boolean equals(Object other) {
@@ -65,12 +64,9 @@ public class BirthdayIsInMonthPredicate implements Predicate<Person> {
 
     @Override
     public String toString() {
-        if (this.month.isPresent()) {
-            return new ToStringBuilder(this).add("month", monthFormat.format(month.get().getTime())).toString();
-        }
-        // will not reach here because Parser checks for valid month
-        assert false;
-        return "";
+        return new ToStringBuilder(this)
+                .add("month", month.map(m -> monthFormat.format(m.getTime()))
+                        .orElse("No month specified"))
+                .toString();
     }
-
 }
