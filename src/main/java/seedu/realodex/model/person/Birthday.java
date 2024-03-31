@@ -72,10 +72,7 @@ public class Birthday {
             formatter.setLenient(false);
             Date parsedDate = formatter.parse(birthday.trim());
             Date currentDate = new Date();
-            if (!(parsedDate.after(currentDate))) {
-                return true;
-            }
-            return false;
+            return !parsedDate.after(currentDate);
         } catch (ParseException e) {
             return false;
         }
@@ -112,10 +109,7 @@ public class Birthday {
      * Format state as text for representation.
      */
     public String toStringWithRepresentation() {
-        if (birthday.isPresent()) {
-            return "Birthday: " + DATE_FORMAT.format(birthday.get());
-        } else {
-            return "No specified Birthday.";
-        }
+        return birthday.map(date -> "Birthday: " + DATE_FORMAT.format(date))
+                .orElse("No specified Birthday.");
     }
 }
