@@ -64,7 +64,7 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
-        this.housingType = Objects.requireNonNullElse(housingType, "");;
+        this.housingType = housingType;
         this.remark = Objects.requireNonNullElse(remark, "");
         this.birthday = birthday;
     }
