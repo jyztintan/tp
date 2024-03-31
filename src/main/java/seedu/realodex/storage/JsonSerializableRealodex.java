@@ -56,5 +56,4 @@ class JsonSerializableRealodex {
         }
         return realodex;
     }
-
 }

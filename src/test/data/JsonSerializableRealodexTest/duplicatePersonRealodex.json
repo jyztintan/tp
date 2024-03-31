@@ -7,7 +7,8 @@
     "address": "123, Jurong West Ave 6, #08-111",
     "family" : "4",
     "tags": [ "buyer" ],
-    "remark" : "this is a remark"
+    "remark" : "this is a remark",
+    "birthday" : "01May2023"
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
@@ -15,6 +16,7 @@
     "email": "pauline@example.com",
     "family" : "4",
     "address": "4th street",
-    "tags": [ "buyer" ]
+    "tags": [ "buyer" ],
+    "birthday" : "01May2023"
   } ]
 }

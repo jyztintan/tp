@@ -6,7 +6,7 @@ import seedu.realodex.commons.util.ToStringBuilder;
 import seedu.realodex.model.person.Person;
 
 /**
- * Tests that a {@code Person}'s {@code Name} contains the keyphrase given.
+ * Tests that a {@code Person}'s {@code Tag} contains the Tag(s) given.
  */
 public class NameContainsKeyphrasePredicate implements Predicate<Person> {
     private final String keyphrase;
