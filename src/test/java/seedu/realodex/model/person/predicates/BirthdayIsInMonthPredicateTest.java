@@ -56,7 +56,7 @@ class BirthdayIsInMonthPredicateTest {
     }
 
     @Test
-    public void test_birthdayIsNotInMonth_returnsFrue() {
+    public void test_birthdayIsNotInMonth_returnsTrue() {
         // Keyphrase is valid month with 3 letters
         BirthdayIsInMonthPredicate predicate = new BirthdayIsInMonthPredicate("Jun");
         assertFalse(predicate.test(new PersonBuilder().withBirthday("1Jan2001").build()));
