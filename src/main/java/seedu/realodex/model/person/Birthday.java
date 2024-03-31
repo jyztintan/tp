@@ -16,7 +16,7 @@ import seedu.realodex.commons.core.LogsCenter;
  */
 public class Birthday {
 
-    public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
+    public static final String INPUT_DATE_PATTERN = "ddMMMMyyyy";
     public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format\nDate "
             + "should also not be in future years and no earlier than year 1000!";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);

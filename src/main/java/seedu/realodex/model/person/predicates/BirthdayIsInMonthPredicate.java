@@ -15,7 +15,7 @@ import seedu.realodex.logic.parser.exceptions.ParseException;
  * Tests that a {@code Person}'s {@code Birthday} is in the Month given.
  */
 public class BirthdayIsInMonthPredicate implements Predicate<Person> {
-    private final SimpleDateFormat monthFormat = new SimpleDateFormat("MMM");
+    private final SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
     private final Optional<Calendar> month;
     public BirthdayIsInMonthPredicate(String monthName) {
         Optional<Calendar> tempMonth;

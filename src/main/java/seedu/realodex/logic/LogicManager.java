@@ -70,15 +70,6 @@ public class LogicManager implements Logic {
     public ObservableList<Person> getFilteredPersonList() {
         return model.getFilteredPersonList();
     }
-    @Override
-    public ObservableList<Person> getSortedPersonList() {
-        return model.getSortedPersonList();
-    }
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return model.getLastFilteredOrSortedPersonList();
-    }
 
     @Override
     public Path getRealodexFilePath() {

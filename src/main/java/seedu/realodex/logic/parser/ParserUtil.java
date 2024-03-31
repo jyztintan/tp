@@ -315,12 +315,12 @@ public class ParserUtil {
      *
      */
     public static Date parseMonth(String monthName) throws ParseException {
-        SimpleDateFormat monthFormat = new SimpleDateFormat("MMM");
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
         try {
             Date monthDate = monthFormat.parse(monthName);
             return monthDate;
         } catch (java.text.ParseException e) {
-            throw new ParseException("Month should be in the form \"MMM\""); // todo: abstract this somewhere
+            throw new ParseException("Month should be in the form \"MMMM\""); // todo: abstract this somewhere
         }
     }
 
