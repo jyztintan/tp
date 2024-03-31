@@ -1,4 +1,4 @@
-package seedu.realodex.model.remark;
+package seedu.realodex.model.person;
 
 import static java.util.Objects.requireNonNull;
 
@@ -47,7 +47,7 @@ public class Remark {
         }
 
         Remark otherRemark = (Remark) other;
-        return remarkName.equals(otherRemark.remarkName);
+        return remarkName.trim().equals(otherRemark.remarkName.trim());
     }
 
     @Override

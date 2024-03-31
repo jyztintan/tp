@@ -34,6 +34,8 @@ public class DeleteCommand extends Command {
             + "Example: delete n/James Lau OR delete 4\n";
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Client: %1$s";
+    public static final String MESSAGE_INDEX_AND_NAME_PROVIDED = "Please provide either an index or a name, not both.";
+    public static final String MESSAGE_NO_FIELDS_PROVIDED = "Please provide either an index or a name.";
 
     private final Index targetIndex;
     private final Name targetName;

@@ -25,13 +25,14 @@ import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.exceptions.CommandException;
 import seedu.realodex.model.Model;
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.Phone;
-import seedu.realodex.model.remark.Remark;
+import seedu.realodex.model.person.Remark;
 import seedu.realodex.model.tag.Tag;
 
 /**
@@ -118,10 +119,11 @@ public class EditCommand extends Command {
         Family updatedFamily = editPersonDescriptor.getFamily().orElse(personToEdit.getFamily());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
+        Birthday updatedBirthday = editPersonDescriptor.getBirthday().orElse(personToEdit.getBirthday());
 
         return new Person(updatedName, updatedPhone, updatedIncome,
                           updatedEmail, updatedAddress, updatedFamily,
-                          updatedTags, updatedRemark);
+                          updatedTags, updatedRemark, updatedBirthday);
     }
 
     @Override
@@ -161,6 +163,7 @@ public class EditCommand extends Command {
         private Family family;
         private Set<Tag> tags;
         private Remark remark;
+        private Birthday birthday;
 
         public EditPersonDescriptor() {}
 
@@ -177,6 +180,7 @@ public class EditCommand extends Command {
             setFamily(toCopy.family);
             setTags(toCopy.tags);
             setRemark(toCopy.remark);
+            setBirthday(toCopy.birthday);
         }
 
         /**
@@ -252,11 +256,11 @@ public class EditCommand extends Command {
         }
 
         public void setRemark(Remark remark) {
-            this.remark = (remark != null) ? remark : null;
+            this.remark = remark;
         }
 
         public Optional<Remark> getRemark() {
-            return (remark != null) ? Optional.of(remark) : Optional.empty();
+            return Optional.ofNullable(remark);
         }
 
         @Override
@@ -293,6 +297,14 @@ public class EditCommand extends Command {
                     .add("tags", tags)
                     .add("remark", remark)
                     .toString();
+        }
+
+        public void setBirthday(Birthday birthday) {
+            this.birthday = birthday;
+        }
+
+        public Optional<Birthday> getBirthday() {
+            return Optional.ofNullable(birthday);
         }
     }
 }

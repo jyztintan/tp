@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.realodex.commons.util.ToStringBuilder;
-import seedu.realodex.model.remark.Remark;
 import seedu.realodex.model.tag.Tag;
 
 /**
@@ -26,12 +25,13 @@ public class Person {
     private final Family family;
     private final Set<Tag> tags = new HashSet<>();
     private final Remark remark;
+    private final Birthday birthday;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Income income, Email email, Address address,
-                  Family family, Set<Tag> tags, Remark remark) {
+                  Family family, Set<Tag> tags, Remark remark, Birthday birthday) {
         requireAllNonNull(name, phone, income, email, address, family, tags, remark);
         this.name = name;
         this.phone = phone;
@@ -41,6 +41,7 @@ public class Person {
         this.family = family;
         this.tags.addAll(tags);
         this.remark = remark;
+        this.birthday = birthday;
     }
 
     public Name getName() {
@@ -114,7 +115,8 @@ public class Person {
                 && family.equals(otherPerson.family)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
-                && remark.equals(otherPerson.remark);
+                && remark.equals(otherPerson.remark)
+                && birthday.equals(otherPerson.birthday);
     }
 
     @Override
@@ -134,7 +136,12 @@ public class Person {
                 .add("family", family)
                 .add("tags", tags)
                 .add("remark", remark)
+                .add("birthday", birthday)
                 .toString();
+    }
+
+    public Birthday getBirthday() {
+        return birthday;
     }
 }
 

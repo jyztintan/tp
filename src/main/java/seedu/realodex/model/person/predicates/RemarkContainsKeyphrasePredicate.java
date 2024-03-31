@@ -1,24 +1,25 @@
-package seedu.realodex.model.person;
+package seedu.realodex.model.person.predicates;
 
 import java.util.function.Predicate;
 
 import seedu.realodex.commons.util.ToStringBuilder;
+import seedu.realodex.model.person.Person;
 
 /**
- * Tests that a {@code Person}'s {@code Name} contains the keyphrase given.
+ * Tests that a {@code Person}'s {@code Remark} contains the keyphrase given.
  */
-public class NameContainsKeyphrasePredicate implements Predicate<Person> {
+public class RemarkContainsKeyphrasePredicate implements Predicate<Person> {
     private final String keyphrase;
 
-    public NameContainsKeyphrasePredicate(String keyphrase) {
+    public RemarkContainsKeyphrasePredicate(String keyphrase) {
         this.keyphrase = keyphrase;
     }
 
     @Override
     public boolean test(Person person) {
-        String nameInLowerCase = person.getName().fullName.toLowerCase();
+        String remarkInLowerCase = person.getRemark().remarkName.toLowerCase();
         String keyphraseInLowerCase = keyphrase.toLowerCase();
-        return nameInLowerCase.contains(keyphraseInLowerCase);
+        return remarkInLowerCase.contains(keyphraseInLowerCase);
     }
 
     @Override
@@ -28,11 +29,11 @@ public class NameContainsKeyphrasePredicate implements Predicate<Person> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof NameContainsKeyphrasePredicate)) {
+        if (!(other instanceof RemarkContainsKeyphrasePredicate)) {
             return false;
         }
 
-        NameContainsKeyphrasePredicate otherNameContainsKeyphrasePredicate = (NameContainsKeyphrasePredicate) other;
+        RemarkContainsKeyphrasePredicate otherNameContainsKeyphrasePredicate = (RemarkContainsKeyphrasePredicate) other;
         return keyphrase.equals(otherNameContainsKeyphrasePredicate.keyphrase);
     }
 
