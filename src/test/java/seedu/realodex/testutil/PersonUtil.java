@@ -68,6 +68,8 @@ public class PersonUtil {
             }
         }
         descriptor.getRemark().ifPresent(remark -> sb.append(PREFIX_REMARK).append(remark.toString()).append(" "));
+        descriptor.getBirthday().ifPresent(birthday -> sb.append(PREFIX_BIRTHDAY).append(birthday.toString())
+                .append(" "));
         return sb.toString();
     }
 }
