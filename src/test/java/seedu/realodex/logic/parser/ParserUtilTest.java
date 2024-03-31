@@ -7,6 +7,7 @@ import static seedu.realodex.logic.parser.ParserUtil.parseAddressReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parseBirthdayReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parseEmailReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parseFamilyReturnStored;
+import static seedu.realodex.logic.parser.ParserUtil.parseHousingTypeReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parseIncomeReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parseNameReturnStored;
 import static seedu.realodex.logic.parser.ParserUtil.parsePhoneReturnStored;
@@ -25,6 +26,7 @@ import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Phone;
@@ -54,6 +56,8 @@ public class ParserUtilTest {
     private static final String VALID_TAG_1 = "buyer";
     private static final String VALID_TAG_2 = "seller";
 
+    private static final String VALID_HOUSINGTYPE = "HDB";
+    private static final String INVALID_HOUSINGTYPE = "hdbb";
     private static final String VALID_REMARK_ONE = "I am Denzel Washington";
     private static final String VALID_REMARK_TWO = "I am Al Pacino";
     private static final String VALID_BIRTHDAY = "01May2009";
@@ -412,7 +416,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTags_sinlgeDuplicateTags_ignoresDuplicates() throws Exception {
+    public void parseTags_singleDuplicateTags_ignoresDuplicates() throws Exception {
         Set<Tag> tagSetWithDuplicates = ParserUtil.parseTags(Arrays.asList(VALID_TAG_1, VALID_TAG_1));
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1)));
 
@@ -426,6 +430,44 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(tagSetWithMultipleDuplicates, expectedTagSet);
+    }
+
+    @Test
+    public void parseHousingType_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseHousingType((String) null));
+    }
+
+    @Test
+    public void parseHousingType_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(INVALID_HOUSINGTYPE));
+    }
+
+    @Test
+    public void parseHousingType_validValueWithoutWhitespace_returnsEmail() throws Exception {
+        HousingType expectedHousingType = new HousingType(VALID_HOUSINGTYPE);
+        assertEquals(expectedHousingType, ParserUtil.parseEmail(VALID_HOUSINGTYPE));
+    }
+
+    @Test
+    public void parseHousingType_validValueWithWhitespace_returnsTrimmedEmail() throws Exception {
+        String housingTypeWithWhitespace = WHITESPACE + VALID_HOUSINGTYPE + WHITESPACE;
+        HousingType expectedHousingType = new HousingType(VALID_HOUSINGTYPE);
+        assertEquals(expectedHousingType, ParserUtil.parseHousingType(housingTypeWithWhitespace));
+    }
+
+    @Test
+    public void parseHousingType_validHousingType_returnsParserUtilHousingType() {
+        String validHousingType = VALID_HOUSINGTYPE;
+        ParserUtilResult<HousingType> housingTypeStored = parseHousingTypeReturnStored(validHousingType);
+        assertEquals(housingTypeStored.returnStoredResult(), new Email(validHousingType));
+        assertEquals(housingTypeStored.returnExceptionMessage(), "");
+    }
+
+    @Test
+    public void parseHousingType_invalidHousingType_returnsParserUtilHousingType() {
+        ParserUtilResult<HousingType> housingTypeStored = parseHousingTypeReturnStored(INVALID_HOUSINGTYPE);
+        assertEquals(housingTypeStored.returnStoredResult(), new HousingType(INVALID_HOUSINGTYPE));
+        assertEquals(housingTypeStored.returnExceptionMessage(), HousingType.MESSAGE_CONSTRAINTS);
     }
 
     @Test
