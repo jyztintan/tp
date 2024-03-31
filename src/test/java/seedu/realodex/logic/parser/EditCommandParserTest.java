@@ -283,7 +283,8 @@ public class EditCommandParserTest {
 
         assertParseFailure(parser, userInput,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                                                             PREFIX_INCOME, PREFIX_FAMILY, PREFIX_REMARK, PREFIX_BIRTHDAY));
+                                                             PREFIX_INCOME, PREFIX_FAMILY, PREFIX_REMARK,
+                                                             PREFIX_BIRTHDAY));
 
         // multiple invalid values
         userInput = targetIndex.getOneBased()
