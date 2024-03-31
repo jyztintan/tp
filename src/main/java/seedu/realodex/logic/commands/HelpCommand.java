@@ -49,7 +49,6 @@ public class HelpCommand extends Command {
 
         case "list":
             return new CommandResult(MESSAGE_LIST_HELP, false, false);
-
         case "sort":
             return new CommandResult(MESSAGE_SORT_HELP, false, false);
         default:

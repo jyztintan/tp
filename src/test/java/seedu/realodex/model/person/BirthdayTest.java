@@ -13,7 +13,6 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
-//@@author 4llysa
 public class BirthdayTest {
 
     @Test
@@ -173,7 +172,7 @@ public class BirthdayTest {
      * If the birthday has already passed this year, it returns the number of days
      * from the current date of next year to the birthday.
      */
-    public Long getDaysUntilBirthdayStub(Date currentDate, Date birthdayDate) {
+    private Long getDaysUntilBirthdayStub(Date currentDate, Date birthdayDate) {
         // Remove time component from the dates for accurate comparison
         Calendar currentCal = returnInstanceOfCalendar(currentDate);
         Calendar birthdayCal = returnInstanceOfCalendar(birthdayDate);
@@ -202,7 +201,6 @@ public class BirthdayTest {
 
     }
 
-
     private Calendar returnInstanceOfCalendar(Date date) {
         Calendar toReturn = Calendar.getInstance();
         toReturn.setTime(date);
@@ -213,4 +211,3 @@ public class BirthdayTest {
         return toReturn;
     }
 }
-//@@author

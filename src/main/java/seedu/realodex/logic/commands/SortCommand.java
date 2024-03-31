@@ -14,7 +14,7 @@ import seedu.realodex.model.person.sorting.BirthdayComparator;
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts clients by their birthday\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts clients by their upcoming birthdays\n"
             + "Example: sort";
 
     public static final String MESSAGE_SORT_HELP = "Sort Command: "
@@ -41,14 +41,4 @@ public class SortCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
-    /*/**
-     * Returns a string representation of this command.
-     *
-     * @return a string representation of this command
-     */
-    /*@Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .toString();
-    }*/
 }
