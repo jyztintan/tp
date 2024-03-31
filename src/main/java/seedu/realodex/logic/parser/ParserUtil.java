@@ -320,7 +320,7 @@ public class ParserUtil {
             Date monthDate = monthFormat.parse(monthName);
             return monthDate;
         } catch (java.text.ParseException e) {
-            throw new ParseException("Month should be in the form \"MMMM\""); // todo: abstract this somewhere
+            throw new ParseException(Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
         }
     }
 

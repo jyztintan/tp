@@ -91,11 +91,11 @@ class BirthdayIsInMonthPredicateTest {
     void toStringMethod_noBirthMonthSpecified() {
         // empty String input
         String keyphraseEmptyString = "";
-        assertThrows(AssertionError.class, null ,() -> new BirthdayIsInMonthPredicate(keyphraseEmptyString) );
+        assertThrows(AssertionError.class, null, () -> new BirthdayIsInMonthPredicate(keyphraseEmptyString));
 
         // invalid String input
         String keyphraseInvalidString = "sndjkfnksdnf";
-        assertThrows(AssertionError.class, null ,() -> new BirthdayIsInMonthPredicate(keyphraseInvalidString) );
+        assertThrows(AssertionError.class, null, () -> new BirthdayIsInMonthPredicate(keyphraseInvalidString));
 
     }
 }

@@ -5,8 +5,6 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import seedu.realodex.model.person.Birthday;
-import seedu.realodex.model.person.predicates.BirthdayIsInMonthPredicate;
 import static seedu.realodex.testutil.Assert.assertThrows;
 
 import java.util.Set;
@@ -15,7 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.FilterCommand;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Name;
+import seedu.realodex.model.person.predicates.BirthdayIsInMonthPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
@@ -138,7 +138,7 @@ public class FilterCommandParserTest {
 
     @Test
     void parse_invalidBirthMonthWithBirthday_throwsParseException() {
-        assertParseFailure(parser, " n/#$@%^", Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, " b/#$@%^", Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
     }
 
     @Test
