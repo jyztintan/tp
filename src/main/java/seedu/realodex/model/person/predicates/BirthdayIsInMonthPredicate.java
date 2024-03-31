@@ -39,11 +39,11 @@ public class BirthdayIsInMonthPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         Calendar personCalendar = Calendar.getInstance();
-        if (person.getBirthday().birthday.isEmpty()) {
+        if (person.getBirthday().getOptionalBirthday().isEmpty()) {
             return false;
         } else {
-            assert(person.getBirthday().birthday.isPresent());
-            personCalendar.setTime(person.getBirthday().birthday.get());
+            assert(person.getBirthday().getOptionalBirthday().isPresent());
+            personCalendar.setTime(person.getBirthday().getOptionalBirthday().get());
             return personCalendar.get(Calendar.MONTH) == month.get().get(Calendar.MONTH);
         }
     }
@@ -70,7 +70,7 @@ public class BirthdayIsInMonthPredicate implements Predicate<Person> {
         }
         // will not reach here because Parser checks for valid month
         assert false;
-        return new ToStringBuilder(this).add("month", "No month specified").toString();
+        return "";
     }
 
 }

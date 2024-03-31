@@ -14,4 +14,6 @@ public interface ReadOnlyRealodex {
      */
     ObservableList<Person> getPersonList();
 
+    ObservableList<Person> getCopyOfInternalListOfUniquePersonsList();
+
 }
