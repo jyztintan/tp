@@ -7,7 +7,7 @@
     "address": "123, Jurong West Ave 6, #08-111",
     "family" : "4",
     "tags": [ "buyer" ],
-    "housingType" : "HDB",
+    "housingType" : "Condominium",
     "remark" : "this is a remark",
     "birthday" : "01May2023"
   }, {
