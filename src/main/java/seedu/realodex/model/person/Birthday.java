@@ -17,8 +17,8 @@ import seedu.realodex.commons.core.LogsCenter;
 public class Birthday {
 
     public static final String INPUT_DATE_PATTERN = "ddMMMMyyyy";
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format. Date "
-            + "should also not be in future years and no earlier than year 1000!\n"
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format.\n"
+            + "Date should also not be in future years and no earlier than year 1000!\n"
             + "Example: b/6Sep2006 or b/6September2006";
 
     // for filter purposes
