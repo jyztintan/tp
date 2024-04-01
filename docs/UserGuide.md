@@ -79,6 +79,7 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 Format: `delete n/NAME`
 
 * Deletes the client of the specified `NAME` in Realodex.
+* Name is not case sensitive.
 * If name is **not found**, error message will be shown `"NAME" is not found`.
 
 Example:
@@ -94,11 +95,15 @@ Format: `delete INDEX`
 Example:
 * `delete 4` deletes the 4th client listed in Realodex, provided he/she exists.
 
+Errors:
+- If neither index nor name provided `delete` will show an error message `Please provide either an index or a name.`.
+- If both an index and name is provided `delete INDEX n/NAME` will show an error message `Please provide either an index or a name, not both.`.
+- If both an index and name is provided `delete n/NAME INDEX ` will show an error message `The client name provided is invalid` as `INDEX` is considered part of the `NAME`.
 ### Editing clients : `edit`
 
 Edits specified details of the client.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [r/REMARK]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
 
 - If `INDEX` is `3`, the 3rd client's information will be edited.
 - It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
@@ -184,14 +189,14 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 r/Buyer t/Owes $1000.`
-**Delete (by name)** | `delete n/NAME`<br> e.g. `delete n/John`
-**Delete (by index)** | `delete INDEX`<br> e.g. `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [r/REMARK]` <br> e.g. `edit 2 n/Denzel i/100000`
-**Filter** | `filter STRING`<br> e.g. `filter David`
-**List**   | `list`
-**Clear**| `clearRealodex`
-**Help** | `help`
-**Exit**   | `exit`
+| Action                | Format, Examples                                                                                                                                                                                    |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**               | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 r/Buyer t/Owes $1000.` |
+| **Delete (by name)**  | `delete n/NAME`<br> e.g. `delete n/John`                                                                                                                                                            |
+| **Delete (by index)** | `delete INDEX`<br> e.g. `delete 3`                                                                                                                                                                  |
+| **Edit**              | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [r/REMARK]` <br> e.g. `edit 2 n/Denzel i/100000`                                                                 |
+| **Filter**            | `filter STRING`<br> e.g. `filter David`                                                                                                                                                             |
+| **List**              | `list`                                                                                                                                                                                              |
+| **Clear**             | `clearRealodex`                                                                                                                                                                                     |
+| **Help**              | `help`                                                                                                                                                                                              |
+| **Exit**              | `exit`                                                                                                                                                                                              |
