@@ -181,14 +181,12 @@ public class RealodexParserTest {
     @Test
     public void parseCommand_clear_help() throws Exception {
         assertTrue(parser.parseCommand("clearRealodex help") instanceof HelpCommand);
-        assertTrue(parser.parseCommand("clearrealodex help") instanceof HelpCommand);
-        assertTrue(parser.parseCommand("CLEARREALODEX HELP") instanceof HelpCommand);
-        assertTrue(parser.parseCommand("CLEARREALODEX help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("clearRealodex help".toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("clearRealodex help".toLowerCase()) instanceof HelpCommand);
         HelpCommand expected = new HelpCommand("clearRealodex");
         assertEquals(parser.parseCommand("clearRealodex help"), expected);
-//        assertEquals(parser.parseCommand("clearrealodex help"), expected);
-//        assertEquals(parser.parseCommand("CLEARREALODEX help"), expected);
-//        assertEquals(parser.parseCommand("CLEARREALODEX HELP"), expected);
+        assertEquals(parser.parseCommand("clearRealodex help".toUpperCase()), expected);
+        assertEquals(parser.parseCommand("clearRealodex help".toLowerCase()), expected);
     }
 
     @Test
@@ -250,13 +248,19 @@ public class RealodexParserTest {
     @Test
     public void parseCommand_sort_help() throws Exception {
         assertTrue(parser.parseCommand("sort help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("sort help".toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("sOrT HelP") instanceof HelpCommand);
         HelpCommand expected = new HelpCommand("sort");
         assertEquals(parser.parseCommand("sort help"), expected);
+        assertEquals(parser.parseCommand("sort help".toUpperCase()), expected);
+        assertEquals(parser.parseCommand("soRt hElP"), expected);
     }
 
     @Test
     public void parseCommand_sort() throws Exception {
         assertTrue(parser.parseCommand(SortCommand.COMMAND_WORD) instanceof SortCommand);
+        assertTrue(parser.parseCommand(SortCommand.COMMAND_WORD.toUpperCase()) instanceof SortCommand);
+        assertTrue(parser.parseCommand("soRt") instanceof SortCommand);
     }
 
     @Test
