@@ -370,7 +370,8 @@ public class AddCommandParserTest {
                            VALID_NAME_BOB_FIRST_LETTER_CAPS + VALID_PHONE_BOB + INCOME_DESC_BOB
                                    + VALID_EMAIL_BOB + VALID_ADDRESS_BOB + FAMILY_DESC_BOB + VALID_TAG_BOB,
                            MESSAGE_MISSING_PREFIXES
-                                   + "n/NAME, a/ADDRESS, p/PHONE, e/EMAIL, t/TAG, h/HOUSINGTYPE\n" + expectedCommandFormatMessage);
+                                   + "n/NAME, a/ADDRESS, p/PHONE, e/EMAIL, t/TAG, h/HOUSINGTYPE\n"
+                                   + expectedCommandFormatMessage);
     }
 
     @Test

@@ -104,7 +104,8 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_FAMILY_DESC = " " + PREFIX_FAMILY + "0"; // Family size must be at least 1
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "friend"; // 'friend' not allowed in tags
-    public static final String INVALID_HOUSINGTYPE_DESC = " " + PREFIX_HOUSINGTYPE + "HDBB"; // Does not match any housing type
+    public static final String INVALID_HOUSINGTYPE_DESC = " " + PREFIX_HOUSINGTYPE + "HDBB"; // Does not match any
+    // housing type
     public static final String INVALID_BIRTHDAY_DESC = " " + PREFIX_BIRTHDAY + "0"; // Family size must be at least 1
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

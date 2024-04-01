@@ -11,7 +11,6 @@ import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_BOB;
-import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_BOB_FIRST_LETTER_CAPS;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_BOB;

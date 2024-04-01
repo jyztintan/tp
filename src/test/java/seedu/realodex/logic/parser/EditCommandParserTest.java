@@ -112,7 +112,8 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_FAMILY_DESC, Family.MESSAGE_CONSTRAINTS); // invalid family
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
-        assertParseFailure(parser, "1" + INVALID_HOUSINGTYPE_DESC, HousingType.MESSAGE_CONSTRAINTS); // invalid housing type
+        assertParseFailure(parser, "1" + INVALID_HOUSINGTYPE_DESC, HousingType.MESSAGE_CONSTRAINTS);
+        // invalid housing type
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
