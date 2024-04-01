@@ -3,6 +3,7 @@ package seedu.realodex.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
@@ -31,7 +32,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_FAMILY, PREFIX_TAG, PREFIX_HOUSINGTYPE, PREFIX_REMARK);
+                        PREFIX_FAMILY, PREFIX_TAG, PREFIX_HOUSINGTYPE, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         Index index;
 
@@ -42,7 +43,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_ADDRESS,
-                PREFIX_FAMILY, PREFIX_HOUSINGTYPE, PREFIX_REMARK);
+                PREFIX_FAMILY, PREFIX_HOUSINGTYPE, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -73,6 +74,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         if (argMultimap.containsPrefix(PREFIX_REMARK)) {
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
+        }
+        if (argMultimap.containsPrefix(PREFIX_BIRTHDAY)) {
+            editPersonDescriptor.setBirthday(ParserUtil.parseBirthday(argMultimap.getValue(PREFIX_BIRTHDAY).get()));
         }
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);

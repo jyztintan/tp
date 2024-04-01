@@ -36,6 +36,7 @@
       <Label fx:id="housingType" styleClass="cell_small_label" text="\$housing type" />
       <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
       <Label fx:id="birthday" styleClass="cell_small_label" text="\$birthday" />
+      <Label fx:id="birthdayDays" styleClass="cell_small_label" text="\$birthdayDays" />
 
     </VBox>
   </GridPane>

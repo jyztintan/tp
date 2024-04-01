@@ -2,6 +2,7 @@ package seedu.realodex.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
@@ -57,6 +58,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]"
             + "[" + PREFIX_HOUSINGTYPE + "HOUSING_TYPE]"
             + "[" + PREFIX_REMARK + "REMARK]\n"
+            + "[" + PREFIX_BIRTHDAY + "BIRTHDAY]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -64,7 +66,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_HELP = "Edit Command: Edits a client's particulars through their "
             + "index number shown in the list.\n"
             + "Format: edit INDEX NUMBER [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] "
-            + "[t/TAG] [h/HOUSING_TYPE] [r/REMARK]\n"
+            + "[t/TAG] [h/HOUSING_TYPE] [r/REMARK] [b/BIRTHDAY]\n"
             + "Example: edit 3 n/John e/john@gmail.com f/5\n";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Client: %1$s";
@@ -193,7 +195,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, income, email, address, family, tags, housingType, remark);
+            return CollectionUtil.isAnyNonNull(name, phone, income, email, address, family, tags, housingType, remark, birthday);
+
         }
 
         public void setName(Name name) {
@@ -277,6 +280,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(remark);
         }
 
+        public void setBirthday(Birthday birthday) {
+            this.birthday = birthday;
+        }
+
+        public Optional<Birthday> getBirthday() {
+            return Optional.ofNullable(birthday);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -297,7 +308,8 @@ public class EditCommand extends Command {
                     && Objects.equals(family, otherEditPersonDescriptor.family)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags)
                     && Objects.equals(housingType, otherEditPersonDescriptor.housingType)
-                    && Objects.equals(remark, otherEditPersonDescriptor.remark);
+                    && Objects.equals(remark, otherEditPersonDescriptor.remark)
+                    && Objects.equals(birthday, otherEditPersonDescriptor.birthday);
         }
 
         @Override
@@ -312,15 +324,8 @@ public class EditCommand extends Command {
                     .add("tags", tags)
                     .add("housingType", housingType)
                     .add("remark", remark)
+                    .add("birthday", birthday)
                     .toString();
-        }
-
-        public void setBirthday(Birthday birthday) {
-            this.birthday = birthday;
-        }
-
-        public Optional<Birthday> getBirthday() {
-            return Optional.ofNullable(birthday);
         }
     }
 }
