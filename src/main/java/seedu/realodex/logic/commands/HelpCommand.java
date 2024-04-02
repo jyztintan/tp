@@ -33,6 +33,12 @@ public class HelpCommand extends Command {
         this.command = command.trim().toLowerCase();
     }
 
+    /**
+     * Executes the help command to either give general help or for individual specified commands.
+     *
+     * @param model the current model of the application
+     * @return the result of the execution
+     */
     @Override
     public CommandResult execute(Model model) {
 
