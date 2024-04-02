@@ -35,7 +35,7 @@ import seedu.realodex.model.tag.Tag;
  */
 public class EditCommandParser implements Parser<EditCommand> {
 
-    private static final String MESSAGE_ERROR_PARSING_TAGS = "Error parsing tags: " + Tag.MESSAGE_CONSTRAINTS;
+    public static final String MESSAGE_ERROR_PARSING_TAGS = "Error parsing tags: " + Tag.MESSAGE_CONSTRAINTS;
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
@@ -78,7 +78,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         parseAndSetField(argMultimap, PREFIX_ADDRESS, editPersonDescriptor::setAddress, ParserUtil::parseAddressReturnStored, errorMessageBuilder, "address");
         parseAndSetField(argMultimap, PREFIX_FAMILY, editPersonDescriptor::setFamily, ParserUtil::parseFamilyReturnStored, errorMessageBuilder, "family");
         parseAndSetField(argMultimap, PREFIX_BIRTHDAY, editPersonDescriptor::setBirthday, ParserUtil::parseBirthdayReturnStored, errorMessageBuilder, "birthday");
-        parseAndSetField(argMultimap, PREFIX_HOUSINGTYPE, editPersonDescriptor::setHousingType, ParserUtil::parseHousingTypeReturnStored, errorMessageBuilder, "house type");
+        parseAndSetField(argMultimap, PREFIX_HOUSINGTYPE, editPersonDescriptor::setHousingType,
+                         ParserUtil::parseHousingTypeReturnStored, errorMessageBuilder, "housing type");
 
         //These fields do not have ParseUtilResult implementation
         if (argMultimap.containsPrefix(PREFIX_TAG)) {

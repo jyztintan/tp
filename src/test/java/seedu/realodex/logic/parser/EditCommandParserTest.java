@@ -115,32 +115,73 @@ public class EditCommandParserTest {
         String errorMessage = "Error parsing %s: ";
         assertParseFailure(parser, "1" + INVALID_NAME_DESC,
                            String.format(errorMessage, "name") + Name.MESSAGE_CONSTRAINTS + "\n"); // invalid name
-        assertParseFailure(parser, "1" + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
-        assertParseFailure(parser, "1" + INVALID_INCOME_DESC, Income.MESSAGE_CONSTRAINTS); // invalid income
-        assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
-        assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
-        assertParseFailure(parser, "1" + INVALID_FAMILY_DESC, Family.MESSAGE_CONSTRAINTS); // invalid family
-        assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
-        assertParseFailure(parser, "1" + INVALID_HOUSINGTYPE_DESC, HousingType.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_PHONE_DESC,
+                           String.format(errorMessage, "phone") + Phone.MESSAGE_CONSTRAINTS + "\n"); // invalid phone
+        assertParseFailure(parser, "1" + INVALID_INCOME_DESC,
+                           String.format(errorMessage, "income") + Income.MESSAGE_CONSTRAINTS + "\n"); // invalid income
+        assertParseFailure(parser, "1" + INVALID_EMAIL_DESC,
+                           String.format(errorMessage, "email") + Email.MESSAGE_CONSTRAINTS + "\n"); // invalid email
+        assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC,
+                           String.format(errorMessage, "address") + Address.MESSAGE_CONSTRAINTS + "\n"); // invalid address
+        assertParseFailure(parser, "1" + INVALID_FAMILY_DESC,
+                           String.format(errorMessage, "family") + Family.MESSAGE_CONSTRAINTS + "\n"); // invalid family
+        assertParseFailure(parser, "1" + INVALID_TAG_DESC, EditCommandParser.MESSAGE_ERROR_PARSING_TAGS); // invalid tag
         // invalid housing type
-        assertParseFailure(parser, "1" + INVALID_BIRTHDAY_DESC, Birthday.MESSAGE_CONSTRAINTS); // invalid bday
+        assertParseFailure(parser, "1" + INVALID_HOUSINGTYPE_DESC,
+                           String.format(errorMessage, "housing type") + HousingType.MESSAGE_CONSTRAINTS + "\n");
+        //invalid birthday
+        assertParseFailure(parser, "1" + INVALID_BIRTHDAY_DESC,
+                           String.format(errorMessage, "birthday") + Birthday.MESSAGE_CONSTRAINTS + "\n"); // invalid bday
 
         // invalid phone followed by valid email
-        assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY,
+                           String.format(errorMessage, "phone") + Phone.MESSAGE_CONSTRAINTS + "\n");
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
         assertParseFailure(parser, "1" + TAG_DESC_BOB
-                + CommandTestUtil.TAG_DESC_BOB + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.TAG_DESC_BOB + TAG_EMPTY, EditCommandParser.MESSAGE_ERROR_PARSING_TAGS);
         assertParseFailure(parser, "1" + TAG_DESC_BOB + TAG_EMPTY
-                + CommandTestUtil.TAG_DESC_BOB, Tag.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.TAG_DESC_BOB, EditCommandParser.MESSAGE_ERROR_PARSING_TAGS);
         assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_BOB
-                + CommandTestUtil.TAG_DESC_BOB, Tag.MESSAGE_CONSTRAINTS);
-
-        // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_ADDRESS_AMY
-                        + VALID_PHONE_AMY, Name.MESSAGE_CONSTRAINTS);
+                + CommandTestUtil.TAG_DESC_BOB, EditCommandParser.MESSAGE_ERROR_PARSING_TAGS);
     }
+
+    @Test
+    public void parse_invalidMultipleValues_failure() {
+        String errorMessage = "Error parsing %s: ";
+
+        // Test case 1: Invalid name, phone, and email
+        String userInput1 = "1" + INVALID_NAME_DESC + INVALID_PHONE_DESC
+                + INVALID_EMAIL_DESC;
+
+        String expectedErrorMessage1 = String.format(errorMessage, "name") + Name.MESSAGE_CONSTRAINTS + "\n"
+                + String.format(errorMessage, "phone") + Phone.MESSAGE_CONSTRAINTS + "\n"
+                + String.format(errorMessage, "email") + Email.MESSAGE_CONSTRAINTS + "\n";
+
+        assertParseFailure(parser, userInput1, expectedErrorMessage1);
+
+        // Test case 2: Invalid phone, income, and tag
+        String userInput2 = "1" + INVALID_PHONE_DESC + INVALID_INCOME_DESC
+                + INVALID_TAG_DESC;
+
+        String expectedErrorMessage2 = String.format(errorMessage, "phone") + Phone.MESSAGE_CONSTRAINTS + "\n"
+                + String.format(errorMessage, "income") + Income.MESSAGE_CONSTRAINTS + "\n"
+                + EditCommandParser.MESSAGE_ERROR_PARSING_TAGS;
+
+        assertParseFailure(parser, userInput2, expectedErrorMessage2);
+
+        // Test case 3: Invalid email, address, and family
+        String userInput3 = "1" + INVALID_EMAIL_DESC + INVALID_ADDRESS_DESC
+                + INVALID_FAMILY_DESC;
+
+        String expectedErrorMessage3 = String.format(errorMessage, "email") + Email.MESSAGE_CONSTRAINTS + "\n"
+                + String.format(errorMessage, "address") + Address.MESSAGE_CONSTRAINTS + "\n"
+                + String.format(errorMessage, "family") + Family.MESSAGE_CONSTRAINTS + "\n";
+
+        assertParseFailure(parser, userInput3, expectedErrorMessage3);
+    }
+
 
     @Test
     public void parse_allFieldsSpecified_success() {
