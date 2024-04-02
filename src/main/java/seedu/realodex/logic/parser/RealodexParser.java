@@ -77,11 +77,16 @@ public class RealodexParser {
             }
             return new DeleteCommandParser().parse(arguments);
 
+        // special case for the clear command, differentiated so as not to cause confusion with delete
         case ClearCommand.COMMAND_WORD:
+            return new ClearCommand();
+
+        case ClearCommand.CLEAR_HELP_WORD:
             if (isHelp) {
                 return new HelpCommandParser().parse(commandWord);
+            } else {
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
             }
-            return new ClearCommand();
 
         case FilterCommand.COMMAND_WORD:
             if (isHelp) {

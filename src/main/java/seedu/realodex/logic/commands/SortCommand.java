@@ -19,8 +19,7 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_SORT_HELP = "Sort Command: "
             + "Sorts clients by their birthday\n"
-            + "Format: sort\n"
-            + "Example: sort\n";
+            + "Format: sort\n";
 
     public static final String MESSAGE_SUCCESS = "Sorted list by days to their birthday!";
 

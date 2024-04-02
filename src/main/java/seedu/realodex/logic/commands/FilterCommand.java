@@ -33,11 +33,11 @@ public class FilterCommand extends Command {
             + "Example: " + COMMAND_WORD + " " + PREFIX_NAME + "alice tan";
 
     public static final String MESSAGE_FILTER_HELP = "Filter Command: "
-            + "Filters clients by ONE specified field (name, remark, tag)"
+            + "Filters clients by ONE specified field(name, remark, tag) "
             + "with the specified keyphrase (non-empty, case-insensitive) "
             + "and displays them as a list with index numbers.\n"
             + "Format: filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG]\n"
-            + "Example: filter n/Jus\n";
+            + "Examples: filter n/Jus OR filter r/likes coffee OR filter t/buyer\n";
 
     public static final String MESSAGE_FILTER_CONFLICT = "Filter command can only filter by one field.\n";
 

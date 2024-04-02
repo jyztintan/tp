@@ -180,13 +180,13 @@ public class RealodexParserTest {
 
     @Test
     public void parseCommand_clear_help() throws Exception {
-        assertTrue(parser.parseCommand("clearRealodex help") instanceof HelpCommand);
-        assertTrue(parser.parseCommand("clearRealodex help".toUpperCase()) instanceof HelpCommand);
-        assertTrue(parser.parseCommand("clearRealodex help".toLowerCase()) instanceof HelpCommand);
-        HelpCommand expected = new HelpCommand("clearRealodex");
-        assertEquals(parser.parseCommand("clearRealodex help"), expected);
-        assertEquals(parser.parseCommand("clearRealodex help".toUpperCase()), expected);
-        assertEquals(parser.parseCommand("clearRealodex help".toLowerCase()), expected);
+        assertTrue(parser.parseCommand("clear help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("clear help".toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("cLeAr helP".toLowerCase()) instanceof HelpCommand);
+        HelpCommand expected = new HelpCommand("clear");
+        assertEquals(parser.parseCommand("clear help"), expected);
+        assertEquals(parser.parseCommand("clear help".toUpperCase()), expected);
+        assertEquals(parser.parseCommand("clEar HElp".toLowerCase()), expected);
     }
 
     @Test
