@@ -23,6 +23,7 @@ public class Prefix {
         prefixDescriptionMap.put("e/", "EMAIL");
         prefixDescriptionMap.put("f/", "FAMILY");
         prefixDescriptionMap.put("t/", "TAG");
+        prefixDescriptionMap.put("h/", "HOUSINGTYPE");
         prefixDescriptionMap.put("r/", "REMARK");
         prefixDescriptionMap.put("b/", "BIRTHDAY");
     }

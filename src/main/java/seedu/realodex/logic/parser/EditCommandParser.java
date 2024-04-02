@@ -6,6 +6,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -43,9 +44,12 @@ public class EditCommandParser implements Parser<EditCommand> {
      */
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME,
-                                                                PREFIX_EMAIL, PREFIX_ADDRESS,
-                                   PREFIX_FAMILY, PREFIX_TAG, PREFIX_REMARK, PREFIX_BIRTHDAY);
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_ADDRESS,
+                        PREFIX_FAMILY, PREFIX_TAG, PREFIX_HOUSINGTYPE, PREFIX_REMARK, PREFIX_BIRTHDAY);
+
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_ADDRESS,
+                                                 PREFIX_FAMILY, PREFIX_HOUSINGTYPE, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         Index index = parseIndex(argMultimap.getPreamble());
 
@@ -62,7 +66,6 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
     }
 
-
     private EditPersonDescriptor parseEditPersonDescriptor(ArgumentMultimap argMultimap) throws ParseException {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         StringBuilder errorMessageBuilder = new StringBuilder();
@@ -75,6 +78,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         parseAndSetField(argMultimap, PREFIX_ADDRESS, editPersonDescriptor::setAddress, ParserUtil::parseAddressReturnStored, errorMessageBuilder, "address");
         parseAndSetField(argMultimap, PREFIX_FAMILY, editPersonDescriptor::setFamily, ParserUtil::parseFamilyReturnStored, errorMessageBuilder, "family");
         parseAndSetField(argMultimap, PREFIX_BIRTHDAY, editPersonDescriptor::setBirthday, ParserUtil::parseBirthdayReturnStored, errorMessageBuilder, "birthday");
+        parseAndSetField(argMultimap, PREFIX_HOUSINGTYPE, editPersonDescriptor::setHousingType, ParserUtil::parseHousingTypeReturnStored, errorMessageBuilder, "house type");
 
         //These fields do not have ParseUtilResult implementation
         if (argMultimap.containsPrefix(PREFIX_TAG)) {

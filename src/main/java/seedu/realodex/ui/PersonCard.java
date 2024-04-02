@@ -45,6 +45,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
     @FXML
+    private Label housingType;
+    @FXML
     private Label remark;
     @FXML
     private Label birthday;
@@ -67,6 +69,7 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName.toString())));
+        housingType.setText(person.getHousingType().toStringWithRepresentation());
         remark.setText(person.getRemark().toStringWithRepresentation());
         birthday.setText(person.getBirthday().toStringWithRepresentation());
         birthdayDays.setText(person.getBirthday().getDaysUntilBirthdayWithRepresentation());

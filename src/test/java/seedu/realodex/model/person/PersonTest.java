@@ -2,12 +2,15 @@ package seedu.realodex.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_INCOME_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_BOB_FIRST_LETTER_CAPS;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -46,6 +49,7 @@ public class PersonTest {
                 .withAddress(VALID_ADDRESS_BOB)
                 .withFamily(VALID_FAMILY_BOB)
                 .withTags(VALID_TAG_AMY)
+                .withHousingType(VALID_HOUSINGTYPE_AMY)
                 .withRemark(VALID_REMARK_AMY)
                 .withBirthday(VALID_BIRTHDAY_AMY)
                 .build();
@@ -111,6 +115,10 @@ public class PersonTest {
         editedAlice = new PersonBuilder(ALICE).withTags("buyer").withTags("seller").build();
         assertFalse(ALICE.equals(editedAlice));
 
+        //different housing type -> returns false
+        editedAlice = new PersonBuilder(ALICE).withHousingType(VALID_HOUSINGTYPE_BOB).build();
+        assertFalse(ALICE.equals(editedAlice));
+
         // different remarks -> returns false
         editedAlice = new PersonBuilder(ALICE).withRemark(VALID_REMARK_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
@@ -128,8 +136,19 @@ public class PersonTest {
                 + ", address=" + ALICE.getAddress()
                 + ", family=" + ALICE.getFamily()
                 + ", tags=" + ALICE.getTags()
+                + ", housingType=" + ALICE.getHousingType()
                 + ", remark=" + ALICE.getRemark()
                 + ", birthday=" + ALICE.getBirthday() + "}";
         assertEquals(expected, ALICE.toString());
+    }
+
+    @Test
+    public void hashCodeMethod() {
+        Person aliceCopy = new PersonBuilder(ALICE).build();
+        Person bobCopy = new PersonBuilder(BOB).build();
+        assertEquals(ALICE.hashCode(), aliceCopy.hashCode());
+        assertEquals(BOB.hashCode(), bobCopy.hashCode());
+        assertNotEquals(ALICE.hashCode(), bobCopy.hashCode());
+
     }
 }
