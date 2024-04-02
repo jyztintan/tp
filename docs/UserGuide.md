@@ -145,6 +145,7 @@ Format: `sort`
 
 - The current date is based on the local system's time.
 - If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
+- If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list. 
 
 
 ### Clearing Realodex : `clearrealodex`
