@@ -175,18 +175,23 @@ Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### File Data
 
-Realodex data is saved in the hard disk automatically after any command that modifies it. There is no need to save manually.
+The file that stores the data of your contacts can be found in the same folder/directory as the Realodex app. (e.g. if you
+have Realodex installed in your Desktop, the data file can be found in your Desktop as well.)
 
-### Editing the data file
+#### Saving Data
+
+Realodex data is saved in the hard disk as a JSON file automatically after any command that modifies it. There is no need to save manually.
+
+#### Editing the data 
 
 Realodex data is saved automatically as a JSON file `[JAR file location]/data/realodex.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, Realodex will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+If your changes to the data file makes its format invalid, Realodex will discard all data and start with an empty data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
@@ -200,7 +205,7 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty JSON file it creates with the JSON file that contains all of your data.
 
 --------------------------------------------------------------------------------------------------------------------
 
