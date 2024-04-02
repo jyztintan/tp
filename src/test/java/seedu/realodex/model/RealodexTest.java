@@ -103,6 +103,11 @@ public class RealodexTest {
         public ObservableList<Person> getPersonList() {
             return persons;
         }
+
+        @Override
+        public ObservableList<Person> getCopyOfInternalListOfUniquePersonsList() {
+            return null;
+        }
     }
 
 }

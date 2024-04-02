@@ -1,5 +1,6 @@
 package seedu.realodex.logic.parser;
 
+import static seedu.realodex.logic.commands.DeleteCommand.MESSAGE_INDEX_AND_NAME_PROVIDED;
 import static seedu.realodex.logic.commands.DeleteCommand.MESSAGE_NO_FIELDS_PROVIDED;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -54,8 +55,13 @@ public class DeleteCommandParserTest {
     }
 
     @Test
+    public void parse_indexAndNameProvided_throwsParseException() {
+        assertParseFailure(parser, "1 n/James", MESSAGE_INDEX_AND_NAME_PROVIDED);
+    }
+
+    @Test
     public void parse_nameAndIndex_throwsParseException() {
-        assertParseFailure(parser, "1 n/James", String.format(DeleteCommand.MESSAGE_INDEX_AND_NAME_PROVIDED));
+        assertParseFailure(parser, "1 n/James", String.format(MESSAGE_INDEX_AND_NAME_PROVIDED));
     }
 
     @Test

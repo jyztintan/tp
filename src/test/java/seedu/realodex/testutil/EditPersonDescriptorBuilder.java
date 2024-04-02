@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.realodex.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.realodex.model.person.Address;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
 import seedu.realodex.model.person.Income;
@@ -110,6 +111,15 @@ public class EditPersonDescriptorBuilder {
     public EditPersonDescriptorBuilder withRemark(String remark) {
         Remark r = new Remark(remark);
         descriptor.setRemark(r);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Birthday} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withBirthday(String birthday) {
+        Birthday b = new Birthday(birthday);
+        descriptor.setBirthday(b);
         return this;
     }
 

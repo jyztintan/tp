@@ -8,6 +8,7 @@ import static seedu.realodex.logic.commands.EditCommand.MESSAGE_EDIT_HELP;
 import static seedu.realodex.logic.commands.FilterCommand.MESSAGE_FILTER_HELP;
 import static seedu.realodex.logic.commands.HelpCommand.SHOWING_HELP_MESSAGE;
 import static seedu.realodex.logic.commands.ListCommand.MESSAGE_LIST_HELP;
+import static seedu.realodex.logic.commands.SortCommand.MESSAGE_SORT_HELP;
 import static seedu.realodex.testutil.TypicalPersons.getTypicalRealodex;
 
 import org.junit.jupiter.api.Test;
@@ -52,5 +53,8 @@ public class HelpCommandTest {
                 false, false);
         assertCommandSuccess(new HelpCommand("list"), model, expectedListHelpCommandResult, expectedModel);
 
+        CommandResult expectedSortHelpCommandResult = new CommandResult(MESSAGE_SORT_HELP,
+                                                                        false, false);
+        assertCommandSuccess(new HelpCommand("sort"), model, expectedSortHelpCommandResult, expectedModel);
     }
 }

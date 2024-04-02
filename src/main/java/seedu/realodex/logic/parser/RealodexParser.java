@@ -17,6 +17,7 @@ import seedu.realodex.logic.commands.ExitCommand;
 import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.commands.HelpCommand;
 import seedu.realodex.logic.commands.ListCommand;
+import seedu.realodex.logic.commands.SortCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 
 /**
@@ -96,6 +97,12 @@ public class RealodexParser {
                 return new HelpCommandParser().parse(commandWord);
             }
             return new ListCommand();
+
+        case SortCommand.COMMAND_WORD:
+            if (isHelp) {
+                return new HelpCommandParser().parse(commandWord);
+            }
+            return new SortCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
