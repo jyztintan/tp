@@ -10,6 +10,8 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL_CAPS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY_CAPS;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE_CAPS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME_CAPS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
@@ -55,6 +57,8 @@ public class CommandTestUtil {
     public static final String VALID_FAMILY_BOB = "4";
     public static final String VALID_TAG_AMY = "buyer";
     public static final String VALID_TAG_BOB = "seller";
+    public static final String VALID_HOUSINGTYPE_AMY = "HDB";
+    public static final String VALID_HOUSINGTYPE_BOB = "Condominium";
     public static final String VALID_REMARK_AMY = "This is a remark";
     public static final String VALID_REMARK_BOB = "Testing remark";
     public static final String VALID_BIRTHDAY_AMY = "6Jun2006";
@@ -83,6 +87,9 @@ public class CommandTestUtil {
     public static final String TAG_DESC_BOB = " " + PREFIX_TAG + VALID_TAG_BOB;
     public static final String TAG_DESC_BOB_PREFIX_CAPS = " " + PREFIX_TAG_CAPS + VALID_TAG_BOB;
     public static final String TAG_DESC_AMY = " " + PREFIX_TAG + VALID_TAG_AMY;
+    public static final String HOUSINGTYPE_DESC_BOB = " " + PREFIX_HOUSINGTYPE + VALID_HOUSINGTYPE_BOB;
+    public static final String HOUSINGTYPE_DESC_AMY = " " + PREFIX_HOUSINGTYPE + VALID_HOUSINGTYPE_AMY;
+    public static final String HOUSINGTYPE_DESC_AMY_PREFIX_CAPS = " " + PREFIX_HOUSINGTYPE_CAPS + VALID_HOUSINGTYPE_AMY;
     public static final String REMARK_DESC_AMY = " " + PREFIX_REMARK + VALID_REMARK_AMY;
     public static final String REMARK_DESC_BOB = " " + PREFIX_REMARK + VALID_REMARK_BOB;
     public static final String REMARK_DESC_BOB_PREFIX_CAPS = " " + PREFIX_REMARK_CAPS + VALID_REMARK_BOB;
@@ -97,6 +104,8 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_FAMILY_DESC = " " + PREFIX_FAMILY + "0"; // Family size must be at least 1
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "friend"; // 'friend' not allowed in tags
+    public static final String INVALID_HOUSINGTYPE_DESC = " " + PREFIX_HOUSINGTYPE + "HDBB"; // Does not match any
+    // housing type
     public static final String INVALID_BIRTHDAY_DESC = " " + PREFIX_BIRTHDAY + "0";
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

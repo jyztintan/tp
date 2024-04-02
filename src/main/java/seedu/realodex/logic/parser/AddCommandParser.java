@@ -4,6 +4,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -20,6 +21,7 @@ import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -39,14 +41,13 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME,
-                                           PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_FAMILY,
-                                           PREFIX_TAG, PREFIX_REMARK, PREFIX_BIRTHDAY);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_ADDRESS,
+                        PREFIX_FAMILY, PREFIX_TAG, PREFIX_HOUSINGTYPE, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         Prefix[] listOfCompulsoryPrefixTags = argMultimap.returnListOfCompulsoryTags(PREFIX_NAME, PREFIX_ADDRESS,
                                                                                      PREFIX_INCOME, PREFIX_PHONE,
                                                                                      PREFIX_FAMILY, PREFIX_EMAIL,
-                                                                                     PREFIX_TAG);
+                                                                                     PREFIX_TAG, PREFIX_HOUSINGTYPE);
         if (!arePrefixesPresent(argMultimap,
                                 listOfCompulsoryPrefixTags)) {
             String exceptionMessageForMissingPrefixes =
@@ -55,8 +56,8 @@ public class AddCommandParser implements Parser<AddCommand> {
                                              + AddCommand.MESSAGE_USAGE);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL,
-                                                 PREFIX_FAMILY, PREFIX_ADDRESS, PREFIX_REMARK, PREFIX_BIRTHDAY);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_INCOME, PREFIX_EMAIL, PREFIX_FAMILY,
+                PREFIX_ADDRESS, PREFIX_HOUSINGTYPE, PREFIX_REMARK, PREFIX_BIRTHDAY);
 
         StringBuilder errorMessageBuilder = new StringBuilder();
         ParserUtilResult<Name> nameStored =
@@ -93,6 +94,11 @@ public class AddCommandParser implements Parser<AddCommand> {
             errorMessageBuilder.append("Error parsing tags: ").append(e.getMessage()).append("\n");
         }
 
+        ParserUtilResult<HousingType> housingTypeStored =
+                ParserUtil.parseHousingTypeReturnStored(argMultimap
+                        .getValueOrDefault(PREFIX_HOUSINGTYPE).orElseThrow());
+        housingTypeStored.buildErrorMessage(errorMessageBuilder, "housing type");
+
         Remark remark;
 
         remark = ParserUtil.parseRemark(argMultimap.getValueOrDefault(PREFIX_REMARK).orElseThrow());
@@ -116,8 +122,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Email email = emailStored.returnStoredResult();
         Address address = addressStored.returnStoredResult();
         Family family = familyStored.returnStoredResult();
+        HousingType housingType = housingTypeStored.returnStoredResult();
         Birthday birthday = birthdayStored.returnStoredResult();
-        Person person = new Person(name, phone, income, email, address, family, tagList, remark, birthday);
+        Person person = new Person(name, phone, income, email, address, family, tagList, housingType, remark, birthday);
         return new AddCommand(person);
     }
 

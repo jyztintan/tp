@@ -21,6 +21,8 @@ public class CliSyntax {
 
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     public static final Prefix PREFIX_TAG_CAPS = new Prefix("T/");
+    public static final Prefix PREFIX_HOUSINGTYPE = new Prefix("h/");
+    public static final Prefix PREFIX_HOUSINGTYPE_CAPS = new Prefix("H/");
     public static final Prefix PREFIX_REMARK = new Prefix("r/");
     public static final Prefix PREFIX_REMARK_CAPS = new Prefix("R/");
     public static final Prefix PREFIX_BIRTHDAY = new Prefix("b/");

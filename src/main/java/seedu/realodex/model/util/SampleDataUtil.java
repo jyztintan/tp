@@ -10,6 +10,7 @@ import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -30,6 +31,7 @@ public class SampleDataUtil {
                        new Address("Blk 30 Geylang Street 29, #06-40"),
                        new Family("20"),
                        getTagSet("Buyer"),
+                       new HousingType("HDB"),
                        new Remark("Has 3 cats."),
                        new Birthday("")),
             new Person(new Name("Bernice Yu"),
@@ -39,6 +41,7 @@ public class SampleDataUtil {
                        new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
                        new Family("20"),
                        getTagSet("buyer", "seller"),
+                       new HousingType("Landed Property"),
                        new Remark("Eats alot"),
                        new Birthday("01Apr2021")),
             new Person(new Name("Charlotte Oliveiro"),
@@ -48,6 +51,7 @@ public class SampleDataUtil {
                        new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
                        new Family("20"),
                        getTagSet("buyer", "seller"),
+                       new HousingType("Condominium"),
                        new Remark("Weighs 500kg"),
                        new Birthday("01Apr2021")),
             new Person(new Name("David Li"),
@@ -57,6 +61,7 @@ public class SampleDataUtil {
                        new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
                        new Family("20"),
                        getTagSet("seller"),
+                       new HousingType("Good Class Bungalow"),
                        new Remark("Broke his back deadlifting"),
                        new Birthday("12Jan1972")),
             new Person(new Name("Irfan Ibrahim"),
@@ -66,6 +71,7 @@ public class SampleDataUtil {
                        new Address("Blk 47 Tampines Street 20, #17-35"),
                        new Family("20"),
                        getTagSet("BUYER"),
+                       new HousingType("HDB"),
                        new Remark("Likes to eat nasi lemak after finishing v1.2"),
                        new Birthday("23May2001")),
             new Person(new Name("Roy Balakrishnan"),
@@ -75,6 +81,7 @@ public class SampleDataUtil {
                        new Address("Blk 45 Aljunied Street 85, #11-31"),
                        new Family("20"),
                        getTagSet("buyer"),
+                       new HousingType("HDB"),
                        new Remark("Is a mommy's boy."),
                        new Birthday(""))
         };

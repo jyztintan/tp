@@ -5,6 +5,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -29,6 +30,7 @@ import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -53,8 +55,9 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_FAMILY + "FAMILY] "
-            + "[" + PREFIX_TAG + "TAG]"
-            + "[" + PREFIX_REMARK + "REMARK]\n"
+            + "[" + PREFIX_TAG + "TAG] "
+            + "[" + PREFIX_HOUSINGTYPE + "HOUSING_TYPE] "
+            + "[" + PREFIX_REMARK + "REMARK] "
             + "[" + PREFIX_BIRTHDAY + "BIRTHDAY]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -63,7 +66,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_HELP = "Edit Command: Edits a client's particulars through their "
             + "index number shown in the list.\n"
             + "Format: edit INDEX NUMBER [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] "
-            + "[t/TAG] [r/REMARK] [b/BIRTHDAY]\n"
+            + "[t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]\n"
             + "Example: edit 3 n/John e/john@gmail.com f/5\n";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Client: %1$s";
@@ -120,11 +123,13 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Family updatedFamily = editPersonDescriptor.getFamily().orElse(personToEdit.getFamily());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        HousingType updatedHousingType = editPersonDescriptor.getHousingType().orElse(personToEdit.getHousingType());
         Remark updatedRemark = editPersonDescriptor.getRemark().orElse(personToEdit.getRemark());
         Birthday updatedBirthday = editPersonDescriptor.getBirthday().orElse(personToEdit.getBirthday());
 
-        return new Person(updatedName, updatedPhone, updatedIncome, updatedEmail, updatedAddress, updatedFamily,
-                          updatedTags, updatedRemark, updatedBirthday);
+        return new Person(updatedName, updatedPhone, updatedIncome,
+                          updatedEmail, updatedAddress, updatedFamily,
+                          updatedTags, updatedHousingType, updatedRemark, updatedBirthday);
     }
 
     @Override
@@ -163,6 +168,7 @@ public class EditCommand extends Command {
         private Address address;
         private Family family;
         private Set<Tag> tags;
+        private HousingType housingType;
         private Remark remark;
         private Birthday birthday;
 
@@ -180,6 +186,7 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setFamily(toCopy.family);
             setTags(toCopy.tags);
+            setHousingType(toCopy.housingType);
             setRemark(toCopy.remark);
             setBirthday(toCopy.birthday);
         }
@@ -188,7 +195,9 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, income, email, address, family, tags, remark, birthday);
+            return CollectionUtil.isAnyNonNull(name, phone, income, email, address, family, tags, housingType,
+                    remark, birthday);
+
         }
 
         public void setName(Name name) {
@@ -256,6 +265,14 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        public void setHousingType(HousingType housingType) {
+            this.housingType = housingType;
+        }
+
+        public Optional<HousingType> getHousingType() {
+            return Optional.ofNullable(housingType);
+        }
+
         public void setRemark(Remark remark) {
             this.remark = remark;
         }
@@ -291,6 +308,7 @@ public class EditCommand extends Command {
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(family, otherEditPersonDescriptor.family)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags)
+                    && Objects.equals(housingType, otherEditPersonDescriptor.housingType)
                     && Objects.equals(remark, otherEditPersonDescriptor.remark)
                     && Objects.equals(birthday, otherEditPersonDescriptor.birthday);
         }
@@ -305,6 +323,7 @@ public class EditCommand extends Command {
                     .add("address", address)
                     .add("family", family)
                     .add("tags", tags)
+                    .add("housingType", housingType)
                     .add("remark", remark)
                     .add("birthday", birthday)
                     .toString();
