@@ -147,17 +147,27 @@ Format: `sort`
 - If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
 
 
-### Clearing Realodex : `clearrealodex`
+### Clearing Realodex : `clearRealodex`
 
 Clears all clients in Realodex.
 
-Format: `clearrealodex`
+Format: `clearRealodex`
 
 ### Help : `help`
 
 Generates a pop-up window which is a summarised version of the User Guide.
 
 Format: `help`
+
+### Help (Individual Commands) : `COMMAND help`
+
+Shows the help message for the specified command only.
+
+Format: `COMMAND help`
+
+Examples:
+- `add help` provides the help message for the add command
+- `filter help` provides the help message for the filter command
 
 ### Exiting the program : `exit`
 
