@@ -190,6 +190,11 @@ public class RealodexParserTest {
     }
 
     @Test
+    public void parseCommand_unknownClearCommand_throwsParseException() {
+        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("clear"));
+    }
+
+    @Test
     public void parseCommand_delete_help() throws Exception {
         assertTrue(parser.parseCommand("delete help") instanceof HelpCommand);
         assertTrue(parser.parseCommand("DELETE HELP") instanceof HelpCommand);
