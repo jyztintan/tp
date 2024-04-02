@@ -24,7 +24,7 @@ public class HelpCommand extends Command {
     private final String command;
 
     public HelpCommand(String command) {
-        this.command = command.trim();
+        this.command = command.trim().toLowerCase();
     }
 
     @Override

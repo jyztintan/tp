@@ -10,7 +10,7 @@ import seedu.realodex.model.Realodex;
  */
 public class ClearCommand extends Command {
 
-    public static final String COMMAND_WORD = "clearRealodex";
+    public static final String COMMAND_WORD = "clearrealodex";
     public static final String MESSAGE_SUCCESS = "Realodex has been cleared!";
     public static final String MESSAGE_CLEAR_HELP = "Clear Command: Clears all entries in Realodex.\n"
             + "Format: clearRealodex\n";
