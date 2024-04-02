@@ -67,6 +67,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         StringBuilder errorMessageBuilder = new StringBuilder();
 
+        //For fields with ParserUtilResult implementation
         parseAndSetField(argMultimap, PREFIX_NAME, editPersonDescriptor::setName, ParserUtil::parseNameReturnStored, errorMessageBuilder, "name");
         parseAndSetField(argMultimap, PREFIX_PHONE, editPersonDescriptor::setPhone, ParserUtil::parsePhoneReturnStored, errorMessageBuilder, "phone");
         parseAndSetField(argMultimap, PREFIX_INCOME, editPersonDescriptor::setIncome, ParserUtil::parseIncomeReturnStored, errorMessageBuilder, "income");
@@ -75,6 +76,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         parseAndSetField(argMultimap, PREFIX_FAMILY, editPersonDescriptor::setFamily, ParserUtil::parseFamilyReturnStored, errorMessageBuilder, "family");
         parseAndSetField(argMultimap, PREFIX_BIRTHDAY, editPersonDescriptor::setBirthday, ParserUtil::parseBirthdayReturnStored, errorMessageBuilder, "birthday");
 
+        //These fields do not have ParseUtilResult implementation
         if (argMultimap.containsPrefix(PREFIX_TAG)) {
             try {
                 Set<Tag> parsedTagsForEdit = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
