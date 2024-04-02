@@ -74,12 +74,26 @@ public class RealodexParserTest {
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+
+        // command in caps
+        EditCommand commandInCaps = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD.toUpperCase() + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), commandInCaps);
+
+        // command mixed cases
+        EditCommand commandMixedCases = (EditCommand) parser.parseCommand("eDiT" + " "
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), commandMixedCases);
     }
 
     @Test
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
+        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD.toLowerCase()) instanceof ExitCommand);
+        assertTrue(parser.parseCommand("eXit") instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
+        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD.toLowerCase() + " 3") instanceof ExitCommand);
+        assertTrue(parser.parseCommand("eXiT" + " 3") instanceof ExitCommand);
     }
 
     @Test
@@ -88,6 +102,16 @@ public class RealodexParserTest {
         FilterCommand command = (FilterCommand) parser.parseCommand(
                 FilterCommand.COMMAND_WORD + " n/" + keyphrase);
         assertEquals(new FilterCommand(new NameContainsKeyphrasePredicate(keyphrase)), command);
+
+        // command in caps
+        FilterCommand commandInCaps = (FilterCommand) parser.parseCommand(
+                FilterCommand.COMMAND_WORD.toUpperCase() + " n/" + keyphrase);
+        assertEquals(new FilterCommand(new NameContainsKeyphrasePredicate(keyphrase)), commandInCaps);
+
+        // command mixed case
+        FilterCommand commandMixedCase = (FilterCommand) parser.parseCommand(
+                "fIlTeR" + " n/" + keyphrase);
+        assertEquals(new FilterCommand(new NameContainsKeyphrasePredicate(keyphrase)), commandMixedCase);
     }
 
     @Test
@@ -96,6 +120,16 @@ public class RealodexParserTest {
         FilterCommand command = (FilterCommand) parser.parseCommand(
                 FilterCommand.COMMAND_WORD + " r/" + keyphrase);
         assertEquals(new FilterCommand(new RemarkContainsKeyphrasePredicate(keyphrase)), command);
+
+        // command in caps
+        FilterCommand commandInCaps = (FilterCommand) parser.parseCommand(
+                FilterCommand.COMMAND_WORD.toUpperCase() + " r/" + keyphrase);
+        assertEquals(new FilterCommand(new NameContainsKeyphrasePredicate(keyphrase)), commandInCaps);
+
+        // command mixed case
+        FilterCommand commandMixedCase = (FilterCommand) parser.parseCommand(
+                "fIlTeR" + " n/" + keyphrase);
+        assertEquals(new FilterCommand(new NameContainsKeyphrasePredicate(keyphrase)), commandMixedCase);
     }
 
     @Test
@@ -124,55 +158,93 @@ public class RealodexParserTest {
     @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
+        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD.toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("hElP") instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
+        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD.toUpperCase() + " 3") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("HeLp" + " 3") instanceof HelpCommand);
+
     }
 
     @Test
     public void parseCommand_add_help() throws Exception {
         assertTrue(parser.parseCommand("add help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("ADD HELP") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("aDd hElP") instanceof HelpCommand);
         HelpCommand expected = new HelpCommand("add");
         assertEquals(parser.parseCommand("add help"), expected);
+        assertEquals(parser.parseCommand("ADD HELP"), expected);
+        assertEquals(parser.parseCommand("aDd hElP"), expected);
+
     }
 
     @Test
     public void parseCommand_clear_help() throws Exception {
         assertTrue(parser.parseCommand("clearRealodex help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("clearrealodex help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("CLEARREALODEX HELP") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("CLEARREALODEX help") instanceof HelpCommand);
         HelpCommand expected = new HelpCommand("clearRealodex");
         assertEquals(parser.parseCommand("clearRealodex help"), expected);
+        assertEquals(parser.parseCommand("clearrealodex help"), expected);
+        assertEquals(parser.parseCommand("CLEARREALODEX help"), expected);
+        assertEquals(parser.parseCommand("CLEARREALODEX HELP"), expected);
     }
 
     @Test
     public void parseCommand_delete_help() throws Exception {
         assertTrue(parser.parseCommand("delete help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("DELETE HELP") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("dElEtE hElP") instanceof HelpCommand);
         HelpCommand expected = new HelpCommand("delete");
         assertEquals(parser.parseCommand("delete help"), expected);
+        assertEquals(parser.parseCommand("DELETE HELP"), expected);
+        assertEquals(parser.parseCommand("dElEtE hElP"), expected);
+
     }
 
     @Test
     public void parseCommand_edit_help() throws Exception {
         assertTrue(parser.parseCommand("edit help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("edit help".toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("eDit hElP") instanceof HelpCommand);
         HelpCommand expected = new HelpCommand("edit");
         assertEquals(parser.parseCommand("edit help"), expected);
+        assertEquals(parser.parseCommand("edit help".toUpperCase()), expected);
+        assertEquals(parser.parseCommand("eDit HelP"), expected);
     }
 
     @Test
     public void parseCommand_filter_help() throws Exception {
         assertTrue(parser.parseCommand("filter help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("filter help".toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("fIlTeR hElP") instanceof HelpCommand);
         HelpCommand expected = new HelpCommand("filter");
         assertEquals(parser.parseCommand("filter help"), expected);
+        assertEquals(parser.parseCommand("filter help".toUpperCase()), expected);
+        assertEquals(parser.parseCommand("filTer hElP"), expected);
+
     }
 
     @Test
     public void parseCommand_list_help() throws Exception {
         assertTrue(parser.parseCommand("list help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("list help".toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("liSt hElP") instanceof HelpCommand);
         HelpCommand expected = new HelpCommand("list");
         assertEquals(parser.parseCommand("list help"), expected);
+        assertEquals(parser.parseCommand("list help".toUpperCase()), expected);
+        assertEquals(parser.parseCommand("liSt hELP"), expected);
     }
 
     @Test
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
+        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD.toUpperCase()) instanceof ListCommand);
+        assertTrue(parser.parseCommand("lIsT") instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD.toUpperCase() + " 3") instanceof ListCommand);
+        assertTrue(parser.parseCommand("lIsT" + " 3") instanceof ListCommand);
     }
 
     @Test
