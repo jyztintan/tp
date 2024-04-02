@@ -47,21 +47,21 @@ public class TypicalPersons {
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withFamily("4")
-            .withHousingType("HDB")
+            .withHousingType("Condominium")
             .withTags("seller", "buyer").withBirthday("3Jun2003").build();
 
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz")
             .withPhone("95352563")
             .withIncome("30000")
             .withEmail("heinz@example.com").withAddress("wall street").withTags("buyer")
-            .withHousingType("HDB")
+            .withHousingType("Landed Property")
             .withRemark("Carl was supposed to start with a K, but the doctor misspelled when he was born")
             .withBirthday("6Jun2006").build();
 
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withIncome("40000")
             .withEmail("cornelia@example.com").withAddress("10th street").withTags("buyer")
-            .withHousingType("HDB").withRemark("White VANS").withBirthday("25Dec1999").build();
+            .withHousingType("Good Class Bungalow").withRemark("White VANS").withBirthday("25Dec1999").build();
 
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
             .withIncome("50000")
@@ -76,7 +76,7 @@ public class TypicalPersons {
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withIncome("70000")
             .withEmail("anna@example.com").withAddress("4th street").withTags("buyer")
-            .withHousingType("HDB").withRemark("Fun fact: George's brother's name is \"The\".")
+            .withHousingType("Condominium").withRemark("Fun fact: George's brother's name is \"The\".")
             .withBirthday("23Apr1983").build();
 
     // Manually added

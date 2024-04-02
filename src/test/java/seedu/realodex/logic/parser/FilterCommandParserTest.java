@@ -13,7 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.FilterCommand;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Name;
+import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
@@ -86,6 +88,19 @@ public class FilterCommandParserTest {
         assertThrows(IllegalArgumentException.class, () -> new Tag(userInput));
     }
 
+    @Test
+    void parse_validArgsWithHousingType_returnsFilterCommand() {
+        String userInput = " h/hdb";
+        HousingType housingType = new HousingType("hdb");
+        FilterCommand expectedCommand = new FilterCommand(new HousingTypeMatchPredicate(housingType));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_invalidArgsWithHousingType_throwsParseException() {
+        String userInput = " h/hdbb";
+        assertParseFailure(parser, userInput, HousingType.MESSAGE_CONSTRAINTS);
+    }
     @Test
     void parse_invalidArgs_throwsParseException() {
         String userInput = " invalidArg";
