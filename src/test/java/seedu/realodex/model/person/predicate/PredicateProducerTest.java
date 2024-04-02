@@ -86,7 +86,7 @@ class PredicateProducerTest {
         PredicateProducer predicateProducer = new PredicateProducer();
         List<String> keyphrases = List.of("hdbb");
 
-        assertThrows(AssertionError.class, () -> predicateProducer.createMatchTagsPredicate(keyphrases));
+        assertThrows(AssertionError.class, () -> predicateProducer.createHousingTypeMatchPredicate(keyphrases));
     }
 
     @Test
