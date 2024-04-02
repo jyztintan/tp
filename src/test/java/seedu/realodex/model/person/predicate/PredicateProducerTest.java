@@ -1,6 +1,7 @@
 package seedu.realodex.model.person.predicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
@@ -69,7 +70,7 @@ class PredicateProducerTest {
         PredicateProducer predicateProducer = new PredicateProducer();
         List<String> keyphrases = List.of("customer");
 
-        assertThrows(AssertionError.class, () -> predicateProducer.createMatchTagsPredicate(keyphrases));
+        assertNull(predicateProducer.createMatchTagsPredicate(keyphrases));
     }
 
     @Test
@@ -86,7 +87,7 @@ class PredicateProducerTest {
         PredicateProducer predicateProducer = new PredicateProducer();
         List<String> keyphrases = List.of("hdbb");
 
-        assertThrows(AssertionError.class, () -> predicateProducer.createHousingTypeMatchPredicate(keyphrases));
+        assertNull(predicateProducer.createHousingTypeMatchPredicate(keyphrases));
     }
 
     @Test
@@ -101,7 +102,7 @@ class PredicateProducerTest {
     }
 
     @Test
-    void createPredicate_assertionErrorWhenInvalidPrefix() {
+    void createPredicate_returnsNullWhenInvalidPrefix() {
         PredicateProducer predicateProducer = new PredicateProducer();
         Prefix unhandledPrefix = new Prefix("unhandled/");
         List<String> keyphrase = List.of("keyphrase");

@@ -88,9 +88,8 @@ public class PredicateProducer {
             Set<Tag> tagSet = ParserUtil.parseTags(tagStrings);
             return new TagsMatchPredicate(tagSet);
         } catch (ParseException e) {
-            assert false;
+            return null;
         }
-        return null;
     }
 
     /**
@@ -110,9 +109,8 @@ public class PredicateProducer {
             HousingType housingType = ParserUtil.parseHousingType(housingTypeString);
             return new HousingTypeMatchPredicate(housingType);
         } catch (ParseException e) {
-            assert false;
+            return null;
         }
-        return null;
     }
 
 }
