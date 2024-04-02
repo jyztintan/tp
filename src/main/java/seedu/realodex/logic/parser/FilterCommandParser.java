@@ -1,6 +1,7 @@
 package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
@@ -18,7 +19,7 @@ import seedu.realodex.model.person.predicates.PredicateProducer;
  */
 public class FilterCommandParser implements Parser<FilterCommand> {
 
-    private static final Prefix[] POSSIBLE_PREFIXES = { PREFIX_NAME, PREFIX_REMARK, PREFIX_TAG };
+    private static final Prefix[] POSSIBLE_PREFIXES = { PREFIX_NAME, PREFIX_REMARK, PREFIX_TAG, PREFIX_HOUSINGTYPE };
     /**
      * Parses the given {@code String} of arguments in the context of the FilterCommand
      * and returns a FilterCommand object for execution.
@@ -51,6 +52,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             throws ParseException {
         checkValidNameIfApplicable(presentPrefix, keyphrases);
         checkValidTagsIfApplicable(presentPrefix, keyphrases);
+        checkValidHousingTypeIfApplicable(presentPrefix, keyphrases);
         PredicateProducer predicateProducer = new PredicateProducer();
         return predicateProducer.createPredicate(presentPrefix, keyphrases);
     }
@@ -143,6 +145,14 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             return;
         }
         ParserUtil.parseTags(keyphrases);
+    }
+
+    private void checkValidHousingTypeIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+        if (!presentPrefix.equals(PREFIX_HOUSINGTYPE)) {
+            return;
+        }
+        String housingTypeString = keyphrases.get(keyphrases.size() - 1);
+        ParserUtil.parseHousingType(housingTypeString);
     }
 
 }

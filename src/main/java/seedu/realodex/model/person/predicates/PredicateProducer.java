@@ -1,6 +1,7 @@
 package seedu.realodex.model.person.predicates;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
@@ -16,6 +17,7 @@ import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.ParserUtil;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.tag.Tag;
 
@@ -45,6 +47,7 @@ public class PredicateProducer {
         predicateMap.put(PREFIX_REMARK, keyphrases ->
                 new RemarkContainsKeyphrasePredicate(keyphrases.get(keyphrases.size() - 1)));
         predicateMap.put(PREFIX_TAG, this::createMatchTagsPredicate);
+        predicateMap.put(PREFIX_HOUSINGTYPE, this::createHousingTypeMatchPredicate);
     }
 
     /**
@@ -90,5 +93,16 @@ public class PredicateProducer {
         return null;
     }
 
+
+    private Predicate<Person> createHousingTypeMatchPredicate(List<String> strings) {
+        try {
+            String housingTypeString = strings.get(strings.size() - 1);
+            HousingType housingType = ParserUtil.parseHousingType(housingTypeString);
+            return new HousingTypeMatchPredicate(housingType);
+        } catch (ParseException e) {
+            assert false;
+        }
+        return null;
+    }
 
 }
