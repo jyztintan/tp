@@ -13,7 +13,6 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
