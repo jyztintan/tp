@@ -439,7 +439,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseHousingType_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(INVALID_HOUSINGTYPE));
+        assertThrows(ParseException.class, () -> ParserUtil.parseHousingType(INVALID_HOUSINGTYPE));
     }
 
     @Test
