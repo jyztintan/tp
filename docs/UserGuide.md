@@ -180,7 +180,7 @@ If your changes to the data file makes its format invalid, Realodex will discard
 Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Filtering clients by income and more `[coming in v1.3]`
+### Filtering clients by income and more `[coming soon...]`
 
 _Details coming soon ..._
 
@@ -210,6 +210,7 @@ Action     | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [r/REMARK]` <br> e.g. `edit 2 n/Denzel i/100000`
 **Filter** | `filter STRING`<br> e.g. `filter David`
 **List**   | `list`
-**Clear**| `clearRealodex`
 **Help** | `help`
+**Help (individual commands)** | `COMMAND help`<br> e.g. `add help`,`edit help`
+**Clear** | `clearRealodex`
 **Exit**   | `exit`
