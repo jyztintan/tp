@@ -106,7 +106,9 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid name
+        String errorMessage = "Error parsing %s: ";
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC,
+                           String.format(errorMessage, "name") + Name.MESSAGE_CONSTRAINTS + "\n"); // invalid name
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
         assertParseFailure(parser, "1" + INVALID_INCOME_DESC, Income.MESSAGE_CONSTRAINTS); // invalid income
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
@@ -313,6 +315,7 @@ public class EditCommandParserTest {
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withTags().build();
 
-        assertParseFailure(parser, userInput, String.format(Tag.MESSAGE_CONSTRAINTS, targetIndex.getOneBased()));
+        assertParseFailure(parser, userInput, String.format("Error parsing tags: " + Tag.MESSAGE_CONSTRAINTS,
+                                                            targetIndex.getOneBased()));
     }
 }
