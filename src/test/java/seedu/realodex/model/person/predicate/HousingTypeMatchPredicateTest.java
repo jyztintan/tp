@@ -1,13 +1,15 @@
 package seedu.realodex.model.person.predicate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.testutil.PersonBuilder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class HousingTypeMatchPredicateTest {
@@ -16,11 +18,9 @@ public class HousingTypeMatchPredicateTest {
     public void equals() {
         HousingType housingTypeOne = new HousingType("hdb");
         HousingType housingTypeTwo = new HousingType("Good Class Bungalow");
-        
-        HousingTypeMatchPredicate firstPredicate =
-                new HousingTypeMatchPredicate(housingTypeOne);
-        HousingTypeMatchPredicate secondPredicate =
-                new HousingTypeMatchPredicate(housingTypeTwo);
+
+        HousingTypeMatchPredicate firstPredicate = new HousingTypeMatchPredicate(housingTypeOne);
+        HousingTypeMatchPredicate secondPredicate = new HousingTypeMatchPredicate(housingTypeTwo);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));

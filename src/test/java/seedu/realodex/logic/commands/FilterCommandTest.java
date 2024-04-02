@@ -153,7 +153,7 @@ public class FilterCommandTest {
     }
 
     @Test
-    public void execute_HdbHousingType_personsWithHousingTypeHdbFound() {
+    public void execute_hdbHousingType_personsWithHousingTypeHdbFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
         HousingType housingType = new HousingType("hdb");
         HousingTypeMatchPredicate predicate = new HousingTypeMatchPredicate(housingType);
@@ -165,7 +165,7 @@ public class FilterCommandTest {
 
 
     @Test
-    public void execute_CondominiumHousingType_personsWithHousingTypeCondominiumFound() {
+    public void execute_condominiumHousingType_personsWithHousingTypeCondominiumFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
         HousingType housingType = new HousingType("condominium");
         HousingTypeMatchPredicate predicate = new HousingTypeMatchPredicate(housingType);
@@ -176,7 +176,7 @@ public class FilterCommandTest {
     }
 
     @Test
-    public void execute_LandedPropertyHousingType_personsWithHousingTypeLandedPropertyFound() {
+    public void execute_landedPropertyHousingType_personsWithHousingTypeLandedPropertyFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
         HousingType housingType = new HousingType("Landed Property");
         HousingTypeMatchPredicate predicate = new HousingTypeMatchPredicate(housingType);
@@ -187,7 +187,7 @@ public class FilterCommandTest {
     }
 
     @Test
-    public void execute_GcbHousingType_personsWithHousingTypeGcbFound() {
+    public void execute_gcbHousingType_personsWithHousingTypeGcbFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
         HousingType housingType = new HousingType("Good Class Bungalow");
         HousingTypeMatchPredicate predicate = new HousingTypeMatchPredicate(housingType);

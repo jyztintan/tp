@@ -147,7 +147,8 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         ParserUtil.parseTags(keyphrases);
     }
 
-    private void checkValidHousingTypeIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+    private void checkValidHousingTypeIfApplicable(Prefix presentPrefix, List<String> keyphrases)
+            throws ParseException {
         if (!presentPrefix.equals(PREFIX_HOUSINGTYPE)) {
             return;
         }
