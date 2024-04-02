@@ -55,10 +55,7 @@ public class RealodexParser {
         // Lower level log messages are used sparingly to minimize noise in the code.
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
-        boolean isHelp = false;
-        if (nonFinalArguments.trim().equalsIgnoreCase("help")) {
-            isHelp = true;
-        }
+        boolean isHelp = nonFinalArguments.trim().equalsIgnoreCase("help");
 
         switch (commandWord) {
 
