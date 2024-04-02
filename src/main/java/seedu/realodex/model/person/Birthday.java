@@ -23,8 +23,8 @@ public class Birthday {
             + "Example: b/17Sep2001";
 
     // for filter purposes
-    public static final String FILTER_MONTH_MESSAGE_CONSTRAINTS = "Filter by Birth Month should be in MMM format.\n"
-            + "Example: filter b/Sep";
+    public static final String FILTER_MONTH_MESSAGE_CONSTRAINTS = "Birth Month should be in MMM format.\n"
+            + "Example: b/Sep";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
@@ -76,7 +76,7 @@ public class Birthday {
             Date currentDate = new Date();
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(parsedDate);
-            return !parsedDate.after(currentDate) && calendar.get(Calendar.YEAR)>=1000;
+            return !parsedDate.after(currentDate) && calendar.get(Calendar.YEAR) >= 1000;
         } catch (ParseException e) {
             return false;
         }
