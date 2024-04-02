@@ -1,6 +1,7 @@
 package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.realodex.logic.commands.FilterCommand.MESSAGE_FILTER_EMPTY_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
@@ -51,6 +52,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
     private Predicate<Person> createPredicateForPrefix(Prefix presentPrefix, List<String> keyphrases)
             throws ParseException {
         checkValidNameIfApplicable(presentPrefix, keyphrases);
+        checkValidRemarkIfApplicable(presentPrefix, keyphrases);
         checkValidTagsIfApplicable(presentPrefix, keyphrases);
         checkValidHousingTypeIfApplicable(presentPrefix, keyphrases);
         PredicateProducer predicateProducer = new PredicateProducer();
@@ -133,6 +135,24 @@ public class FilterCommandParser implements Parser<FilterCommand> {
     }
 
     /**
+     * Validates keyphrase if the present prefix is for a remarks.
+     * Each keyphrase must not be empty as per Remarks constraints.
+     *
+     * @param presentPrefix The prefix to check if it's tag-related.
+     * @param keyphrases The list of keyphrases representing potential tags.
+     * @throws ParseException if any tag keyphrase is invalid.
+     */
+    private void checkValidRemarkIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+        if (!presentPrefix.equals(PREFIX_REMARK)) {
+            return;
+        }
+        String keyphrase = keyphrases.get(keyphrases.size() - 1);
+        if (keyphrase.isEmpty()) {
+            throw new ParseException(MESSAGE_FILTER_EMPTY_REMARK);
+        }
+    }
+
+    /**
      * Validates tag keyphrases if the present prefix is for tags. Each keyphrase must conform
      * to tag naming constraints.
      *
@@ -147,6 +167,14 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         ParserUtil.parseTags(keyphrases);
     }
 
+    /**
+     * Validates housing type if the present prefix is for housing types. Each housing type must
+     * be a valid housing type.
+     *
+     * @param presentPrefix The prefix to check if it's housing type-related.
+     * @param keyphrases The list of keyphrases representing potential housing type.
+     * @throws ParseException if housing type is invalid.
+     */
     private void checkValidHousingTypeIfApplicable(Prefix presentPrefix, List<String> keyphrases)
             throws ParseException {
         if (!presentPrefix.equals(PREFIX_HOUSINGTYPE)) {

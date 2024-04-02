@@ -41,6 +41,8 @@ public class FilterCommand extends Command {
 
     public static final String MESSAGE_FILTER_CONFLICT = "Filter command can only filter by one field.\n";
 
+    public static final String MESSAGE_FILTER_EMPTY_REMARK = "Cannot filter by empty remark.\n";
+
     private final Predicate<Person> predicate;
 
     public FilterCommand(Predicate<Person> predicate) {

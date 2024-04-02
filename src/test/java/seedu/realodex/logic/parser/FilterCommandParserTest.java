@@ -50,6 +50,11 @@ public class FilterCommandParserTest {
     }
 
     @Test
+    void parse_invalidArgsWithEmptyRemark_throwsParseException() {
+        assertParseFailure(parser, " r/", FilterCommand.MESSAGE_FILTER_EMPTY_REMARK);
+    }
+
+    @Test
     void parse_validArgsWithTag_returnsFilterCommand() {
         String userInput = " t/buyer";
         Set<Tag> predicateTags = Set.of(new Tag("buyer"));
