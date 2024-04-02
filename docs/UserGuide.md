@@ -73,9 +73,25 @@ the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable)
 - Note that the tag is to indicate if a client is a
 Buyer, Seller or both, so tags only accept "buyer" or "seller" as the input (case-insensitive).
 
+Specific Formats for each field:
+* NAME: Should only contain Alphanumeric characters
+* PHONE: Should only contain numbers, and it should be at least 3 digits long
+* INCOME: Income should be an integer and should be at least 0
+* EMAIL: Emails should be of the format local-part@domain and adhere to the following constraints: 1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. 2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.
+   The domain name must:
+    - end with a domain label at least 2 characters long
+    - have each domain label start and end with alphanumeric characters
+    - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
+* ADDRESS: Cannot contain the backslash character `\` in the command
+* FAMILY: Should be an integer greater than 1.
+* TAG: only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted (eg. `t/buyer t/seller`)
+* HOUSINGTYPE: must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive)'
+* REMARK: Should only contain Alphanumeric characters
+* BIRTHDAY: Should be in the form "DDMMMYYYY"  
+
 Examples:
-* `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer r/Owes $1000. b/27May2003`
-* `add n/Betsy Crowe a/Newgate Prison i/$0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller t/Buyer`
+* `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
+* `add n/Betsy Crowe a/Newgate Prison i/$0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
 ### Deleting a client : `delete`
 
