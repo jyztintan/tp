@@ -15,7 +15,9 @@ import org.junit.jupiter.api.Test;
 import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Person;
+import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.PredicateProducer;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
@@ -66,17 +68,25 @@ class PredicateProducerTest {
     }
 
     @Test
-    void createMatchTagPredicate_validTagStrings_assertionErrorWhenInvalidPrefix() {
-        PredicateProducer predicateProducer = new PredicateProducer();
-        List<String> keyphrases = List.of("buyer", "seller");
-        Set<Tag> tagString = Set.of(new Tag("buyer"), new Tag("seller"));
-        assertEquals(predicateProducer.createMatchTagsPredicate(keyphrases), new TagsMatchPredicate(tagString));
-    }
-
-    @Test
     void createMatchTagPredicate_invalidTagString_assertionErrorWhenInvalidPrefix() {
         PredicateProducer predicateProducer = new PredicateProducer();
         List<String> keyphrases = List.of("customer");
+
+        assertThrows(AssertionError.class, () -> predicateProducer.createMatchTagsPredicate(keyphrases));
+    }
+
+    @Test
+    void createHousingTypeMatchPredicate_validHousingTypeStrings_createsCorrectPredicate() {
+        PredicateProducer predicateProducer = new PredicateProducer();
+        List<String> keyphrases = List.of("hdb");
+        HousingType housingType = new HousingType("hdb");
+        assertEquals(predicateProducer.createHousingTypeMatchPredicate(keyphrases), new HousingTypeMatchPredicate(housingType));
+    }
+
+    @Test
+    void createHousingTypeMatchPredicate_invalidHousingTypeStrings_assertionErrorWhenInvalidPrefix() {
+        PredicateProducer predicateProducer = new PredicateProducer();
+        List<String> keyphrases = List.of("hdbb");
 
         assertThrows(AssertionError.class, () -> predicateProducer.createMatchTagsPredicate(keyphrases));
     }

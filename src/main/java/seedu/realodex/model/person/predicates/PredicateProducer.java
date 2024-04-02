@@ -94,7 +94,7 @@ public class PredicateProducer {
     }
 
 
-    private Predicate<Person> createHousingTypeMatchPredicate(List<String> strings) {
+    public Predicate<Person> createHousingTypeMatchPredicate(List<String> strings) {
         try {
             String housingTypeString = strings.get(strings.size() - 1);
             HousingType housingType = ParserUtil.parseHousingType(housingTypeString);
