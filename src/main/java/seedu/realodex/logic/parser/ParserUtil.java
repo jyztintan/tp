@@ -15,6 +15,7 @@ import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Phone;
@@ -285,6 +286,37 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String housingType} into a {@code HousingType}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code housingType} is invalid.
+     */
+    public static HousingType parseHousingType(String housingType) throws ParseException {
+        requireNonNull(housingType);
+        String trimmedHousingType = housingType.trim();
+        if (!HousingType.isValidHousingType(trimmedHousingType)) {
+            throw new ParseException(HousingType.MESSAGE_CONSTRAINTS);
+        }
+        return new HousingType(trimmedHousingType);
+    }
+
+    /**
+     * Parses a {@code String housingType} into a {@code HousingType}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @param housingType The housing type string to parse.
+     * @return A ParserUtilResult containing the parsed HousingType or an exception message.
+     */
+    public static ParserUtilResult<HousingType> parseHousingTypeReturnStored(String housingType) {
+        requireNonNull(housingType);
+        String trimmedHousingType = housingType.trim();
+        if (!HousingType.isValidHousingType(trimmedHousingType)) {
+            return new ParserUtilResult<>(HousingType.MESSAGE_CONSTRAINTS, new HousingType());
+        }
+        return new ParserUtilResult<>("", new HousingType(housingType));
     }
 
     /**

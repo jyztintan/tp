@@ -15,6 +15,7 @@ import seedu.realodex.model.person.Address;
 import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Email;
 import seedu.realodex.model.person.Family;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
@@ -36,6 +37,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final String family;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String housingType;
     private final String remark;
     private final String birthday;
 
@@ -50,6 +52,7 @@ class JsonAdaptedPerson {
                              @JsonProperty("address") String address,
                              @JsonProperty("family") String family,
                              @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                             @JsonProperty("housingType") String housingType,
                              @JsonProperty("remark") String remark,
                              @JsonProperty("birthday") String birthday) {
         this.name = name;
@@ -61,6 +64,7 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
+        this.housingType = housingType;
         this.remark = Objects.requireNonNullElse(remark, "");
         this.birthday = birthday;
     }
@@ -78,6 +82,7 @@ class JsonAdaptedPerson {
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        housingType = source.getHousingType().toString();
         remark = source.getRemark().toString();
         birthday = source.getBirthday().toString();
     }
@@ -143,6 +148,15 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
+        if (housingType == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                                                          HousingType.class.getSimpleName()));
+        }
+        if (!HousingType.isValidHousingType(housingType)) {
+            throw new IllegalValueException(HousingType.MESSAGE_CONSTRAINTS);
+        }
+        final HousingType modelHousingType = new HousingType(housingType);
+
         final Remark modelRemark = new Remark(remark);
         if (birthday == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -153,6 +167,6 @@ class JsonAdaptedPerson {
         }
         final Birthday modelBirthday = new Birthday(birthday);
         return new Person(modelName, modelPhone, modelIncome, modelEmail, modelAddress, modelFamily,
-                modelTags, modelRemark, modelBirthday);
+                modelTags, modelHousingType, modelRemark, modelBirthday);
     }
 }
