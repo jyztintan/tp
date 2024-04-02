@@ -56,6 +56,7 @@ public class BirthdayTest {
         assertTrue(Birthday.isValidBirthday("29Feb2024")); // leap year
         assertTrue(Birthday.isValidBirthday("12May2003"));
         assertTrue(Birthday.isValidBirthday("08Aug1888"));
+        assertTrue(Birthday.isValidBirthday("08Aug888")); //before year 1000
 
         // invalid dates
         assertFalse(Birthday.isValidBirthday("01May2009233"));

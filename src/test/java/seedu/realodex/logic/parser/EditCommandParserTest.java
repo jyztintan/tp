@@ -122,16 +122,19 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC,
                            String.format(errorMessage, "email") + Email.MESSAGE_CONSTRAINTS + "\n"); // invalid email
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC,
-                           String.format(errorMessage, "address") + Address.MESSAGE_CONSTRAINTS + "\n"); // invalid address
+                           String.format(errorMessage, "address")
+                                   + Address.MESSAGE_CONSTRAINTS + "\n"); // invalid address
         assertParseFailure(parser, "1" + INVALID_FAMILY_DESC,
                            String.format(errorMessage, "family") + Family.MESSAGE_CONSTRAINTS + "\n"); // invalid family
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, EditCommandParser.MESSAGE_ERROR_PARSING_TAGS); // invalid tag
         // invalid housing type
         assertParseFailure(parser, "1" + INVALID_HOUSINGTYPE_DESC,
-                           String.format(errorMessage, "housing type") + HousingType.MESSAGE_CONSTRAINTS + "\n");
+                           String.format(errorMessage, "housing type")
+                                   + HousingType.MESSAGE_CONSTRAINTS + "\n");
         //invalid birthday
         assertParseFailure(parser, "1" + INVALID_BIRTHDAY_DESC,
-                           String.format(errorMessage, "birthday") + Birthday.MESSAGE_CONSTRAINTS + "\n"); // invalid bday
+                           String.format(errorMessage, "birthday")
+                                   + Birthday.MESSAGE_CONSTRAINTS + "\n"); // invalid bday
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY,

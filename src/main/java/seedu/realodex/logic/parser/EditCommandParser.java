@@ -21,13 +21,6 @@ import seedu.realodex.commons.core.index.Index;
 import seedu.realodex.logic.commands.EditCommand;
 import seedu.realodex.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.realodex.logic.parser.exceptions.ParseException;
-import seedu.realodex.model.person.Address;
-import seedu.realodex.model.person.Birthday;
-import seedu.realodex.model.person.Email;
-import seedu.realodex.model.person.Family;
-import seedu.realodex.model.person.Income;
-import seedu.realodex.model.person.Name;
-import seedu.realodex.model.person.Phone;
 import seedu.realodex.model.tag.Tag;
 //@@author UdhayaShan1
 /**
@@ -71,13 +64,20 @@ public class EditCommandParser implements Parser<EditCommand> {
         StringBuilder errorMessageBuilder = new StringBuilder();
 
         //For fields with ParserUtilResult implementation
-        parseAndSetField(argMultimap, PREFIX_NAME, editPersonDescriptor::setName, ParserUtil::parseNameReturnStored, errorMessageBuilder, "name");
-        parseAndSetField(argMultimap, PREFIX_PHONE, editPersonDescriptor::setPhone, ParserUtil::parsePhoneReturnStored, errorMessageBuilder, "phone");
-        parseAndSetField(argMultimap, PREFIX_INCOME, editPersonDescriptor::setIncome, ParserUtil::parseIncomeReturnStored, errorMessageBuilder, "income");
-        parseAndSetField(argMultimap, PREFIX_EMAIL, editPersonDescriptor::setEmail, ParserUtil::parseEmailReturnStored, errorMessageBuilder, "email");
-        parseAndSetField(argMultimap, PREFIX_ADDRESS, editPersonDescriptor::setAddress, ParserUtil::parseAddressReturnStored, errorMessageBuilder, "address");
-        parseAndSetField(argMultimap, PREFIX_FAMILY, editPersonDescriptor::setFamily, ParserUtil::parseFamilyReturnStored, errorMessageBuilder, "family");
-        parseAndSetField(argMultimap, PREFIX_BIRTHDAY, editPersonDescriptor::setBirthday, ParserUtil::parseBirthdayReturnStored, errorMessageBuilder, "birthday");
+        parseAndSetField(argMultimap, PREFIX_NAME, editPersonDescriptor::setName,
+                         ParserUtil::parseNameReturnStored, errorMessageBuilder, "name");
+        parseAndSetField(argMultimap, PREFIX_PHONE, editPersonDescriptor::setPhone,
+                         ParserUtil::parsePhoneReturnStored, errorMessageBuilder, "phone");
+        parseAndSetField(argMultimap, PREFIX_INCOME, editPersonDescriptor::setIncome,
+                         ParserUtil::parseIncomeReturnStored, errorMessageBuilder, "income");
+        parseAndSetField(argMultimap, PREFIX_EMAIL, editPersonDescriptor::setEmail,
+                         ParserUtil::parseEmailReturnStored, errorMessageBuilder, "email");
+        parseAndSetField(argMultimap, PREFIX_ADDRESS, editPersonDescriptor::setAddress,
+                         ParserUtil::parseAddressReturnStored, errorMessageBuilder, "address");
+        parseAndSetField(argMultimap, PREFIX_FAMILY, editPersonDescriptor::setFamily,
+                         ParserUtil::parseFamilyReturnStored, errorMessageBuilder, "family");
+        parseAndSetField(argMultimap, PREFIX_BIRTHDAY, editPersonDescriptor::setBirthday,
+                         ParserUtil::parseBirthdayReturnStored, errorMessageBuilder, "birthday");
         parseAndSetField(argMultimap, PREFIX_HOUSINGTYPE, editPersonDescriptor::setHousingType,
                          ParserUtil::parseHousingTypeReturnStored, errorMessageBuilder, "housing type");
 
