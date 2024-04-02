@@ -8,7 +8,7 @@ import seedu.realodex.model.person.Person;
 
 
 /**
- * Tests that a {@code Person}'s {@code Name} contains the keyphrase given.
+ * Tests that a {@code Person}'s preferred HousingType equals the specified HousingType.
  */
 public class HousingTypeMatchPredicate implements Predicate<Person> {
     private final HousingType housingType;

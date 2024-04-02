@@ -8,7 +8,6 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +20,6 @@ import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.PredicateProducer;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
-import seedu.realodex.model.person.predicates.TagsMatchPredicate;
-import seedu.realodex.model.tag.Tag;
 import seedu.realodex.testutil.PersonBuilder;
 
 class PredicateProducerTest {
@@ -80,7 +77,8 @@ class PredicateProducerTest {
         PredicateProducer predicateProducer = new PredicateProducer();
         List<String> keyphrases = List.of("hdb");
         HousingType housingType = new HousingType("hdb");
-        assertEquals(predicateProducer.createHousingTypeMatchPredicate(keyphrases), new HousingTypeMatchPredicate(housingType));
+        assertEquals(predicateProducer.createHousingTypeMatchPredicate(keyphrases),
+                new HousingTypeMatchPredicate(housingType));
     }
 
     @Test

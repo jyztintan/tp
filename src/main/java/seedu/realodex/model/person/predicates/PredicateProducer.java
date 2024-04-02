@@ -73,7 +73,7 @@ public class PredicateProducer {
     }
 
     /**
-     * Creates a predicate to evaluate if a {@link Person} has specific tag(s).
+     * Creates a predicate to evaluate if a {@code Person} has specific tag(s).
      * The predicate checks if the set of tags associated with a person includes the tag(s)
      * created from the provided string.
      *
@@ -93,7 +93,17 @@ public class PredicateProducer {
         return null;
     }
 
-
+    /**
+     * Creates a predicate to evaluate if a {@code Person} has a specified preference type.
+     * The predicate checks if the HousingType associated with a person is equivalent to
+     * the HousingType represented in the string.
+     *
+     * @param strings The string from which HousingType is represented. This HousingType is then used
+     *               in the predicate to check against a person's preferred HousingType.
+     * @return A {@code Predicate<Person>} that tests whether a person's preferred HousingType equals
+     *         the HousingType represented by the provided string. The predicate returns {@code true}
+     *         if the person's preferred HousingType equals the specified HousingType, and {@code false} otherwise.
+     */
     public Predicate<Person> createHousingTypeMatchPredicate(List<String> strings) {
         try {
             String housingTypeString = strings.get(strings.size() - 1);
