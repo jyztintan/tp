@@ -7,13 +7,14 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import seedu.realodex.commons.util.ToStringBuilder;
+import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.Person;
 
 /**
  * Tests that a {@code Person}'s {@code Birthday} is in the Month given.
  */
 public class BirthdayIsInMonthPredicate implements Predicate<Person> {
-    private final SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
+    private final SimpleDateFormat monthFormat = new SimpleDateFormat(Birthday.INPUT_MONTH_PATTERN);
     private final Optional<Calendar> month;
 
     /**

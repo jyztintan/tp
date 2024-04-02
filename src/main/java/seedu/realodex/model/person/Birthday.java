@@ -16,15 +16,15 @@ import seedu.realodex.commons.core.LogsCenter;
  */
 //@@author 4llysa
 public class Birthday {
-
-    public static final String INPUT_DATE_PATTERN = "ddMMMMyyyy";
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format.\n"
+    public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
+    public static final String INPUT_MONTH_PATTERN = "MMM";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + "ddMMMyyyy" + " format.\n"
             + "Date should also not be in future years and no earlier than year 1000!\n"
-            + "Example: b/6Sep2006 or b/6September2006";
+            + "Example: b/17Sep2001";
 
     // for filter purposes
-    public static final String FILTER_MONTH_MESSAGE_CONSTRAINTS = "Filter by Birth Month should be in MMMM format.\n"
-            + "Example: b/Sep or b/September";
+    public static final String FILTER_MONTH_MESSAGE_CONSTRAINTS = "Filter by Birth Month should be in MMM format.\n"
+            + "Example: b/Sep";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);

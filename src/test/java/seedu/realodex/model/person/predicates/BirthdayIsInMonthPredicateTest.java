@@ -82,7 +82,7 @@ class BirthdayIsInMonthPredicateTest {
     void toStringMethod() {
         String keyphrase = "Aug";
         BirthdayIsInMonthPredicate predicate = new BirthdayIsInMonthPredicate(keyphrase);
-        String expected = BirthdayIsInMonthPredicate.class.getCanonicalName() + "{month=August}";
+        String expected = BirthdayIsInMonthPredicate.class.getCanonicalName() + "{month=Aug}";
         assertEquals(expected, predicate.toString());
     }
 
