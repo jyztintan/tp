@@ -47,7 +47,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "buyer "
             + PREFIX_TAG + "seller "
             + PREFIX_HOUSINGTYPE + "HDB "
-            + PREFIX_REMARK + "Has 3 cats."
+            + PREFIX_REMARK + "Has 3 cats "
             + PREFIX_BIRTHDAY + "01May2009";
 
     public static final String MESSAGE_SUCCESS = "New client added: %1$s";
