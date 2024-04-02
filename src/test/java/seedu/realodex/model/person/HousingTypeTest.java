@@ -1,5 +1,6 @@
 package seedu.realodex.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.testutil.Assert.assertThrows;
@@ -40,13 +41,16 @@ public class HousingTypeTest {
     @Test
     public void toStringWithRepresentation() {
         HousingType housingType1 = new HousingType("HDB");
-        assertTrue(housingType1.toStringWithRepresentation().contains("Preferred housing type is HDB"));
+        assertEquals(housingType1.toStringWithRepresentation(), "Preferred housing type is HDB");
 
         HousingType housingType2 = new HousingType("CONDOMINIUM");
-        assertTrue(housingType2.toStringWithRepresentation().contains("Preferred housing type is CONDOMINIUM"));
+        assertEquals(housingType2.toStringWithRepresentation(), "Preferred housing type is CONDOMINIUM");
 
         HousingType housingType3 = new HousingType("LANDED PROPERTY");
-        assertTrue(housingType3.toStringWithRepresentation().contains("Preferred housing type is LANDED_PROPERTY"));
+        assertEquals(housingType3.toStringWithRepresentation(), "Preferred housing type is LANDED PROPERTY");
+
+        HousingType housingType4 = new HousingType("GOOD CLASS BUNGALOW");
+        assertEquals(housingType4.toStringWithRepresentation(), "Preferred housing type is GOOD CLASS BUNGALOW");
     }
 
     @Test
