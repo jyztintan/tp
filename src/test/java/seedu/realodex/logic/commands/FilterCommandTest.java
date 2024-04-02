@@ -5,14 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.realodex.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.realodex.testutil.TypicalPersons.ALICE;
+import static seedu.realodex.testutil.TypicalPersons.BENSON;
 import static seedu.realodex.testutil.TypicalPersons.CARL;
 import static seedu.realodex.testutil.TypicalPersons.DANIEL;
 import static seedu.realodex.testutil.TypicalPersons.ELLE;
+import static seedu.realodex.testutil.TypicalPersons.FIONA;
 import static seedu.realodex.testutil.TypicalPersons.GEORGE;
 import static seedu.realodex.testutil.TypicalPersons.getTypicalRealodex;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +25,8 @@ import seedu.realodex.model.ModelManager;
 import seedu.realodex.model.UserPrefs;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
+import seedu.realodex.model.person.predicates.TagsMatchPredicate;
+import seedu.realodex.model.tag.Tag;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FilterCommand}.
@@ -110,6 +116,39 @@ public class FilterCommandTest {
         assertEquals(Arrays.asList(CARL, GEORGE), model.getFilteredPersonList());
     }
 
+    @Test
+    public void execute_buyerTag_buyersFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 6);
+        Set<Tag> tagString = Set.of(new Tag("buyer"));
+        TagsMatchPredicate predicate = new TagsMatchPredicate(tagString);
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertTrue(model.getFilteredPersonList().containsAll(Arrays.asList(ALICE, BENSON, CARL, DANIEL,
+                                                                            ELLE, GEORGE)));
+    }
+
+    @Test
+    public void execute_sellerTag_buyersFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 2);
+        Set<Tag> tagString = Set.of(new Tag("seller"));
+        TagsMatchPredicate predicate = new TagsMatchPredicate(tagString);
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertTrue(model.getFilteredPersonList().containsAll(Arrays.asList(BENSON, FIONA)));
+    }
+
+    @Test
+    public void execute_bothTags_personsWithBothTagsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        Set<Tag> multipleTags = Set.of(new Tag("buyer"), new Tag("seller"));
+        TagsMatchPredicate predicate = new TagsMatchPredicate(multipleTags);
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertEquals(Collections.singletonList(BENSON), model.getFilteredPersonList());
+    }
 
     @Test
     public void toStringMethod() {
@@ -131,5 +170,12 @@ public class FilterCommandTest {
      */
     private RemarkContainsKeyphrasePredicate prepareRemarkPredicate(String userInput) {
         return new RemarkContainsKeyphrasePredicate(userInput);
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code TagsMatchPredicate}.
+     */
+    private TagsMatchPredicate prepareRemarkPredicate(Set<Tag> userInput) {
+        return new TagsMatchPredicate(userInput);
     }
 }
