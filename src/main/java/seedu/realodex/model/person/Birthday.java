@@ -40,6 +40,7 @@ public class Birthday {
         Optional<Date> birthdayDate;
         try {
             birthdayDate = Optional.of(formatter.parse(birthday));
+            assert birthdayDate.isPresent();
         } catch (ParseException e) {
             birthdayDate = Optional.empty();
         }
