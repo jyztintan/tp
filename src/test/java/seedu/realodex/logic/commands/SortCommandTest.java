@@ -2,6 +2,7 @@ package seedu.realodex.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.realodex.testutil.TypicalPersons.getSecondTypicalRealodex;
 import static seedu.realodex.testutil.TypicalPersons.getTypicalRealodex;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import seedu.realodex.model.person.sorting.BirthdayComparator;
 
 public class SortCommandTest {
     private final Model model = new ModelManager(getTypicalRealodex(), new UserPrefs());
+    private final Model modelSecond = new ModelManager(getSecondTypicalRealodex(), new UserPrefs());
     @Test
     public void execute_sortsListByBirthday_success() {
         // Create a list of persons with birthdays in random order
@@ -35,6 +37,16 @@ public class SortCommandTest {
         // Verify that the list is sorted by birthday
         List<Person> sortedList = realodex.getCopyOfInternalListOfUniquePersonsList();
         assertTrue(isSortedByBirthday(sortedList));
+
+        realodex = (Realodex) modelSecond.getRealodex();
+        try {
+            sortCommand.execute(modelSecond);
+        } catch (CommandException e) {
+            Assertions.fail();
+        }
+        sortedList = realodex.getCopyOfInternalListOfUniquePersonsList();
+        assertTrue(isSortedByBirthday(sortedList));
+
     }
 
     @Test
