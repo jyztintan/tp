@@ -81,7 +81,7 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   - You do not need to include the prefixes for `r/REMARK` and `b/BIRTHDAY` if you do not wish to include them.
   - But if you do include the prefix with only a blank string, birthday and remark fields will be taken as not specified.
     - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified. 
-- You will find the specific formats required for each field as shown below.
+- Refer to the [Specific Format Requirements](#specific-formats) for each field.
   - If any of the formats are violated, you will receive an error message detailing the fields with invalid formats.
   - For example, if name, phone and tag fields are in incorrect format, you will receive 3 error messages as shown.
   - ![Error parsing fields](parsing_errors)
@@ -90,7 +90,7 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
   ![duplicate person](duplicate_person_error.png)
 
-Specific Formats for each field:
+#### <span id="specific-formats">Specific Formats for each field</span>
 * NAME: 
   * Should only contain Alphanumeric characters and must be unique
   1. Names are case-insensitive. 
@@ -114,7 +114,7 @@ Specific Formats for each field:
      * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
   * Example: `e/realodex-admin@gmail.com`
 * ADDRESS: 
-  * Must not include other command prefixes to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
+  * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
   * Example: `a/6 College Ave West`
 * FAMILY: 
   * Should be an integer greater than 1. 
@@ -127,7 +127,7 @@ Specific Formats for each field:
   * Example: `h/HDB` 
 * REMARK: 
   * Can be empty if remark is not specified.
-  * Must not include other command prefixes to prevent parsing errors. For instance, `r/Prefers block b/c` may cause the command to fail, as the system will interpret `b/` as an unintended birthday prefix.
+  * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `r/Prefers block b/c` may cause the command to fail, as the system will interpret `b/` as an unintended birthday prefix.
   * Example: `r/Has a cat`
 * BIRTHDAY: 
   * Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
@@ -243,6 +243,7 @@ Realodex data is saved automatically as a JSON file `[JAR file location]/data/re
 **Caution:**
 If your changes to the data file makes its format invalid, Realodex will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+
 </box>
 
 ### Filtering clients by income and more `[coming in v1.3]`
@@ -267,14 +268,14 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK] [b/BIRTHDAY]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 r/Buyer t/Owes $1000.`
-**Delete (by name)** | `delete n/NAME`<br> e.g. `delete n/John`
-**Delete (by index)** | `delete INDEX`<br> e.g. `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]` <br> e.g. `edit 2 n/Denzel i/100000`
-**Filter** | `filter STRING`<br> e.g. `filter David`
-**List**   | `list`
-**Clear**| `clearRealodex`
-**Help** | `help`
-**Exit**   | `exit`
+| Action                | Format, Examples                                                                                                                                                                                                 |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**               | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK] [b/BIRTHDAY]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 r/Buyer t/Owes $1000.` |
+| **Delete (by name)**  | `delete n/NAME`<br> e.g. `delete n/John`                                                                                                                                                                         |
+| **Delete (by index)** | `delete INDEX`<br> e.g. `delete 3`                                                                                                                                                                               |
+| **Edit**              | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]` <br> e.g. `edit 2 n/Denzel i/100000`                                                 |
+| **Filter**            | `filter STRING`<br> e.g. `filter David`                                                                                                                                                                          |
+| **List**              | `list`                                                                                                                                                                                                           |
+| **Clear**             | `clearRealodex`                                                                                                                                                                                                  |
+| **Help**              | `help`                                                                                                                                                                                                           |
+| **Exit**              | `exit`                                                                                                                                                                                                           |
