@@ -2,6 +2,7 @@ package seedu.realodex.model.person.predicates;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
@@ -17,6 +18,7 @@ import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.ParserUtil;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.tag.Tag;
 
@@ -48,6 +50,7 @@ public class PredicateProducer {
         predicateMap.put(PREFIX_TAG, this::createMatchTagsPredicate);
         predicateMap.put(PREFIX_BIRTHDAY, keyphrases ->
                 new BirthdayIsInMonthPredicate(keyphrases.get(keyphrases.size() - 1)));
+        predicateMap.put(PREFIX_HOUSINGTYPE, this::createHousingTypeMatchPredicate);
     }
 
     /**
@@ -72,7 +75,7 @@ public class PredicateProducer {
     }
 
     /**
-     * Creates a predicate to evaluate if a {@link Person} has specific tag(s).
+     * Creates a predicate to evaluate if a {@code Person} has specific tag(s).
      * The predicate checks if the set of tags associated with a person includes the tag(s)
      * created from the provided string.
      *
@@ -87,10 +90,29 @@ public class PredicateProducer {
             Set<Tag> tagSet = ParserUtil.parseTags(tagStrings);
             return new TagsMatchPredicate(tagSet);
         } catch (ParseException e) {
-            assert false;
+            return null;
         }
-        return null;
     }
 
+    /**
+     * Creates a predicate to evaluate if a {@code Person} has a specified preference type.
+     * The predicate checks if the HousingType associated with a person is equivalent to
+     * the HousingType represented in the string.
+     *
+     * @param strings The string from which HousingType is represented. This HousingType is then used
+     *               in the predicate to check against a person's preferred HousingType.
+     * @return A {@code Predicate<Person>} that tests whether a person's preferred HousingType equals
+     *         the HousingType represented by the provided string. The predicate returns {@code true}
+     *         if the person's preferred HousingType equals the specified HousingType, and {@code false} otherwise.
+     */
+    public Predicate<Person> createHousingTypeMatchPredicate(List<String> strings) {
+        try {
+            String housingTypeString = strings.get(strings.size() - 1);
+            HousingType housingType = ParserUtil.parseHousingType(housingTypeString);
+            return new HousingTypeMatchPredicate(housingType);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
 
 }

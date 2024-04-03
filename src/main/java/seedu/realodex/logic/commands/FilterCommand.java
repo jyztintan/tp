@@ -2,6 +2,7 @@ package seedu.realodex.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
@@ -22,7 +23,7 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters all clients by ONE specified field (name, remark, tag, birthday) "
+            + ": Filters all clients by specified field (name, remark, tag, birthday, housing type) "
             + "with the specified keyphrase (non-empty, case-insensitive) "
             + "and displays them as a list with index numbers.\n"
             + "Note that although the fields are listed as optional, ONE field must strictly be present.\n"
@@ -30,17 +31,21 @@ public class FilterCommand extends Command {
             + "[" + PREFIX_NAME + "KEYPHRASE] "
             + "[" + PREFIX_REMARK + "REMARK] "
             + "[" + PREFIX_TAG + "TAG] "
-            + "[" + PREFIX_BIRTHDAY + "MONTH]\n"
+            + "[" + PREFIX_REMARK + "REMARK] "
+            + "[" + PREFIX_BIRTHDAY + "MONTH] "
+            + "[" + PREFIX_HOUSINGTYPE + "HOUSING_TYPE]\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_NAME + "alice tan";
 
     public static final String MESSAGE_FILTER_HELP = "Filter Command: "
             + "Filters clients by ONE specified field (name, remark, tag, birthday)"
             + "with the specified keyphrase (non-empty, case-insensitive) "
             + "and displays them as a list with index numbers.\n"
-            + "Format: filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [b/BIRTHDAY]\n"
+            + "Format: filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [b/BIRTHDAY] [h/HOUSING_TYPE]\n"
             + "Example: filter n/Jus\n";
 
     public static final String MESSAGE_FILTER_CONFLICT = "Filter command can only filter by one field.\n";
+
+    public static final String MESSAGE_FILTER_EMPTY_REMARK = "Cannot filter by empty remark.\n";
 
     private final Predicate<Person> predicate;
 
