@@ -210,13 +210,14 @@ Format: `sort`
 
 - The current date is based on the local system's time.
 - If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
+- If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list. 
 
 
-### Clearing Realodex : `clearrealodex`
+### Clearing Realodex : `clearRealodex`
 
 Clears all clients in Realodex.
 
-Format: `clearrealodex`
+Format: `clearRealodex`
 
 ### Help : `help`
 
@@ -224,29 +225,49 @@ Generates a pop-up window which is a summarised version of the User Guide.
 
 Format: `help`
 
+### Help (Individual Commands) : `COMMAND help`
+
+Shows the help message for the specified command only.
+
+Format: `COMMAND help`
+
+Examples:
+- `add help` provides the help message for the add command
+- `filter help` provides the help message for the filter command
+
 ### Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### File Data
 
-Realodex data is saved in the hard disk automatically after any command that modifies it. There is no need to save manually.
+The JSON file that stores the data of your contacts can be found in a folder named `data`, in the same folder/directory as the Realodex app. (e.g. if you
+have Realodex installed in your Desktop, the `data` folder containing the file can be found in your Desktop as well.)
 
-### Editing the data file
+#### Saving Data
+
+Realodex data is saved in the hard disk as a JSON file automatically after any command that modifies it. There is no need to save manually.
+
+#### Editing Data 
 
 Realodex data is saved automatically as a JSON file `[JAR file location]/data/realodex.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, Realodex will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+If your changes to the data file makes its format invalid, Realodex will discard all data and start with an empty data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
 </box>
 
-### Filtering clients by income and more `[coming in v1.3]`
+#### Restarting with New Data
+
+Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit causing the format to be incorrect,
+simply delete `realodex.json` and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
+
+### Filtering clients by income and more `[coming soon...]`
 
 _Details coming soon ..._
 
@@ -256,7 +277,7 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty JSON file it creates with the JSON file that contains all of your data.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -276,6 +297,7 @@ _Details coming soon ..._
 | **Edit**              | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]` <br> e.g. `edit 2 n/Denzel i/100000`                                                 |
 | **Filter**            | `filter STRING`<br> e.g. `filter David`                                                                                                                                                                          |
 | **List**              | `list`                                                                                                                                                                                                           |
-| **Clear**             | `clearRealodex`                                                                                                                                                                                                  |
-| **Help**              | `help`                                                                                                                                                                                                           |
-| **Exit**              | `exit`                                                                                                                                                                                                           |
+**Help** | `help`  |
+**Help (individual commands)** | `COMMAND help`<br> e.g. `add help`,`edit help`|
+**Clear** | `clearRealodex`|
+**Exit**   | `exit`|

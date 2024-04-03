@@ -26,7 +26,7 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a client to the Realodex. "
-            + "Parameters: "
+            + "\nParameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
             + PREFIX_INCOME + "INCOME "
@@ -35,7 +35,7 @@ public class AddCommand extends Command {
             + PREFIX_FAMILY + "FAMILY "
             + PREFIX_TAG + "BUYER/SELLER "
             + PREFIX_HOUSINGTYPE + "HOUSING_TYPE "
-            + "[" + PREFIX_REMARK + "REMARK]\n"
+            + "[" + PREFIX_REMARK + "REMARK] "
             + "[" + PREFIX_BIRTHDAY + "BIRTHDAY]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "

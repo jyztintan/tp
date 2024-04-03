@@ -29,7 +29,7 @@ public class Messages {
         assert duplicatePrefixes.length > 0;
 
         Set<String> duplicateFields =
-                Stream.of(duplicatePrefixes).map(Prefix::toString).collect(Collectors.toSet());
+                Stream.of(duplicatePrefixes).map(Prefix::toStringWithRepresentation).collect(Collectors.toSet());
 
         return MESSAGE_DUPLICATE_FIELDS + String.join(" ", duplicateFields);
     }
@@ -56,6 +56,7 @@ public class Messages {
                 .append(person.getFamily())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        builder.append("; Housing type: ").append(person.getHousingType());
         builder.append("; Remark: ")
                 .append(person.getRemark());
         builder.append("; Birthday: ").append(person.getBirthday());
