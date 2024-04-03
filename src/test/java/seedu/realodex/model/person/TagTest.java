@@ -1,4 +1,4 @@
-package seedu.realodex.model.tag;
+package seedu.realodex.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -6,6 +6,7 @@ import static seedu.realodex.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.realodex.model.tag.Tag;
 public class TagTest {
 
     @Test

@@ -29,8 +29,8 @@ public class BirthdayTest {
         String dateString = "15Jun2023";
         SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyyyy", Locale.ENGLISH);
 
-        assertEquals(dateString, formatter.format(birthday.getBirthday().orElse(null)));
-        assertEquals(Optional.empty(), emptyBirthday.getBirthday());
+        assertEquals(dateString, formatter.format(birthday.getOptionalBirthday().orElse(null)));
+        assertEquals(Optional.empty(), emptyBirthday.getOptionalBirthday());
     }
 
     @Test
@@ -96,13 +96,6 @@ public class BirthdayTest {
     }
 
     @Test
-    public void birthdayDefaultConstructor_equalsDefault_test() {
-        Birthday defaultBirthday = new Birthday();
-        Birthday birthdayWithDefaultValue = new Birthday("01May2023");
-        assertEquals(defaultBirthday, birthdayWithDefaultValue);
-    }
-
-    @Test
     public void getDaysUntilBirthday_birthdayInFuture_returnsCorrectDays() throws java.text.ParseException {
         // Set current date to 2023-01-01
         Calendar currentCalendar = Calendar.getInstance();
@@ -113,8 +106,7 @@ public class BirthdayTest {
         Date birthdayDate = formatter.parse("15Jan2001");
 
         // Create Birthday object with birthday in future
-        Birthday birthday = new Birthday();
-        birthday.setBirthday(Optional.of(birthdayDate));
+        Birthday birthday = new Birthday("15Jan2023");
 
         // Test
         assertEquals(getDaysUntilBirthdayStub(currentDate, birthdayDate), birthday.getDaysUntilBirthday());
@@ -131,8 +123,7 @@ public class BirthdayTest {
         Date birthdayDate = formatter.parse("15Dec2001");
 
         // Create Birthday object with birthday passed in current year
-        Birthday birthday = new Birthday();
-        birthday.setBirthday(Optional.of(birthdayDate));
+        Birthday birthday = new Birthday("15Dec2022");
 
         // Test
         assertEquals(getDaysUntilBirthdayStub(currentDate, birthdayDate), birthday.getDaysUntilBirthday());
@@ -142,7 +133,6 @@ public class BirthdayTest {
     public void toStringWithRepresentation_birthdayNotPresent_returnsDefaultString() {
         // Create Birthday object with birthday not present
         Birthday birthday = new Birthday();
-        birthday.setBirthday(Optional.empty());
 
         // Test
         assertEquals("No specified Birthday.", birthday.toStringWithRepresentation());
@@ -160,8 +150,7 @@ public class BirthdayTest {
         Date birthdayDate = birthdayCalendar.getTime();
 
         // Create Birthday object with birthday present
-        Birthday birthday = new Birthday();
-        birthday.setBirthday(Optional.of(birthdayDate));
+        Birthday birthday = new Birthday("15Jan2023");
 
         // Test
         assertEquals(getDaysUntilBirthdayWithRepresentationStub(currentDate, birthdayDate),
@@ -172,14 +161,26 @@ public class BirthdayTest {
     public void getDaysUntilBirthdayWithRepresentation_birthdayNotPresent_returnsDefaultString() {
         // Create Birthday object with birthday not present
         Birthday birthday = new Birthday();
-        birthday.setBirthday(Optional.empty());
 
         // Test
         assertEquals("Birthday is unspecified!", birthday.getDaysUntilBirthdayWithRepresentation());
     }
 
+    @Test
+    public void hashCodeTest() {
+        Birthday birthday1 = new Birthday("27May2003");
+        Birthday birthday2 = new Birthday("27May2003");
+        Birthday birthday3 = new Birthday("6June2006");
 
+        // same object -> returns true
+        assertTrue(birthday1.hashCode() == birthday1.hashCode());
 
+        // same values -> returns true
+        assertTrue(birthday1.hashCode() == birthday2.hashCode());
+
+        // different values -> returns false
+        assertFalse(birthday1.hashCode() == birthday3.hashCode());
+    }
 
     /**
      * Returns the number of days from the current system date to the birthday.
