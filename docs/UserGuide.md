@@ -115,6 +115,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMIL
 - If `INDEX` is `3`, the 3rd client's information will be edited.
 - It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
 - The current information will be overwritten with the input provided.
+- When editing the `TAG`, existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller``
 
 Examples:
 
