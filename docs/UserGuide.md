@@ -116,19 +116,68 @@ Examples:
 - `edit 1 p/999` will overwrite the 1st client's phone number to `999`.
 - `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's name to `Kylie`, income to `3333` and family size to `5`.
 
-### Filtering clients : `filter`
+### Filtering clients: `filter`
 
-Filters the list of client with an input keyphrase.
+The filter command in Realodex allows you to narrow down your list of clients by specifying a keyphrase 
+related to one of the client's attributes: name, remark, tag, birthday month, or housing type.
+This feature is particularly useful when you need to focus on a
+subset of your client database that meets certain criteria.
 
-Format: `filter KEYPHRASE`
+<u>Filter by Name format:</u> `filter n/KEYPHRASE`
 
-- The search is case-insensitive. e.g `james` will match `James`
-- Partial words will still be matched e.g. `Udh` will match `Udhaya`
-- All persons' names containing the keyword will be returned e.g. `Al` will return `Alicia`, `Allysa`
+- Returns the list of clients whose names contain the specified keyphrase.
+- Keyphrase input should not be empty.
+- The search is **case-insensitive**.
+  - `filter n/james` matches person with the name "James".
+- **Partial fragments** of names will still be matched.
+  - `filter n/Udh` matches a person with the name "Udhaya".
+- **Comprehensive searching**, returning all persons with names containing the keyphrase.
+  - `filter n/Al` returns persons named "Alicia", "Allysa", "Jamal".
 
-Example:
+<u>Filter by Remark format:</u> `filter r/KEYPHRASE`
 
-- `filter Al` will list out persons whose name has `"Al"` inside, such as `"Alicia"`, `"Allysa"` and `"Jamal"`
+- Returns the list of clients whose remarks include the specified keyphrase.
+- Keyphrase input should not be empty.
+- The search is **case-insensitive**. 
+  - `filter r/FOOD` matches person with remark "He loves food."
+- **Partial fragments** of remarks will still be matched.
+  - `filter r/hand` matches person with remark "handsome".
+- **Comprehensive searching**, returning all persons' names containing the keyword .
+  - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
+
+<u>Filter by Tag format:</u> `filter t/TAG`
+
+- Returns the list of clients with the specified tag(s).
+- Tag input should be valid - "Buyer" or "Seller".
+- The search is **case-insensitive**.
+  - `filter t/buyer` matches person with tag "Buyer".
+- **Inclusive matching** of persons with multiple tags, as long as they possess the
+tag(s) specified in the input.
+  - `filter t/buyer` matches person with tags "Buyer" and "Seller".
+- Supports searching with **multiple tags**.
+  - `filter t/Buyer t/Seller` only returns persons with both "Buyer" and "Seller" tags.
+- **Comprehensive searching**, returning all persons' with the specified tag(s).
+    - `filter t/Seller` returns all persons tagged as "Seller".
+
+<u>Filter by Birthday format:</u> `filter b/MONTH`
+
+- Returns the list of clients whose birthdays are in the specified month.
+- Month input should be a valid month in `MMM` format.
+  - Filtering by month "September" should be `filter b/Sep`
+- The month input is **case-insensitive**.
+    - `filter b/SEP` matches person with Birthday in September.
+- **Comprehensive searching**, returning all persons with birthdays in the specified month.
+    - `filter b/Jan` returns all persons with birthday in January.
+- Persons who do not have a specified birthday will **not be included** in the search results.
+
+<u>Filter by Housing Type format:</u> `filter h/HOUSING_TYPE`
+
+- Returns the list of clients with the specified housing type.
+- Tag input should be valid - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
+- The search is **case-insensitive**.
+    - `filter h/hdb` matches person with housing type "HDB".
+- **Comprehensive searching**, returning all persons with the specified housing type.
+    - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
 
 ### Listing clients : `list`
 
