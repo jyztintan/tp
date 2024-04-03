@@ -30,7 +30,7 @@ command to run the application.<br>
 
 1. Some example commands you can try:
 
-   * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer r/Owes money.`
+   * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 h/HDB t/buyer r/Owes money.`
    Adds a contact named `John Doe` to Realodex.
 
    * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
@@ -75,7 +75,7 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   - ![missing compulsory fields](missing_fields_error)
 - Except `t/TAG`, there can only be one of each fields in the add command.
   - ![excessive fields](excessive_fields)
-- For `t/TAG, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive). 
+- For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive). 
   - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown. 
 - Note that `REMARK` and `BIRTHDAY` fields are optional, enclosed in `[]`.
   - You do not need to include the prefixes for `r/REMARK` and `b/BIRTHDAY` if you do not wish to include them.
@@ -92,32 +92,44 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
 
 Specific Formats for each field:
 * NAME: Should only contain Alphanumeric characters and must be unique
-  1. Names are case-insensitive and
-  2. We recommend keeping names to within 50 characters
-    * Example: `n/John Doe`
+  1. Names are case-insensitive. 
+  2. Number of spaces between words in the name do not matter.
+  3. By default, the first letter of each word in the name will be made uppercase and the remaining letters lowercase, which is true for the majority of names in real life. 
+    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name. 
 * PHONE: Should only contain numbers, and it should be at least 3 digits long
-  * Example `p/81234567`
-* INCOME: Income should be an integer and should be at least 0
+  * Example: `p/81234567`
+* INCOME: Income should be an integer and should be at least 0 
+  * Example: `i/20000`
 * EMAIL: Emails should be of the format local-part@domain and adhere to the following constraints: 
-  1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. 
-  2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.\
+  1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). 
+  2. The local-part may not start or end with any special characters. 
+  3. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.\
      The domain name must:
      * end with a domain label at least 2 characters long 
      * have each domain label start and end with alphanumeric characters 
      * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
-* ADDRESS: Must not contain other prefixes within the address. (eg. `a/lemontree stree t/1`)
-* FAMILY: Should be an integer greater than 1. (eg. `f/4`)
-* TAG: only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted (eg. `t/buyer t/seller`)
-* HOUSINGTYPE: must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive)'
-* REMARK: Should only contain Alphanumeric characters, and can be empty if remark is not specified.
+  * Example: `e/realodex-admin@gmail.com`
+* ADDRESS: Must not contain other prefixes within the address. 
+  * Example: `a/6 College Ave West`
+* FAMILY: Should be an integer greater than 1. 
+  * Example: `f/4`
+* TAG: only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
+  * Example: `t/buyer`, `t/seller` or both
+* HOUSINGTYPE: must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
+  * Example: `h/HDB` 
+* REMARK: Should only contain Alphanumeric characters, and can be empty if remark is not specified. 
+  * Example: `r/Has a cat`
 * BIRTHDAY: Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
-    1. The date must not be in the future.
-    2. The date must exist in the Gregorian calendar. (eg. `b/29Feb2023` or)  
-    3. The year must be greater than or equal to 1000.
+  * Example: `b/22Feb2002`
+  1. The date must not be in the future.
+  2. The date must exist in the Gregorian calendar. (`b/29Feb2023` is not allowed)
+  3. The day "DD" must be numeric. For 1st-9th day of the month, the 0 need not be present. (Example: `2Feb2002`) 
+  4. The month "MMM" refers to the first 3 letters of the month (case-insensitive)
+  4. The year "YYYY" must be in full and greater than or equal to 1000. (`b/29Feb02` is not allowed)
 
 Examples:
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
-* `add n/Betsy Crowe a/Newgate Prison i/$0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
+* `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
 ### Deleting a client : `delete`
 
@@ -246,10 +258,10 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 r/Buyer t/Owes $1000.`
+**Add**    | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG [r/REMARK] [b/BIRTHDAY]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 r/Buyer t/Owes $1000.`
 **Delete (by name)** | `delete n/NAME`<br> e.g. `delete n/John`
 **Delete (by index)** | `delete INDEX`<br> e.g. `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [r/REMARK]` <br> e.g. `edit 2 n/Denzel i/100000`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]` <br> e.g. `edit 2 n/Denzel i/100000`
 **Filter** | `filter STRING`<br> e.g. `filter David`
 **List**   | `list`
 **Clear**| `clearRealodex`
