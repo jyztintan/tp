@@ -21,12 +21,24 @@ public class HelpCommand extends Command {
 
     public static final String SHOWING_HELP_MESSAGE = "Opened help window.";
 
+    public static final String MESSAGE_INDIVIDUAL_COMMANDS_HELP = "Help for Individual Commands: Shows you the help"
+            + " message for the specified command in the GUI directly. This is only applicable for the "
+            + "Add, Clear, Delete, Edit, Filter, List and Sort commands.\n"
+            + "Format: COMMAND help\n"
+            + "Examples: add help, delete help, edit help\n";
+
     private final String command;
 
     public HelpCommand(String command) {
         this.command = command.trim().toLowerCase();
     }
 
+    /**
+     * Executes the help command to either give general help or for individual specified commands.
+     *
+     * @param model the current model of the application
+     * @return the result of the execution
+     */
     @Override
     public CommandResult execute(Model model) {
 
@@ -49,8 +61,10 @@ public class HelpCommand extends Command {
 
         case "list":
             return new CommandResult(MESSAGE_LIST_HELP, false, false);
+
         case "sort":
             return new CommandResult(MESSAGE_SORT_HELP, false, false);
+
         default:
             return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
         }
