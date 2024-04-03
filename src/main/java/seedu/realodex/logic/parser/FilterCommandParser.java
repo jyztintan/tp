@@ -1,6 +1,9 @@
 package seedu.realodex.logic.parser;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.realodex.logic.commands.FilterCommand.MESSAGE_FILTER_EMPTY_REMARK;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
@@ -18,7 +21,13 @@ import seedu.realodex.model.person.predicates.PredicateProducer;
  */
 public class FilterCommandParser implements Parser<FilterCommand> {
 
-    private static final Prefix[] POSSIBLE_PREFIXES = { PREFIX_NAME, PREFIX_REMARK, PREFIX_TAG };
+    private static final Prefix[] POSSIBLE_PREFIXES = {
+        PREFIX_NAME,
+        PREFIX_REMARK,
+        PREFIX_TAG,
+        PREFIX_BIRTHDAY,
+        PREFIX_HOUSINGTYPE
+    };
     /**
      * Parses the given {@code String} of arguments in the context of the FilterCommand
      * and returns a FilterCommand object for execution.
@@ -50,11 +59,13 @@ public class FilterCommandParser implements Parser<FilterCommand> {
     private Predicate<Person> createPredicateForPrefix(Prefix presentPrefix, List<String> keyphrases)
             throws ParseException {
         checkValidNameIfApplicable(presentPrefix, keyphrases);
+        checkValidRemarkIfApplicable(presentPrefix, keyphrases);
         checkValidTagsIfApplicable(presentPrefix, keyphrases);
+        checkValidBirthdayIfApplicable(presentPrefix, keyphrases);
+        checkValidHousingTypeIfApplicable(presentPrefix, keyphrases);
         PredicateProducer predicateProducer = new PredicateProducer();
         return predicateProducer.createPredicate(presentPrefix, keyphrases);
     }
-
 
     /**
      * Validates the input arguments using various checks to ensure conformity to syntax requirements.
@@ -118,9 +129,9 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      * Validates name keyphrase if the present prefix is for a name. Each keyphrase must conform
      * to Name constraints.
      *
-     * @param presentPrefix The prefix to check if it's tag-related.
-     * @param keyphrases The list of keyphrases representing potential tags.
-     * @throws ParseException if any tag keyphrase is invalid.
+     * @param presentPrefix The prefix to check if it's name-related.
+     * @param keyphrases The list of keyphrases representing potential names.
+     * @throws ParseException if any name keyphrase is invalid.
      */
     private void checkValidNameIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
         if (!presentPrefix.equals(PREFIX_NAME)) {
@@ -128,6 +139,24 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         }
         String name = keyphrases.get(keyphrases.size() - 1);
         ParserUtil.parseName(name);
+    }
+
+    /**
+     * Validates keyphrase if the present prefix is for a remarks.
+     * Each keyphrase must not be empty as per Remarks constraints.
+     *
+     * @param presentPrefix The prefix to check if it's tag-related.
+     * @param keyphrases The list of keyphrases representing potential tags.
+     * @throws ParseException if any tag keyphrase is invalid.
+     */
+    private void checkValidRemarkIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+        if (!presentPrefix.equals(PREFIX_REMARK)) {
+            return;
+        }
+        String keyphrase = keyphrases.get(keyphrases.size() - 1);
+        if (keyphrase.isEmpty()) {
+            throw new ParseException(MESSAGE_FILTER_EMPTY_REMARK);
+        }
     }
 
     /**
@@ -145,4 +174,36 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         ParserUtil.parseTags(keyphrases);
     }
 
+    /**
+     * Validates housing type if the present prefix is for housing types. Each housing type must
+     * be a valid housing type.
+     *
+     * @param presentPrefix The prefix to check if it's housing type-related.
+     * @param keyphrases The list of keyphrases representing potential housing type.
+     * @throws ParseException if housing type is invalid.
+     */
+    private void checkValidHousingTypeIfApplicable(Prefix presentPrefix, List<String> keyphrases)
+            throws ParseException {
+        if (!presentPrefix.equals(PREFIX_HOUSINGTYPE)) {
+            return;
+        }
+        String housingTypeString = keyphrases.get(keyphrases.size() - 1);
+        ParserUtil.parseHousingType(housingTypeString);
+    }
+
+    /**
+     * Validates month keyphrase if the present prefix is for a birthday. Each keyphrase must conform
+     * to the format "MMM".
+     *
+     * @param presentPrefix The prefix to check if it's month-related.
+     * @param keyphrases The list of keyphrases representing potential months.
+     * @throws ParseException if any month keyphrase is invalid.
+     */
+    private void checkValidBirthdayIfApplicable(Prefix presentPrefix, List<String> keyphrases) throws ParseException {
+        if (!presentPrefix.equals(PREFIX_BIRTHDAY)) {
+            return;
+        }
+        String month = keyphrases.get(keyphrases.size() - 1);
+        ParserUtil.parseMonth(month);
+    }
 }

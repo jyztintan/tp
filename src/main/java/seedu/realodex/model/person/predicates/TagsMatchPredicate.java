@@ -9,7 +9,7 @@ import seedu.realodex.model.tag.Tag;
 
 
 /**
- * Tests that a {@code Person}'s {@code Name} contains the keyphrase given.
+ * Tests that a {@code Person}'s {@code Tag} contains the Tag(s) given.
  */
 public class TagsMatchPredicate implements Predicate<Person> {
     private final Set<Tag> tagSet;

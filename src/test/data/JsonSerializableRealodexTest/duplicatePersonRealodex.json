@@ -7,6 +7,7 @@
     "address": "123, Jurong West Ave 6, #08-111",
     "family" : "4",
     "tags": [ "buyer" ],
+    "housingType" : "Condominium",
     "remark" : "this is a remark",
     "birthday" : "01May2023"
   }, {
@@ -17,6 +18,7 @@
     "family" : "4",
     "address": "4th street",
     "tags": [ "buyer" ],
+    "housingType" : "Condominium",
     "birthday" : "01May2023"
   } ]
 }
