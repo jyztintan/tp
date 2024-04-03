@@ -51,7 +51,9 @@ command to run the application.<br>
 * `PREFIX/` refers to the prefix tag associated with each user-written input. <br>
    e.g. in `add n/NAME r/REMARK`, `NAME` is the name parameter and `REMARK` is the remark parameter.
 * `PREFIX` is case-insensitive <br>
-   e.g. `N/` and `n/` are the same and are used to indicate a `NAME` input 
+   e.g. `N/` and `n/` are the same and are used to indicate a `NAME` input
+* Prefixes must not be preceded by a non-whitespace character.
+   e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` whihs is a non-whitespace character. 
 * Command words are case-insensitive<br>
   e.g. `add` and `ADD` both indicate the command word for `add`
 
@@ -67,27 +69,35 @@ Adds a client to Realodex.
 
 Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE [r/REMARK] [b/BIRTHDAY]`
 
-- Note that `REMARK` and `BIRTHDAY` fields are optional, enclosed in `[]`.
-- You may input the parameters in any order (e.g. if
-the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable). 
-- Note that the tag is to indicate if a client is a
-Buyer, Seller or both, so tags only accept "buyer" or "seller" as the input (case-insensitive).
+- n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE are compulsory fields. 
+  - If any of the above fields are missed out in the `add` command, you will receive  
+- Note that `REMARK` and `BIRTHDAY` fields are optional, enclosed in `[]`. If you include the prefix with only a blank string, birthday and remark fields will be taken as not specified.
+  - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified. 
+- You will find the specific formats required for each field as shown below.
+  - If any of the formats are violated, you will receive an error message detailing the fields with invalid formats.
+- You may input the parameters in any order (e.g. if the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable).
 
 Specific Formats for each field:
 * NAME: Should only contain Alphanumeric characters
 * PHONE: Should only contain numbers, and it should be at least 3 digits long
 * INCOME: Income should be an integer and should be at least 0
-* EMAIL: Emails should be of the format local-part@domain and adhere to the following constraints: 1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. 2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.
-   The domain name must:
-    - end with a domain label at least 2 characters long
-    - have each domain label start and end with alphanumeric characters
-    - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
-* ADDRESS: Cannot contain the backslash character `\` in the command
+* EMAIL: Emails should be of the format local-part@domain and adhere to the following constraints: 
+  1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. 
+  2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.\
+     The domain name must:
+     * end with a domain label at least 2 characters long 
+     * have each domain label start and end with alphanumeric characters 
+     * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
+* ADDRESS: Must not contain other prefixes within the address. (eg. `a/lemontree stree t/1`)
 * FAMILY: Should be an integer greater than 1.
 * TAG: only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted (eg. `t/buyer t/seller`)
 * HOUSINGTYPE: must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive)'
-* REMARK: Should only contain Alphanumeric characters
-* BIRTHDAY: Should be in the form "DDMMMYYYY"  
+* REMARK: Should only contain Alphanumeric characters, and can be empty
+* BIRTHDAY: Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified. 
+  1. The date must not be in the future.
+  2. The date must exist in the Gregorian calendar. (eg. `b/29Feb2023` or)  
+  3. The year must be greater than or equal to 1000.
+  
 
 Examples:
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
