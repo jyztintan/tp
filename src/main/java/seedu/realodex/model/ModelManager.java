@@ -18,7 +18,6 @@ import seedu.realodex.model.person.Person;
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
-
     private final Realodex realodex;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
@@ -134,6 +133,7 @@ public class ModelManager implements Model {
         if (other == this) {
             return true;
         }
+
 
         // instanceof handles nulls
         if (!(other instanceof ModelManager)) {

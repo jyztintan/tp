@@ -16,14 +16,19 @@ import seedu.realodex.commons.core.LogsCenter;
  */
 //@@author 4llysa
 public class Birthday {
-
     public static final String INPUT_DATE_PATTERN = "ddMMMyyyy";
-    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + INPUT_DATE_PATTERN + " format\n"
-            + "A valid date should be given, and it cannot be in the future and no earlier than year 1000.";
+    public static final String INPUT_MONTH_PATTERN = "MMM";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday should be in " + "ddMMMyyyy" + " format.\n"
+            + "Date should also not be in future years and no earlier than year 1000!\n"
+            + "Example: b/17Sep2001";
+
+    // for filter purposes
+    public static final String FILTER_MONTH_MESSAGE_CONSTRAINTS = "Birth Month should be in MMM format.\n"
+            + "Example: b/Sep";
     public static final SimpleDateFormat INPUT_DATE_FORMATTER = new SimpleDateFormat(INPUT_DATE_PATTERN);
     public static final DateFormat DATE_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM);
     private static final Logger logger = LogsCenter.getLogger(Birthday.class);
-    private Optional<Date> birthday;
+    private final Optional<Date> optionalBirthday;
     /**
      * Constructs a {@code Birthday}.
      *
@@ -35,43 +40,26 @@ public class Birthday {
         Optional<Date> birthdayDate;
         try {
             birthdayDate = Optional.of(formatter.parse(birthday));
+            assert birthdayDate.isPresent();
         } catch (ParseException e) {
-            // will only reach here with empty string, other cases have been caught in isValidBirthday
             birthdayDate = Optional.empty();
         }
-        this.birthday = birthdayDate;
+        this.optionalBirthday = birthdayDate;
     }
 
     /**
      * Constructs a default {@code Birthday}.
      */
     public Birthday() {
-        SimpleDateFormat formatter = new SimpleDateFormat(INPUT_DATE_PATTERN, Locale.ENGLISH);
-        formatter.setLenient(false);
-        Optional<Date> birthdayDate = Optional.empty();
-        try {
-            birthdayDate = Optional.of(formatter.parse("01May2023"));
-        } catch (ParseException ignored) {
-            logger.fine("This part of birthday should not be executed");
-        }
-        this.birthday = birthdayDate;
+        this("");
     }
     /**
      * Returns the optional birthday date.
      *
      * @return The optional birthday date.
      */
-    public Optional<Date> getBirthday() {
-        return birthday;
-    }
-
-    /**
-     * Sets the optional birthday date.
-     *
-     * @param birthday The optional birthday date to set.
-     */
-    public void setBirthday(Optional<Date> birthday) {
-        this.birthday = birthday;
+    public Optional<Date> getOptionalBirthday() {
+        return optionalBirthday;
     }
 
     /**
@@ -86,15 +74,13 @@ public class Birthday {
             formatter.setLenient(false);
             Date parsedDate = formatter.parse(birthday.trim());
             Date currentDate = new Date();
-            if (!(parsedDate.after(currentDate))) {
-                return true;
-            }
-            return false;
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(parsedDate);
+            return !parsedDate.after(currentDate) && calendar.get(Calendar.YEAR) >= 1000;
         } catch (ParseException e) {
             return false;
         }
     }
-
 
     @Override
     public boolean equals(Object other) {
@@ -108,26 +94,27 @@ public class Birthday {
         }
 
         Birthday otherBirthday = (Birthday) other;
-        return birthday.equals(otherBirthday.birthday);
+        return optionalBirthday.equals(otherBirthday.optionalBirthday);
     }
 
     @Override
     public int hashCode() {
-        return birthday.hashCode();
+        return optionalBirthday.hashCode();
     }
 
     /**
      * Format state as text for viewing.
      */
     public String toString() {
-        return birthday.map(INPUT_DATE_FORMATTER::format).orElse("");
+        return optionalBirthday.map(INPUT_DATE_FORMATTER::format).orElse("");
     }
 
     /**
      * Format state as text for representation.
      */
     public String toStringWithRepresentation() {
-        return birthday.map(date -> "Birthday: " + DATE_FORMAT.format(date)).orElse("No specified Birthday.");
+        return optionalBirthday.map(date -> "Birthday: " + DATE_FORMAT.format(date))
+                .orElse("No specified Birthday.");
     }
 
     /**
@@ -137,7 +124,7 @@ public class Birthday {
      */
     public Long getDaysUntilBirthday() {
         Date currentDate = new Date(); // Current system date
-        Date birthdayDate = birthday.orElse(currentDate); // If birthday is not present, use current date
+        Date birthdayDate = optionalBirthday.orElse(currentDate); // If birthday is not present, use current date
 
         // Remove time component from the dates for accurate comparison
         Calendar currentCal = returnInstanceOfCalendar(currentDate);
@@ -163,7 +150,7 @@ public class Birthday {
     }
 
     public String getDaysUntilBirthdayWithRepresentation() {
-        if (this.birthday.isPresent()) {
+        if (this.optionalBirthday.isPresent()) {
             return getDaysUntilBirthday() + " More Days Till Their Birthday!";
         }
         return "Birthday is unspecified!";
