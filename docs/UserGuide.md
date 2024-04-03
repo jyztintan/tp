@@ -123,6 +123,11 @@ related to one of the client's attributes: name, remark, tag, birthday month, or
 This feature is particularly useful when you need to focus on a
 subset of your client database that meets certain criteria.
 
+>
+> When performing multiple filter operations in sequence, 
+> each new filter is applied to the original, full list of clients, not the subset produced by the previous filter. 
+> This approach ensures clarity and consistency in search results
+
 <u>Filter by Name format:</u> `filter n/KEYPHRASE`
 
 - Returns the list of clients whose names contain the specified keyphrase.
