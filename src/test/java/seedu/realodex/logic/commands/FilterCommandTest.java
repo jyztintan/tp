@@ -25,6 +25,7 @@ import seedu.realodex.model.ModelManager;
 import seedu.realodex.model.UserPrefs;
 import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
+import seedu.realodex.model.person.predicates.BirthdayIsInMonthPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
@@ -197,6 +198,39 @@ public class FilterCommandTest {
         assertEquals(Collections.singletonList(DANIEL), model.getFilteredPersonList());
     }
 
+    @Test
+    public void execute_matchingBirthMonth_onePersonFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 1);
+        String month = "Dec";
+        BirthdayIsInMonthPredicate predicate = new BirthdayIsInMonthPredicate(month);
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertTrue(model.getFilteredPersonList().containsAll(Arrays.asList(DANIEL)));
+    }
+  
+    @Test
+    public void execute_matchingBirthMonth_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 4);
+        String month = "June";
+        BirthdayIsInMonthPredicate predicate = new BirthdayIsInMonthPredicate(month);
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertTrue(model.getFilteredPersonList().containsAll(Arrays.asList(ALICE, BENSON, CARL, FIONA)));
+    }
+
+    @Test
+    public void execute_nonMatchingBirthMonth_noPersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        String month = "may";
+        BirthdayIsInMonthPredicate predicate = new BirthdayIsInMonthPredicate(month);
+        FilterCommand command = new FilterCommand(predicate);
+        expectedModel.updateFilteredPersonList(predicate);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+        assertTrue(model.getFilteredPersonList().containsAll(Arrays.asList()));
+    }
+  
     @Test
     public void toStringMethod() {
         NameContainsKeyphrasePredicate predicate = new NameContainsKeyphrasePredicate("keyphrase");

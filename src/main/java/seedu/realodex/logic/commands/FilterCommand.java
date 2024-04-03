@@ -2,6 +2,7 @@ package seedu.realodex.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
@@ -13,7 +14,6 @@ import seedu.realodex.logic.Messages;
 import seedu.realodex.model.Model;
 import seedu.realodex.model.person.Person;
 
-
 /**
  * Filters and lists all persons in realodex whose name contains the argument keyphrase.
  * Keyphrase matching is case-insensitive.
@@ -23,23 +23,25 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Filters all clients by specified field (name, remark, tag, housing type) "
+            + ": Filters all clients by specified field (name, remark, tag, birthday, housing type) "
             + "with the specified keyphrase (non-empty, case-insensitive) "
             + "and displays them as a list with index numbers.\n"
             + "Note that although the fields are listed as optional, ONE field must strictly be present.\n"
             + "Parameters: "
             + "[" + PREFIX_NAME + "KEYPHRASE] "
-            + "[" + PREFIX_REMARK + "REMARK]"
-            + "[" + PREFIX_TAG + "TAG]"
+            + "[" + PREFIX_REMARK + "REMARK] "
+            + "[" + PREFIX_TAG + "TAG] "
+            + "[" + PREFIX_REMARK + "REMARK] "
+            + "[" + PREFIX_BIRTHDAY + "MONTH] "
             + "[" + PREFIX_HOUSINGTYPE + "HOUSING_TYPE]\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_NAME + "alice tan";
 
     public static final String MESSAGE_FILTER_HELP = "Filter Command: "
-            + "Filters clients by ONE specified field (name, remark, tag, housing type)"
+            + "Filters clients by ONE specified field (name, remark, tag, birthday)"
             + "with the specified keyphrase (non-empty, case-insensitive) "
             + "and displays them as a list with index numbers.\n"
-            + "Format: filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [h/HOUSING_TYPE]\n"
-            + "Example: " + "filter n/alice tan";
+            + "Format: filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [b/BIRTHDAY] [h/HOUSING_TYPE]\n"
+            + "Example: filter n/Jus\n";
 
     public static final String MESSAGE_FILTER_CONFLICT = "Filter command can only filter by one field.\n";
 

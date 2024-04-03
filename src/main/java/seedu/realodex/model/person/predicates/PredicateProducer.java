@@ -2,6 +2,7 @@ package seedu.realodex.model.person.predicates;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
@@ -47,6 +48,8 @@ public class PredicateProducer {
         predicateMap.put(PREFIX_REMARK, keyphrases ->
                 new RemarkContainsKeyphrasePredicate(keyphrases.get(keyphrases.size() - 1)));
         predicateMap.put(PREFIX_TAG, this::createMatchTagsPredicate);
+        predicateMap.put(PREFIX_BIRTHDAY, keyphrases ->
+                new BirthdayIsInMonthPredicate(keyphrases.get(keyphrases.size() - 1)));
         predicateMap.put(PREFIX_HOUSINGTYPE, this::createHousingTypeMatchPredicate);
     }
 
@@ -69,7 +72,6 @@ public class PredicateProducer {
         Function<List<String>, Predicate<Person>> predicateCreator = predicateMap.get(prefix);
         assert(predicateCreator != null);
         return predicateCreator.apply(keyphrases);
-
     }
 
     /**

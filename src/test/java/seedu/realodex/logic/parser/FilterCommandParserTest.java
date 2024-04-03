@@ -16,6 +16,9 @@ import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
+import seedu.realodex.model.person.Birthday;
+import seedu.realodex.model.person.Name;
+import seedu.realodex.model.person.predicates.BirthdayIsInMonthPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
@@ -152,6 +155,18 @@ public class FilterCommandParserTest {
         String userInput = " yapyap n/Alice";
         assertParseFailure(parser, userInput,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    void parse_invalidBirthMonthWithBirthday_throwsParseException() {
+        assertParseFailure(parser, " b/#$@%^", Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    void parse_validBirthMonthWithBirthday_returnsFilterCommand() {
+        String userInput = " b/June";
+        FilterCommand expectedCommand = new FilterCommand(new BirthdayIsInMonthPredicate("June"));
+        assertParseSuccess(parser, userInput, expectedCommand);
     }
 
 }
