@@ -232,7 +232,7 @@ Aspect: Handling of partial names
 
 **Alternative 1 (current choice): Allow partial matches for remarks.**
 
-> For example, `filter r/love` returns persons with remarks like "Loves coding" and "Loving nature".
+> For example, `filter r/love` returns persons with remarks like "Loves coding" and "Has a lovely dog".
 
 Pros: More flexible search.
 
