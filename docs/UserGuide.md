@@ -19,7 +19,7 @@ If you can type fast, RDX can get your contact management tasks done faster than
 
 1. Ensure you have Java `11` or above installed in your computer.
 
-1. Download the latest `realodex.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `realodex.jar` from [here](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your Realodex.
 
@@ -33,7 +33,7 @@ command to run the application.<br>
    * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer r/Owes money.`
    Adds a contact named `John Doe` to Realodex.
 
-   * `delete John Doe` : Deletes the client with name `John Doe` from Realodex.
+   * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -47,6 +47,13 @@ command to run the application.<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+
+* `PREFIX/` refers to the prefix tag associated with each user-written input. <br>
+   e.g. in `add n/NAME r/REMARK`, `NAME` is the name parameter and `REMARK` is the remark parameter.
+* `PREFIX` is case-insensitive <br>
+   e.g. `N/` and `n/` are the same and are used to indicate a `NAME` input 
+* Command words are case-insensitive<br>
+  e.g. `add` and `ADD` both indicate the command word for `add`
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
@@ -134,11 +141,22 @@ Lists all clients in Realodex.
 
 Format: `list`
 
-### Clearing Realodex : `clearRealodex`
+### Sort : `sort`
+
+Sort clients based on their proximity to their upcoming birthday,
+calculated by the number of days until their next birthday relative to the current date.
+
+Format: `sort`
+
+- The current date is based on the local system's time.
+- If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
+
+
+### Clearing Realodex : `clearrealodex`
 
 Clears all clients in Realodex.
 
-Format: `clearRealodex`
+Format: `clearrealodex`
 
 ### Help : `help`
 

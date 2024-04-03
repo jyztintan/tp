@@ -4,6 +4,7 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_FAMILY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_INCOME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -43,6 +44,7 @@ public class PersonUtil {
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName.toString() + " ")
         );
+        sb.append(PREFIX_HOUSINGTYPE + person.getHousingType().toString() + " ");
         sb.append(PREFIX_REMARK + person.getRemark().toString() + " ");
         sb.append(PREFIX_BIRTHDAY + person.getBirthday().toString() + " ");
         return sb.toString();
@@ -67,6 +69,8 @@ public class PersonUtil {
                 tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
             }
         }
+        descriptor.getHousingType().ifPresent(housingType -> sb.append(PREFIX_HOUSINGTYPE)
+                .append(housingType.toString()).append(" "));
         descriptor.getRemark().ifPresent(remark -> sb.append(PREFIX_REMARK).append(remark.toString()).append(" "));
         descriptor.getBirthday().ifPresent(birthday -> sb.append(PREFIX_BIRTHDAY).append(birthday.toString())
                 .append(" "));
