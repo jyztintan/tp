@@ -16,7 +16,7 @@ import java.util.Set;
 import seedu.realodex.logic.commands.AddCommand;
 import seedu.realodex.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.realodex.model.person.Person;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 
 /**
  * A utility class for Person.

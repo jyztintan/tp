@@ -20,7 +20,7 @@ import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
 import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Person;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 
 /**
  * A factory class to produce different types of {@code Predicate<Person>} based on a given prefix and keyphrase.

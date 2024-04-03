@@ -1,4 +1,4 @@
-package seedu.realodex.model.tag;
+package seedu.realodex.model.person;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.realodex.commons.util.AppUtil.checkArgument;
