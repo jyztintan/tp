@@ -149,6 +149,9 @@ subset of your client database that meets certain criteria.
 - Returns the list of clients whose remarks include the specified keyphrase.
 - Keyphrase input should be non-empty. 
 This is an intentional design choice to ensure that the command is used for targeted searches, preventing the potential misinterpretation of an empty keyphrase as a request to list all clients.
+- Important: The remarks for the `filter r/` command must not contain any other prefixes to prevent parsing errors. 
+> The command `filter r/ my tag is t/buyer` would cause an error because the system interprets `t/` as the start of a new prefix.
+> To avoid this, ensure that the remark does not contain any spaces followed by slashes that could be misconstrued as additional prefixes.
 - The search is **case-insensitive**. 
   - `filter r/FOOD` matches person with remark "He loves food."
 - **Partial fragments** of remarks will still be matched.
