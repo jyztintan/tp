@@ -91,8 +91,12 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   ![duplicate person](duplicate_person_error.png)
 
 Specific Formats for each field:
-* NAME: Should only contain Alphanumeric characters
+* NAME: Should only contain Alphanumeric characters and must be unique
+  1. Names are case-insensitive and
+  2. We recommend keeping names to within 50 characters
+    * Example: `n/John Doe`
 * PHONE: Should only contain numbers, and it should be at least 3 digits long
+  * Example `p/81234567`
 * INCOME: Income should be an integer and should be at least 0
 * EMAIL: Emails should be of the format local-part@domain and adhere to the following constraints: 
   1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. 
@@ -102,14 +106,14 @@ Specific Formats for each field:
      * have each domain label start and end with alphanumeric characters 
      * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
 * ADDRESS: Must not contain other prefixes within the address. (eg. `a/lemontree stree t/1`)
-* FAMILY: Should be an integer greater than 1.
+* FAMILY: Should be an integer greater than 1. (eg. `f/4`)
 * TAG: only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted (eg. `t/buyer t/seller`)
 * HOUSINGTYPE: must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive)'
-* REMARK: Should only contain Alphanumeric characters, and can be empty
-* BIRTHDAY: Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified. 
-  1. The date must not be in the future.
-  2. The date must exist in the Gregorian calendar. (eg. `b/29Feb2023` or)  
-  3. The year must be greater than or equal to 1000.
+* REMARK: Should only contain Alphanumeric characters, and can be empty if remark is not specified.
+* BIRTHDAY: Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
+    1. The date must not be in the future.
+    2. The date must exist in the Gregorian calendar. (eg. `b/29Feb2023` or)  
+    3. The year must be greater than or equal to 1000.
 
 Examples:
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
