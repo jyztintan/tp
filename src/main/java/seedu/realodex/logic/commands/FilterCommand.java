@@ -1,9 +1,7 @@
 package seedu.realodex.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.realodex.logic.parser.CliSyntax.*;
 
 import java.util.function.Predicate;
 
@@ -30,14 +28,15 @@ public class FilterCommand extends Command {
             + "[" + PREFIX_NAME + "KEYPHRASE] "
             + "[" + PREFIX_REMARK + "REMARK]"
             + "[" + PREFIX_TAG + "TAG]\n"
+            + "[" + PREFIX_HOUSINGTYPE + "HOUSING TYPE]\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_NAME + "alice tan";
 
     public static final String MESSAGE_FILTER_HELP = "Filter Command: "
             + "Filters clients by ONE specified field(name, remark, tag) "
             + "with the specified keyphrase (non-empty, case-insensitive) "
             + "and displays them as a list with index numbers.\n"
-            + "Format: filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG]\n"
-            + "Examples: filter n/Jus OR filter r/likes coffee OR filter t/buyer\n";
+            + "Format: filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [h/HOUSING TYPE]\n"
+            + "Examples: filter n/Jus OR filter r/likes coffee OR filter t/buyer OR filter h/Condominium\n";
 
     public static final String MESSAGE_FILTER_CONFLICT = "Filter command can only filter by one field.\n";
 
