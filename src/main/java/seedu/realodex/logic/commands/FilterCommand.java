@@ -1,8 +1,8 @@
 package seedu.realodex.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;

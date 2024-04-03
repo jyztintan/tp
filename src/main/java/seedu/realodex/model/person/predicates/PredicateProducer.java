@@ -1,8 +1,8 @@
 package seedu.realodex.model.person.predicates;
 
 import static seedu.realodex.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_BIRTHDAY;
+import static seedu.realodex.logic.parser.CliSyntax.PREFIX_HOUSINGTYPE;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
