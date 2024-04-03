@@ -3,6 +3,7 @@ package seedu.realodex.logic.parser;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import seedu.realodex.logic.parser.exceptions.ParseException;
  * can be inserted multiple times for the same prefix.
  */
 public class ArgumentMultimap {
+    private final Prefix[] prefixWithBlankOptional = new Prefix[] {PREFIX_REMARK};
 
     /** Prefixes mapped to their respective arguments**/
     private final Map<Prefix, List<String>> argMultimap = new HashMap<>();
@@ -42,7 +44,7 @@ public class ArgumentMultimap {
      */
     public Optional<String> getValue(Prefix prefix) {
         List<String> values = getAllValues(prefix);
-        if (prefix.equals(PREFIX_REMARK)) {
+        if (Arrays.asList(prefixWithBlankOptional).contains(prefix)) {
             return values.isEmpty() ? Optional.of("") : Optional.of(values.get(values.size() - 1));
         }
         return values.isEmpty() ? Optional.empty() : Optional.of(values.get(values.size() - 1));

@@ -29,19 +29,22 @@ public class FilterCommand extends Command {
             + "Note that although the fields are listed as optional, ONE field must strictly be present.\n"
             + "Parameters: "
             + "[" + PREFIX_NAME + "KEYPHRASE] "
-            + "[" + PREFIX_REMARK + "REMARK] "
-            + "[" + PREFIX_TAG + "TAG] "
-            + "[" + PREFIX_REMARK + "REMARK] "
+            + "[" + PREFIX_REMARK + "REMARK]"
+            + "[" + PREFIX_TAG + "TAG]\n"
             + "[" + PREFIX_BIRTHDAY + "MONTH] "
-            + "[" + PREFIX_HOUSINGTYPE + "HOUSING_TYPE]\n"
+            + "[" + PREFIX_HOUSINGTYPE + "HOUSING-TYPE]\n"
             + "Example: " + COMMAND_WORD + " " + PREFIX_NAME + "alice tan";
-
     public static final String MESSAGE_FILTER_HELP = "Filter Command: "
-            + "Filters clients by ONE specified field (name, remark, tag, birthday)"
-            + "with the specified keyphrase (non-empty, case-insensitive) "
-            + "and displays them as a list with index numbers.\n"
-            + "Format: filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [b/BIRTHDAY] [h/HOUSING_TYPE]\n"
-            + "Example: filter n/Jus\n";
+            + "Filters clients by ONE specified field (name, remark, tag, birthday, housing type). "
+            + "All inputs must be non-empty and are case-insensitive.\n"
+            + "Name and remark are filtered with a keyphrase, "
+            + "tags are filtered with a valid tag name (buyer/seller), "
+            + "birthdays are filtered in MMM format (jan, feb, mar etc)\n"
+            + "and housing type is filtered with a valid housing type (HDB, Condominium, Landed property, Good "
+            + "Class Bungalow).\n"
+            + "Results are displayed as a list with index numbers.\n"
+            + "Format: filter [n/NAME_KEYPHRASE] [r/REMARK_KEYPHRASE] [t/TAG] [b/BIRTHDAY] [h/HOUSING_TYPE]\n"
+            + "Examples: filter n/Jus, filter r/likes coffee, filter t/buyer, filter b/oct, filter h/landed property\n";
 
     public static final String MESSAGE_FILTER_CONFLICT = "Filter command can only filter by one field.\n";
 

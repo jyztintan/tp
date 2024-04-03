@@ -5,9 +5,20 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.DESC_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_BIRTHDAY_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_FAMILY_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_HOUSINGTYPE_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_AMY_FIRST_LETTER_CAPS;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_AMY_VARYING_CAPS;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_NAME_BOB_FIRST_LETTER_CAPS;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_REMARK_AMY;
 import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_AMY;
+import static seedu.realodex.logic.commands.CommandTestUtil.VALID_TAG_BOB;
 import static seedu.realodex.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.realodex.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.realodex.logic.commands.CommandTestUtil.showPersonAtIndex;
@@ -34,6 +45,7 @@ import seedu.realodex.testutil.PersonBuilder;
 public class EditCommandTest {
 
     private Model model = new ModelManager(getTypicalRealodex(), new UserPrefs());
+
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -147,6 +159,212 @@ public class EditCommandTest {
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
+
+    @Test
+    public void execute_editName_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        Person editedPerson = personInList.withName(VALID_NAME_AMY_FIRST_LETTER_CAPS).build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY_FIRST_LETTER_CAPS).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_editPhone_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        Person editedPerson = personInList.withPhone(VALID_PHONE_AMY).build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withPhone(VALID_PHONE_AMY).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_editAddress_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        Person editedPerson = personInList.withAddress(VALID_ADDRESS_AMY).build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withAddress(VALID_ADDRESS_AMY).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_editEmail_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        Person editedPerson = personInList.withEmail(VALID_EMAIL_AMY).build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withEmail(VALID_EMAIL_AMY).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_editFamily_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        //edit from 4 to 5
+        Person editedPerson = personInList.withFamily("5").build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withFamily("5").build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_editMultipleFields_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        // Edit multiple fields at once
+        Person editedPerson = personInList.withName(VALID_NAME_AMY_VARYING_CAPS)
+                .withPhone(VALID_PHONE_AMY)
+                .withAddress(VALID_ADDRESS_AMY)
+                .withEmail(VALID_EMAIL_AMY)
+                .withFamily(VALID_FAMILY_AMY)
+                .withTags(VALID_TAG_AMY)
+                .withHousingType(VALID_HOUSINGTYPE_AMY)
+                .withRemark(VALID_REMARK_AMY)
+                .withBirthday(VALID_BIRTHDAY_AMY)
+                .build();
+
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
+                .withName(VALID_NAME_AMY_VARYING_CAPS)
+                .withPhone(VALID_PHONE_AMY)
+                .withAddress(VALID_ADDRESS_AMY)
+                .withEmail(VALID_EMAIL_AMY)
+                .withFamily(VALID_FAMILY_AMY)
+                .withTags(VALID_TAG_AMY)
+                .withHousingType(VALID_HOUSINGTYPE_AMY)
+                .withRemark(VALID_REMARK_AMY)
+                .withBirthday(VALID_BIRTHDAY_AMY)
+                .build();
+
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+
+    @Test
+    public void execute_editTags_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        //edit from buyer to seller
+        Person editedPerson = personInList.withTags(VALID_TAG_BOB).build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withTags(VALID_TAG_BOB).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_editHousingType_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        //edit from hdb to condo
+        Person editedPerson = personInList.withHousingType(VALID_HOUSINGTYPE_BOB).build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withHousingType(VALID_HOUSINGTYPE_BOB).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_editRemark_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        Person editedPerson = personInList.withRemark(VALID_REMARK_AMY).build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withRemark(VALID_REMARK_AMY).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_editBirthday_success() {
+        Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
+        Person lastPerson = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
+
+        PersonBuilder personInList = new PersonBuilder(lastPerson);
+        Person editedPerson = personInList.withBirthday(VALID_BIRTHDAY_AMY).build();
+        EditPersonDescriptor descriptor =
+                new EditPersonDescriptorBuilder().withBirthday(VALID_BIRTHDAY_AMY).build();
+        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+
+        Model expectedModel = new ModelManager(new Realodex(model.getRealodex()), new UserPrefs());
+        expectedModel.setPerson(lastPerson, editedPerson);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson));
+
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+    }
+
 
     @Test
     public void equals() {
