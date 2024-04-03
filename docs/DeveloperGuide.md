@@ -176,6 +176,9 @@ Detects command format violations, and facilitates clear error messaging.
 - `Predicates`: `NameContainsKeyphrasePredicate`, `RemarkContainsKeyphrasePredicate`, `TagsMatchPredicate`, `BirthdayIsInMonthPredicate`, and `HousingTypeMatchPredicate` 
 that determine if a person's attributes match the user-defined criteria.
 
+#### Filter Command Architecture
+![Filter Feature Architecture](diagrams/filter/FilterFeatureArchitecture.png)
+
 ### Filter by Name feature
 
 #### Description
