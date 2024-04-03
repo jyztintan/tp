@@ -177,7 +177,7 @@ Detects command format violations, and facilitates clear error messaging.
 that determine if a person's attributes match the user-defined criteria.
 
 #### Filter Command Architecture
-![Filter Feature Architecture](diagrams/filter/FilterFeatureArchitecture.png)
+<puml src="diagrams/filter/FilterFeatureArchitecture.puml" width="1000" />
 
 ### Filter by Name feature
 
