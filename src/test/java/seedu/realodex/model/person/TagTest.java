@@ -6,7 +6,6 @@ import static seedu.realodex.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.realodex.model.tag.Tag;
 public class TagTest {
 
     @Test

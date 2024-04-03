@@ -24,12 +24,12 @@ import seedu.realodex.model.Model;
 import seedu.realodex.model.ModelManager;
 import seedu.realodex.model.UserPrefs;
 import seedu.realodex.model.person.HousingType;
+import seedu.realodex.model.person.Tag;
 import seedu.realodex.model.person.predicates.BirthdayIsInMonthPredicate;
 import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
-import seedu.realodex.model.tag.Tag;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FilterCommand}.

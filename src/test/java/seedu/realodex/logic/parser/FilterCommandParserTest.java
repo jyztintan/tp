@@ -16,12 +16,12 @@ import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.model.person.Birthday;
 import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Name;
+import seedu.realodex.model.person.Tag;
 import seedu.realodex.model.person.predicates.BirthdayIsInMonthPredicate;
 import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
-import seedu.realodex.model.tag.Tag;
 
 public class FilterCommandParserTest {
 
