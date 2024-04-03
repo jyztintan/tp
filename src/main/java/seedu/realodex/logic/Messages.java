@@ -56,6 +56,7 @@ public class Messages {
                 .append(person.getFamily())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        builder.append("; Housing type: ").append(person.getHousingType());
         builder.append("; Remark: ")
                 .append(person.getRemark());
         builder.append("; Birthday: ").append(person.getBirthday());
