@@ -131,7 +131,7 @@ subset of your client database that meets certain criteria.
 <u>Filter by Name format:</u> `filter n/KEYPHRASE`
 
 - Returns the list of clients whose names contain the specified keyphrase.
-- Keyphrase input should not be empty.
+- Keyphrase input should be in valid format for names (alphanumeric) and non-empty.
 - The search is **case-insensitive**.
   - `filter n/james` matches person with the name "James".
 - **Partial fragments** of names will still be matched.
@@ -147,7 +147,7 @@ subset of your client database that meets certain criteria.
 <u>Filter by Remark format:</u> `filter r/KEYPHRASE`
 
 - Returns the list of clients whose remarks include the specified keyphrase.
-- Keyphrase input should not be empty.
+- Keyphrase input should be non-empty.
 - The search is **case-insensitive**. 
   - `filter r/FOOD` matches person with remark "He loves food."
 - **Partial fragments** of remarks will still be matched.
@@ -163,7 +163,7 @@ subset of your client database that meets certain criteria.
 <u>Filter by Tag format:</u> `filter t/TAG`
 
 - Returns the list of clients with the specified tag(s).
-- Tag input should be valid - "Buyer" or "Seller".
+- Tag input should be valid and non-empty - "Buyer" or "Seller".
 - The search is **case-insensitive**.
   - `filter t/buyer` matches person with tag "Buyer".
 - **Inclusive matching** of persons with multiple tags, as long as they possess the
@@ -187,7 +187,7 @@ tag(s) specified in the input.
 <u>Filter by Birthday format:</u> `filter b/MONTH`
 
 - Returns the list of clients whose birthdays are in the specified month.
-- Month input should be a valid month in `MMM` format.
+- Month input should be a valid month in `MMM` format and non-empty.
   - Filtering by month "September" should be `filter b/Sep`
 - The month input is **case-insensitive**.
     - `filter b/SEP` matches person with Birthday in September.
@@ -203,7 +203,7 @@ tag(s) specified in the input.
 <u>Filter by Housing Type format:</u> `filter h/HOUSING_TYPE`
 
 - Returns the list of clients with the specified housing type preference.
-- Housing Type input should be valid - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
+- Housing Type input should be valid and non-empty - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
 - The search is **case-insensitive**.
     - `filter h/hdb` matches person with housing type "HDB".
 - **Comprehensive searching**, returning all persons with the specified housing type.
