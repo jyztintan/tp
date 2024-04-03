@@ -147,7 +147,8 @@ subset of your client database that meets certain criteria.
 <u>Filter by Remark format:</u> `filter r/KEYPHRASE`
 
 - Returns the list of clients whose remarks include the specified keyphrase.
-- Keyphrase input should be non-empty.
+- Keyphrase input should be non-empty. 
+This is an intentional design choice to ensure that the command is used for targeted searches, preventing the potential misinterpretation of an empty keyphrase as a request to list all clients.
 - The search is **case-insensitive**. 
   - `filter r/FOOD` matches person with remark "He loves food."
 - **Partial fragments** of remarks will still be matched.
