@@ -25,7 +25,7 @@ public class HelpCommand extends Command {
             + " message for the specified command in the GUI directly. This is only applicable for the "
             + "Add, Clear, Delete, Edit, Filter, List and Sort commands.\n"
             + "Format: COMMAND help\n"
-            + "Examples: add help, delete help, edit help etc\n";
+            + "Examples: add help, delete help, edit help\n";
 
     private final String command;
 

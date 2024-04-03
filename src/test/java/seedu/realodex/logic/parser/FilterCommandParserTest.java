@@ -13,7 +13,11 @@ import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.Messages;
 import seedu.realodex.logic.commands.FilterCommand;
+import seedu.realodex.model.person.Birthday;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Name;
+import seedu.realodex.model.person.predicates.BirthdayIsInMonthPredicate;
+import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
@@ -41,10 +45,20 @@ public class FilterCommandParserTest {
     }
 
     @Test
+    void parse_emptyArgsWithName_throwsParseException() {
+        assertParseFailure(parser, " n/", Name.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
     void parse_validArgsWithRemark_returnsFilterCommand() {
         String userInput = " r/Loves cats";
         FilterCommand expectedCommand = new FilterCommand(new RemarkContainsKeyphrasePredicate("Loves cats"));
         assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_invalidArgsWithEmptyRemark_throwsParseException() {
+        assertParseFailure(parser, " r/", FilterCommand.MESSAGE_FILTER_EMPTY_REMARK);
     }
 
     @Test
@@ -86,6 +100,47 @@ public class FilterCommandParserTest {
         assertThrows(IllegalArgumentException.class, () -> new Tag(userInput));
     }
 
+    @Test
+    void parse_emptyArgsWithTag_throwsParseException() {
+        assertParseFailure(parser, " t/", Tag.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    void parse_invalidBirthMonthWithBirthday_throwsParseException() {
+        assertParseFailure(parser, " b/#$@%^", Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    void parse_validBirthMonthWithBirthday_returnsFilterCommand() {
+        String userInput = " b/June";
+        FilterCommand expectedCommand = new FilterCommand(new BirthdayIsInMonthPredicate("June"));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_emptyArgsWithBirthday_throwsParseException() {
+        assertParseFailure(parser, " b/", Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    void parse_validArgsWithHousingType_returnsFilterCommand() {
+        String userInput = " h/hdb";
+        HousingType housingType = new HousingType("hdb");
+        FilterCommand expectedCommand = new FilterCommand(new HousingTypeMatchPredicate(housingType));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_invalidArgsWithHousingType_throwsParseException() {
+        String userInput = " h/hdbb";
+        assertParseFailure(parser, userInput, HousingType.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    void parse_emptyArgsWithHousingType_throwsParseException() {
+        String userInput = " h/";
+        assertParseFailure(parser, userInput, HousingType.MESSAGE_CONSTRAINTS);
+    }
     @Test
     void parse_invalidArgs_throwsParseException() {
         String userInput = " invalidArg";

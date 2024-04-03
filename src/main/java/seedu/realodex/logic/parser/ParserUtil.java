@@ -2,7 +2,9 @@ package seedu.realodex.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -339,6 +341,20 @@ public class ParserUtil {
         return new Birthday(birthday);
     }
 
+    /**
+     * Parses a {@code String month} into a {@code Date} month.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     */
+    public static Date parseMonth(String monthName) throws ParseException {
+        SimpleDateFormat monthFormat = new SimpleDateFormat(Birthday.INPUT_MONTH_PATTERN);
+        try {
+            Date monthDate = monthFormat.parse(monthName);
+            return monthDate;
+        } catch (java.text.ParseException e) {
+            throw new ParseException(Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
+        }
+    }
 
     /**
      * Parses a {@code String birthday} into a {@code Birthday}.

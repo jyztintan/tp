@@ -22,8 +22,10 @@ import seedu.realodex.logic.commands.HelpCommand;
 import seedu.realodex.logic.commands.ListCommand;
 import seedu.realodex.logic.commands.SortCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
+import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
@@ -153,6 +155,14 @@ public class RealodexParserTest {
         FilterCommand command = (FilterCommand) parser.parseCommand(
                 FilterCommand.COMMAND_WORD + " t/buyer " + "t/seller");
         assertEquals(new FilterCommand(new TagsMatchPredicate(tagString)), command);
+    }
+
+    @Test
+    public void parseCommand_filterByHousingType() throws Exception {
+        HousingType housingType = new HousingType("hdb");
+        FilterCommand command = (FilterCommand) parser.parseCommand(
+                FilterCommand.COMMAND_WORD + " h/hdb");
+        assertEquals(new FilterCommand(new HousingTypeMatchPredicate(housingType)), command);
     }
 
     @Test
