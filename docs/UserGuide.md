@@ -133,6 +133,11 @@ subset of your client database that meets certain criteria.
   - `filter n/Udh` matches a person with the name "Udhaya".
 - **Comprehensive searching**, returning all persons with names containing the keyphrase.
   - `filter n/Al` returns persons named "Alicia", "Allysa", "Jamal".
+  
+![filterByNameScreenshot.png](images/filter/filterByNameScreenshot.png)
+<p align="center">
+  <em> <code>filter n/Li</code> returns persons with names like "Charlotte Oliveiro" and "David Li"</em>
+</p>
 
 <u>Filter by Remark format:</u> `filter r/KEYPHRASE`
 
@@ -144,6 +149,11 @@ subset of your client database that meets certain criteria.
   - `filter r/hand` matches person with remark "handsome".
 - **Comprehensive searching**, returning all persons' names containing the keyword .
   - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
+
+![filterByRemarkScreenshot.png](images/filter/filterByRemarkScreenshot.png)
+<p align="center">
+  <em> <code>filter r/eat</code> returns persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..."</em>
+</p>
 
 <u>Filter by Tag format:</u> `filter t/TAG`
 
@@ -159,6 +169,16 @@ tag(s) specified in the input.
 - **Comprehensive searching**, returning all persons' with the specified tag(s).
     - `filter t/Seller` returns all persons tagged as "Seller".
 
+![filterByTagSeller.png](images/filter/filterByTagSeller.png)
+<p align="center">
+  <em> <code>filter t/seller</code> returns persons with "Seller" Tag</em>
+</p>
+
+![filterByTagBuyerSeller.png](images/filter/filterByTagBuyerSeller.png)
+<p align="center">
+  <em> <code>filter t/buyer t/seller</code> only returns persons with "Buyer" and "Seller" Tag</em>
+</p>
+
 <u>Filter by Birthday format:</u> `filter b/MONTH`
 
 - Returns the list of clients whose birthdays are in the specified month.
@@ -170,14 +190,24 @@ tag(s) specified in the input.
     - `filter b/Jan` returns all persons with birthday in January.
 - Persons who do not have a specified birthday will **not be included** in the search results.
 
+![filterByBirthday.png](images/filter/filterByBirthday.png)
+<p align="center">
+  <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
+</p>
+
 <u>Filter by Housing Type format:</u> `filter h/HOUSING_TYPE`
 
-- Returns the list of clients with the specified housing type.
-- Tag input should be valid - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
+- Returns the list of clients with the specified housing type preference.
+- Housing Type input should be valid - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
 - The search is **case-insensitive**.
     - `filter h/hdb` matches person with housing type "HDB".
 - **Comprehensive searching**, returning all persons with the specified housing type.
     - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
+
+![filterByHousingType.png](images/filter/filterByHousingType.png)
+<p align="center">
+  <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
+</p>
 
 ### Listing clients : `list`
 
