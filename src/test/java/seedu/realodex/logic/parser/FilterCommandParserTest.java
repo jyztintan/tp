@@ -45,6 +45,11 @@ public class FilterCommandParserTest {
     }
 
     @Test
+    void parse_emptyArgsWithName_throwsParseException() {
+        assertParseFailure(parser, " n/", Name.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
     void parse_validArgsWithRemark_returnsFilterCommand() {
         String userInput = " r/Loves cats";
         FilterCommand expectedCommand = new FilterCommand(new RemarkContainsKeyphrasePredicate("Loves cats"));
@@ -96,6 +101,28 @@ public class FilterCommandParserTest {
     }
 
     @Test
+    void parse_emptyArgsWithTag_throwsParseException() {
+        assertParseFailure(parser, " t/", Tag.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    void parse_invalidBirthMonthWithBirthday_throwsParseException() {
+        assertParseFailure(parser, " b/#$@%^", Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    void parse_validBirthMonthWithBirthday_returnsFilterCommand() {
+        String userInput = " b/June";
+        FilterCommand expectedCommand = new FilterCommand(new BirthdayIsInMonthPredicate("June"));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    void parse_emptyArgsWithBirthday_throwsParseException() {
+        assertParseFailure(parser, " b/", Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
     void parse_validArgsWithHousingType_returnsFilterCommand() {
         String userInput = " h/hdb";
         HousingType housingType = new HousingType("hdb");
@@ -106,6 +133,12 @@ public class FilterCommandParserTest {
     @Test
     void parse_invalidArgsWithHousingType_throwsParseException() {
         String userInput = " h/hdbb";
+        assertParseFailure(parser, userInput, HousingType.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    void parse_emptyArgsWithHousingType_throwsParseException() {
+        String userInput = " h/";
         assertParseFailure(parser, userInput, HousingType.MESSAGE_CONSTRAINTS);
     }
     @Test
@@ -154,18 +187,6 @@ public class FilterCommandParserTest {
         String userInput = " yapyap n/Alice";
         assertParseFailure(parser, userInput,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
-    }
-
-    @Test
-    void parse_invalidBirthMonthWithBirthday_throwsParseException() {
-        assertParseFailure(parser, " b/#$@%^", Birthday.FILTER_MONTH_MESSAGE_CONSTRAINTS);
-    }
-
-    @Test
-    void parse_validBirthMonthWithBirthday_returnsFilterCommand() {
-        String userInput = " b/June";
-        FilterCommand expectedCommand = new FilterCommand(new BirthdayIsInMonthPredicate("June"));
-        assertParseSuccess(parser, userInput, expectedCommand);
     }
 
 }
