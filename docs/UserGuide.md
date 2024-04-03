@@ -70,12 +70,15 @@ Adds a client to Realodex.
 Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE [r/REMARK] [b/BIRTHDAY]`
 
 - n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE are compulsory fields. 
-  - If any of the above fields are missed out in the `add` command, you will receive  
+  - If any of the above fields are missed out in the `add` command, you will receive an error message stating the compulsory fields that are missing in the add command.
 - Note that `REMARK` and `BIRTHDAY` fields are optional, enclosed in `[]`. If you include the prefix with only a blank string, birthday and remark fields will be taken as not specified.
   - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified. 
 - You will find the specific formats required for each field as shown below.
   - If any of the formats are violated, you will receive an error message detailing the fields with invalid formats.
 - You may input the parameters in any order (e.g. if the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable).
+- You may not have duplicate persons with the same name in realodex.
+  - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
+  ![duplicate person](duplicate_person_error.png)
 
 Specific Formats for each field:
 * NAME: Should only contain Alphanumeric characters
