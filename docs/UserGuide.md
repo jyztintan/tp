@@ -56,7 +56,7 @@ command to run the application.<br>
    e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` whihs is a non-whitespace character. 
 * Command words are case-insensitive<br>
   e.g. `add` and `ADD` both indicate the command word for `add`
-
+* You may input the parameters in any order (e.g. if the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable).
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 * Parameters enclosed in `[]` are optional to input.
@@ -85,7 +85,6 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   - If any of the formats are violated, you will receive an error message detailing the fields with invalid formats.
   - For example, if name, phone and tag fields are in incorrect format, you will receive 3 error messages as shown.
   - ![Error parsing fields](parsing_errors)
-- You may input the parameters in any order (e.g. if the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable).
 - You may not have duplicate persons with the same name in realodex.
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
   ![duplicate person](duplicate_person_error.png)
