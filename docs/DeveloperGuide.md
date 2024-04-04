@@ -260,6 +260,10 @@ This is implemented using the `TagsMatchPredicate` that checks whether a person'
 3. The `FilterCommand` applies the `TagsMatchPredicate` predicate, updating the filtered person list to only include those who are tagged as "Buyer".
 4. The UI reflects this filtered list.
 
+#### Design Considerations
+
+Aspect : Strictness of tag filtering'
+
 **Alternative 1 (current choice): Allow inclusion of persons with matching tags, irrespective of other tags.**
 
 > For example, `filter t/Buyer` returns persons tagged as "Buyer", inclusing those tagged as "Buyer" and "Seller".
@@ -289,6 +293,10 @@ This is implemented using the `BirthdayIsInMonthPredicate` that checks whether a
 2. The `FilterCommandParser` interprets the input, creating a FilterCommand with a `BirthdayIsInMonthPredicate`.
 3. The `FilterCommand` applies the `BirthdayIsInMonthPredicate` predicate, updating the filtered person list to only include those with birthday in January.
 4. The UI reflects this filtered list.
+
+#### Design considerations
+
+Aspect : Strictness of tag filtering
 
 **Alternative 1 (current choice): Filter by birthday month.**
 
