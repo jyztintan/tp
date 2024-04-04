@@ -126,7 +126,7 @@ subset of your client database that meets certain criteria.
 >
 > When performing multiple filter operations in sequence, 
 > each new filter is applied to the original, full list of clients, not the subset produced by the previous filter. 
-> This approach ensures clarity and consistency in search results
+> This approach ensures clarity and consistency in search results.
 
 <u>Filter by Name format:</u> `filter n/KEYPHRASE`
 
