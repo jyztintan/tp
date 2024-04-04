@@ -21,7 +21,7 @@ import seedu.realodex.commons.core.index.Index;
 import seedu.realodex.logic.commands.EditCommand;
 import seedu.realodex.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.realodex.logic.parser.exceptions.ParseException;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 
 //@@author UdhayaShan1
 /**

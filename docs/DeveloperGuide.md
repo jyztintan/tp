@@ -581,6 +581,21 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Editing a person
+
+1. Editing a person while all persons are being shown
+
+   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+
+   1. Test case: `edit 1 n/John Doe`<br>
+      Expected: First contact is updated with the new name. Details of the updated contact shown in the status message. Timestamp in the status bar is updated.
+
+   1. Test case: `edit 0 n/John Doe`<br>
+      Expected: No person is updated. Error details shown in the status message. Status bar remains the same.
+
+   1. Other incorrect edit commands to try: `edit`, `edit x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files
