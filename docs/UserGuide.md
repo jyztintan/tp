@@ -60,9 +60,12 @@ command to run the application.<br>
    e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` which is a non-whitespace character. 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME ....`, `NAME` is a parameter which can be used as `add n/John Doe ....`.
-  <br>For more details on the parameters, do refer to our comprehensive description of them here [Fields Summary]() 
+  <br>For more details on the parameters, do refer to our comprehensive description of them here [Fields Summary](#format-requirements)
 
-* Parameters enclosed in `[]` are optional to input.<br>e.g. `[r/REMARK]` indicates an optional input field for that command. 
+* Parameters enclosed in `[]` are optional to input.<br>e.g. `[r/REMARK]` indicates an optional input field for that command.
+
+* You may input the parameters in any order (e.g. if the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable).
+
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 
@@ -88,12 +91,12 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   - You do not need to include the prefixes for `r/REMARK` and `b/BIRTHDAY` if you do not wish to include them.
   - But if you do include the prefix with only a blank string, birthday and remark fields will be taken as not specified.
     - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified. 
-- Refer to the [Specific Format Requirements](#specific-formats) for each field.
+- Refer to the [Specific Format Requirements](#format-requirements) for each field.
   - If any of the formats are violated, you will receive an error message detailing the fields with invalid formats.
   - For example, if name, phone and tag fields are in incorrect format, you will receive 3 error messages as shown.
   - ![Error parsing fields](parsing_errors)
-- You may input the parameters in any order (e.g. if the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable).
-- You may not have duplicate persons with the same name in realodex.
+- You may not have duplicate persons with the same name in Realodex.
+  - Names are case-insensitive as described in [Specific Format Requirements](#format-requirements)
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
     <a href="images/add-command/duplicate_person_error.png">
     <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:150%">
@@ -140,7 +143,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMIL
 - If `INDEX` is `3`, the 3rd client's information will be edited.
 - It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
 - The current information will be overwritten with the input provided.
-- When editing the `TAG`, existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller``
+- When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller``
+- All fields must follow the respective [Specific Format Requirements](#format-requirements)
 
 Examples:
 
@@ -330,7 +334,7 @@ Should you want to re-enter your contacts in a fresh JSON file in the event of f
 simply delete `realodex.json` and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
-## <span id="specific-formats">Specific Formats for each field</span>
+## Format Requirements
 * NAME:
     * Should only contain Alphanumeric characters and must be unique
     1. Names are case-insensitive.
