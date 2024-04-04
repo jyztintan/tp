@@ -324,12 +324,6 @@ Shows the help message for the specified command only.
       </a>
   <em> <code>clear help</code> provides the help message for the clear command</em>
 </p>
-      <a href="images/help/delete_help.png">
-      <img src="images/help/delete_help.png" alt="filterByTagBuyerSeller" style="width:100%">
-      </a>
-<p align="center">
-  <em> <code>delete help</code> provides the help message for the delete command</em>
-</p>
 
 
 ### Exiting the program : `exit`
@@ -337,6 +331,7 @@ Shows the help message for the specified command only.
 Exits the program.
 
 <u>Format:</u> `exit`
+- Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
 
 ### File Data
 
