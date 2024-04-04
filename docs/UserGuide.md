@@ -83,7 +83,7 @@ Adds a client to Realodex.
    </a>
 - Except `t/TAG`, there can only be one of each field in the add command.
 <a href="images/add-command/excessive_fields_error.png">
-  <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:150%">
+  <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:100%">
   </a>
 - For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive). 
   - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown. 
@@ -100,7 +100,7 @@ Adds a client to Realodex.
   - Names are case-insensitive as described in [Field Constraints](#field-constraints).
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
     <a href="images/add-command/duplicate_person_error.png">
-    <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:150%">
+    <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:100%">
     </a>
 
 <u>Examples</u>:
@@ -117,7 +117,7 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 
 * Deletes the client with the specified `NAME` in Realodex.
 * `NAME` is case-insensitive.
-* If `NAME` is **not found**, error message will be shown "NAME is not found".
+* If `NAME` is **not found**, error message will be shown "The client name provided is invalid".
 
 <u>Example</u>:
 * `delete n/Udhaya Shanmugam` deletes the client in Realodex with the name "Udhaya Shanmugam".
@@ -320,12 +320,12 @@ Shows the help message for the specified command only.
 <u>Examples:</u>
 <p align="center">
       <a href="images/help/clear_help.png">
-      <img src="images/help/clear_help.png" alt="filterByTagSeller" style="width:150%">
+      <img src="images/help/clear_help.png" alt="filterByTagSeller" style="width:100%">
       </a>
   <em> <code>clear help</code> provides the help message for the clear command</em>
 </p>
       <a href="images/help/delete_help.png">
-      <img src="images/help/delete_help.png" alt="filterByTagBuyerSeller" style="width:150%">
+      <img src="images/help/delete_help.png" alt="filterByTagBuyerSeller" style="width:100%">
       </a>
 <p align="center">
   <em> <code>delete help</code> provides the help message for the delete command</em>
