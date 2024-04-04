@@ -60,7 +60,7 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.person = person;
         id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName.toUpperCase());
+        name.setText(person.getName().toStringCapitalized());
         phone.setText(person.getPhone().value);
         income.setText(person.getIncome().toStringWithRepresentation());
         address.setText(person.getAddress().value);
