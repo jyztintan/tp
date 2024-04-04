@@ -50,6 +50,10 @@ public class Name {
         return fullName;
     }
 
+    public String toStringCapitalized() {
+        return fullName.toUpperCase();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

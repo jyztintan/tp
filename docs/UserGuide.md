@@ -26,7 +26,9 @@ If you can type fast, RDX can get your contact management tasks done faster than
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar realodex.jar`
 command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   <a href="images/Ui.png">
+   <img src="images/Ui.png" alt="Ui Image" style="width:80%">
+   </a>
 
 1. Some example commands you can try:
 
@@ -45,21 +47,27 @@ command to run the application.<br>
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Commands are generally in the format `COMMANDWORD PREFIX_ONE/UPPER_CASE PREFIX_TWO/UPPER_CASE ....`
+* `COMMANDWORD` refers to the various commands user can input. <br>For e.g. `add`, `delete`, `filter` For reference, such commands can be found in [Commands Summary](#command-summary)
 
+* `COMMANDWORD` are case-insensitive<br>
+    e.g. `add` and `ADD` both indicate the command word for `add`
 * `PREFIX/` refers to the prefix tag associated with each user-written input. <br>
    e.g. in `add n/NAME r/REMARK`, `NAME` is the name parameter and `REMARK` is the remark parameter.
 * `PREFIX` is case-insensitive <br>
    e.g. `N/` and `n/` are the same and are used to indicate a `NAME` input
-* Prefixes must not be preceded by a non-whitespace character.
-   e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` whihs is a non-whitespace character. 
-* Command words are case-insensitive<br>
-  e.g. `add` and `ADD` both indicate the command word for `add`
+* `PREFIX` must not be preceded by a non-whitespace character.
+   e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` which is a non-whitespace character. 
+* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+  e.g. in `add n/NAME ....`, `NAME` is a parameter which can be used as `add n/John Doe ....`.
+  <br>For more details on the parameters, do refer to our comprehensive description of them here [Fields Summary](#format-requirements)
+
+* Parameters enclosed in `[]` are optional to input.<br>e.g. `[r/REMARK]` indicates an optional input field for that command.
+
 * You may input the parameters in any order (e.g. if the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable).
+
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
-* Parameters enclosed in `[]` are optional to input.
 
 </box>
 
@@ -72,7 +80,9 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
 - n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE are compulsory fields. 
   - If any of the above fields are missed out in the `add` command, you will receive an error message stating the compulsory fields that are missing in the add command.
   - For example, if only `n/NAME` and `i/INCOME` are present, you will be alerted that you are missing the fields `p/PHONE e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE`
-  - ![missing compulsory fields](missing_fields_error)
+ <a href="images/add-command/missing_fields_error.png">
+   <img src="images/add-command/missing_fields_error.png" alt="missing compulsory fields" style="width:150%">
+   </a>
 - Except `t/TAG`, there can only be one of each fields in the add command.
   - ![excessive fields](excessive_fields)
 - For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive). 
@@ -88,8 +98,9 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
 - You may not have duplicate persons with the same name in Realodex.
   - Names are case-insensitive as described in [Specific Format Requirements](#format-requirements)
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
-  ![duplicate person](duplicate_person_error.png)
-
+    <a href="images/add-command/duplicate_person_error.png">
+    <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:150%">
+    </a>
 Examples:
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
@@ -162,8 +173,9 @@ subset of your client database that meets certain criteria.
   - `filter n/Udh` matches a person with the name "Udhaya".
 - **Comprehensive searching**, returning all persons with names containing the keyphrase.
   - `filter n/Al` returns persons named "Alicia", "Allysa", "Jamal".
-  
-![filterByNameScreenshot.png](images/filter/filterByNameScreenshot.png)
+    <a href="images/filter/filterByNameScreenshot.png">
+    <img src="images/filter/filterByNameScreenshot.png" alt="filterByNameScreenshot" style="width:150%">
+    </a>
 <p align="center">
   <em> <code>filter n/Li</code> returns persons with names like "Charlotte Oliveiro" and "David Li"</em>
 </p>
@@ -182,8 +194,9 @@ This is an intentional design choice to ensure that the command is used for targ
   - `filter r/hand` matches person with remark "handsome".
 - **Comprehensive searching**, returning all persons' names containing the keyword .
   - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
-
-![filterByRemarkScreenshot.png](images/filter/filterByRemarkScreenshot.png)
+    <a href="images/filter/filterByRemarkScreenshot.png">
+    <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:150%">
+    </a>
 <p align="center">
   <em> <code>filter r/eat</code> returns persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..."</em>
 </p>
@@ -201,13 +214,16 @@ tag(s) specified in the input.
   - `filter t/Buyer t/Seller` only returns persons with both "Buyer" and "Seller" tags.
 - **Comprehensive searching**, returning all persons' with the specified tag(s).
     - `filter t/Seller` returns all persons tagged as "Seller".
-
-![filterByTagSeller.png](images/filter/filterByTagSeller.png)
+      <a href="images/filter/filterByTagSeller.png">
+      <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:150%">
+      </a>
 <p align="center">
   <em> <code>filter t/seller</code> returns persons with "Seller" Tag</em>
 </p>
+      <a href="images/filter/filterByTagBuyerSeller.png">
+      <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:150%">
+      </a>
 
-![filterByTagBuyerSeller.png](images/filter/filterByTagBuyerSeller.png)
 <p align="center">
   <em> <code>filter t/buyer t/seller</code> only returns persons with "Buyer" and "Seller" Tag</em>
 </p>
@@ -222,8 +238,10 @@ tag(s) specified in the input.
 - **Comprehensive searching**, returning all persons with birthdays in the specified month.
     - `filter b/Jan` returns all persons with birthday in January.
 - Persons who do not have a specified birthday will **not be included** in the search results.
+  <a href="images/filter/filterByBirthday.png">
+  <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:150%">
+  </a>
 
-![filterByBirthday.png](images/filter/filterByBirthday.png)
 <p align="center">
   <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
 </p>
@@ -237,7 +255,9 @@ tag(s) specified in the input.
 - **Comprehensive searching**, returning all persons with the specified housing type.
     - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
 
-![filterByHousingType.png](images/filter/filterByHousingType.png)
+  <a href="images/filter/filterByHousingType.png">
+  <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
+  </a>
 <p align="center">
   <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
 </p>
@@ -317,10 +337,10 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
 ## Format Requirements
 * NAME:
     * Should only contain Alphanumeric characters and must be unique
-    1. Names are case-insensitive. 
-    2. Number of spaces between words in the name do not matter.
-    3. By default, the names will be displayed in uppercase.
-    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name for JOHN DOE. 
+    1. Names are case-insensitive.
+  2. Number of spaces between words in the name do not matter.
+  3. Although names are displayed in full capitalisation, they are still recorded in a case-insensitive manner. Hence, an input with the same name but different capitalisation will be considered a duplicate entry.
+    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
 * PHONE:
     * Should only contain numbers, and it should be at least 3 digits long
     * Example: `p/81234567`

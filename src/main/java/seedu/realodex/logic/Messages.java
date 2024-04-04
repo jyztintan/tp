@@ -43,7 +43,7 @@ public class Messages {
      */
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(person.getName())
+        builder.append(person.getName().toStringCapitalized())
                 .append("; Phone: ")
                 .append(person.getPhone())
                 .append("; Income: ")
