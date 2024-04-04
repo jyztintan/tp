@@ -90,54 +90,6 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
   ![duplicate person](duplicate_person_error.png)
 
-#### <span id="specific-formats">Specific Formats for each field</span>
-* NAME: 
-  * Should only contain Alphanumeric characters and must be unique
-  1. Names are case-insensitive. 
-  2. Number of spaces between words in the name do not matter.
-  3. By default, the first letter of each word in the name will be made uppercase and the remaining letters lowercase, which is true for the majority of names in real life. 
-  * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name. 
-* PHONE: 
-  * Should only contain numbers, and it should be at least 3 digits long
-  * Example: `p/81234567`
-* INCOME: 
-  * Income should be an integer and should be at least 0 
-  * Example: `i/20000`
-* EMAIL: 
-  * Emails should be of the format local-part@domain and adhere to the following constraints: 
-  1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). 
-  2. The local-part may not start or end with any special characters. 
-  3. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.\
-     The domain name must:
-     * end with a domain label at least 2 characters long 
-     * have each domain label start and end with alphanumeric characters 
-     * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
-  * Example: `e/realodex-admin@gmail.com`
-* ADDRESS: 
-  * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
-  * Example: `a/6 College Ave West`
-* FAMILY: 
-  * Should be an integer greater than 1. 
-  * Example: `f/4`
-* TAG: 
-  * Only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
-  * Example: `t/buyer`, `t/seller` or both
-* HOUSINGTYPE: 
-  * Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
-  * Example: `h/HDB` 
-* REMARK: 
-  * Can be empty if remark is not specified.
-  * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `r/Prefers block b/c` may cause the command to fail, as the system will interpret `b/` as an unintended birthday prefix.
-  * Example: `r/Has a cat`
-* BIRTHDAY: 
-  * Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
-  * Example: `b/22Feb2002`
-  1. The date must not be in the future.
-  2. The date must exist in the Gregorian calendar. (`b/29Feb2023` is not allowed)
-  3. The day "DD" must be numeric. For 1st-9th day of the month, the 0 need not be present. (Example: `2Feb2002`) 
-  4. The month "MMM" refers to the first 3 letters of the month (case-insensitive)
-  5. The year "YYYY" must be in full and greater than or equal to 1000. (`b/29Feb02` is not allowed)
-
 Examples:
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
@@ -269,30 +221,59 @@ Furthermore, certain edits can cause the Realodex to behave in unexpected ways (
 </box>
 
 #### Restarting with New Data
-
 Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit causing the format to be incorrect,
 simply delete `realodex.json` and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
-### Filtering clients by income and more `[coming soon...]`
-
-_Details coming soon ..._
-
+--------------------------------------------------------------------------------------------------------------------
+## <span id="specific-formats">Specific Formats for each field</span>
+* NAME:
+    * Should only contain Alphanumeric characters and must be unique
+    1. Names are case-insensitive.
+    2. Number of spaces between words in the name do not matter.
+    3. By default, the first letter of each word in the name will be made uppercase and the remaining letters lowercase, which is true for the majority of names in real life.
+    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name.
+* PHONE:
+    * Should only contain numbers, and it should be at least 3 digits long
+    * Example: `p/81234567`
+* INCOME:
+    * Income should be an integer and should be at least 0
+    * Example: `i/20000`
+* EMAIL:
+    * Emails should be of the format local-part@domain and adhere to the following constraints:
+    1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-).
+    2. The local-part may not start or end with any special characters.
+    3. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.\
+       The domain name must:
+        * end with a domain label at least 2 characters long
+        * have each domain label start and end with alphanumeric characters
+        * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
+    * Example: `e/realodex-admin@gmail.com`
+* ADDRESS:
+    * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
+    * Example: `a/6 College Ave West`
+* FAMILY:
+    * Should be an integer greater than 1.
+    * Example: `f/4`
+* TAG:
+    * Only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
+    * Example: `t/buyer`, `t/seller` or both
+* HOUSINGTYPE:
+    * Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
+    * Example: `h/HDB`
+* REMARK:
+    * Can be empty if remark is not specified.
+    * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `r/Prefers block b/c` may cause the command to fail, as the system will interpret `b/` as an unintended birthday prefix.
+    * Example: `r/Has a cat`
+* BIRTHDAY:
+    * Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
+    * Example: `b/22Feb2002`
+    1. The date must not be in the future.
+    2. The date must exist in the Gregorian calendar. (`b/29Feb2023` is not allowed)
+    3. The day "DD" must be numeric. For 1st-9th day of the month, the 0 need not be present. (Example: `2Feb2002`)
+    4. The month "MMM" refers to the first 3 letters of the month (case-insensitive)
+    5. The year "YYYY" must be in full and greater than or equal to 1000. (`b/29Feb02` is not allowed)
 
 --------------------------------------------------------------------------------------------------------------------
-
-## FAQ
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty JSON file it creates with the JSON file that contains all of your data.
-
---------------------------------------------------------------------------------------------------------------------
-
-## Known issues
-
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-
---------------------------------------------------------------------------------------------------------------------
-
 ## Command summary
 
 | Action                         | Format, Examples                                                                                                                                                                                                 |
@@ -307,3 +288,17 @@ _Details coming soon ..._
 | **Help (individual commands)** | `COMMAND help`<br> e.g. `add help`,`edit help`                                                                                                                                                                   |
 | **Clear**                      | `clearRealodex`                                                                                                                                                                                                  |
 | **Exit**                       | `exit`                                                                                                                                                                                                           |
+
+
+--------------------------------------------------------------------------------------------------------------------
+## FAQ
+
+**Q**: How do I transfer my data to another Computer?<br>
+**A**: Install the app in the other computer and overwrite the empty JSON file it creates with the JSON file that contains all of your data.
+
+--------------------------------------------------------------------------------------------------------------------
+## Known issues
+
+1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
+--------------------------------------------------------------------------------------------------------------------
