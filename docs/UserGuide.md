@@ -77,7 +77,9 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
 - n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE are compulsory fields. 
   - If any of the above fields are missed out in the `add` command, you will receive an error message stating the compulsory fields that are missing in the add command.
   - For example, if only `n/NAME` and `i/INCOME` are present, you will be alerted that you are missing the fields `p/PHONE e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE`
-  - ![missing compulsory fields](missing_fields_error)
+ <a href="images/add-command/missing_fields_error.png">
+   <img src="images/add-command/missing_fields_error.png" alt="missing compulsory fields" style="width:150%">
+   </a>
 - Except `t/TAG`, there can only be one of each fields in the add command.
   - ![excessive fields](excessive_fields)
 - For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive). 
@@ -93,8 +95,9 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
 - You may input the parameters in any order (e.g. if the command specifies `n/NAME a/ADDRESS`, `a/ADDRESS n/NAME` is also acceptable).
 - You may not have duplicate persons with the same name in realodex.
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
-  ![duplicate person](duplicate_person_error.png)
-
+    <a href="images/add-command/duplicate_person_error.png">
+    <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:150%">
+    </a>
 Examples:
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
@@ -166,8 +169,9 @@ subset of your client database that meets certain criteria.
   - `filter n/Udh` matches a person with the name "Udhaya".
 - **Comprehensive searching**, returning all persons with names containing the keyphrase.
   - `filter n/Al` returns persons named "Alicia", "Allysa", "Jamal".
-  
-![filterByNameScreenshot.png](images/filter/filterByNameScreenshot.png)
+    <a href="images/filter/filterByNameScreenshot.png">
+    <img src="images/filter/filterByNameScreenshot.png" alt="filterByNameScreenshot" style="width:150%">
+    </a>
 <p align="center">
   <em> <code>filter n/Li</code> returns persons with names like "Charlotte Oliveiro" and "David Li"</em>
 </p>
@@ -186,8 +190,9 @@ This is an intentional design choice to ensure that the command is used for targ
   - `filter r/hand` matches person with remark "handsome".
 - **Comprehensive searching**, returning all persons' names containing the keyword .
   - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
-
-![filterByRemarkScreenshot.png](images/filter/filterByRemarkScreenshot.png)
+    <a href="images/filter/filterByRemarkScreenshot.png">
+    <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:150%">
+    </a>
 <p align="center">
   <em> <code>filter r/eat</code> returns persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..."</em>
 </p>
@@ -205,13 +210,16 @@ tag(s) specified in the input.
   - `filter t/Buyer t/Seller` only returns persons with both "Buyer" and "Seller" tags.
 - **Comprehensive searching**, returning all persons' with the specified tag(s).
     - `filter t/Seller` returns all persons tagged as "Seller".
-
-![filterByTagSeller.png](images/filter/filterByTagSeller.png)
+      <a href="images/filter/filterByTagSeller.png">
+      <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:150%">
+      </a>
 <p align="center">
   <em> <code>filter t/seller</code> returns persons with "Seller" Tag</em>
 </p>
+      <a href="images/filter/filterByTagBuyerSeller.png">
+      <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:150%">
+      </a>
 
-![filterByTagBuyerSeller.png](images/filter/filterByTagBuyerSeller.png)
 <p align="center">
   <em> <code>filter t/buyer t/seller</code> only returns persons with "Buyer" and "Seller" Tag</em>
 </p>
@@ -226,8 +234,10 @@ tag(s) specified in the input.
 - **Comprehensive searching**, returning all persons with birthdays in the specified month.
     - `filter b/Jan` returns all persons with birthday in January.
 - Persons who do not have a specified birthday will **not be included** in the search results.
+  <a href="images/filter/filterByBirthday.png">
+  <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:150%">
+  </a>
 
-![filterByBirthday.png](images/filter/filterByBirthday.png)
 <p align="center">
   <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
 </p>
@@ -241,7 +251,9 @@ tag(s) specified in the input.
 - **Comprehensive searching**, returning all persons with the specified housing type.
     - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
 
-![filterByHousingType.png](images/filter/filterByHousingType.png)
+  <a href="images/filter/filterByHousingType.png">
+  <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
+  </a>
 <p align="center">
   <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
 </p>
@@ -322,9 +334,9 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
 * NAME:
     * Should only contain Alphanumeric characters and must be unique
     1. Names are case-insensitive.
-    2. Number of spaces between words in the name do not matter.
-    3. By default, the first letter of each word in the name will be made uppercase and the remaining letters lowercase, which is true for the majority of names in real life.
-    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name.
+  2. Number of spaces between words in the name do not matter.
+  3. Although names are displayed in full capitalisation, they are still recorded in a case-insensitive manner. Hence, an input with the same name but different capitalisation will be considered a duplicate entry.
+    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
 * PHONE:
     * Should only contain numbers, and it should be at least 3 digits long
     * Example: `p/81234567`
