@@ -81,7 +81,7 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   - You do not need to include the prefixes for `r/REMARK` and `b/BIRTHDAY` if you do not wish to include them.
   - But if you do include the prefix with only a blank string, birthday and remark fields will be taken as not specified.
     - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified. 
-- Refer to the [Specific Format Requirements](#specific-formats) for each field.
+- Refer to the [Specific Format Requirements](#format-requirements) for each field.
   - If any of the formats are violated, you will receive an error message detailing the fields with invalid formats.
   - For example, if name, phone and tag fields are in incorrect format, you will receive 3 error messages as shown.
   - ![Error parsing fields](parsing_errors)
@@ -225,7 +225,7 @@ Should you want to re-enter your contacts in a fresh JSON file in the event of f
 simply delete `realodex.json` and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
-## <span id="specific-formats">Specific Formats for each field</span>
+## Format Requirements
 * NAME:
     * Should only contain Alphanumeric characters and must be unique
     1. Names are case-insensitive.
