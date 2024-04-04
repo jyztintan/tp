@@ -198,7 +198,7 @@ Aspect: Handling of partial names
 
 **Alternative 1 (current choice): Allow partial matches of names.**
 
-> For example, `filter n/Jo` returns persons with names "John", "Joanna", etc.
+> For example, `filter n/Jo` returns persons with names "John", "Bonjovi", etc.
 
 Pros: More flexible search.
 
