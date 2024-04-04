@@ -26,7 +26,9 @@ If you can type fast, RDX can get your contact management tasks done faster than
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar realodex.jar`
 command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   <a href="images/Ui.png">
+   <img src="images/Ui.png" alt="Ui Image" style="width:80%">
+   </a>
 
 1. Some example commands you can try:
 
