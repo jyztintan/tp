@@ -45,21 +45,24 @@ command to run the application.<br>
 
 **Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+* Commands are generally in the format `COMMANDWORD PREFIX_ONE/UPPER_CASE PREFIX_TWO/UPPER_CASE ....`
+* `COMMANDWORD` refers to the various commands user can input. <br>For e.g. `add`, `delete`, `filter` For reference, such commands can be found in [Commands Summary](#command-summary)
 
+* `COMMANDWORD` are case-insensitive<br>
+    e.g. `add` and `ADD` both indicate the command word for `add`
 * `PREFIX/` refers to the prefix tag associated with each user-written input. <br>
    e.g. in `add n/NAME r/REMARK`, `NAME` is the name parameter and `REMARK` is the remark parameter.
 * `PREFIX` is case-insensitive <br>
    e.g. `N/` and `n/` are the same and are used to indicate a `NAME` input
-* Prefixes must not be preceded by a non-whitespace character.
-   e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` whihs is a non-whitespace character. 
-* Command words are case-insensitive<br>
-  e.g. `add` and `ADD` both indicate the command word for `add`
+* `PREFIX` must not be preceded by a non-whitespace character.
+   e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` which is a non-whitespace character. 
+* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+  e.g. in `add n/NAME ....`, `NAME` is a parameter which can be used as `add n/John Doe ....`.
+  <br>For more details on the parameters, do refer to our comprehensive description of them here [Fields Summary]() 
 
+* Parameters enclosed in `[]` are optional to input.<br>e.g. `[r/REMARK]` indicates an optional input field for that command. 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
-* Parameters enclosed in `[]` are optional to input.
 
 </box>
 
