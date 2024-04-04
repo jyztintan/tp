@@ -85,7 +85,8 @@ Format: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGT
   - If any of the formats are violated, you will receive an error message detailing the fields with invalid formats.
   - For example, if name, phone and tag fields are in incorrect format, you will receive 3 error messages as shown.
   - ![Error parsing fields](parsing_errors)
-- You may not have duplicate persons with the same name in realodex.
+- You may not have duplicate persons with the same name in Realodex.
+  - Names are case-insensitive as described in [Specific Format Requirements](#format-requirements)
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
   ![duplicate person](duplicate_person_error.png)
 
@@ -131,7 +132,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMIL
 - If `INDEX` is `3`, the 3rd client's information will be edited.
 - It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
 - The current information will be overwritten with the input provided.
-- When editing the `TAG`, existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller``
+- When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller``
+- All fields must follow the respective [Specific Format Requirements](#format-requirements)
 
 Examples:
 
@@ -227,10 +229,10 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
 ## Format Requirements
 * NAME:
     * Should only contain Alphanumeric characters and must be unique
-    1. Names are case-insensitive.
+    1. Names are case-insensitive. 
     2. Number of spaces between words in the name do not matter.
-    3. By default, the first letter of each word in the name will be made uppercase and the remaining letters lowercase, which is true for the majority of names in real life.
-    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name.
+    3. By default, the names will be displayed in uppercase.
+    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name for JOHN DOE. 
 * PHONE:
     * Should only contain numbers, and it should be at least 3 digits long
     * Example: `p/81234567`
