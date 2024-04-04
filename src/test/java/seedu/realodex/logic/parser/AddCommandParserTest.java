@@ -76,7 +76,7 @@ import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.Phone;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 import seedu.realodex.testutil.PersonBuilder;
 
 public class AddCommandParserTest {

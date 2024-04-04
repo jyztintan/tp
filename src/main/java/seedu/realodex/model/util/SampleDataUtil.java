@@ -16,7 +16,7 @@ import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.Phone;
 import seedu.realodex.model.person.Remark;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 
 /**
  * Contains utility methods for populating {@code Realodex} with sample data.
