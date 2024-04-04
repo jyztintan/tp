@@ -36,7 +36,7 @@ import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
 import seedu.realodex.model.person.Phone;
 import seedu.realodex.model.person.Remark;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 
 /**
  * Edits the details of an existing person in realodex.
@@ -65,8 +65,8 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_HELP = "Edit Command: Edits a client's particulars through their "
             + "index number shown in the list.\n"
-            + "Format: edit INDEX NUMBER [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] "
-            + "[t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]\n"
+            + "Format: edit INDEX_NUMBER [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] "
+            + "[t/TAG] [h/HOUSING_TYPE] [r/REMARK] [b/BIRTHDAY]\n"
             + "Example: edit 3 n/John e/john@gmail.com f/5\n";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Client: %1$s";

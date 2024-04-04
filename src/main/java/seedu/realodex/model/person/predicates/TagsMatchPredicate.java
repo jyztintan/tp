@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 import seedu.realodex.commons.util.ToStringBuilder;
 import seedu.realodex.model.person.Person;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 
 
 /**

@@ -31,7 +31,7 @@ import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Phone;
 import seedu.realodex.model.person.Remark;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME_CAPS = "D@nzel Washington Al Pacino";

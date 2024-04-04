@@ -54,7 +54,7 @@ public class HousingType {
      * @return A string representation with descriptive text.
      */
     public String toStringWithRepresentation() {
-        return "Preferred housing type is " + housingType.toString();
+        return "Preferred housing type is " + housingType.toString().replace("_", " ");
     }
 
     @Override
@@ -74,7 +74,7 @@ public class HousingType {
 
     @Override
     public String toString() {
-        return housingType.toString();
+        return housingType.toString().replace("_", " ");
     }
 
     @Override

@@ -20,7 +20,7 @@ import seedu.realodex.model.person.Income;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Phone;
 import seedu.realodex.model.person.Remark;
-import seedu.realodex.model.tag.Tag;
+import seedu.realodex.model.person.Tag;
 
 
 /**
@@ -347,7 +347,6 @@ public class ParserUtil {
      *
      */
     public static Date parseMonth(String monthName) throws ParseException {
-        assert(!monthName.isBlank() || !monthName.isEmpty());
         SimpleDateFormat monthFormat = new SimpleDateFormat(Birthday.INPUT_MONTH_PATTERN);
         try {
             Date monthDate = monthFormat.parse(monthName);

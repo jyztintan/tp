@@ -1,6 +1,7 @@
 package seedu.realodex.model.person.predicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_NAME;
@@ -8,19 +9,18 @@ import static seedu.realodex.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.realodex.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.realodex.logic.commands.FilterCommand;
 import seedu.realodex.logic.parser.Prefix;
 import seedu.realodex.logic.parser.exceptions.ParseException;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Person;
+import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.PredicateProducer;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
-import seedu.realodex.model.person.predicates.TagsMatchPredicate;
-import seedu.realodex.model.tag.Tag;
 import seedu.realodex.testutil.PersonBuilder;
 
 class PredicateProducerTest {
@@ -66,19 +66,28 @@ class PredicateProducerTest {
     }
 
     @Test
-    void createMatchTagPredicate_validTagStrings_assertionErrorWhenInvalidPrefix() {
-        PredicateProducer predicateProducer = new PredicateProducer();
-        List<String> keyphrases = List.of("buyer", "seller");
-        Set<Tag> tagString = Set.of(new Tag("buyer"), new Tag("seller"));
-        assertEquals(predicateProducer.createMatchTagsPredicate(keyphrases), new TagsMatchPredicate(tagString));
-    }
-
-    @Test
     void createMatchTagPredicate_invalidTagString_assertionErrorWhenInvalidPrefix() {
         PredicateProducer predicateProducer = new PredicateProducer();
         List<String> keyphrases = List.of("customer");
 
-        assertThrows(AssertionError.class, () -> predicateProducer.createMatchTagsPredicate(keyphrases));
+        assertNull(predicateProducer.createMatchTagsPredicate(keyphrases));
+    }
+
+    @Test
+    void createHousingTypeMatchPredicate_validHousingTypeStrings_createsCorrectPredicate() {
+        PredicateProducer predicateProducer = new PredicateProducer();
+        List<String> keyphrases = List.of("hdb");
+        HousingType housingType = new HousingType("hdb");
+        assertEquals(predicateProducer.createHousingTypeMatchPredicate(keyphrases),
+                new HousingTypeMatchPredicate(housingType));
+    }
+
+    @Test
+    void createHousingTypeMatchPredicate_invalidHousingTypeStrings_assertionErrorWhenInvalidPrefix() {
+        PredicateProducer predicateProducer = new PredicateProducer();
+        List<String> keyphrases = List.of("hdbb");
+
+        assertNull(predicateProducer.createHousingTypeMatchPredicate(keyphrases));
     }
 
     @Test
@@ -93,7 +102,7 @@ class PredicateProducerTest {
     }
 
     @Test
-    void createPredicate_assertionErrorWhenInvalidPrefix() {
+    void createPredicate_returnsNullWhenInvalidPrefix() {
         PredicateProducer predicateProducer = new PredicateProducer();
         Prefix unhandledPrefix = new Prefix("unhandled/");
         List<String> keyphrase = List.of("keyphrase");

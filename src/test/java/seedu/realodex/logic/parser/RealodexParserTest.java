@@ -22,12 +22,14 @@ import seedu.realodex.logic.commands.HelpCommand;
 import seedu.realodex.logic.commands.ListCommand;
 import seedu.realodex.logic.commands.SortCommand;
 import seedu.realodex.logic.parser.exceptions.ParseException;
+import seedu.realodex.model.person.HousingType;
 import seedu.realodex.model.person.Name;
 import seedu.realodex.model.person.Person;
+import seedu.realodex.model.person.Tag;
+import seedu.realodex.model.person.predicates.HousingTypeMatchPredicate;
 import seedu.realodex.model.person.predicates.NameContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.RemarkContainsKeyphrasePredicate;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
-import seedu.realodex.model.tag.Tag;
 import seedu.realodex.testutil.EditPersonDescriptorBuilder;
 import seedu.realodex.testutil.PersonBuilder;
 import seedu.realodex.testutil.PersonUtil;
@@ -156,6 +158,14 @@ public class RealodexParserTest {
     }
 
     @Test
+    public void parseCommand_filterByHousingType() throws Exception {
+        HousingType housingType = new HousingType("hdb");
+        FilterCommand command = (FilterCommand) parser.parseCommand(
+                FilterCommand.COMMAND_WORD + " h/hdb");
+        assertEquals(new FilterCommand(new HousingTypeMatchPredicate(housingType)), command);
+    }
+
+    @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD.toUpperCase()) instanceof HelpCommand);
@@ -180,13 +190,26 @@ public class RealodexParserTest {
 
     @Test
     public void parseCommand_clear_help() throws Exception {
-        assertTrue(parser.parseCommand("clearRealodex help") instanceof HelpCommand);
-        assertTrue(parser.parseCommand("clearRealodex help".toUpperCase()) instanceof HelpCommand);
-        assertTrue(parser.parseCommand("clearRealodex help".toLowerCase()) instanceof HelpCommand);
-        HelpCommand expected = new HelpCommand("clearRealodex");
-        assertEquals(parser.parseCommand("clearRealodex help"), expected);
-        assertEquals(parser.parseCommand("clearRealodex help".toUpperCase()), expected);
-        assertEquals(parser.parseCommand("clearRealodex help".toLowerCase()), expected);
+        assertTrue(parser.parseCommand("clear help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("clear help".toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("cLeAr helP".toLowerCase()) instanceof HelpCommand);
+
+        assertTrue(parser.parseCommand("clearrealodex help") instanceof HelpCommand);
+        assertTrue(parser.parseCommand("clearrealodex help".toUpperCase()) instanceof HelpCommand);
+        assertTrue(parser.parseCommand("cLeArReAloDex helP".toLowerCase()) instanceof HelpCommand);
+
+        HelpCommand expected = new HelpCommand("clear");
+        assertEquals(parser.parseCommand("clear help"), expected);
+        assertEquals(parser.parseCommand("clear help".toUpperCase()), expected);
+        assertEquals(parser.parseCommand("clEar HElp".toLowerCase()), expected);
+        assertEquals(parser.parseCommand("clearrealodex help"), expected);
+        assertEquals(parser.parseCommand("clearrealodex help".toUpperCase()), expected);
+        assertEquals(parser.parseCommand("clEarReaLoDeX HElp".toLowerCase()), expected);
+    }
+
+    @Test
+    public void parseCommand_unknownClearCommand_throwsParseException() {
+        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("clear"));
     }
 
     @Test

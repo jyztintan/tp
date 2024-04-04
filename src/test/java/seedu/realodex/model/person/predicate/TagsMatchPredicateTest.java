@@ -9,8 +9,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.realodex.model.person.Person;
+import seedu.realodex.model.person.Tag;
 import seedu.realodex.model.person.predicates.TagsMatchPredicate;
-import seedu.realodex.model.tag.Tag;
 import seedu.realodex.testutil.PersonBuilder;
 
 
