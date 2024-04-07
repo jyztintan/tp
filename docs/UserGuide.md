@@ -162,7 +162,8 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 <u>Format</u>: `delete INDEX`
 
 * Deletes the client of the specified `INDEX` in Realodex.
-* If `INDEX` is **invalid**, error message will be shown "The client index provided is invalid".
+* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
+* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
 
 <u>Example</u>:
 * `delete 4` deletes the 4th client listed in Realodex, provided there are 4 or more entries.
