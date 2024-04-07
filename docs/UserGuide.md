@@ -162,6 +162,7 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 <u>Format</u>: `delete INDEX`
 
 * Deletes the client of the specified `INDEX` in Realodex.
+* 💡 If you are currently filtered, the index will be based on the filtered list.
 * If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
 * If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
 
@@ -179,6 +180,7 @@ Edits specified details of the client.
 <u>Format</u>: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
 
 - If `INDEX` is `3`, the 3rd client's information will be edited.
+- 💡 If you are currently filtered, the index will be based on the filtered list.
 - It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
 - The current information will be overwritten with the input provided.
 - When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
