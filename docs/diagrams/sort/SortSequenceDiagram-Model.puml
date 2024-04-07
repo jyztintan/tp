@@ -1,0 +1,34 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant ":Realodex" as Realodex MODEL_COLOR
+participant ":ObservableList<Person>" as ObservableList MODEL_COLOR
+end box
+
+[-> Model : execute(sort)
+activate Model
+
+Model -> Realodex : getCopyOfInternalListOfUniquePersonsList()
+activate Realodex
+
+Realodex --> Model : list of persons
+deactivate Realodex
+
+Model -> ObservableList : sort(new BirthdayComparator())
+activate ObservableList
+
+ObservableList -->  Model:
+deactivate ObservableList
+
+Model -> Realodex : setPersons(copiedInternalListForSorting)
+activate Realodex
+
+Realodex --> Model :
+deactivate Realodex
+
+[<--Model
+deactivate Model
+@enduml

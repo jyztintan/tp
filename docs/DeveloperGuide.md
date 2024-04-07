@@ -162,6 +162,34 @@ Classes used by multiple components are in the `seedu.realodex.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Overall Sort feature
+
+#### Initialization of `SortCommand`
+
+The `sort` feature, introduced in version 1.3, allows users to arrange clients based on their upcoming birthday proximity, which is determined by the number of days until their next birthday relative to the current date.
+
+To implement the sorting functionality, the `LogicManager` component parses the user's input command. Subsequently, it forwards the parsed command text to the `RealodexParser`. The RealodexParser is responsible for creating an instance of the `SortCommand`, encapsulating the logic for sorting clients based on their upcoming birthdays.
+
+The sequence diagram below illustrates the process of creating a sort operation through the `Logic` component:
+<puml src="diagrams/sort/SortSequenceDiagram-Logic.puml" width="800" />
+
+<br>
+
+#### Implementation of `SortCommand`
+
+
+The `sort` command function retrieves a duplicate of the `ObservableList<Person>` stored within the Realodex component. This duplicate list is then sorted utilizing a custom `BirthdayComparator` object. 
+Following the sorting process, the newly arranged list is assigned back to the `Realodex` object, replacing the original list. Finally, a `CommandResult` object is generated with a success message to indicate the completion of the sorting operation.
+
+The sequence diagram below illustrates the process of retrieving the `ObservableList<Person>` and sorting it through the `Model` component:
+<puml src="diagrams/sort/SortSequenceDiagram-Model.puml" width="800" />
+
+
+
+
+
+
+
 ### Overall Filter feature
 
 #### Implementation
