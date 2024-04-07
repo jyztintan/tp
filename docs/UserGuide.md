@@ -170,7 +170,7 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 Errors:
 - If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name.".
 - If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both.".
-- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid as INDEX is considered part of the NAME".
+- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME".
 ### Editing clients : `edit`
 
 Edits specified details of the client.
