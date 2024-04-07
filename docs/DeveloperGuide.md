@@ -181,14 +181,34 @@ The sequence diagram below illustrates the process of creating a sort operation 
 The `sort` command function retrieves a duplicate of the `ObservableList<Person>` stored within the Realodex component. This duplicate list is then sorted utilizing a custom `BirthdayComparator` object. 
 Following the sorting process, the newly arranged list is assigned back to the `Realodex` object, replacing the original list. Finally, a `CommandResult` object is generated with a success message to indicate the completion of the sorting operation.
 
-The sequence diagram below illustrates the process of retrieving the `ObservableList<Person>` and sorting it through the `Model` component:
+The sequence diagram below illustrates the process of retrieving the `ObservableList<Person>` and sorting it through the `Model` component.
+The creation of the CommandResult is omitted for brevity.
 <puml src="diagrams/sort/SortSequenceDiagram-Model.puml" width="800" />
 
+#### Implementation of `BirthdayComparator`
+The provided comparator compares two `Person` objects based on their birthdays.
+
+1. If `o1` has an unspecified birthday (i.e., its birthday is blank), it is considered to come after `o2`.
+2. If `o2` has an unspecified birthday (i.e., its birthday is blank), it is considered to come before `o1`.
+3. If both `o1` and `o2` have specified birthdays, the comparator compares them based on the number of days until their next birthday.
+
+    - If `o1`'s birthday is closer (fewer days until the next birthday) than `o2`'s birthday, `o1` is considered to come before `o2`.
+    - If `o2`'s birthday is closer (fewer days until the next birthday) than `o1`'s birthday, `o2` is considered to come before `o1`.
+    - If both `o1` and `o2` have the same number of days until their next birthday, their order remains unchanged.
 
 
 
-
-
+```
+    public int compare(Person o1, Person o2) {
+        if (o1.getBirthday().toString().isBlank()) {
+            return 1; // o1 has an unspecified birthday, so it comes after o2
+        }
+        if (o2.getBirthday().toString().isBlank()) {
+            return -1; // o2 has an unspecified birthday, so it comes before o1
+        }
+        return o1.getBirthday().getDaysUntilBirthday().compareTo(o2.getBirthday().getDaysUntilBirthday());
+    }
+```
 
 ### Overall Filter feature
 
