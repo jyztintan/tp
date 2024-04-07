@@ -38,6 +38,41 @@ command to run the application.<br>
    * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
 
 1. Refer to the [Features](#features) below for details of each command.
+----
+# Using this Guide
+
+To ensure you have a smooth and intuitive experience, this guide utilizes specific formatting conventions and icons. Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
+
+## Formatting Conventions
+| Format        | Meaning                                                                                                                                                                                                                 |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Bold**      | Used to **draw attention** to key concepts and actions you need to perform. When you see text in bold, it emphasises **important information.**                                                                         |
+| _Italics_     | Reserved for introducing new terms and phrases that are essential to understanding Realodex. Italicized text may also appear in subheadings beneath screenshots to succinctly describe what you're seeing in the image. |
+| `Code blocks` | Actual commands that you may enter into the Realodex CLI will be referred to in these code blocks.                                                                                                                      |
+
+
+## Icon Legend
+
+| Icon | Meaning                                                                                                    |
+|------|------------------------------------------------------------------------------------------------------------|
+| 💡   | Tips, helpful suggestions and best practices to optimize the Realodex user experience experience.          |
+| ⚠️   | Warning for potential pitfalls or important considerations that could impact the Realodex user experience. |
+| 🗒️  | Additional Notes to keep track of in the features.                                                         |
+| 👀   | Upcoming Features to look out for. Stay tuned for exciting new features and enhancements in Realodex.      |
+
+## Glossary
+
+| Abbreviation/Nomenclature      | Meaning                                                                                                                                                                                                  |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GUI (Graphical User Interface) | It is the digital interface which you interact with when using Realodex!                                                                                                                                 |
+| GUI Components                 | A specific component of the GUI. For more information on specific GUI components, refer to this section.                                                                                                 |
+| CLI (Command Line Interface)   | A text-based user interface to interact with the application.                                                                                                                                            |
+| Command                        | An input from you that tells Realodex to execute an action. You can refer to the command summary [here](#command-summary)!                                                                               |
+| Prefix                         | Prefixes are like fields in a form you are required to fill up. They are information needed to be passes together with the command so that it can be executed. View our Prefix Summary for more details! |
+| Case-Sensitive                 | The casing of the alphabetic characters matters (e.g. “ReAlOdEx” is different from “realodex”                                                                                                            |
+| Case-Insensitive               | The casing of the alphabetic characters does not matter (e.g. “ReAlOdEx” is taken to be same as “realodex”                                                                                               |
+
+---
 
 --------------------------------------------------------------------------------------------------------------------
 
