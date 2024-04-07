@@ -403,7 +403,7 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
     1. Names are case-insensitive.
   2. Number of spaces between words in the name do not matter.
   3. Although names are displayed in full capitalisation, they are still recorded in a case-insensitive manner. Hence, an input with the same name but different capitalisation will be considered a duplicate entry.
-    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
+    * Example: `n/John Doe` and `n/john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
 * PHONE:
     * Should only contain numbers, and should be at least 3 digits long.
     * Example: `p/81234567`
