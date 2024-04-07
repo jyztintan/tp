@@ -417,16 +417,16 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
         * have each domain label start and end with alphanumeric characters
         * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
     * Example: `e/realodex-admin@gmail.com`
-* ADDRESS:
+* ADDRESS: Current residential address
     * Must not include other command prefixes (`a/`,`b/`,`e/`,`f/`,`h/`,`i/`,`n/`,`p/`,`r/`,`t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
     * Example: `a/6 College Ave West`
-* FAMILY:
+* FAMILY: Immediate family size
     * Should be an integer greater than 1.
     * Example: `f/4`
 * TAG:
     * Only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
     * Example: `t/buyer`, `t/seller` or both
-* HOUSINGTYPE:
+* HOUSINGTYPE: housing type a buyer wants or housing type a seller is selling
     * Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
     * Example: `h/HDB`
 * REMARK:
