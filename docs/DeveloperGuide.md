@@ -166,14 +166,17 @@ This section describes some noteworthy details on how certain features are imple
 
 #### Initialization of `SortCommand`
 
-The `sort` feature, introduced in version 1.3, allows users to arrange clients based on their upcoming birthday proximity, which is determined by the number of days until their next birthday relative to the current date.
+The `sort` feature, introduced in version 1.4, allows users to arrange clients based on their upcoming birthday proximity, which is determined by the number of days until their next birthday relative to the current date.
 
 To implement the sorting functionality, the `LogicManager` component parses the user's input command. Subsequently, it forwards the parsed command text to the `RealodexParser`. The RealodexParser is responsible for creating an instance of the `SortCommand`, encapsulating the logic for sorting clients based on their upcoming birthdays.
 
 The sequence diagram below illustrates the process of creating a sort operation through the `Logic` component:
 <puml src="diagrams/sort/SortSequenceDiagram-Logic.puml" width="800" />
 
-<br>
+
+
+
+
 
 #### Implementation of `SortCommand`
 
@@ -410,29 +413,6 @@ This is implemented using the `HousingTypeMatchPredicate` that checks whether a 
 3. The `FilterCommand` applies the `HousingTypeMatchPredicate` predicate, updating the filtered person list to only include those with a "Condominium" housing type preference.
 4. The UI reflects this filtered list.
 
-### Sort by Birthday feature
-
-####  Implementation
-
-The "Sort by Birthday" feature enables users to sort persons based on their birthday associated with them, if any. The core components for this feature are:
-- SortCommand: A command that, when executed, updates the sorted person list based on the predicate.
-
-#### Example Usage Scenario
-1. User launches the application, and the list of persons is loaded.
-2. User executes `sort`, aiming to sort persons by birthday
-3. LogicManager parses the command into a SortCommand.
-4. The SortCommand is executed, sorting the list based on the predicate.
-5. The UI sorts the persons by birthday, with the next upcoming birthday first, and all persons without birthdays will not show up. 
-
-#### Design considerations:
-
-Aspect: Matching of remarks
-
-__Alternative 1 (current choice): Support sort by other days besides Today.__
-
-Pros: Allows for more flexible searches.
-
-Cons: May be difficult to understand
 
 ### Help feature
 
@@ -576,64 +556,124 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User Executes "Add client...." Command:
-2. System adds use profile to local storage and replies to user with success message.
-
+1. User Executes `add ...` Command:
+2. System adds user profile to `Realodex` and replies to user with a success message.
     Use case ends.
 
 **Extensions**
 
-* 1a. Name exceeds the length constraints.
-  * 1a1. Realodex throws an error and requests shorter name representation.
-  * 1a2. User enters new data.
-  * Use case resumes from step 1.
+* 1a. `Name` does not contain fully alphanumeric characters.
+    * 1a1. Realodex throws an error and highlights the format to user.
+    * 1a2. User enters new data.
+    * Use case resumes from step 1.
 
-* 1b. Name Length is not fully English.
-    * 1b1. Realodex throws an error and requests for only English input.
-    * 1b2. User enters new data.
-      * Use case resumes from step 1.
-
-* 1c. Name contains erraneous whitespace.
-    * 1c1. Realodex throws a warning and fixes this for user.
+* 1b. `Name` contains erroneous whitespace at front or back.
+    * 1b1. Realodex fixes this for user without errors.
     * Use case ends.
 
-* 1d. Name is not capitalized.
-    * 1d1. Realodex throws a warning and fixes this for user.
+* 1c. `Name` is not capitalized.
+    * 1c1. Realodex fixes this for user without errors.
     * Use case ends.
 
-* 1e. Name is not in expected format.
+* 1d. `Name` is blank.
+    * 1d1. Realodex throws an error and highlights the format to user.
+    * 1d2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1e. `Phone` contains non-integer characters.
     * 1e1. Realodex throws an error and highlights the format to user.
     * 1e2. User enters new data.
     * Use case resumes from step 1.
 
-* 1f. Address is not fully English
-    * 1f1. Realodex throws an error and requests for only English input.
+* 1f. `Phone` is less than three characters.
+    * 1f1. Realodex throws an error and highlights the format to user.
     * 1f2. User enters new data.
     * Use case resumes from step 1.
 
-* 1g. Address exceeds the length constraints
-    * 1g1. Realodex throws an error and requests shorter address representation.
+* 1g. `Phone` is blank.
+    * 1g1. Realodex throws an error and highlights the format to user.
     * 1g2. User enters new data.
     * Use case resumes from step 1.
 
-* 1h. Address is not capitalized for each part.
-    * 1h1. Realodex throws a warning and fixes this for user.
+* 1h. `Income` is negative
+    * 1h1. Realodex throws an error and highlights the format to user.
+    * 1h2. User enters new data.
     * Use case ends.
 
-* 1i. Income is not in SGD
-    * 1i. Realodex throws an error and requests a SGD value.
+* 1i. `Income` contains non-integer characters.
+    * 1i1. Realodex throws an error and highlights the format to user.
     * 1i2. User enters new data.
-    * Use case ends.
+    * Use case resumes from step 1.
 
-* 1j. Income is negative
-    * 1j1. Realodex throws an error and requests a positive income value.
+* 1j. `Income` is blank.
+    * 1j1. Realodex throws an error and highlights the format to user.
     * 1j2. User enters new data.
     * Use case ends.
 
-* 1k. Additonal notes exceed length constraints.
-    * 1k1. Realodex throws an error and requests a shorter input.
+* 1k. `Email` is not in the valid format.
+    * 1k1. Realodex throws an error and highlights the format to user.
     * 1k2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1l. `Email` is blank.
+    * 1l1. Realodex throws an error and highlights the format to user.
+    * 1l2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1m. `Address` is blank.
+    * 1m1. Realodex throws an error and highlights the format to user.
+    * 1m2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1n. `Family` contains non-integer characters.
+    * 1n1. Realodex throws an error and highlights the format to user.
+    * 1n2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1o. `Family` is negative or zero.
+    * 1o1. Realodex throws an error and highlights the format to user.
+    * 1o2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1p. `Family` is blank.
+    * 1p1. Realodex throws an error and highlights the format to user.
+    * 1p2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1q. `Tag` is not `buyer` or `seller`.
+    * 1q1. Realodex throws an error and highlights the format to user.
+    * 1q2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1r. `Tag` is blank.
+    * 1r1. Realodex throws an error and highlights the format to user.
+    * 1r2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1s. `HOUSING_TYPE` is not in any of 'HDB', 'CONDOMINIUM', 'LANDED PROPERTY' or 'GOOD CLASS BUNGALOW'.
+    * 1s1. Realodex throws an error and highlights the format to user.
+    * 1s2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1t. `HOUSING_TYPE` is blank.
+    * 1t1. Realodex throws an error and highlights the format to user.
+    * 1t2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1u. Additional notes exceed length constraints.
+    * 1u1. Realodex throws an error and requests a shorter input.
+    * 1u2. User enters new data.
     * Use case ends.
+
+* 1v. `Birthday` is not in the valid format.
+    * 1v1. Realodex throws an error and highlights the format to user.
+    * 1v2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1w. `Birthday` is blank.
+    * 1w1. Realodex throws an error and highlights the format to user.
+    * 1w2. User enters new data.
+    * Use case resumes from step 1.
 
 **Use case: Delete a person**
 
@@ -649,6 +689,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The input name is not found
  * 2a1. Realodex shows an error message "<Name> is not found".
  * Use case ends.
+
+**Use case: Sort list by birthday**
+
+**MSS**
+
+1.  User requests to sort list.
+2.  Realodex sorts the list and returns the sorted list to screen.
+
+    Use case ends.
+
 **Use case: List**
 
 **MSS**
@@ -816,3 +866,16 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+
+## **Appendix: Appendix: Effort**
+
+## **Appendix: Planned Enhancements**
+
+1. Generic index error messages
+   - Currently, `Realodex` has a generic error message for invalid index input by users.
+     <br>e.g. if user inputs `edit -1 n/someName`, `Realodex` replies "Invalid command format! ..."
+     <br>e.g. if user inputs `delete -1`, `Realodex` replies "Index is not a non-zero unsigned integer.".
+   - In future enhancements, we aim to reply users with more descriptive error messages, such as<br>
+     "Index is negative, please input a integer index value that is > 0"<br>
+     "Index is out of bounds, please input a index value in range of the list indexes on screen"
