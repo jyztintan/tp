@@ -216,10 +216,35 @@ The provided comparator compares two `Person` objects based on their birthdays.
     }
 ```
 
-#### `SortCommand` `Model` Dependency
+#### `Model` Dependency
 
 By now, you may have noticed that `SortCommand` extensively interacts with the `Model` component to facilitate list sorting during execution. Consequently, `SortCommand` depends on `ModelManager`, which is an implementation of the `Model` interface. This dependency arises because `ModelManager` instances are passed as arguments in the `public CommandResult execute(Model model) throws CommandException` method of `SortCommand`. For brevity, interactions beyond the `Model` layer are not detailed.
 <puml src="diagrams/sort/SortCommandClassDiagram-Model.puml" width="300" />
+
+
+#### [Proposed] Sort Features Beyond v1.4
+
+The `sort` functionality is poised for exciting developments in the future. Although initially focused on sorting 
+clients based on their birthdays to bolster client relationships in a **breadth-first development** approach, 
+we have ambitious plans to extend this feature to other fields. With clients having diverse attributes 
+such as income and housing preferences, implementing `sort` for these fields is definitely on our roadmap.
+
+#### Initialization of new `SortCommand`
+
+To enhance the sorting functionality, we're introducing the capability to sort based on various fields specified by the user. 
+The proposed command format is `sort field`, where `field` represents the attribute by which the sorting will be performed. 
+For instance, users can execute commands like `sort birthday`, `sort income`, or `sort housepref`.
+
+The following sequence diagram illustrates the process
+of introducing this new `sort` operation through the `Logic` component,
+with user-specified fields.
+
+The ref frame sequence diagram is omitted here,
+as it's similar to the [sorting](#implementation-of-sortcommand) sequence illustrated earlier. 
+Instead of using the `BirthdayComparator`,
+we'll utilize different comparators based on the user's specified field, such as `IncomeComparator`.
+
+<puml src="diagrams/sort/NewSortSequenceDiagram-Logic.puml" width="1000" />
 
 
 

@@ -4,7 +4,6 @@ skinparam ArrowFontStyle plain
 
 box Model #FFCCCC
 participant ":SortCommand" as SortCommand #FF1111
-participant ":CommandResult" as CommandResult #FF1111
 participant ":Model" as Model #FF1111
 participant ":Realodex" as Realodex #FF1111
 participant ":UniquePersonsList" as UniquePersonsList #FF1111
@@ -43,12 +42,8 @@ Realodex --> SortCommand :
 deactivate Realodex
 
 
-create CommandResult
-SortCommand --> CommandResult
-activate CommandResult
-CommandResult --> SortCommand
-deactivate CommandResult
 
-[<--SortCommand : command result
+
+[<--SortCommand :
 deactivate SortCommand
 @enduml
