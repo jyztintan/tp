@@ -13,8 +13,7 @@
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
-https://ay2324s2-cs2103t-w10-1.github.io/tp/DeveloperGuide.html
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -550,7 +549,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is Realodex and the **Actor** is the user, unless specified otherwise)
 
-**Use case: Creating a user profile**
+
+**Use case: UC01 — Adding a user profile**
 
 **Actor: User**
 
@@ -660,12 +660,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1t2. User enters new data.
     * Use case resumes from step 1.
 
-* 1u. Additional notes exceed length constraints.
-    * 1u1. Realodex throws an error and requests a shorter input.
+* 1u. `Birthday` is not in the valid format.
+    * 1u1. Realodex throws an error and highlights the format to user.
     * 1u2. User enters new data.
-    * Use case ends.
+    * Use case resumes from step 1.
 
-* 1v. `Birthday` is not in the valid format.
+* 1v. `Birthday` is blank.
     * 1v1. Realodex throws an error and highlights the format to user.
     * 1v2. User enters new data.
     * Use case resumes from step 1.
@@ -674,6 +674,138 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1w1. Realodex throws an error and highlights the format to user.
     * 1w2. User enters new data.
     * Use case resumes from step 1.
+
+* 1x. Some compulsory fields are missing.
+    * 1x1. Realodex throws an error and highlights the format to user.
+    * 1x2. User enters new data.
+    * Use case resumes from step 1.
+
+
+**Use case: UC02 - Editing a user profile**
+
+**Actor: User**
+
+**MSS**
+
+1. User Executes `edit ...` Command:
+2. System edits user profile of `Realodex` and replies to user with a success message.
+   Use case ends.
+
+**Extensions**
+
+* 1a. `Name` does not contain fully alphanumeric characters.
+    * 1a1. Realodex throws an error and highlights the format to user.
+    * 1a2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1b. `Name` contains erroneous whitespace at front or back.
+    * 1b1. Realodex fixes this for user without errors.
+    * Use case ends.
+
+* 1c. `Name` is not capitalized.
+    * 1c1. Realodex fixes this for user without errors.
+    * Use case ends.
+
+* 1d. `Name` is blank.
+    * 1d1. Realodex throws an error and highlights the format to user.
+    * 1d2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1e. `Phone` contains non-integer characters.
+    * 1e1. Realodex throws an error and highlights the format to user.
+    * 1e2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1f. `Phone` is less than three characters.
+    * 1f1. Realodex throws an error and highlights the format to user.
+    * 1f2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1g. `Phone` is blank.
+    * 1g1. Realodex throws an error and highlights the format to user.
+    * 1g2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1h. `Income` is negative
+    * 1h1. Realodex throws an error and highlights the format to user.
+    * 1h2. User enters new data.
+    * Use case ends.
+
+* 1i. `Income` contains non-integer characters.
+    * 1i1. Realodex throws an error and highlights the format to user.
+    * 1i2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1j. `Income` is blank.
+    * 1j1. Realodex throws an error and highlights the format to user.
+    * 1j2. User enters new data.
+    * Use case ends.
+
+* 1k. `Email` is not in the valid format.
+    * 1k1. Realodex throws an error and highlights the format to user.
+    * 1k2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1l. `Email` is blank.
+    * 1l1. Realodex throws an error and highlights the format to user.
+    * 1l2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1m. `Address` is blank.
+    * 1m1. Realodex throws an error and highlights the format to user.
+    * 1m2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1n. `Family` contains non-integer characters.
+    * 1n1. Realodex throws an error and highlights the format to user.
+    * 1n2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1o. `Family` is negative or zero.
+    * 1o1. Realodex throws an error and highlights the format to user.
+    * 1o2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1p. `Family` is blank.
+    * 1p1. Realodex throws an error and highlights the format to user.
+    * 1p2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1q. `Tag` is not `buyer` or `seller`.
+    * 1q1. Realodex throws an error and highlights the format to user.
+    * 1q2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1r. `Tag` is blank.
+    * 1r1. Realodex throws an error and highlights the format to user.
+    * 1r2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1s. `HOUSING_TYPE` is not in any of 'HDB', 'CONDOMINIUM', 'LANDED PROPERTY' or 'GOOD CLASS BUNGALOW'.
+    * 1s1. Realodex throws an error and highlights the format to user.
+    * 1s2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1t. `HOUSING_TYPE` is blank.
+    * 1t1. Realodex throws an error and highlights the format to user.
+    * 1t2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1u. `Birthday` is not in the valid format.
+    * 1u1. Realodex throws an error and highlights the format to user.
+    * 1u2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1v. `Birthday` is blank.
+    * 1v1. Realodex throws an error and highlights the format to user.
+    * 1v2. User enters new data.
+    * Use case resumes from step 1.
+
+* 1w. No fields input.
+    * 1w1. Realodex throws an error and highlights the format to user.
+    * 1w2. User enters new data.
+    * Use case resumes from step 1.
+
 
 **Use case: Delete a person**
 
@@ -694,7 +826,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to sort list.
+1.  User requests to sort the list by nearest upcoming birthday.
 2.  Realodex sorts the list and returns the sorted list to screen.
 
     Use case ends.
