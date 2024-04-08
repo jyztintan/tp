@@ -4,6 +4,7 @@ skinparam ArrowFontStyle plain
 
 box Model #FFCCCC
 participant ":SortCommand" as SortCommand #FF1111
+participant ":CommandResult" as CommandResult #FF1111
 participant ":Model" as Model #FF1111
 participant ":Realodex" as Realodex #FF1111
 participant ":UniquePersonsList" as UniquePersonsList #FF1111
@@ -35,12 +36,19 @@ activate ObservableList
 ObservableList -->  SortCommand:
 deactivate ObservableList
 
-SortCommand -> Realodex : setPersons(copiedInternalListForSorting)
+SortCommand -> Realodex : setPersons(copied list of persons)
 activate Realodex
 
 Realodex --> SortCommand :
 deactivate Realodex
 
-[<--SortCommand
+
+create CommandResult
+SortCommand --> CommandResult
+activate CommandResult
+CommandResult --> SortCommand
+deactivate CommandResult
+
+[<--SortCommand : command result
 deactivate SortCommand
 @enduml

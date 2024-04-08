@@ -27,7 +27,7 @@ deactivate SortCommand
 RealodexParser --> LogicManager :
 deactivate RealodexParser
 
-LogicManager -> SortCommand : execute()
+LogicManager -> SortCommand : execute(model)
 activate SortCommand
 
 ref over SortCommand, Model #FFFFFF

@@ -178,13 +178,17 @@ The sequence diagram below illustrates the process of creating a sort operation 
 #### Implementation of `SortCommand`
 
 
-Initially, the command retrieves a duplicate of the `ObservableList<Person>` stored within the Realodex. This duplicate list ensures that the original data remains intact during the sorting process, if any issues were to occur during sorting.
+1. **Model Retrieval**: The method begins by retrieving the `Realodex` component from the provided `Model` object using the `getRealodex` method.
 
-Subsequently, the `sort` command employs a custom `BirthdayComparator` object to sort the duplicate list. This comparator compares `Person` objects based on their birthdays, allowing for a customized sorting order that reflects the proximity of each client's birthday to the current date.
+2. **List Copying**: Next, the method obtains a duplicate of the internal list of unique persons stored within the `Realodex` component. This is achieved by calling the `getCopyOfInternalListOfUniquePersonsList` method.
 
-Once the duplicate list is sorted, the `sort` command updates the Realodex component by replacing the original list with the sorted duplicate. This ensures that the changes are reflected in the Realodex.
+3. **Sorting**: The method proceeds to sort the copied list of persons using a `BirthdayComparator` object. This comparator compares the birthdays of two persons, ensuring that the list is arranged in ascending order based on upcoming birthdays.
 
-Finally, upon successful completion of the sorting operation, the `sort` command generates a `CommandResult` object with a success message to indicate to the user that the sorting process has been successfully executed.
+4. **List Update**: After sorting the copied list, the method updates the internal list of persons within the `Realodex` component with the sorted list. This is accomplished by calling the `setPersons` method of the `Realodex` component.
+
+5. **Command Result Creation**: Finally, the method returns a `CommandResult` object with a success message indicating the completion of the sorting operation. The success message is defined by the constant `MESSAGE_SUCCESS`.
+
+6. **Exception Handling**: The method declares a `throws CommandException`, indicating that it may throw a `CommandException` if an error occurs during execution. However, the method implementation does not contain explicit error handling logic.
 <puml src="diagrams/sort/SortSequenceDiagram-Model.puml" width="1000" />
 
 #### Implementation of `BirthdayComparator`
