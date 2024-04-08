@@ -2,14 +2,13 @@
 !include style.puml
 skinparam ArrowFontStyle plain
 
-box SortCommand MODEL_COLOR_T1
-participant ":SortCommand" as SortCommand MODEL_COLOR
-participant ":Model" as Model MODEL_COLOR
-participant ":Realodex" as Realodex MODEL_COLOR
-participant ":ObservableList<Person>" as ObservableList MODEL_COLOR
+box Model #FFCCCC
+participant ":SortCommand" as SortCommand #FF1111
+participant ":Model" as Model #FF1111
+participant ":Realodex" as Realodex #FF1111
+participant ":UniquePersonsList" as UniquePersonsList #FF1111
+participant ":ObservableList<Person>" as ObservableList #FF1111
 end box
-
-
 
 [-> SortCommand : execute(model)
 activate SortCommand
@@ -22,7 +21,12 @@ deactivate Model
 SortCommand -> Realodex : getCopyOfInternalListOfUniquePersonsList()
 activate Realodex
 
-Realodex --> SortCommand : list of persons
+Realodex -> UniquePersonsList : getInternalListCopy()
+activate UniquePersonsList
+UniquePersonsList -> Realodex : copied list of persons
+deactivate UniquePersonsList
+
+Realodex --> SortCommand : copied list of persons
 deactivate Realodex
 
 SortCommand -> ObservableList : sort(new BirthdayComparator())
@@ -39,5 +43,4 @@ deactivate Realodex
 
 [<--SortCommand
 deactivate SortCommand
-
 @enduml

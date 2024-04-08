@@ -136,7 +136,7 @@ The `Model` component,
 
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the Realodex, which `Person` references. This allows Realodex to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
+<puml src="diagrams/BetterModelClassDiagram.puml" width="800" />
 
 </box>
 
@@ -178,12 +178,14 @@ The sequence diagram below illustrates the process of creating a sort operation 
 #### Implementation of `SortCommand`
 
 
-The `sort` command function retrieves a duplicate of the `ObservableList<Person>` stored within the Realodex component. This duplicate list is then sorted utilizing a custom `BirthdayComparator` object. 
-Following the sorting process, the newly arranged list is assigned back to the `Realodex` object, replacing the original list. Finally, a `CommandResult` object is generated with a success message to indicate the completion of the sorting operation.
+Initially, the command retrieves a duplicate of the `ObservableList<Person>` stored within the Realodex. This duplicate list ensures that the original data remains intact during the sorting process, if any issues were to occur during sorting.
 
-The sequence diagram below illustrates the process of retrieving the `ObservableList<Person>` and sorting it through the `Model` component.
-The creation of the CommandResult is omitted for brevity.
-<puml src="diagrams/sort/SortSequenceDiagram-Model.puml" width="800" />
+Subsequently, the `sort` command employs a custom `BirthdayComparator` object to sort the duplicate list. This comparator compares `Person` objects based on their birthdays, allowing for a customized sorting order that reflects the proximity of each client's birthday to the current date.
+
+Once the duplicate list is sorted, the `sort` command updates the Realodex component by replacing the original list with the sorted duplicate. This ensures that the changes are reflected in the Realodex.
+
+Finally, upon successful completion of the sorting operation, the `sort` command generates a `CommandResult` object with a success message to indicate to the user that the sorting process has been successfully executed.
+<puml src="diagrams/sort/SortSequenceDiagram-Model.puml" width="1000" />
 
 #### Implementation of `BirthdayComparator`
 The provided comparator compares two `Person` objects based on their birthdays.
@@ -209,6 +211,8 @@ The provided comparator compares two `Person` objects based on their birthdays.
         return o1.getBirthday().getDaysUntilBirthday().compareTo(o2.getBirthday().getDaysUntilBirthday());
     }
 ```
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Overall Filter feature
 
