@@ -681,7 +681,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * Use case resumes from step 1.
 
 
-**Use case: UC02 - Editing a user profile**
+**Use case: UC02 — Editing a user profile**
 
 **Actor: User**
 
@@ -948,7 +948,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Open a command terminal, cd into the folder you put the jar file in, and use the `java -jar realodex.jar` command to run the application.
+      The window size may not be optimum.
 
 1. Saving window preferences
 
@@ -957,7 +958,9 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+1. Exiting the app
+
+   1. Users can type in exit to exit the app. All data is auto-saved.
 
 ### Deleting a person
 
@@ -991,16 +994,32 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect edit commands to try: `edit`, `edit x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-### Saving data
+### Corrupted Data
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit
+      causing the format to be incorrect,
+      simply delete `realodex.json` in the `data` directory and restart the app.
+      A new JSON file with sample contacts will be generated and you may proceed from there.
 
-1. _{ more test cases …​ }_
+
+### Save Data
+
+1. Data is auto-saved in the `json` file in real time.
+
+   1. Open up the `realodex.json` in the `data` directory in a text editor.
+
+   2. If there is an existing user, try `delete index` where index is of that user.
+      <br>Expected: This user will no longer appear in the `json` file after command is executed.
+   3. If there is no existing user, you may want to refer to above "Corrupted Data" section 
+      to easily get a fresh `json` file with sample data and repeat from step 1.
 
 
 ## **Appendix: Appendix: Effort**
+
+### Difficulty, challenges, efforts and achievements
+
 
 ## **Appendix: Planned Enhancements**
 
