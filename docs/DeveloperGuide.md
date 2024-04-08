@@ -216,6 +216,16 @@ The provided comparator compares two `Person` objects based on their birthdays.
     }
 ```
 
+#### `SortCommand` `Model` Dependency
+
+By now, you may have noticed that `SortCommand` extensively interacts with the `Model` component to facilitate list sorting during execution. Consequently, `SortCommand` depends on `ModelManager`, which is an implementation of the `Model` interface. This dependency arises because `ModelManager` instances are passed as arguments in the `public CommandResult execute(Model model) throws CommandException` method of `SortCommand`. For brevity, interactions beyond the `Model` layer are not detailed.
+<puml src="diagrams/sort/SortCommandClassDiagram-Model.puml" width="300" />
+
+
+
+
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ### Overall Filter feature
