@@ -55,7 +55,7 @@ command to run the application.<br>
    e.g. in `add n/NAME r/REMARK`, `NAME` is the name parameter and `REMARK` is the remark parameter.
 * `PREFIX` is case-insensitive, i.e.`N/` and `n/` are the same and are used to indicate a `NAME` input.
 * `PREFIX` must be preceded by a whitespace character.
-   e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` which is not a whitespace character. 
+   e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` which is not a whitespace character.
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME ....`, `NAME` is a parameter which can be used as `add n/John Doe ....`.
   <br>For more details on the parameters, do refer to the [Field Constraints](#field-constraints).
@@ -71,11 +71,11 @@ command to run the application.<br>
 
 ### Adding a client: `add`
 
-Adds a client to Realodex. 
+Adds a client to Realodex.
 
 <u>Format</u>: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSING_TYPE [r/REMARK] [b/BIRTHDAY]`
 
-- `n/NAME`,`p/PHONE`,`i/INCOME`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG` and `h/HOUSING_TYPE` are compulsory fields. 
+- `n/NAME`,`p/PHONE`,`i/INCOME`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG` and `h/HOUSING_TYPE` are compulsory fields.
   - If any of the above fields are missed out in the `add` command, you will receive an error message informing you of the compulsory fields that you missed.
   - For example, if only `n/NAME` and `i/INCOME` are present, you will be alerted that you are missing the fields `p/PHONE`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG`and`h/HOUSINGTYPE`.
  <a href="images/add-command/missing_fields_error.png">
@@ -85,11 +85,11 @@ Adds a client to Realodex.
 <a href="images/add-command/excessive_fields_error.png">
   <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:100%">
   </a>
-- For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive). 
-  - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown. 
+- For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive).
+  - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown.
 - Note that the `r/REMARK` and `b/BIRTHDAY` fields are optional, enclosed in `[]`. You may choose to omit them.
   - If you include the prefix with a blank input, the birthday and remark fields will be taken as not specified.
-    - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified. 
+    - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified.
 - Each field has constraints to the inputs it can accept. Do refer to the [Field Constraints](#field-constraints) for more information.
   - If any of the constraints are violated, you will receive an error message detailing the fields with invalid formats.
   - For example, if `n/NAME`,`p/PHONE` and `t/TAG` fields do not fulfil the contraints, you will receive 3 error messages as shown.
@@ -109,7 +109,7 @@ Adds a client to Realodex.
 
 ### Deleting a client : `delete`
 
-Deletes the specified client from Realodex. There are 2 ways to do so: 
+Deletes the specified client from Realodex. There are 2 ways to do so:
 
 #### Delete By Name
 
@@ -155,14 +155,14 @@ Edits specified details of the client.
 
 ### Filtering clients: `filter`
 
-The filter command in Realodex allows you to narrow down your list of clients by specifying a keyphrase 
+The filter command in Realodex allows you to narrow down your list of clients by specifying a keyphrase
 related to one of the client's attributes: name, remark, tag, birthday month, or housing type.
 This feature is particularly useful when you need to focus on a
 subset of your client database that meets certain criteria.
 
 >
-> When performing multiple filter operations in sequence, 
-> each new filter is applied to the original, full list of clients, not the subset produced by the previous filter. 
+> When performing multiple filter operations in sequence,
+> each new filter is applied to the original, full list of clients, not the subset produced by the previous filter.
 > This approach ensures clarity and consistency in search results.
 
 #### Filter By Name
@@ -190,18 +190,18 @@ subset of your client database that meets certain criteria.
 <u>Format:</u> `filter r/KEYPHRASE`
 
 - Returns the list of clients whose remarks include the specified keyphrase.
-- Keyphrase input should be non-empty. 
+- Keyphrase input should be non-empty.
 This is an intentional design choice to ensure that the command is used for targeted searches, preventing the potential misinterpretation of an empty keyphrase as a request to list all clients.
-- Important: The remarks for the `filter r/` command must not contain any other prefixes to prevent parsing errors. 
+- Important: The remarks for the `filter r/` command must not contain any other prefixes to prevent parsing errors.
 > The command `filter r/ my tag is t/buyer` would cause an error because the system interprets `t/` as the start of a new prefix.
 > To avoid this, ensure that the remark does not contain any spaces followed by slashes that could be misconstrued as additional prefixes.
-- The search is **case-insensitive**. 
+- The search is **case-insensitive**.
   - `filter r/FOOD` matches person with remark "He loves food."
 - **Partial fragments** of remarks will still be matched.
   - `filter r/hand` matches person with remark "handsome".
 - **Comprehensive searching**, returning all persons' names containing the keyword .
   - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
-    
+
 <u>Example:</u>
 
   <a href="images/filter/filterByRemarkScreenshot.png">
@@ -252,7 +252,7 @@ tag(s) specified in the input.
     - `filter b/Jan` returns all persons with birthday in January.
 - Persons who do not have a specified birthday will **not be included** in the search results.
 
-<u>Example:</u>  
+<u>Example:</u>
 
 <a href="images/filter/filterByBirthday.png">
   <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:150%">
@@ -296,7 +296,7 @@ calculated by the number of days until their next birthday relative to the curre
 
 - The current date is based on the local system's time.
 - If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
-- If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list. 
+- If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list.
 
 
 ### Clearing Realodex : `clearRealodex`
@@ -342,7 +342,7 @@ have Realodex installed in your Desktop, the `data` folder containing the file c
 
 Realodex data is saved in the hard disk as a JSON file automatically after any command that modifies it. There is no need to save manually.
 
-#### Editing Data 
+#### Editing Data
 
 Realodex data is saved automatically as a JSON file `[JAR file location]/data/realodex.json`. Advanced users are welcome to update data directly by editing that data file.
 

@@ -26,5 +26,4 @@ Command .down.> CommandException: throws >
 HelpCommandParser .down.> ParseException: throws >
 HelpCommandParser .right.> HelpCommand : creates
 
-
 @enduml
