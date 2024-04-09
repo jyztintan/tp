@@ -341,7 +341,7 @@ calculated by the number of days until their next birthday relative to the curre
 
 Clears all clients in Realodex.
 
-💡 The clear command is long as a safety measure to prevent accidental deletions.
+💡A longer command, `clearRealodex` is used so that users understand that this command **clears all entries in Realodex**, preventing potential confusion with the delete command and accidental clearing of all entries.
 
 <u>Format:</u> `clearRealodex`
 
