@@ -1,5 +1,7 @@
 @startuml
+group sd sort realodex by birthday
 !include style.puml
+
 skinparam ArrowFontStyle plain
 
 box Model #FFCCCC
@@ -46,4 +48,5 @@ deactivate Realodex
 
 [<--SortCommand :
 deactivate SortCommand
+end
 @enduml

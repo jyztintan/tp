@@ -4,7 +4,10 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-Realodex *-right-> "1" UniquePersonList
+Realodex *--right--> "1" UniqueTagList
+UniqueTagList -right-> "*" Tag
+Person -up-> "1-2 " Tag
+Realodex -down-> "1   " UniquePersonList
 
 UniquePersonList -right-> "*" Person
 
@@ -14,7 +17,6 @@ Person *--> "1" Email
 Person *--> "1" Address
 Person *--> "1" Income
 Person *--> "1" Family
-Person *--> "1..2" Tag
 Person *--> "1" HousingType
 Person *--> "  0..1" Remark
 Person *--> "0..1" Birthday
