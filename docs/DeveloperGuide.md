@@ -121,7 +121,20 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="700" />
+
+<puml src="diagrams/PersonClass.puml" width="800" />
+
+<br>
+<br>
+
+In the context of our developer guide, the provided class diagram illustrates the structure of the `Person` class,
+encompassing essential attributes.
+This detailed depiction allows developers
+to grasp the internal composition of the `Person` entity
+without needing to replicate `Person` in higher-level model interactions,
+streamlining their understanding and facilitating focused development efforts.
+
+<puml src="diagrams/ModelClassDiagram.puml" width="500"></puml>
 
 
 The `Model` component,
@@ -147,7 +160,7 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
+* can save both Realodex data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `RealodexStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
@@ -480,10 +493,6 @@ Pros: Easy to implement as all functionality can be contained within help-relate
 
 Cons: Syntax may not be as intuitive.
 
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -807,7 +816,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * Use case resumes from step 1.
 
 
-**Use case: Delete a person**
+**Use case: UC03 - Delete a person**
 
 **MSS**
 
@@ -822,11 +831,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
  * 2a1. Realodex shows an error message "<Name> is not found".
  * Use case ends.
 
-**Use case: Sort list by birthday**
+**Use case: UC04 — Sort list by birthday**
 
 **MSS**
 
-1.  User requests to sort the list by nearest upcoming birthday.
+1.  User requests to sort the list by the nearest upcoming birthday.
 2.  Realodex sorts the list and returns the sorted list to screen.
 
     Use case ends.
@@ -1022,6 +1031,8 @@ testers are expected to do more *exploratory* testing.
 
 
 ## **Appendix: Planned Enhancements**
+
+**Team size is five.**
 
 1. Generic index error messages
    - Currently, `Realodex` has a generic error message for invalid index input by users.
