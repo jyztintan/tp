@@ -38,6 +38,41 @@ command to run the application.<br>
    * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
 
 1. Refer to the [Features](#features) below for details of each command.
+----
+# Using this Guide
+
+To ensure you have a smooth and intuitive experience, this guide utilizes specific formatting conventions and icons. Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
+
+## Formatting Conventions
+| Format        | Meaning                                                                                                                                                                                                                 |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Bold**      | Used to **draw attention** to key concepts and actions you need to perform. When you see text in bold, it emphasises **important information.**                                                                         |
+| _Italics_     | Reserved for introducing new terms and phrases that are essential to understanding Realodex. Italicized text may also appear in subheadings beneath screenshots to succinctly describe what you're seeing in the image. |
+| `Code blocks` | Actual commands that you may enter into the Realodex CLI will be referred to in these code blocks.                                                                                                                      |
+
+
+## Icon Legend
+
+| Icon | Meaning                                                                                                    |
+|------|------------------------------------------------------------------------------------------------------------|
+| 💡   | Tips, helpful suggestions and best practices to optimize the Realodex user experience experience.          |
+| ⚠️   | Warning for potential pitfalls or important considerations that could impact the Realodex user experience. |
+| 🗒️  | Additional Notes to keep track of in the features.                                                         |
+| 👀   | Upcoming Features to look out for. Stay tuned for exciting new features and enhancements in Realodex.      |
+
+## Glossary
+
+| Abbreviation/Nomenclature      | Meaning                                                                                                                                                                                                  |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GUI (Graphical User Interface) | It is the digital interface which you interact with when using Realodex!                                                                                                                                 |
+| GUI Components                 | A specific component of the GUI. For more information on specific GUI components, refer to this section.                                                                                                 |
+| CLI (Command Line Interface)   | A text-based user interface to interact with the application.                                                                                                                                            |
+| Command                        | An input from you that tells Realodex to execute an action. You can refer to the command summary [here](#command-summary)!                                                                               |
+| Prefix                         | Prefixes are like fields in a form you are required to fill up. They are information needed to be passes together with the command so that it can be executed. View our Prefix Summary for more details! |
+| Case-Sensitive                 | The casing of the alphabetic characters matters (e.g. “ReAlOdEx” is different from “realodex”                                                                                                            |
+| Case-Insensitive               | The casing of the alphabetic characters does not matter (e.g. “ReAlOdEx” is taken to be same as “realodex”                                                                                               |
+
+---
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -127,7 +162,9 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 <u>Format</u>: `delete INDEX`
 
 * Deletes the client of the specified `INDEX` in Realodex.
-* If `INDEX` is **invalid**, error message will be shown "The client index provided is invalid".
+* 💡 If you are currently filtered, the index will be based on the filtered list.
+* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
+* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
 
 <u>Example</u>:
 * `delete 4` deletes the 4th client listed in Realodex, provided there are 4 or more entries.
@@ -135,7 +172,7 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 Errors:
 - If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name.".
 - If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both.".
-- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid as INDEX is considered part of the NAME".
+- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME".
 ### Editing clients : `edit`
 
 Edits specified details of the client.
@@ -143,6 +180,7 @@ Edits specified details of the client.
 <u>Format</u>: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
 
 - If `INDEX` is `3`, the 3rd client's information will be edited.
+- 💡 If you are currently filtered, the index will be based on the filtered list.
 - It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
 - The current information will be overwritten with the input provided.
 - When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
@@ -303,6 +341,8 @@ calculated by the number of days until their next birthday relative to the curre
 
 Clears all clients in Realodex.
 
+💡A longer command, `clearRealodex` is used so that users understand that this command **clears all entries in Realodex**, preventing potential confusion with the delete command and accidental clearing of all entries.
+
 <u>Format:</u> `clearRealodex`
 
 ### Help : `help`
@@ -349,7 +389,7 @@ Realodex data is saved automatically as a JSON file `[JAR file location]/data/re
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, Realodex will discard all data and start with an empty data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.<br>
+If your **manual changes to the data file makes its format invalid**, Realodex will **discard all data and start with an empty data file at the next run.**  Hence, it is recommended to make a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
 </box>
@@ -365,7 +405,7 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
     1. Names are case-insensitive.
   2. Number of spaces between words in the name do not matter.
   3. Although names are displayed in full capitalisation, they are still recorded in a case-insensitive manner. Hence, an input with the same name but different capitalisation will be considered a duplicate entry.
-    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
+    * Example: `n/John Doe` and `n/john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
 * PHONE:
     * Should only contain numbers, and should be at least 3 digits long.
     * Example: `p/81234567`
@@ -382,16 +422,16 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
         * have each domain label start and end with alphanumeric characters
         * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
     * Example: `e/realodex-admin@gmail.com`
-* ADDRESS:
+* ADDRESS: Current residential address
     * Must not include other command prefixes (`a/`,`b/`,`e/`,`f/`,`h/`,`i/`,`n/`,`p/`,`r/`,`t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
     * Example: `a/6 College Ave West`
-* FAMILY:
+* FAMILY: Immediate family size
     * Should be an integer greater than 1.
     * Example: `f/4`
 * TAG:
     * Only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
     * Example: `t/buyer`, `t/seller` or both
-* HOUSINGTYPE:
+* HOUSINGTYPE: housing type a buyer wants or housing type a seller is selling
     * Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
     * Example: `h/HDB`
 * REMARK:
@@ -410,19 +450,19 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
 
-| Action                         | Format, Examples                                                                                                                                                                                                                                              |
-|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                        | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE [r/REMARK] [b/BIRTHDAY]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 r/Buyer t/Owes $1000. h/HDB r/Likes cats b/31Dec1982` |
-| **Delete (by name)**           | `delete n/NAME`<br> e.g. `delete n/John`                                                                                                                                                                                                                      |
-| **Delete (by index)**          | `delete INDEX`<br> e.g. `delete 3`                                                                                                                                                                                                                            |
-| **Edit**                       | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]` <br> e.g. `edit 2 n/Denzel i/100000`                                                                                              |
-| **Filter**                     | `filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [b/MONTH] [h/HOUSING_TYPE]`<br> e.g. `filter n/David`,`filter b/Oct`                                                                                                                                              |
-| **List**                       | `list`                                                                                                                                                                                                                                                        |
-| **Sort**                       | `sort`                                                                                                                                                                                                                                                        |
-| **Help**                       | `help`                                                                                                                                                                                                                                                        |
-| **Help (individual commands)** | `COMMAND help`<br> e.g. `add help`,`edit help`                                                                                                                                                                                                                |
-| **Clear**                      | `clearRealodex`                                                                                                                                                                                                                                               |
-| **Exit**                       | `exit`                                                                                                                                                                                                                                                        |
+| Action                         | Format, Examples                                                                                                                                                                                                                                |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                        | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE [r/REMARK] [b/BIRTHDAY]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Likes cats b/31Dec1982` |
+| **Delete (by name)**           | `delete n/NAME`<br> e.g. `delete n/John`                                                                                                                                                                                                        |
+| **Delete (by index)**          | `delete INDEX`<br> e.g. `delete 3`                                                                                                                                                                                                              |
+| **Edit**                       | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]` <br> e.g. `edit 2 n/Denzel i/100000`                                                                                |
+| **Filter**                     | `filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [b/MONTH] [h/HOUSING_TYPE]`<br> e.g. `filter n/David`,`filter b/Oct`                                                                                                                                |
+| **List**                       | `list`                                                                                                                                                                                                                                          |
+| **Sort**                       | `sort`                                                                                                                                                                                                                                          |
+| **Help**                       | `help`                                                                                                                                                                                                                                          |
+| **Help (individual commands)** | `COMMAND help`<br> e.g. `add help`,`edit help`                                                                                                                                                                                                  |
+| **Clear**                      | `clearRealodex`                                                                                                                                                                                                                                 |
+| **Exit**                       | `exit`                                                                                                                                                                                                                                          |
 
 
 --------------------------------------------------------------------------------------------------------------------
