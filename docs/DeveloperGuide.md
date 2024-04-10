@@ -343,16 +343,27 @@ Pros: Allows for more flexible searches.
 
 Cons: May be difficult to understand
 
-### Help feature
+### Overall Help feature
 
-####  Implementation
+#### Implementation
 
-The Help feature provides help to the user by giving details on how all commands are used in a new window.
+The Help feature provides help to the user (depending on user input) by either giving details on how all commands 
+are used in a new window, or a short description in the main window on how an individual, specified command is used.
 The core components for this feature are:
 - HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
 prints the help message in the Main Window for the requested command, depending on user input.
 - HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
 correct action (the type of help to give, in this case help for all commands).
+
+#### Help Command Architecture
+<puml src="diagrams/help/HelpCommand.puml" width="1000" />
+
+### Help feature
+
+#### Description
+
+The help feature provides help to the user by showing a new window with a summary of how to use all commands, with
+the correct format and relevant examples. A link to the User Guide is also provided.
 
 #### Example Usage Scenario
 1. User launches the application.
@@ -379,17 +390,17 @@ Cons: User will need to leave the application and look at a website everytime th
 
 ### Help by command feature
 
-####  Implementation
+#### Description
 
-The Help by command feature provides help to the user for an individual command specified by the user.
-The core components for this feature are:
-- HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
-  prints the help message in the Main Window for the requested command, depending on user input.
-- HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
-  correct action (the type of help to give, in this case for individual commands).
-- Note that although the command format is `COMMAND help`, `clear help` is the command to get the help for the clearRealodex command instead of `clearRealodex help`.
-We changed the `clear` command to `clearRealodex` to avoid confusion with the `delete` command, as both involve the removal of entries, and `clearRealodex`
-encapsulates the functionality of clearing the entire app more clearly. However, we kept `clear help` as this syntax is more user-friendly when seeking help.
+The Help by command feature provides help to the user for an individual command specified by the user,
+printed on the main window. This has been implemented for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` 
+and `sort` commands only.
+
+Note that although the command format is `COMMAND help`, `clear help` is the command to get the help for the 
+clearRealodex command instead of `clearRealodex help`. We changed the `clear` command to `clearRealodex` to avoid  
+confusion with the `delete` command, as both involve the removal of entries, and `clearRealodex`encapsulates the 
+functionality of clearing the entire app more clearly. However, we kept `clear help` as this syntax is more 
+user-friendly when seeking help.
 
 #### Example Usage Scenario
 1. User launches the application.
