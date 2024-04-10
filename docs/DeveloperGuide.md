@@ -679,14 +679,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1v2. User enters new data.
     * Use case resumes from step 1.
 
-* 1w. `Birthday` is blank.
+* 1w. Some compulsory fields are missing.
     * 1w1. Realodex throws an error and highlights the format to user.
     * 1w2. User enters new data.
-    * Use case resumes from step 1.
-
-* 1x. Some compulsory fields are missing.
-    * 1x1. Realodex throws an error and highlights the format to user.
-    * 1x2. User enters new data.
     * Use case resumes from step 1.
 
 
