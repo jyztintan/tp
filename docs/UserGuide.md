@@ -131,7 +131,7 @@ Adds a client to Realodex.
     <a href="parsing_errors.png">
     <img src="parsing_errors.png" alt="duplicate person" style="width:150%">
     </a>
-- You may have duplicate persons with the same name in Realodex.
+- You **cannot** have duplicate persons with the same name in Realodex.
   - Names are case-insensitive as described in [Field Constraints](#field-constraints).
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
     <a href="images/add-command/duplicate_person_error.png">
@@ -354,12 +354,15 @@ Shows the help message for the specified command only.
 
 <u>Format:</u> `COMMAND help`
 
+- Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
+- Although the format is `COMMAND help`, the exception is the help message for the clear command. Use `clear help` instead of `clearRealodex help`.
+
 <u>Examples:</u>
 <p align="center">
       <a href="images/help/clear_help.png">
       <img src="images/help/clear_help.png" alt="filterByTagSeller" style="width:100%">
       </a>
-  <em> <code>clear help</code> provides the help message for the clear command</em>
+  <em> <code>clear help</code> provides the help message for the clearRealodex command</em>
 </p>
 
 
@@ -393,7 +396,7 @@ Furthermore, certain edits can cause the Realodex to behave in unexpected ways (
 
 #### Restarting with New Data
 Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit causing the format to be incorrect,
-simply delete `realodex.json` and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
+simply delete `realodex.json`, which can be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Field Constraints
