@@ -38,6 +38,41 @@ command to run the application.<br>
    * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
 
 1. Refer to the [Features](#features) below for details of each command.
+----
+# Using this Guide
+
+To ensure you have a smooth and intuitive experience, this guide utilizes specific formatting conventions and icons. Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
+
+## Formatting Conventions
+| Format        | Meaning                                                                                                                                                                                                                 |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Bold**      | Used to **draw attention** to key concepts and actions you need to perform. When you see text in bold, it emphasises **important information.**                                                                         |
+| _Italics_     | Reserved for introducing new terms and phrases that are essential to understanding Realodex. Italicized text may also appear in subheadings beneath screenshots to succinctly describe what you're seeing in the image. |
+| `Code blocks` | Actual commands that you may enter into the Realodex CLI will be referred to in these code blocks.                                                                                                                      |
+
+
+## Icon Legend
+
+| Icon | Meaning                                                                                                    |
+|------|------------------------------------------------------------------------------------------------------------|
+| 💡   | Tips, helpful suggestions and best practices to optimize the Realodex user experience experience.          |
+| ⚠️   | Warning for potential pitfalls or important considerations that could impact the Realodex user experience. |
+| 🗒️  | Additional Notes to keep track of in the features.                                                         |
+| 👀   | Upcoming Features to look out for. Stay tuned for exciting new features and enhancements in Realodex.      |
+
+## Glossary
+
+| Abbreviation/Nomenclature      | Meaning                                                                                                                                                                                                  |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GUI (Graphical User Interface) | It is the digital interface which you interact with when using Realodex!                                                                                                                                 |
+| GUI Components                 | A specific component of the GUI. For more information on specific GUI components, refer to this section.                                                                                                 |
+| CLI (Command Line Interface)   | A text-based user interface to interact with the application.                                                                                                                                            |
+| Command                        | An input from you that tells Realodex to execute an action. You can refer to the command summary [here](#command-summary)!                                                                               |
+| Prefix                         | Prefixes are like fields in a form you are required to fill up. They are information needed to be passes together with the command so that it can be executed. View our Prefix Summary for more details! |
+| Case-Sensitive                 | The casing of the alphabetic characters matters (e.g. “ReAlOdEx” is different from “realodex”                                                                                                            |
+| Case-Insensitive               | The casing of the alphabetic characters does not matter (e.g. “ReAlOdEx” is taken to be same as “realodex”                                                                                               |
+
+---
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -96,7 +131,7 @@ Adds a client to Realodex.
     <a href="parsing_errors.png">
     <img src="parsing_errors.png" alt="duplicate person" style="width:150%">
     </a>
-- You may have duplicate persons with the same name in Realodex.
+- You **cannot** have duplicate persons with the same name in Realodex.
   - Names are case-insensitive as described in [Field Constraints](#field-constraints).
   - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
     <a href="images/add-command/duplicate_person_error.png">
@@ -127,7 +162,9 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 <u>Format</u>: `delete INDEX`
 
 * Deletes the client of the specified `INDEX` in Realodex.
-* If `INDEX` is **invalid**, error message will be shown "The client index provided is invalid".
+* 💡 If you are currently filtered, the index will be based on the filtered list.
+* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
+* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
 
 <u>Example</u>:
 * `delete 4` deletes the 4th client listed in Realodex, provided there are 4 or more entries.
@@ -135,7 +172,7 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 Errors:
 - If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name.".
 - If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both.".
-- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid as INDEX is considered part of the NAME".
+- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME".
 ### Editing clients : `edit`
 
 Edits specified details of the client.
@@ -143,6 +180,7 @@ Edits specified details of the client.
 <u>Format</u>: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
 
 - If `INDEX` is `3`, the 3rd client's information will be edited.
+- 💡 If you are currently filtered, the index will be based on the filtered list.
 - It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
 - The current information will be overwritten with the input provided.
 - When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
@@ -159,6 +197,7 @@ The filter command in Realodex allows you to narrow down your list of clients by
 related to one of the client's attributes: name, remark, tag, birthday month, or housing type.
 This feature is particularly useful when you need to focus on a
 subset of your client database that meets certain criteria.
+Note that the search is **case-insensitive** for all input parameters.
 
 >
 > When performing multiple filter operations in sequence,
@@ -170,7 +209,6 @@ subset of your client database that meets certain criteria.
 
 - Returns the list of clients whose names contain the specified keyphrase.
 - Keyphrase input should be in valid format for names (alphanumeric) and non-empty.
-- The search is **case-insensitive**.
   - `filter n/james` matches person with the name "James".
 - **Partial fragments** of names will still be matched.
   - `filter n/Udh` matches a person with the name "Udhaya".
@@ -186,40 +224,14 @@ subset of your client database that meets certain criteria.
   <em> <code>filter n/Li</code> returns persons with names like "Charlotte Oliveiro" and "David Li"</em>
 </p>
 
-#### Filter By Remark
-<u>Format:</u> `filter r/KEYPHRASE`
-
-- Returns the list of clients whose remarks include the specified keyphrase.
-- Keyphrase input should be non-empty.
-This is an intentional design choice to ensure that the command is used for targeted searches, preventing the potential misinterpretation of an empty keyphrase as a request to list all clients.
-- Important: The remarks for the `filter r/` command must not contain any other prefixes to prevent parsing errors.
-> The command `filter r/ my tag is t/buyer` would cause an error because the system interprets `t/` as the start of a new prefix.
-> To avoid this, ensure that the remark does not contain any spaces followed by slashes that could be misconstrued as additional prefixes.
-- The search is **case-insensitive**.
-  - `filter r/FOOD` matches person with remark "He loves food."
-- **Partial fragments** of remarks will still be matched.
-  - `filter r/hand` matches person with remark "handsome".
-- **Comprehensive searching**, returning all persons' names containing the keyword .
-  - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
-
-<u>Example:</u>
-
-  <a href="images/filter/filterByRemarkScreenshot.png">
-    <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:150%">
-    </a>
-<p align="center">
-  <em> <code>filter r/eat</code> returns persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..."</em>
-</p>
-
 #### Filter By Tag
 <u>Format:</u> `filter t/TAG`
 
 - Returns the list of clients with the specified tag(s).
 - Tag input should be valid and non-empty - "Buyer" or "Seller".
-- The search is **case-insensitive**.
   - `filter t/buyer` matches person with tag "Buyer".
 - **Inclusive matching** of persons with multiple tags, as long as they possess the
-tag(s) specified in the input.
+  tag(s) specified in the input.
   - `filter t/buyer` matches person with tags "Buyer" and "Seller".
 - Supports searching with **multiple tags**.
   - `filter t/Buyer t/Seller` only returns persons with both "Buyer" and "Seller" tags.
@@ -240,13 +252,54 @@ tag(s) specified in the input.
   <em> <code>filter t/buyer t/seller</code> only returns persons with "Buyer" and "Seller" Tag</em>
 </p>
 
+#### Filter By Housing Type
+<u>Format:</u> `filter h/HOUSING_TYPE`
+
+- Returns the list of clients with the specified housing type preference.
+- Housing Type input should be valid and non-empty - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
+  - `filter h/hdb` matches person with housing type "HDB".
+- **Comprehensive searching**, returning all persons with the specified housing type.
+  - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
+
+<u>Example:</u>
+
+  <a href="images/filter/filterByHousingType.png">
+  <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
+  </a>
+<p align="center">
+  <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
+</p>
+
+#### Filter By Remark
+<u>Format:</u> `filter r/KEYPHRASE`
+
+- Returns the list of clients whose remarks include the specified keyphrase.
+- Keyphrase input should be non-empty. 
+This is an intentional design choice to ensure that the command is used for targeted searches, preventing the potential misinterpretation of an empty keyphrase as a request to list all clients.
+- Important: The remarks for the `filter r/` command must not contain any other prefixes to prevent parsing errors. 
+> The command `filter r/ my tag is t/buyer` would cause an error because the system interprets `t/` as the start of a new prefix.
+> To avoid this, ensure that the remark does not contain any spaces followed by slashes that could be misconstrued as additional prefixes.
+  - `filter r/FOOD` matches person with remark "He loves food."
+- **Partial fragments** of remarks will still be matched.
+  - `filter r/hand` matches person with remark "handsome".
+- **Comprehensive searching**, returning all persons' names containing the keyword .
+  - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
+    
+<u>Example:</u>
+
+  <a href="images/filter/filterByRemarkScreenshot.png">
+    <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:150%">
+    </a>
+<p align="center">
+  <em> <code>filter r/eat</code> returns persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..."</em>
+</p>
+
 #### Filter By Birthday
 <u>Format:</u> `filter b/MONTH`
 
 - Returns the list of clients whose birthdays are in the specified month.
 - Month input should be a valid month in `MMM` format and non-empty.
   - Filtering by month "September" should be `filter b/Sep`
-- The month input is **case-insensitive**.
     - `filter b/SEP` matches person with Birthday in September.
 - **Comprehensive searching**, returning all persons with birthdays in the specified month.
     - `filter b/Jan` returns all persons with birthday in January.
@@ -260,25 +313,6 @@ tag(s) specified in the input.
 
 <p align="center">
   <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
-</p>
-
-#### Filter By Housing Type
-<u>Format:</u> `filter h/HOUSING_TYPE`
-
-- Returns the list of clients with the specified housing type preference.
-- Housing Type input should be valid and non-empty - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
-- The search is **case-insensitive**.
-    - `filter h/hdb` matches person with housing type "HDB".
-- **Comprehensive searching**, returning all persons with the specified housing type.
-    - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
-
-<u>Example:</u>
-
-  <a href="images/filter/filterByHousingType.png">
-  <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
-  </a>
-<p align="center">
-  <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
 </p>
 
 ### Listing clients : `list`
@@ -303,6 +337,8 @@ calculated by the number of days until their next birthday relative to the curre
 
 Clears all clients in Realodex.
 
+💡A longer command, `clearRealodex` is used so that users understand that this command **clears all entries in Realodex**, preventing potential confusion with the delete command and accidental clearing of all entries.
+
 <u>Format:</u> `clearRealodex`
 
 ### Help : `help`
@@ -317,12 +353,15 @@ Shows the help message for the specified command only.
 
 <u>Format:</u> `COMMAND help`
 
+- Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
+- Although the format is `COMMAND help`, the exception is the help message for the clear command. Use `clear help` instead of `clearRealodex help`.
+
 <u>Examples:</u>
 <p align="center">
       <a href="images/help/clear_help.png">
       <img src="images/help/clear_help.png" alt="filterByTagSeller" style="width:100%">
       </a>
-  <em> <code>clear help</code> provides the help message for the clear command</em>
+  <em> <code>clear help</code> provides the help message for the clearRealodex command</em>
 </p>
 
 
@@ -349,14 +388,14 @@ Realodex data is saved automatically as a JSON file `[JAR file location]/data/re
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, Realodex will discard all data and start with an empty data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.<br>
+If your **manual changes to the data file makes its format invalid**, Realodex will **discard all data and start with an empty data file at the next run.**  Hence, it is recommended to make a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
 </box>
 
 #### Restarting with New Data
 Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit causing the format to be incorrect,
-simply delete `realodex.json` and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
+simply delete `realodex.json`, which can be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Field Constraints
@@ -365,7 +404,7 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
     1. Names are case-insensitive.
   2. Number of spaces between words in the name do not matter.
   3. Although names are displayed in full capitalisation, they are still recorded in a case-insensitive manner. Hence, an input with the same name but different capitalisation will be considered a duplicate entry.
-    * Example: `n/John Doe` and `n\john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
+    * Example: `n/John Doe` and `n/john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
 * PHONE:
     * Should only contain numbers, and should be at least 3 digits long.
     * Example: `p/81234567`
@@ -382,16 +421,16 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
         * have each domain label start and end with alphanumeric characters
         * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
     * Example: `e/realodex-admin@gmail.com`
-* ADDRESS:
+* ADDRESS: Current residential address
     * Must not include other command prefixes (`a/`,`b/`,`e/`,`f/`,`h/`,`i/`,`n/`,`p/`,`r/`,`t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
     * Example: `a/6 College Ave West`
-* FAMILY:
+* FAMILY: Immediate family size
     * Should be an integer greater than 1.
     * Example: `f/4`
 * TAG:
     * Only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
     * Example: `t/buyer`, `t/seller` or both
-* HOUSINGTYPE:
+* HOUSINGTYPE: housing type a buyer wants or housing type a seller is selling
     * Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
     * Example: `h/HDB`
 * REMARK:
@@ -410,19 +449,19 @@ simply delete `realodex.json` and restart the app. A new JSON file with sample c
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
 
-| Action                         | Format, Examples                                                                                                                                                                                                                                              |
-|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                        | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE [r/REMARK] [b/BIRTHDAY]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 r/Buyer t/Owes $1000. h/HDB r/Likes cats b/31Dec1982` |
-| **Delete (by name)**           | `delete n/NAME`<br> e.g. `delete n/John`                                                                                                                                                                                                                      |
-| **Delete (by index)**          | `delete INDEX`<br> e.g. `delete 3`                                                                                                                                                                                                                            |
-| **Edit**                       | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]` <br> e.g. `edit 2 n/Denzel i/100000`                                                                                              |
-| **Filter**                     | `filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [b/MONTH] [h/HOUSING_TYPE]`<br> e.g. `filter n/David`,`filter b/Oct`                                                                                                                                              |
-| **List**                       | `list`                                                                                                                                                                                                                                                        |
-| **Sort**                       | `sort`                                                                                                                                                                                                                                                        |
-| **Help**                       | `help`                                                                                                                                                                                                                                                        |
-| **Help (individual commands)** | `COMMAND help`<br> e.g. `add help`,`edit help`                                                                                                                                                                                                                |
-| **Clear**                      | `clearRealodex`                                                                                                                                                                                                                                               |
-| **Exit**                       | `exit`                                                                                                                                                                                                                                                        |
+| Action                         | Format, Examples                                                                                                                                                                                                                                |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                        | `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSINGTYPE [r/REMARK] [b/BIRTHDAY]` <br> e.g. `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Likes cats b/31Dec1982` |
+| **Delete (by name)**           | `delete n/NAME`<br> e.g. `delete n/John`                                                                                                                                                                                                        |
+| **Delete (by index)**          | `delete INDEX`<br> e.g. `delete 3`                                                                                                                                                                                                              |
+| **Edit**                       | `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]` <br> e.g. `edit 2 n/Denzel i/100000`                                                                                |
+| **Filter**                     | `filter [n/KEYPHRASE] [r/KEYPHRASE] [t/TAG] [b/MONTH] [h/HOUSING_TYPE]`<br> e.g. `filter n/David`,`filter b/Oct`                                                                                                                                |
+| **List**                       | `list`                                                                                                                                                                                                                                          |
+| **Sort**                       | `sort`                                                                                                                                                                                                                                          |
+| **Help**                       | `help`                                                                                                                                                                                                                                          |
+| **Help (individual commands)** | `COMMAND help`<br> e.g. `add help`,`edit help`                                                                                                                                                                                                  |
+| **Clear**                      | `clearRealodex`                                                                                                                                                                                                                                 |
+| **Exit**                       | `exit`                                                                                                                                                                                                                                          |
 
 
 --------------------------------------------------------------------------------------------------------------------

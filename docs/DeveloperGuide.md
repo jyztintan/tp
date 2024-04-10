@@ -387,6 +387,9 @@ The core components for this feature are:
   prints the help message in the Main Window for the requested command, depending on user input.
 - HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
   correct action (the type of help to give, in this case for individual commands).
+- Note that although the command format is `COMMAND help`, `clear help` is the command to get the help for the clearRealodex command instead of `clearRealodex help`.
+We changed the `clear` command to `clearRealodex` to avoid confusion with the `delete` command, as both involve the removal of entries, and `clearRealodex`
+encapsulates the functionality of clearing the entire app more clearly. However, we kept `clear help` as this syntax is more user-friendly when seeking help.
 
 #### Example Usage Scenario
 1. User launches the application.
