@@ -34,17 +34,31 @@ create HelpCommand
 HelpCommandParser -> HelpCommand
 activate HelpCommand
 
-HelpCommand --> HelpCommandParser :
+HelpCommand --> HelpCommandParser : h
 deactivate HelpCommand
 
-HelpCommandParser --> RealodexParser :
+HelpCommandParser --> RealodexParser : h
 deactivate HelpCommandParser
-'Hidden arrow to position the destroy marker below the end of the activation bar.
 HelpCommandParser -[hidden]-> RealodexParser
 destroy HelpCommandParser
 
-RealodexParser --> LogicManager :
+RealodexParser --> LogicManager : h
 deactivate RealodexParser
+
+LogicManager -> HelpCommand : execute(model)
+activate HelpCommand
+
+create CommandResult
+HelpCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> HelpCommand : r
+deactivate CommandResult
+
+HelpCommand --> LogicManager : r
+deactivate HelpCommand
+HelpCommand -[hidden]-> LogicManager : result
+destroy HelpCommand
 
 [<--LogicManager
 deactivate LogicManager
