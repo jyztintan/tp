@@ -159,6 +159,7 @@ The filter command in Realodex allows you to narrow down your list of clients by
 related to one of the client's attributes: name, remark, tag, birthday month, or housing type.
 This feature is particularly useful when you need to focus on a
 subset of your client database that meets certain criteria.
+Note that the search is **case-insensitive** for all input parameters.
 
 >
 > When performing multiple filter operations in sequence, 
@@ -170,7 +171,6 @@ subset of your client database that meets certain criteria.
 
 - Returns the list of clients whose names contain the specified keyphrase.
 - Keyphrase input should be in valid format for names (alphanumeric) and non-empty.
-- The search is **case-insensitive**.
   - `filter n/james` matches person with the name "James".
 - **Partial fragments** of names will still be matched.
   - `filter n/Udh` matches a person with the name "Udhaya".
@@ -192,7 +192,6 @@ subset of your client database that meets certain criteria.
 
 - Returns the list of clients with the specified tag(s).
 - Tag input should be valid and non-empty - "Buyer" or "Seller".
-- The search is **case-insensitive**.
   - `filter t/buyer` matches person with tag "Buyer".
 - **Inclusive matching** of persons with multiple tags, as long as they possess the
   tag(s) specified in the input.
@@ -221,7 +220,6 @@ subset of your client database that meets certain criteria.
 
 - Returns the list of clients with the specified housing type preference.
 - Housing Type input should be valid and non-empty - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
-- The search is **case-insensitive**.
   - `filter h/hdb` matches person with housing type "HDB".
 - **Comprehensive searching**, returning all persons with the specified housing type.
   - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
@@ -244,7 +242,6 @@ This is an intentional design choice to ensure that the command is used for targ
 - Important: The remarks for the `filter r/` command must not contain any other prefixes to prevent parsing errors. 
 > The command `filter r/ my tag is t/buyer` would cause an error because the system interprets `t/` as the start of a new prefix.
 > To avoid this, ensure that the remark does not contain any spaces followed by slashes that could be misconstrued as additional prefixes.
-- The search is **case-insensitive**. 
   - `filter r/FOOD` matches person with remark "He loves food."
 - **Partial fragments** of remarks will still be matched.
   - `filter r/hand` matches person with remark "handsome".
@@ -266,7 +263,6 @@ This is an intentional design choice to ensure that the command is used for targ
 - Returns the list of clients whose birthdays are in the specified month.
 - Month input should be a valid month in `MMM` format and non-empty.
   - Filtering by month "September" should be `filter b/Sep`
-- The month input is **case-insensitive**.
     - `filter b/SEP` matches person with Birthday in September.
 - **Comprehensive searching**, returning all persons with birthdays in the specified month.
     - `filter b/Jan` returns all persons with birthday in January.
