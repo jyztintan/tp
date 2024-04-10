@@ -186,6 +186,55 @@ subset of your client database that meets certain criteria.
   <em> <code>filter n/Li</code> returns persons with names like "Charlotte Oliveiro" and "David Li"</em>
 </p>
 
+
+#### Filter By Tag
+<u>Format:</u> `filter t/TAG`
+
+- Returns the list of clients with the specified tag(s).
+- Tag input should be valid and non-empty - "Buyer" or "Seller".
+- The search is **case-insensitive**.
+  - `filter t/buyer` matches person with tag "Buyer".
+- **Inclusive matching** of persons with multiple tags, as long as they possess the
+  tag(s) specified in the input.
+  - `filter t/buyer` matches person with tags "Buyer" and "Seller".
+- Supports searching with **multiple tags**.
+  - `filter t/Buyer t/Seller` only returns persons with both "Buyer" and "Seller" tags.
+- **Comprehensive searching**, returning all persons' with the specified tag(s).
+
+<u>Examples:</u>
+<p align="center">
+      <a href="images/filter/filterByTagSeller.png">
+      <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:150%">
+      </a>
+  <em> <code>filter t/seller</code> returns persons with "Seller" Tag</em>
+</p>
+      <a href="images/filter/filterByTagBuyerSeller.png">
+      <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:150%">
+      </a>
+
+<p align="center">
+  <em> <code>filter t/buyer t/seller</code> only returns persons with "Buyer" and "Seller" Tag</em>
+</p>
+
+#### Filter By Housing Type
+<u>Format:</u> `filter h/HOUSING_TYPE`
+
+- Returns the list of clients with the specified housing type preference.
+- Housing Type input should be valid and non-empty - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
+- The search is **case-insensitive**.
+  - `filter h/hdb` matches person with housing type "HDB".
+- **Comprehensive searching**, returning all persons with the specified housing type.
+  - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
+
+<u>Example:</u>
+
+  <a href="images/filter/filterByHousingType.png">
+  <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
+  </a>
+<p align="center">
+  <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
+</p>
+
 #### Filter By Remark
 <u>Format:</u> `filter r/KEYPHRASE`
 
@@ -211,35 +260,6 @@ This is an intentional design choice to ensure that the command is used for targ
   <em> <code>filter r/eat</code> returns persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..."</em>
 </p>
 
-#### Filter By Tag
-<u>Format:</u> `filter t/TAG`
-
-- Returns the list of clients with the specified tag(s).
-- Tag input should be valid and non-empty - "Buyer" or "Seller".
-- The search is **case-insensitive**.
-  - `filter t/buyer` matches person with tag "Buyer".
-- **Inclusive matching** of persons with multiple tags, as long as they possess the
-tag(s) specified in the input.
-  - `filter t/buyer` matches person with tags "Buyer" and "Seller".
-- Supports searching with **multiple tags**.
-  - `filter t/Buyer t/Seller` only returns persons with both "Buyer" and "Seller" tags.
-- **Comprehensive searching**, returning all persons' with the specified tag(s).
-
-<u>Examples:</u>
-<p align="center">
-      <a href="images/filter/filterByTagSeller.png">
-      <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:150%">
-      </a>
-  <em> <code>filter t/seller</code> returns persons with "Seller" Tag</em>
-</p>
-      <a href="images/filter/filterByTagBuyerSeller.png">
-      <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:150%">
-      </a>
-
-<p align="center">
-  <em> <code>filter t/buyer t/seller</code> only returns persons with "Buyer" and "Seller" Tag</em>
-</p>
-
 #### Filter By Birthday
 <u>Format:</u> `filter b/MONTH`
 
@@ -260,25 +280,6 @@ tag(s) specified in the input.
 
 <p align="center">
   <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
-</p>
-
-#### Filter By Housing Type
-<u>Format:</u> `filter h/HOUSING_TYPE`
-
-- Returns the list of clients with the specified housing type preference.
-- Housing Type input should be valid and non-empty - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
-- The search is **case-insensitive**.
-    - `filter h/hdb` matches person with housing type "HDB".
-- **Comprehensive searching**, returning all persons with the specified housing type.
-    - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
-
-<u>Example:</u>
-
-  <a href="images/filter/filterByHousingType.png">
-  <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
-  </a>
-<p align="center">
-  <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
 </p>
 
 ### Listing clients : `list`
