@@ -1,6 +1,6 @@
 @startuml
 group sd sort realodex by birthday
-!include style.puml
+!include ../style.puml
 
 skinparam ArrowFontStyle plain
 
@@ -17,7 +17,7 @@ activate SortCommand
 
 SortCommand -> Model: getRealodex()
 activate Model
-Model -> SortCommand
+Model --> SortCommand
 deactivate Model
 
 SortCommand -> Realodex : getCopyOfInternalListOfUniquePersonsList()
@@ -25,7 +25,7 @@ activate Realodex
 
 Realodex -> UniquePersonsList : getInternalListCopy()
 activate UniquePersonsList
-UniquePersonsList -> Realodex : copied list of persons
+UniquePersonsList --> Realodex : copied list of persons
 deactivate UniquePersonsList
 
 Realodex --> SortCommand : copied list of persons
