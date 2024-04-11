@@ -83,14 +83,7 @@ public class EditCommandParser implements Parser<EditCommand> {
                          ParserUtil::parseHousingTypeReturnStored, errorMessageBuilder, "housing type");
 
         //These fields do not have ParseUtilResult implementation
-        if (argMultimap.containsPrefix(PREFIX_TAG)) {
-            try {
-                Set<Tag> parsedTagsForEdit = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-                editPersonDescriptor.setTags(parsedTagsForEdit);
-            } catch (ParseException exception) {
-                errorMessageBuilder.append(MESSAGE_ERROR_PARSING_TAGS);
-            }
-        }
+        parseAndSetTags(argMultimap, editPersonDescriptor, errorMessageBuilder);
 
         if (argMultimap.containsPrefix(PREFIX_REMARK)) {
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
@@ -114,6 +107,19 @@ public class EditCommandParser implements Parser<EditCommand> {
             ParserUtilResult<T> result = parserFunction.apply(argMultimap.getValue(prefix).get());
             result.buildErrorMessage(errorMessageBuilder, fieldName);
             setter.accept(result.returnStoredResult());
+        }
+    }
+
+    private void parseAndSetTags(ArgumentMultimap argMultimap,
+                                 EditPersonDescriptor editPersonDescriptor,
+                                 StringBuilder errorMessageBuilder) {
+        if (argMultimap.containsPrefix(PREFIX_TAG)) {
+            try {
+                Set<Tag> parsedTags = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+                editPersonDescriptor.setTags(parsedTags);
+            } catch (ParseException e) {
+                errorMessageBuilder.append(MESSAGE_ERROR_PARSING_TAGS);
+            }
         }
     }
 }
