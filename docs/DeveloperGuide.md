@@ -275,11 +275,11 @@ This feature enables users to filter and view persons in Realodex based on speci
 The key components involved are:
 
 - `FilterCommand`: Executes the filtering operation based on a provided predicate that encapsulates the filtering criteria.
-- `PrefixChecker`: Ensures the syntactic correctness of user inputs by verifying command prefixes. 
+- `PrefixChecker`: Ensures the syntactic correctness of user inputs by verifying command prefixes.
 Detects command format violations, and facilitates clear error messaging.
-- `FilterCommandParser`: Parses user input into a FilterCommand by identifying the filtering field and keyphrase. 
-- `PredicateProducer`: Generates specific predicates based on the identified field and keyphrase. 
-- `Predicates`: `NameContainsKeyphrasePredicate`, `RemarkContainsKeyphrasePredicate`, `TagsMatchPredicate`, `BirthdayIsInMonthPredicate`, and `HousingTypeMatchPredicate` 
+- `FilterCommandParser`: Parses user input into a FilterCommand by identifying the filtering field and keyphrase.
+- `PredicateProducer`: Generates specific predicates based on the identified field and keyphrase.
+- `Predicates`: `NameContainsKeyphrasePredicate`, `RemarkContainsKeyphrasePredicate`, `TagsMatchPredicate`, `BirthdayIsInMonthPredicate`, and `HousingTypeMatchPredicate`
 that determine if a person's attributes match the user-defined criteria.
 
 #### Filter Command Architecture
@@ -289,12 +289,12 @@ that determine if a person's attributes match the user-defined criteria.
 
 #### Description
 
-The Filter by Name feature allows users to filter the list of persons in Realodex based on their names. 
-This is implemented using the `NameContainsKeyphrasePredicate` that checks if a person's name contains the keyphrase provided by the user. 
+The Filter by Name feature allows users to filter the list of persons in Realodex based on their names.
+This is implemented using the `NameContainsKeyphrasePredicate` that checks if a person's name contains the keyphrase provided by the user.
 
 #### Example Usage Scenario
-1. The user executes the command `filter n/John`, intending to filter out persons whose names contain "John". 
-2. The FilterCommandParser interprets the input, creating a FilterCommand with the `NameContainsKeyphrasePredicate`. 
+1. The user executes the command `filter n/John`, intending to filter out persons whose names contain "John".
+2. The FilterCommandParser interprets the input, creating a FilterCommand with the `NameContainsKeyphrasePredicate`.
 3. The `FilterCommand` applies the `NameContainsKeyphrasePredicate` predicate, updating the filtered person list to only include those whose names contain "John".
 4. The UI reflects this filtered list.
 
@@ -357,7 +357,7 @@ Cons: Extremely limiting. Users must remember exact remarks.
 #### Description
 
 The Filter by Tag feature allows users to filter the list of persons in Realodex based on their tags.
-This is implemented using the `TagsMatchPredicate` that checks whether a person's tags match the tag(s) specified by the user. 
+This is implemented using the `TagsMatchPredicate` that checks whether a person's tags match the tag(s) specified by the user.
 
 #### Example Usage Scenario
 
@@ -425,17 +425,54 @@ This is implemented using the `HousingTypeMatchPredicate` that checks whether a 
 3. The `FilterCommand` applies the `HousingTypeMatchPredicate` predicate, updating the filtered person list to only include those with a "Condominium" housing type preference.
 4. The UI reflects this filtered list.
 
-
-### Help feature
+### Sort by Birthday feature
 
 ####  Implementation
 
-The Help feature provides help to the user by giving details on how all commands are used in a new window. 
+The "Sort by Birthday" feature enables users to sort persons based on their birthday associated with them, if any. The core components for this feature are:
+- SortCommand: A command that, when executed, updates the sorted person list based on the predicate.
+
+#### Example Usage Scenario
+1. User launches the application, and the list of persons is loaded.
+2. User executes `sort`, aiming to sort persons by birthday
+3. LogicManager parses the command into a SortCommand.
+4. The SortCommand is executed, sorting the list based on the predicate.
+5. The UI sorts the persons by birthday, with the next upcoming birthday first, and all persons without birthdays will not show up.
+
+#### Design considerations:
+
+Aspect: Matching of remarks
+
+__Alternative 1 (current choice): Support sort by other days besides Today.__
+
+Pros: Allows for more flexible searches.
+
+Cons: May be difficult to understand
+
+### Overall Help feature
+
+#### Implementation
+
+The Help feature provides help to the user (depending on user input) by either giving details on how all commands 
+are used in a new window, or a short description in the main window on how an individual, specified command is used.
 The core components for this feature are:
 - HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
 prints the help message in the Main Window for the requested command, depending on user input.
 - HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
 correct action (the type of help to give, in this case help for all commands).
+
+#### Help Command Architecture
+<puml src="diagrams/help/HelpCommand.puml" width="1000" />
+
+#### Help Command Sequence Diagram
+<puml src="diagrams/help/HelpSequenceDiagram.puml" width="1000" />
+
+### Help feature
+
+#### Description
+
+The help feature provides help to the user by showing a new window with a summary of how to use all commands, with
+the correct format and relevant examples. A link to the User Guide is also provided.
 
 #### Example Usage Scenario
 1. User launches the application.
@@ -462,19 +499,19 @@ Cons: User will need to leave the application and look at a website everytime th
 
 ### Help by command feature
 
-####  Implementation
+#### Description
 
-The Help by command feature provides help to the user for an individual command specified by the user.
-The core components for this feature are:
-- HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
-  prints the help message in the Main Window for the requested command, depending on user input.
-- HelpCommandParser: Processes the user input to instantiate the HelpCommand object appropriately to perform the
-  correct action (the type of help to give, in this case for individual commands).
-- Note that although the command format is `COMMAND help`, `clear help` is the command to get the help for the clearRealodex command instead of `clearRealodex help`.
-We changed the `clear` command to `clearRealodex` to avoid confusion with the `delete` command, as both involve the removal of entries, and `clearRealodex`
-encapsulates the functionality of clearing the entire app more clearly. However, we kept `clear help` as this syntax is more user-friendly when seeking help.
+The Help by command feature provides help to the user for an individual command specified by the user,
+printed on the main window. This has been implemented for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` 
+and `sort` commands only.
 
-#### Example Usage Scenario 
+Note that although the command format is `COMMAND help`, `clear help` is the command to get the help for the 
+clearRealodex command instead of `clearRealodex help`. We changed the `clear` command to `clearRealodex` to avoid  
+confusion with the `delete` command, as both involve the removal of entries, and `clearRealodex`encapsulates the 
+functionality of clearing the entire app more clearly. However, we kept `clear help` as this syntax is more 
+user-friendly when seeking help.
+
+#### Example Usage Scenario
 1. User launches the application.
 2. User executes `COMMAND help`, wanting to get the help for only specified `COMMAND`.
 3. LogicManager instantiates a RealodexPraser, which parses the command into a HelpCommand with appropriate parameters.
@@ -857,7 +894,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User requests to filter clients by providing a name substring. 
+1. User requests to filter clients by providing a name substring.
 2. Realodex filters and displays a list of all clients whose names include the input substring.
 
     Use case ends.
@@ -873,14 +910,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1b. No clients' names match the input substring.
 
     * 1b1. Realodex displays an empty list and shows a message indicating that no matches were found.
-        
+
       Use case ends.
 
 **Use case: Filter by Remarks**
 
 **MSS**
 
-1. User requests to filter clients by providing a remark substring. 
+1. User requests to filter clients by providing a remark substring.
 2. Realodex filters and displays a list of all clients whose remarks include the input substring.
    Use case ends.
 
@@ -903,7 +940,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests for help.
-2. Realodex displays a new window showing a summary of how all features are used with examples. 
+2. Realodex displays a new window showing a summary of how all features are used with examples.
 
    Use case ends.
 
@@ -921,7 +958,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-  
+
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
