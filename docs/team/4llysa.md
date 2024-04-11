@@ -44,4 +44,3 @@ Given below are my contributions to the project.
 
 * **Tools**:
   * MarkBind for team website
-  
