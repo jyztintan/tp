@@ -368,7 +368,7 @@ This is implemented using the `TagsMatchPredicate` that checks whether a person'
 
 **Alternative 1 (current choice): Allow inclusion of persons with matching tags, irrespective of other tags.**
 
-> For example, `filter t/Buyer` returns persons tagged as "Buyer", inclusing those tagged as "Buyer" and "Seller".
+> For example, `filter t/Buyer` returns persons tagged as "Buyer", including those tagged as "Buyer" and "Seller".
 
 Pros: Inclusive Search that returns anyone with the "Buyer" tag, increasing breadth of search outcomes.
 
@@ -514,7 +514,7 @@ user-friendly when seeking help.
 #### Example Usage Scenario
 1. User launches the application.
 2. User executes `COMMAND help`, wanting to get the help for only specified `COMMAND`.
-3. LogicManager instantiates a RealodexPraser, which parses the command into a HelpCommand with appropriate parameters.
+3. LogicManager instantiates a RealodexParser, which parses the command into a HelpCommand with appropriate parameters.
 4. The HelpCommand is executed, printing the help message for the specified `COMMAND` in the GUI.
 
 #### Design Considerations
@@ -533,6 +533,77 @@ Pros: Easy to implement as all functionality can be contained within help-relate
 
 Cons: Syntax may not be as intuitive.
 
+### Delete by name feature
+
+#### Description
+
+The delete by name feature provides the user the ability to delete a client's profile based on their name.
+
+#### Example Usage Scenario
+1. User launches the application.
+2. User executes `delete n/NAME`, wanting to delete the profile on the client with name `NAME`.
+3. LogicManager instantiates a RealodexParser, which parses the command into a DeleteCommand with appropriate parameters.
+4. The DeleteCommand is executed, deleting the client's profile with the name `NAME`. 
+5. The UI reflects the updated list of clients.
+
+
+#### Design Considerations
+
+Aspect: Method to delete client with name `NAME`
+
+__Alternative 1: (current choice) Format is `delete n/NAME`.__
+
+Pros: Easy to implement as name and index can be differentiated using the prefix.
+
+Cons: Syntax may not be as intuitive.
+
+__Alternative 2: (current choice): Format is `delete NAME`.__
+
+Pros: More convenient for user to not have to put in the prefix `n/`.
+
+Cons: Harder to implement due to the other delete by index feature, there is no way to differentiate if the user is try to input an index or name.
+
+### Delete by index feature
+  
+#### Description
+
+The delete by index feature provides the user the ability to delete a client's profile based on their index in the list.
+
+#### Example Usage Scenario
+1. User launches the application.
+2. User executes `delete INDEX`, wanting to delete the profile on the client at index `INDEX`.
+3. LogicManager instantiates a RealodexParser, which parses the command into a DeleteCommand with appropriate parameters.
+4. The DeleteCommand is executed, deleting the client's profile at index `INDEX`.
+5. The UI reflects the updated list of clients.
+
+#### Design Considerations
+
+Aspect: Method to delete client at index `INDEX`
+
+__Alternative 1: (current choice) Format is `delete INDEX`.__
+
+Pros: Easy to implement as name and index can be differentiated using the prefix.
+
+Cons: Syntax may not be as intuitive.
+
+__Alternative 2: Format is `delete i/INDEX`.__
+
+Pros: More intuitive as the user knows that the index is being deleted.
+
+Cons: Prefix `i/` is already used for the income field, and is more inconvenient to have to type in prefix.
+
+### Edit by field feature
+
+#### Description
+
+The edit by field feature provides the user the ability to edit a client's profile based on a specified field. This has been implemented for all
+user fields `name`, `phone`, `email`, `address`, `income`, `birthday`, `housingType`, `tags`, and `remark`.
+
+#### Example Usage Scenario
+1. User launches the application.
+2. User executes `edit INDEX n/NAME`, wanting to edit the name of the client at index `INDEX` to `NAME`.
+3. LogicManager instantiates a RealodexParser, which parses the command into a EditCommand with appropriate parameters.
+4. The EditCommand is executed, editing the client's profile at index `INDEX` to have the name `NAME`.
 
 --------------------------------------------------------------------------------------------------------------------
 
