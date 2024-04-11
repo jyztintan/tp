@@ -358,6 +358,9 @@ correct action (the type of help to give, in this case help for all commands).
 #### Help Command Architecture
 <puml src="diagrams/help/HelpCommand.puml" width="1000" />
 
+#### Help Command Sequence Diagram
+<puml src="diagrams/help/HelpSequenceDiagram.puml" width="1000" />
+
 ### Help feature
 
 #### Description
