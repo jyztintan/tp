@@ -109,6 +109,7 @@ public class Birthday {
         return optionalBirthday.map(INPUT_DATE_FORMATTER::format).orElse("");
     }
 
+    //@@author UdhayaShan1
     /**
      * Format state as text for representation.
      */
@@ -165,5 +166,5 @@ public class Birthday {
         toReturn.set(Calendar.MILLISECOND, 0);
         return toReturn;
     }
-
 }
+//@@author
