@@ -13,10 +13,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("add n/John Doe a/6 College Ave West ..")
+[-> LogicManager : execute("...")
 activate LogicManager
 
-LogicManager -> RealodexParser : parseCommand("add n/John Doe a/6 College Ave West ..")
+LogicManager -> RealodexParser : parseCommand("...")
 activate RealodexParser
 
 create AddCommandParser
@@ -26,7 +26,7 @@ activate AddCommandParser
 AddCommandParser --> RealodexParser
 deactivate AddCommandParser
 
-RealodexParser -> AddCommandParser : parse("add n/John Doe a/6 College Ave West ..")
+RealodexParser -> AddCommandParser : parse("...")
 activate AddCommandParser
 
 create AddCommand

@@ -238,7 +238,7 @@ Specific field constraints are described below. They are designed with the users
   * Implemented as an Optional Date, making use of Java SimpleDateFormat and Calendar classes for input and output validation.
 
 The sequence diagram below illustrates the process of adding a person into Realodex.
-<puml src="diagrams/add/AddCommandSequenceDiagram.puml" width="800" />
+<puml src="diagrams/add/AddCommandSequenceDiagram.puml" width="1000" />
 
 ### Overall Sort feature
 
