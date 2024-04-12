@@ -416,12 +416,7 @@ Realodex data is saved automatically as a JSON file `[JAR file location]/data/re
 **Caution:**
 If your **manual changes to the data file makes its format invalid**, Realodex will **discard all data and start with an empty data file at the next run.**  Hence, it is recommended to make a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-
-</box>
-
-#### Restarting with New Data
-Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit causing the format to be incorrect,
-simply delete `realodex.json`, which can be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
+ be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
 ## Field Constraints
@@ -437,6 +432,11 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
 * INCOME:
     * Income should be an integer and should be at least 0.
     * Example: `i/20000`
+      </box>
+
+#### Restarting with New Data
+Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit causing the format to be incorrect,
+simply delete `realodex.json`, which can
 * EMAIL:
     * Emails should be of the format local-part@domain and adhere to the following constraints:
     1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-).
