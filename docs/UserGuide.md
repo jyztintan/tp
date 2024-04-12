@@ -223,6 +223,7 @@ Deletes the client of the specified `INDEX` in Realodex.
 
 
 <p align="center">
+
   <a href="images/delete/after_execute_deleteindex.png"> 
   <img src="images/delete/after_execute_deleteindex.png" alt="after execute delete index" style="width:100%"> 
   </a>
@@ -252,20 +253,26 @@ Edits specified details of the client.
 **Examples:**
 * `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's (if they exist) name to "Kylie", income to "3333" and family size to "5".
 
+
 <p align="center">
-  <a href="images/delete/before_execute_edit.png">
-  <img src="images/delete/before_execute_edit.png" alt="before execute edit" style="width:100%">
+
+  <a href="images/edit/before_execute_edit.png">
+  <img src="images/edit/before_execute_edit.png" alt="before execute edit" style="width:100%">
   </a>
+
   <em> Client list before entering command <code>edit 2 n/Kylie  i/3333 f/5</code></em>
 </p>
 
 
 <p align="center">
-  <a href="images/delete/after_execute_edit.png">
-  <img src="images/delete/after_execute_edit.png" alt="after execute edit" style="width:100%">
+
+  <a href="images/edit/after_execute_edit.png">
+  <img src="images/edit/after_execute_edit.png" alt="after execute edit" style="width:100%">
   </a>
+
   <em> Client list after entering command <code>edit 2 n/Kylie  i/3333 f/5</code></em>
 </p>
+
 
 <box type="info">
 💡 If you are currently filtered, the index will be based on the filtered list.<br>
@@ -278,6 +285,7 @@ Edits specified details of the client.
 </box>
 
 [Back to Table of Contents](#table-of-contents)
+
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
 
