@@ -213,6 +213,7 @@ Deletes the client of the specified `INDEX` in Realodex.
 * `delete 3` deletes the 3th client listed in Realodex, provided there are 3 or more entries.
 
 <p align="center">
+
   <a href="images/delete/before_execute_deleteindex.png">
   <img src="images/delete/before_execute_deleteindex.png" alt="before execute delete index" style="width:100%"> 
   </a>
