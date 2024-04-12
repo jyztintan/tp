@@ -161,37 +161,81 @@ Adds a client to Realodex.
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+  
 ### Deleting a client : `delete`
 
 Deletes the specified client from Realodex. There are 2 ways to do so:
 
 #### Delete By Name
 
-<u>Format</u>: `delete n/NAME`
+Delete the client with the specified `NAME` in the current Realodex list (filtered/unfiltered).
 
-* Deletes the client with the specified `NAME` in Realodex.
-* `NAME` is case-insensitive.
-* If `NAME` is **not found**, error message will be shown "The client name provided is invalid".
+**Format:**
+<box>`delete n/NAME`</box>
 
-<u>Example</u>:
+**Examples:**
 * `delete n/Udhaya Shanmugam` deletes the client in Realodex with the name "Udhaya Shanmugam".
+
+
+<p align="center">
+  <a href="images/delete/before_execute_deletename.png">
+  <img src="images/delete/before_execute_deletename.png" alt="before execute delete name" style="width:100%">
+  </a>
+  <em> Client list before entering command <code>delete n/Udhaya Shanmugan</code></em>
+</p>
+
+
+<p align="center">
+  <a href="images/delete/after_execute_deletename.png">
+  <img src="images/delete/after_execute_deletename.png" alt="after execute delete name" style="width:100%">
+  </a>
+  <em> Client list after entering command <code>delete n/Udhaya Shanmugan</code></em>
+</p>
+
+<box type="info">
+💡 `NAME` is case-insensitive, i.e. `delete n/Udhaya Shanmugan` is the same as `delete n/udhAYA shanmUgAn`
+⚠️ If the current list is filtered, `delete n/NAME` for a `NAME` that is in the **unfiltered** list but not the current **filtered** list will not delete the client with `NAME`!
+⚠️ If `NAME` is **not found** in the **current** list, error message will be shown "The client name provided is invalid".
+</box>
 
 #### Delete By Index
 
-<u>Format</u>: `delete INDEX`
+Deletes the client of the specified `INDEX` in Realodex.
 
-* Deletes the client of the specified `INDEX` in Realodex.
-* 💡 If you are currently filtered, the index will be based on the filtered list.
+**Format:**
+<box>`delete INDEX`</box>
+
+**Examples:**
+* `delete 3` deletes the 3th client listed in Realodex, provided there are 3 or more entries.
+
+<p align="center">
+  <a href="images/delete/before_execute_deleteindex.png">
+  <img src="images/delete/before_execute_deleteindex.png" alt="before execute delete index" style="width:100%"> 
+  </a>
+
+  <em> Client list before entering command <code>delete 3</code></em>
+</p>
+
+
+<p align="center">
+  <a href="images/delete/after_execute_deleteindex.png"> 
+  <img src="images/delete/after_execute_deleteindex.png" alt="after execute delete index" style="width:100%"> 
+  </a>
+
+  <em> Client list after entering command <code>delete 3</code></em>
+</p>
+
+<box type="info">
+💡 If you are currently filtered, the index will be based on the filtered list.
 * If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
 * If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
 
-<u>Example</u>:
-* `delete 4` deletes the 4th client listed in Realodex, provided there are 4 or more entries.
+</box>
 
-Errors:
-- If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name.".
-- If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both.".
-- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME".
+[Back to Table of Contents](#table-of-contents)
+
 ### Editing clients : `edit`
 
 Edits specified details of the client.
