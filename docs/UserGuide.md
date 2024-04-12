@@ -406,7 +406,7 @@ calculated by the number of days until their next birthday relative to the curre
   sort will work on the new filtered list.
 </box>
 
-**Examples:**
+**Example:**
 
 * Upon `sort`, the list on the screen will be filtered to return a new sorted list.
 
@@ -438,7 +438,7 @@ preventing potential confusion with the delete command and accidental clearing o
 Be careful with <code>clearRealodex</code>, you will be unable to undo this operation!
   </box>
 
-**Examples:**
+**Example:**
 
 * Upon `clearRealodex`, Realodex will clear and return an empty list.
 <div style="display:flex; justify-content: center; align-items:center;">
@@ -462,13 +462,13 @@ Generates a pop-up window, which is a summarized version of the User Guide and i
 <box type="tip">This window can also be accessed by the "Help" button on the top menu.
 </box>
 
-**Examples:**
+**Example:**
 * Upon `help`, Realodex will pop up a help window.
 <div style="display:flex; justify-content: center; align-items:center;">
 <img src="images/misc_features/help_window.png" alt="help_window" style=" width: 900px; margin-bottom: 16px;">
 </div>
 <p align="center">
-  <em> <code>clear</code> clears list of Realodex</em>
+  <em>Help window pop up with success message</em>
 </p>
 
 ### Help (Individual Commands) : `COMMAND help`
@@ -485,12 +485,14 @@ Shows the help message for the specified command only.
   Use `clear help` instead of `clearRealodex help`.
   </box>
 
-<u>Examples:</u>
+**Example:**
+1. User types in `add help`.
+2. Realodex posts the help message for `add` command.
 <p align="center">
-      <a href="images/help/clear_help.png">
-      <img src="images/help/clear_help.png" alt="filterByTagSeller" style="width:100%">
+      <a href="images/misc_features/command_help.png">
+      <img src="images/misc_features/command_help.png" alt="command_help" style="width:120%">
       </a>
-  <em> <code>clear help</code> provides the help message for the clearRealodex command</em>
+  <em> <code>add help</code> provides the help message for the <code>add</code> command</em>
 </p>
 
 
