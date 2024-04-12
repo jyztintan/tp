@@ -408,14 +408,11 @@ calculated by the number of days until their next birthday relative to the curre
 
 **Example:**
 
-* Upon `sort`, the list on the screen will be filtered to return a new sorted list.
+* Upon `sort`, the list on the screen will be filtered to return a new sorted list by nearest birthday.
 
 <div style="display:flex; justify-content: center; align-items:center;">
 <img src="images/sort/sort-day_showcase.png" alt="sort" style=" width: 800px; margin-bottom: 16px;">
 </div>
-<p align="center">
-  <em> <code>sort</code> returns new sorted list by nearing birthday</em>
-</p>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -444,9 +441,6 @@ Be careful with <code>clearRealodex</code>, you will be unable to undo this oper
 <div style="display:flex; justify-content: center; align-items:center;">
 <img src="images/misc_features/clear.png" alt="clear" style=" width: 900px; margin-bottom: 16px;">
 </div>
-<p align="center">
-  <em> <code>clear</code> clears list of Realodex</em>
-</p>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -463,13 +457,10 @@ Generates a pop-up window, which is a summarized version of the User Guide and i
 </box>
 
 **Example:**
-* Upon `help`, Realodex will pop up a help window.
+* Upon `help`, Realodex will pop up a help window together with a success message.
 <div style="display:flex; justify-content: center; align-items:center;">
 <img src="images/misc_features/help_window.png" alt="help_window" style=" width: 900px; margin-bottom: 16px;">
 </div>
-<p align="center">
-  <em>Help window pop up with success message</em>
-</p>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -491,12 +482,11 @@ Shows the help message for the specified command only.
 
 **Example:**
 1. User types in `add help`.
-2. Realodex posts the help message for `add` command.
+2. Realodex posts the help message for `add` command as shown below.
 <p align="center">
       <a href="images/misc_features/command_help.png">
       <img src="images/misc_features/command_help.png" alt="command_help" style="width:120%">
       </a>
-  <em> <code>add help</code> provides the help message for the <code>add</code> command</em>
 </p>
 
 --------------------------------------------------------------------------------------------------------------------
