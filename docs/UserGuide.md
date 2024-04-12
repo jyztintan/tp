@@ -17,27 +17,86 @@ If you can type fast, Realodex can get your contact management tasks done faster
 
 ## Quick start
 
-1. Ensure you have Java `11` or above installed in your computer.
+1. **Check Java Installation** Ensure you have Java `11` or above installed in your computer.
 
-1. Download the latest `realodex.jar` from [here](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases).
+<box type="info" light>
+<tabs>
+<tab header="Windows">
 
-1. Copy the file to the folder you want to use as the _home folder_ for your Realodex.
+1. Open command-prompt, by typing cmd in your start menu.
+2. Type `java --version` and enter to check if Java is installed and to the right version.
+   Below image is the expected output if the correct version of Java is installed. 
+   The red box indicates the expected Java version you should see.
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/java-version.png" alt="java-version" style=" width: 700px; margin-bottom: 16px;">
+  </div>
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar realodex.jar`
-command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. The app should contain some sample entries.<br>
-   <a href="images/Ui.png">
-   <img src="images/Ui.png" alt="Ui Image" style="width:80%">
-   </a>
+3. If Java is not installed or the wrong version is installed,
+   please install Java 11 from the official site
+   or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
+</tab>
+<tab header="Mac"> 
 
-1. Some example commands you can try:
+1. Open Terminal.
+2. Type `java --version` and enter to check if Java is installed and to the right version.
+   Below image is the expected output if the correct version of Java is installed.
+   The red box indicates the expected Java version you should see. 
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/java-version-macs.png" alt="java-version-macs" style=" width: 900px; margin-bottom: 16px;">
+  </div>
+
+3. If Java is not installed or the wrong version is installed, please install Java 11 from the official site.
+</tab>
+</tabs>
+</box>
+
+<div style="page-break-after: always;"></div>
+
+2. **Download Realodex** You can download the latest `realodex.jar` from [here](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases).
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/release.png" alt="release" style=" width: 800px; margin-bottom: 16px;">
+  </div>
+<br>
+
+3. **Set up Realodex** You should copy the file to the folder you want to use as the _home folder_ for your Realodex.
+
+<box type="tip"><md>We highly recommend you running Realodex in an empty folder as pre-existing JSON files may cause bugs!</md></box>
+
+4. **Navigate to Workspace** Open a command terminal, change directory into the folder by using change directory command,
+   `cd`, and navigating to the folder you put the jar file in
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/cd.png" alt="cd" style=" width: 600px; margin-bottom: 16px;">
+  </div>
+<br>
+
+5. **Run Realodex** Run `java -jar realodex.jar ` in the same terminal opened to start Realodex.
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/running.png" alt="running" style=" width: 600px; margin-bottom: 16px;">
+  </div>
+<br>
+<box type="warning">While the screenshots are from Windows OS, the commands are the same for other OS as well!.</box>
+
+5. You should see a GUI similar to image below pop up. Note how the app contains some pre-populated sample data!
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/ui.png" alt="ui" style=" width: 550px; margin-bottom: 16px;">
+  </div>
+<br>
+
+
+5. **Try out some Realodex features!** Some example commands you can try:
 
    * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 h/HDB t/buyer r/Owes money.`
-   Adds a contact named `John Doe` to Realodex.
+   Adds a contact named `John Doe` together with his details to Realodex.
 
-   * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
+   * `delete n/john doe` : This will delete the client with name `John Doe` from Realodex.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 ----
 # Using this Guide
 
@@ -326,20 +385,69 @@ Lists all clients in Realodex.
 Sort clients based on their proximity to their upcoming birthday,
 calculated by the number of days until their next birthday relative to the current date.
 
-<u>Format:</u> `sort`
+**Format:**
+<box>sort</box>
 
-- The current date is based on the local system's time.
-- If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
-- If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list.
+<box type="info" header="Things to note:">
+
+* The current date is based on the local system's time.
+* If their birthday has already passed,
+  the calculation is based on the number of days until their next birthday next year.
+</box>
+
+<box type="warning">
+
+* If the list presented is currently a filtered list after using [filter](#filtering-clients-filter),
+  sort will work on the new filtered list.
+</box>
+
+**Usage:**
+
+* Upon `sort`, the list on the screen will be filtered to return a new sorted list.
+
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/sort/sort-day_showcase.png" alt="sort" style=" width: 800px; margin-bottom: 16px;">
+</div>
+<p align="center">
+  <em> <code>sort</code> returns new sorted list by nearing birthday</em>
+</p>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 
 ### Clearing Realodex : `clearRealodex`
 
 Clears all clients in Realodex.
 
-💡A longer command, `clearRealodex` is used so that users understand that this command **clears all entries in Realodex**, preventing potential confusion with the delete command and accidental clearing of all entries.
+**Format:**
+<box>clearRealodex</box>
 
-<u>Format:</u> `clearRealodex`
+<box type="tip">A longer command, <code>clearRealodex</code>
+is used so that users understand that this command <b>clears all entries in Realodex</b>,
+preventing potential confusion with the delete command and accidental clearing of all entries.
+</box>
+
+<box type="warning">
+Be careful with <code>clearRealodex</code>, you will be unable to undo this operation!
+  </box>
+
+**Usage:**
+
+* Upon `clearRealodex`, Realodex will clear and return an empty list.
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/misc_features/clear.png" alt="clear" style=" width: 900px; margin-bottom: 16px;">
+</div>
+<p align="center">
+  <em> <code>clear</code> clears list of Realodex</em>
+</p>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+
 
 ### Help : `help`
 
