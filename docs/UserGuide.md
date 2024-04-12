@@ -452,22 +452,38 @@ Be careful with <code>clearRealodex</code>, you will be unable to undo this oper
 
 <div style="page-break-after: always;"></div>
 
-
-
 ### Help : `help`
 
-Generates a pop-up window which is a summarised version of the User Guide. This window can also be accessed by the "Help" button on the top menu.
+Generates a pop-up window, which is a summarized version of the User Guide and its features.
+**Format:**
+<box>help</box>
 
-<u>Format:</u> `help`
+
+<box type="tip">This window can also be accessed by the "Help" button on the top menu.
+</box>
+
+**Examples:**
+* Upon `help`, Realodex will pop up a help window.
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/misc_features/help_window.png" alt="help_window" style=" width: 900px; margin-bottom: 16px;">
+</div>
+<p align="center">
+  <em> <code>clear</code> clears list of Realodex</em>
+</p>
 
 ### Help (Individual Commands) : `COMMAND help`
 
 Shows the help message for the specified command only.
 
-<u>Format:</u> `COMMAND help`
+**Format:**
+<box>COMMAND help</box>
 
-- Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
-- Although the format is `COMMAND help`, the exception is the help message for the clear command. Use `clear help` instead of `clearRealodex help`.
+<box type="info" header="Things to note:">
+
+* Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
+* Although the format is `COMMAND help`, the exception is the help message for the clear command.
+  Use `clear help` instead of `clearRealodex help`.
+  </box>
 
 <u>Examples:</u>
 <p align="center">
