@@ -14,17 +14,30 @@
 - **Delete**: Safely remove outdated information, ensuring your database is current and compliant.
 
 ## Why Choose Realodex?
-With our **intuitive interface** and **advanced features**, real estate users can manage their client database with unprecedented ease, enhancing their productivity and enabling them to focus on what they do best: closing deals and building lasting relationships. 
+With our **intuitive interface** and **advanced features**, real estate users can manage their client database with unprecedented ease, enhancing their productivity and enabling them to focus on what they do best: closing deals and building lasting relationships.
 
 Whether you're a seasoned real estate veteran or a rising star in the industry, Realodex is your partner in achieving operational excellence and superior client service.
 
-[Features](#features)**New to Realodex?** Rest assured—this user guide delivers thorough documentation on utilizing Realodex’s current features, provides answers to frequently asked questions, and sheds light on future enhancements. Kickstart your journey by delving into the [Quick Start](#quick-start
+**New to Realodex?** Rest assured—this user guide delivers thorough documentation on utilizing Realodex’s current features, provides answers to frequently asked questions, and sheds light on future enhancements. Kickstart your journey by delving into the [Quick Start](#quick-start
 ) section, crafted to guide you through the functionalities that will elevate your real estate endeavours.
+
 
 <!-- * Table of Contents -->
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
+
+## Navigating the User Guide
+Welcome to the Realodex User Guide! Our goal is to empower you with the knowledge and confidence to unleash the full potential of Realodex.
+
+- **Effortless Navigation**: Use the table of contents for seamless navigation between sections.
+- **Quick Start for New Users**: New to Realodex? Get started with our Quick Start Guide as we handhold you through the process of setting up Realodex.
+- **Features**: Learn more about Realodex's features and how to use them with our Features section.
+- **Tutorial**: Get a step-by-step walkthrough of Realodex's features with our Tutorial.
+  <box type="info">Look out for these boxes for things to note when using Realodex</box>
+  <box type="tip">Look out for these boxes for tips and tricks on how to best use Realodex</box>
+  <box type="warning">These boxes are for more context and warnings</box>
+  <box type="wrong">These boxes are for errors and failure messages</box>
 
 ## Quick start
 
