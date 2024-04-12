@@ -239,15 +239,15 @@ By now, you may have noticed that `SortCommand` extensively interacts with the `
 
 #### [Proposed] Sort Features Beyond v1.4
 
-The `sort` functionality is poised for exciting developments in the future. Although initially focused on sorting 
-clients based on their birthdays to bolster client relationships in a **breadth-first development** approach, 
-we have ambitious plans to extend this feature to other fields. With clients having diverse attributes 
+The `sort` functionality is poised for exciting developments in the future. Although initially focused on sorting
+clients based on their birthdays to bolster client relationships in a **breadth-first development** approach,
+we have ambitious plans to extend this feature to other fields. With clients having diverse attributes
 such as income and housing preferences, implementing `sort` for these fields is definitely on our roadmap.
 
 #### Initialization of new `SortCommand`
 
 To enhance the sorting functionality, we're introducing the capability to sort based on various fields specified by the user. 
-The proposed command format is `sort field`, where `field` represents the attribute by which the sorting will be performed. 
+The proposed command format is `sort field`, where `field` represents the attribute by which the sorting will be performed.
 For instance, users can execute commands like `sort birthday`, `sort income`, or `sort housepref`.
 
 The following sequence diagram illustrates the process
@@ -255,7 +255,7 @@ of introducing this new `sort` operation through the `Logic` component,
 with user-specified fields.
 
 The ref frame sequence diagram is omitted here,
-as it's similar to the [sorting](#implementation-of-sortcommand) sequence illustrated earlier. 
+as it's similar to the [sorting](#implementation-of-sortcommand) sequence illustrated earlier.
 Instead of using the `BirthdayComparator`,
 we'll utilize different comparators based on the user's specified field, such as `IncomeComparator`.
 
@@ -453,7 +453,7 @@ Cons: May be difficult to understand
 
 #### Implementation
 
-The Help feature provides help to the user (depending on user input) by either giving details on how all commands 
+The Help feature provides help to the user (depending on user input) by either giving details on how all commands
 are used in a new window, or a short description in the main window on how an individual, specified command is used.
 The core components for this feature are:
 - HelpCommand: A command that, when executed, either shows a new window summarising help for all commands, or
@@ -502,13 +502,13 @@ Cons: User will need to leave the application and look at a website everytime th
 #### Description
 
 The Help by command feature provides help to the user for an individual command specified by the user,
-printed on the main window. This has been implemented for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` 
+printed on the main window. This has been implemented for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list`
 and `sort` commands only.
 
-Note that although the command format is `COMMAND help`, `clear help` is the command to get the help for the 
-clearRealodex command instead of `clearRealodex help`. We changed the `clear` command to `clearRealodex` to avoid  
-confusion with the `delete` command, as both involve the removal of entries, and `clearRealodex`encapsulates the 
-functionality of clearing the entire app more clearly. However, we kept `clear help` as this syntax is more 
+Note that although the command format is `COMMAND help`, `clear help` is the command to get the help for the
+clearRealodex command instead of `clearRealodex help`. We changed the `clear` command to `clearRealodex` to avoid
+confusion with the `delete` command, as both involve the removal of entries, and `clearRealodex`encapsulates the
+functionality of clearing the entire app more clearly. However, we kept `clear help` as this syntax is more
 user-friendly when seeking help.
 
 #### Example Usage Scenario
@@ -543,7 +543,7 @@ The delete by name feature provides the user the ability to delete a client's pr
 1. User launches the application.
 2. User executes `delete n/NAME`, wanting to delete the profile on the client with name `NAME`.
 3. LogicManager instantiates a RealodexParser, which parses the command into a DeleteCommand with appropriate parameters.
-4. The DeleteCommand is executed, deleting the client's profile with the name `NAME`. 
+4. The DeleteCommand is executed, deleting the client's profile with the name `NAME`.
 5. The UI reflects the updated list of clients.
 
 
@@ -564,7 +564,7 @@ Pros: More convenient for user to not have to put in the prefix `n/`.
 Cons: Harder to implement due to the other delete by index feature, there is no way to differentiate if the user is try to input an index or name.
 
 ### Delete by index feature
-  
+
 #### Description
 
 The delete by index feature provides the user the ability to delete a client's profile based on their index in the list.
@@ -1127,7 +1127,7 @@ testers are expected to do more *exploratory* testing.
 
    2. If there is an existing user, try `delete index` where index is of that user.
       <br>Expected: This user will no longer appear in the `json` file after command is executed.
-   3. If there is no existing user, you may want to refer to above "Corrupted Data" section 
+   3. If there is no existing user, you may want to refer to above "Corrupted Data" section
       to easily get a fresh `json` file with sample data and repeat from step 1.
 
 
