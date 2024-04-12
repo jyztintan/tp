@@ -32,7 +32,9 @@ If you can type fast, Realodex can get your contact management tasks done faster
     <img src="images/quick-start/java-version.png" alt="java-version" style=" width: 700px; margin-bottom: 16px;">
   </div>
 
-3. If Java is not installed or the wrong version is installed, please install Java 11 from the official site.
+3. If Java is not installed or the wrong version is installed,
+   please install Java 11 from the official site
+   or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
 </tab>
 <tab header="Mac"> 
 
@@ -383,11 +385,33 @@ Lists all clients in Realodex.
 Sort clients based on their proximity to their upcoming birthday,
 calculated by the number of days until their next birthday relative to the current date.
 
-<u>Format:</u> `sort`
+**Format:**
+<box>sort</box>
 
-- The current date is based on the local system's time.
-- If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
-- If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list.
+<box type="info" header="Things to note:">
+
+* The current date is based on the local system's time.
+* If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
+</box>
+
+<box type="warning">
+
+* If the list presented is currently a filtered list after using [filter](#filtering-clients-filter),
+  sort will work on the new filtered list.
+</box>
+
+**Usage:**
+
+* Upon `sort`, the list on the screen will be filtered to return a new sorted list.
+
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/sort/sort-day_showcase.png" alt="sort" style=" width: 800px; margin-bottom: 16px;">
+</div>
+<p align="center">
+  <em> <code>sort</code> returns new sorted list by nearing birthday</em>
+</p>
+
+
 
 
 ### Clearing Realodex : `clearRealodex`
