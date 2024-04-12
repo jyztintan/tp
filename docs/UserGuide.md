@@ -400,13 +400,13 @@ calculated by the number of days until their next birthday relative to the curre
   the calculation is based on the number of days until their next birthday next year.
 </box>
 
-<box type="warning">
+<box type="warning" header="Warning:">
 
 * If the list presented is currently a filtered list after using [filter](#filtering-clients-filter),
   sort will work on the new filtered list.
 </box>
 
-**Usage:**
+**Examples:**
 
 * Upon `sort`, the list on the screen will be filtered to return a new sorted list.
 
@@ -434,11 +434,11 @@ is used so that users understand that this command <b>clears all entries in Real
 preventing potential confusion with the delete command and accidental clearing of all entries.
 </box>
 
-<box type="warning">
+<box type="warning" header="Warning:">
 Be careful with <code>clearRealodex</code>, you will be unable to undo this operation!
   </box>
 
-**Usage:**
+**Examples:**
 
 * Upon `clearRealodex`, Realodex will clear and return an empty list.
 <div style="display:flex; justify-content: center; align-items:center;">
