@@ -75,6 +75,25 @@ To ensure you have a smooth and intuitive experience, this guide utilizes specif
 ---
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
+## Navigating the GUI
+
+Realodex has a Graphical User Interface (GUI) designed to provide a seamless user experience. The GUI is divided into several components. 
+Here is a brief overview of the GUI components:
+
+### Basic Orientation
+<a href="images/navigating-gui/basic_orientation.png">
+  <img src="images/navigating-gui/basic_orientation.png" alt="basic orientation" style="width:100%">
+  </a>
+
+### Client Profile
+<a href="images/navigating-gui/client_profile.png">
+  <img src="images/navigating-gui/client_profile.png" alt="client profile" style="width:100%">
+  </a>
+
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -116,10 +135,10 @@ Adds a client to Realodex.
  <a href="images/add-command/missing_fields_error.png">
    <img src="images/add-command/missing_fields_error.png" alt="missing compulsory fields" style="width:150%">
    </a>
-- Except `t/TAG`, there can only be one of each field in the add command.
-<a href="images/add-command/excessive_fields_error.png">
-  <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:100%">
-  </a>
+    - Except `t/TAG`, there can only be one of each field in the add command.
+    <a href="images/add-command/excessive_fields_error.png">
+      <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:100%">
+      </a>
 - For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive).
   - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown.
 - Note that the `r/REMARK` and `b/BIRTHDAY` fields are optional, enclosed in `[]`. You may choose to omit them.
