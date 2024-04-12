@@ -246,7 +246,7 @@ such as income and housing preferences, implementing `sort` for these fields is 
 
 #### Initialization of new `SortCommand`
 
-To enhance the sorting functionality, we're introducing the capability to sort based on various fields specified by the user. 
+To enhance the sorting functionality, we're introducing the capability to sort based on various fields specified by the user.
 The proposed command format is `sort field`, where `field` represents the attribute by which the sorting will be performed.
 For instance, users can execute commands like `sort birthday`, `sort income`, or `sort housepref`.
 
