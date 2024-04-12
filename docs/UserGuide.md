@@ -441,7 +441,7 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
     * Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
     * Example: `b/22Feb2002`
     1. The date must not be in the future.
-    2. The date must exist in the Gregorian calendar. (`b/29Feb2023` is not allowed)
+    2. The date must exist in the Gregorian calendar. (`b/29Feb2023` is not allowed as it is not a valid day to begin with)
     3. The day "DD" must be numeric. For 1st-9th day of the month, the 0 need not be present. (Example: `2Feb2002`)
     4. The month "MMM" refers to the first 3 letters of the month (case-insensitive)
     5. The year "YYYY" must be in full and greater than or equal to 1000. (`b/29Feb02` is not allowed)
