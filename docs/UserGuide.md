@@ -83,11 +83,13 @@ Realodex has a Graphical User Interface (GUI) designed to provide a seamless use
 Here is a brief overview of the GUI components:
 
 ### Basic Orientation
+
 <a href="images/navigating-gui/basic_orientation.png">
   <img src="images/navigating-gui/basic_orientation.png" alt="basic orientation" style="width:100%">
   </a>
 
 ### Client Profile
+
 <a href="images/navigating-gui/client_profile.png">
   <img src="images/navigating-gui/client_profile.png" alt="client profile" style="width:100%">
   </a>
