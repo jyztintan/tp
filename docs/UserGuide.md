@@ -380,6 +380,11 @@ Lists all clients in Realodex.
 
 <u>Format:</u> `list`
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+
 ### Sort : `sort`
 
 Sort clients based on their proximity to their upcoming birthday,
