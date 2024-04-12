@@ -171,11 +171,11 @@ to look for our new client.
    </a>
 6. **Editing clients.** Your new client John Doe has gotten a pay raise! Let's edit his income to reflect this change. First, let's take note of his index number.
    <a href="images/tutorial/IndexJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
-   <img src="images/tutorial/IndexJohnDoe.png" alt="duplicate person" style="width:70%">
+   <img src="images/tutorial/IndexJohnDoe.png" alt="duplicate person" style="width:83.3%; margin-right: 130px;">
    </a>
 Since John's index number is 7, key in `edit 7 i/88888`. Notice that his income will change to 88888!
    <a href="images/tutorial/IncomeJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
-   <img src="images/tutorial/IncomeJohnDoe.png" alt="duplicate person" style="width:70%">
+   <img src="images/tutorial/IncomeJohnDoe.png" alt="duplicate person" style="width:83.4%; margin-right: 130px;">
    </a>
 7. **Deleting a client.** We are now done with John Doe. Let us delete him from Realodex. Key in `delete n/John Doe`. A message will be printed to indicate successful deletion. Notice that the last client is now Roy, not John as he has been deleted.
    <a href="images/tutorial/DeleteJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
