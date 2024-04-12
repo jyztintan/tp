@@ -26,19 +26,6 @@ Whether you're a seasoned real estate veteran or a rising star in the industry, 
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
-
-## Navigating the User Guide
-Welcome to the Realodex User Guide! Our goal is to empower you with the knowledge and confidence to unleash the full potential of Realodex.
-
-- **Effortless Navigation**: Use the table of contents for seamless navigation between sections.
-- **Quick Start for New Users**: New to Realodex? Get started with our Quick Start Guide as we handhold you through the process of setting up Realodex.
-- **Features**: Learn more about Realodex's features and how to use them with our Features section.
-- **Tutorial**: Get a step-by-step walkthrough of Realodex's features with our Tutorial.
-  <box type="info">Look out for these boxes for things to note when using Realodex</box>
-  <box type="tip">Look out for these boxes for tips and tricks on how to best use Realodex</box>
-  <box type="warning">These boxes are for more context and warnings</box>
-  <box type="wrong">These boxes are for errors and failure messages</box>
-
 ## Quick start
 
 1. Ensure you have Java `11` or above installed in your computer.
@@ -63,26 +50,18 @@ command to run the application.<br>
 
 1. Refer to the [Features](#features) below for details of each command.
 ----
-# Using this Guide
+## Using this Guide
+Our goal is to empower you with the knowledge and confidence to unleash the full potential of Realodex. 
 
-To ensure you have a smooth and intuitive experience, this guide utilizes specific formatting conventions and icons. Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
-
-## Formatting Conventions
-| Format        | Meaning                                                                                                                                                                                                                 |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Bold**      | Used to **draw attention** to key concepts and actions you need to perform. When you see text in bold, it emphasises **important information.**                                                                         |
-| _Italics_     | Reserved for introducing new terms and phrases that are essential to understanding Realodex. Italicized text may also appear in subheadings beneath screenshots to succinctly describe what you're seeing in the image. |
-| `Code blocks` | Actual commands that you may enter into the Realodex CLI will be referred to in these code blocks.                                                                                                                      |
-
-
-## Icon Legend
-
-| Icon | Meaning                                                                                                    |
-|------|------------------------------------------------------------------------------------------------------------|
-| 💡   | Tips, helpful suggestions and best practices to optimize the Realodex user experience experience.          |
-| ⚠️   | Warning for potential pitfalls or important considerations that could impact the Realodex user experience. |
-| 🗒️  | Additional Notes to keep track of in the features.                                                         |
-| 👀   | Upcoming Features to look out for. Stay tuned for exciting new features and enhancements in Realodex.      |
+We have equipped Realodex with the following features.
+- **Effortless Navigation**: Use the table of contents for seamless navigation between sections.
+- **Quick Start for New Users**: New to Realodex? Get started with our Quick Start Guide as we handhold you through the process of setting up Realodex.
+- **Features**: Learn more about Realodex's features and how to use them with our Features section.
+- **Tutorial**: Get a step-by-step walkthrough of Realodex's features with our Tutorial.
+  <box type="info">Look out for these boxes for things to note when using Realodex</box>
+  <box type="tip">Look out for these boxes for tips and tricks on how to best use Realodex</box>
+  <box type="warning">These boxes are for more context and warnings</box>
+  <box type="wrong">These boxes are for errors and failure messages</box>
 
 ## Glossary
 
@@ -117,7 +96,7 @@ To ensure you have a smooth and intuitive experience, this guide utilizes specif
    e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` which is not a whitespace character.
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME ....`, `NAME` is a parameter which can be used as `add n/John Doe ....`.
-  <br>For more details on the parameters, do refer to the [Field Constraints](#field-constraints).
+  <br> For more details on the parameters, do refer to the [Field Constraints](#field-constraints).
 
 * Parameters enclosed in `[]` are optional to input.<br>e.g. `[r/REMARK]` indicates an optional input field for that command.
 
@@ -134,36 +113,59 @@ Adds a client to Realodex.
 
 <u>Format</u>: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSING_TYPE [r/REMARK] [b/BIRTHDAY]`
 
-- `n/NAME`,`p/PHONE`,`i/INCOME`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG` and `h/HOUSING_TYPE` are compulsory fields.
-  - If any of the above fields are missed out in the `add` command, you will receive an error message informing you of the compulsory fields that you missed.
-  - For example, if only `n/NAME` and `i/INCOME` are present, you will be alerted that you are missing the fields `p/PHONE`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG`and`h/HOUSINGTYPE`.
- <a href="images/add-command/missing_fields_error.png">
-   <img src="images/add-command/missing_fields_error.png" alt="missing compulsory fields" style="width:150%">
-   </a>
-- Except `t/TAG`, there can only be one of each field in the add command.
-<a href="images/add-command/excessive_fields_error.png">
-  <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:100%">
-  </a>
-- For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive).
-  - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown.
-- Note that the `r/REMARK` and `b/BIRTHDAY` fields are optional, enclosed in `[]`. You may choose to omit them.
-  - If you include the prefix with a blank input, the birthday and remark fields will be taken as not specified.
-    - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified.
-- Each field has constraints to the inputs it can accept. Do refer to the [Field Constraints](#field-constraints) for more information.
-  - If any of the constraints are violated, you will receive an error message detailing the fields with invalid formats.
-  - For example, if `n/NAME`,`p/PHONE` and `t/TAG` fields do not fulfil the contraints, you will receive 3 error messages as shown.
-    <a href="parsing_errors.png">
-    <img src="parsing_errors.png" alt="duplicate person" style="width:150%">
-    </a>
-- You **cannot** have duplicate persons with the same name in Realodex.
-  - Names are case-insensitive as described in [Field Constraints](#field-constraints).
-  - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
-    <a href="images/add-command/duplicate_person_error.png">
-    <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:100%">
-    </a>
+<box type="info">
+
+  * `n/NAME`,`p/PHONE`,`i/INCOME`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG` and `h/HOUSING_TYPE` are compulsory fields. 
+    * If any of the above fields are missed out in the `add` command, you will receive an error message informing you of the compulsory fields that you missed. 
+  * Except `t/TAG`, there can only be one of each field in the add command.
+  * 
+</box>
+
+<box type="warning">
+
+* There are specific requirements for each field. 
+* Refer to [Field Constraints](#field-constraints) for more information.
+</box>
+
+
+[//]: # (- For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` &#40;case insensitive&#41;.)
+
+[//]: # (  - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown.)
+
+[//]: # (- Note that the `r/REMARK` and `b/BIRTHDAY` fields are optional, enclosed in `[]`. You may choose to omit them.)
+
+[//]: # (  - If you include the prefix with a blank input, the birthday and remark fields will be taken as not specified.)
+
+[//]: # (    - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified.)
+
+[//]: # (- Each field has constraints to the inputs it can accept. Do refer to the [Field Constraints]&#40;#field-constraints&#41; for more information.)
+
+[//]: # (  - If any of the constraints are violated, you will receive an error message detailing the fields with invalid formats.)
+
+[//]: # (  - For example, if `n/NAME`,`p/PHONE` and `t/TAG` fields do not fulfil the contraints, you will receive 3 error messages as shown.)
+
+[//]: # (    <a href="parsing_errors.png">)
+
+[//]: # (    <img src="parsing_errors.png" alt="duplicate person" style="width:150%">)
+
+[//]: # (    </a>)
+
+[//]: # (- You **cannot** have duplicate persons with the same name in Realodex.)
+
+[//]: # (  - Names are case-insensitive as described in [Field Constraints]&#40;#field-constraints&#41;.)
+
+[//]: # (  - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".)
+
+[//]: # (    <a href="images/add-command/duplicate_person_error.png">)
+
+[//]: # (    <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:100%">)
+
+[//]: # (    </a>)
 
 <u>Examples</u>:
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
+  * Adds John Doe with specified details into Realodex
+  * ![add-example.png](add-example.png)
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
 ### Deleting a client : `delete`
