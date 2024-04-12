@@ -391,7 +391,8 @@ calculated by the number of days until their next birthday relative to the curre
 <box type="info" header="Things to note:">
 
 * The current date is based on the local system's time.
-* If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
+* If their birthday has already passed,
+  the calculation is based on the number of days until their next birthday next year.
 </box>
 
 <box type="warning">
@@ -411,16 +412,42 @@ calculated by the number of days until their next birthday relative to the curre
   <em> <code>sort</code> returns new sorted list by nearing birthday</em>
 </p>
 
+--------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
 
 
 ### Clearing Realodex : `clearRealodex`
 
 Clears all clients in Realodex.
 
-💡A longer command, `clearRealodex` is used so that users understand that this command **clears all entries in Realodex**, preventing potential confusion with the delete command and accidental clearing of all entries.
+**Format:**
+<box>clearRealodex</box>
 
-<u>Format:</u> `clearRealodex`
+<box type="tip">A longer command, <code>clearRealodex</code>
+is used so that users understand that this command <b>clears all entries in Realodex</b>,
+preventing potential confusion with the delete command and accidental clearing of all entries.
+</box>
+
+<box type="warning">
+Be careful with <code>clearRealodex</code>, you will be unable to undo this operation!
+  </box>
+
+**Usage:**
+
+* Upon `clearRealodex`, Realodex will clear and return an empty list.
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/misc_features/clear.png" alt="clear" style=" width: 900px; margin-bottom: 16px;">
+</div>
+<p align="center">
+  <em> <code>clear</code> clears list of Realodex</em>
+</p>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+
 
 ### Help : `help`
 
