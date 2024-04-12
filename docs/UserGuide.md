@@ -252,127 +252,160 @@ Edits specified details of the client.
 
 ### Filtering clients: `filter`
 
-The filter command in Realodex allows you to narrow down your list of clients by specifying a keyphrase
-related to one of the client's attributes: name, remark, tag, birthday month, or housing type.
-This feature is particularly useful when you need to focus on a
-subset of your client database that meets certain criteria.
-Note that the search is **case-insensitive** for all input parameters.
+The filter command in Realodex allows you to narrow down your list of clients by specifying one of the client's attributes: name, remark, tag, birthday month, or housing type.
+This feature is particularly useful for targetting a
+specific segment of your client database that fulfills a certain criteria.
 
->
-> When performing multiple filter operations in sequence,
-> each new filter is applied to the original, full list of clients, not the subset produced by the previous filter.
-> This approach ensures clarity and consistency in search results.
+<box type="info" header="Things to note:">
+
+- The next command will apply to the filtered list of clients.
+- The search is **case-insensitive** for all input parameters.
+
+</box>
+
 
 #### Filter By Name
-<u>Format:</u> `filter n/KEYPHRASE`
+Returns the list of clients whose names contain the specified keyphrase.
 
-- Returns the list of clients whose names contain the specified keyphrase.
-- Keyphrase input should be in valid format for names (alphanumeric) and non-empty.
-  - `filter n/james` matches person with the name "James".
-- **Partial fragments** of names will still be matched.
-  - `filter n/Udh` matches a person with the name "Udhaya".
-- **Comprehensive searching**, returning all persons with names containing the keyphrase.
-  - `filter n/Al` returns persons named "Alicia", "Allysa", "Jamal".
+**Format:** 
+```
+filter n/KEYPHRASE
+```
 
-<u>Example:</u>
+<box type="warning" header="Warning:">
+
+- Name input should be alphanumeric and non-empty.
+</box>
+
+**Example:**
+1. Run `filter n/Li`.
+2. Persons with names containing "li" are returned.
+3. In this example, "Charlotte Oliveiro" and "David Li" are returned. 
 
 <a href="images/filter/filterByNameScreenshot.png">
 <img src="images/filter/filterByNameScreenshot.png" alt="filterByNameScreenshot" style="width:150%">
 </a>
-<p align="center">
-  <em> <code>filter n/Li</code> returns persons with names like "Charlotte Oliveiro" and "David Li"</em>
-</p>
+
+<br>
 
 #### Filter By Tag
-<u>Format:</u> `filter t/TAG`
+Returns the list of clients with the specified tag(s).
 
-- Returns the list of clients with the specified tag(s).
-- Tag input should be valid and non-empty - "Buyer" or "Seller".
-  - `filter t/buyer` matches person with tag "Buyer".
-- **Inclusive matching** of persons with multiple tags, as long as they possess the
-  tag(s) specified in the input.
-  - `filter t/buyer` matches person with tags "Buyer" and "Seller".
-- Supports searching with **multiple tags**.
-  - `filter t/Buyer t/Seller` only returns persons with both "Buyer" and "Seller" tags.
-- **Comprehensive searching**, returning all persons' with the specified tag(s).
+**Format:**
+```
+filter t/TAG(s)
+```
 
-<u>Examples:</u>
-<p align="center">
-      <a href="images/filter/filterByTagSeller.png">
+<box type="info" header="Things to note:">
+
+- Filtering with the "Buyer" or "Seller" tag retrieves all clients with the respective tag.
+- Filtering by multiple tags is supported, `filter t/Buyer t/Seller`, returns clients who possess both buyer and seller tags.
+</box>
+
+
+<box type="warning" header="Warning:">
+
+- Input tag(s) should only be "Buyer" or "Seller"
+</box>
+
+**Examples:**
+
+1. Run `filter t/seller`.
+2. Persons with "Seller" tag are returned.
+
+    <a href="images/filter/filterByTagSeller.png">
       <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:150%">
       </a>
-  <em> <code>filter t/seller</code> returns persons with "Seller" Tag</em>
-</p>
-      <a href="images/filter/filterByTagBuyerSeller.png">
+
+---
+
+1. Run `filter t/buyer t/seller`. 
+2. Persons with both "Buyer" and "Seller" tags are returned.
+
+   <a href="images/filter/filterByTagBuyerSeller.png">
       <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:150%">
       </a>
 
-<p align="center">
-  <em> <code>filter t/buyer t/seller</code> only returns persons with "Buyer" and "Seller" Tag</em>
-</p>
-
 #### Filter By Housing Type
-<u>Format:</u> `filter h/HOUSING_TYPE`
+Returns the list of clients with the specified preferred housing type.
 
-- Returns the list of clients with the specified housing type preference.
-- Housing Type input should be valid and non-empty - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
-  - `filter h/hdb` matches person with housing type "HDB".
-- **Comprehensive searching**, returning all persons with the specified housing type.
-  - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
+**Format:**
+```
+filter h/HOUSING_TYPE
+```
 
-<u>Example:</u>
+<box type="warning" header="Warning:">
+
+- Input housing type should be "HDB", "Condominium", "Landed Property" or "Good Class Bungalow"
+</box>
+
+**Examples:** 
+1. Run `filter h/Good Class Bungalow`.
+2. Persons with both "Good Class Bungalow" housing preference are returned.
 
   <a href="images/filter/filterByHousingType.png">
   <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
   </a>
-<p align="center">
-  <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
-</p>
 
 #### Filter By Remark
-<u>Format:</u> `filter r/KEYPHRASE`
+Returns the list of clients whose remarks include the specified keyphrase.
 
-- Returns the list of clients whose remarks include the specified keyphrase.
-- Keyphrase input should be non-empty. 
-This is an intentional design choice to ensure that the command is used for targeted searches, preventing the potential misinterpretation of an empty keyphrase as a request to list all clients.
-- Important: The remarks for the `filter r/` command must not contain any other prefixes to prevent parsing errors. 
-> The command `filter r/ my tag is t/buyer` would cause an error because the system interprets `t/` as the start of a new prefix.
-> To avoid this, ensure that the remark does not contain any spaces followed by slashes that could be misconstrued as additional prefixes.
-  - `filter r/FOOD` matches person with remark "He loves food."
-- **Partial fragments** of remarks will still be matched.
+**Format:**
+```
+filter r/KEYPHRASE
+```
+<box type="info" header="Things to note:">
+
+- Partial fragments of remarks will still be matched.
   - `filter r/hand` matches person with remark "handsome".
-- **Comprehensive searching**, returning all persons' names containing the keyword .
-  - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
-    
-<u>Example:</u>
+     
+  </box>
+   
+<box type="warning" header="Warning:">
+
+- Input remark must be non-empty, preventing empty remark input as a request to list all clients.
+- The remarks for the filter r/ command must not contain any other prefixes which could be misconstrued as additional prefixes.
+  <box type="wrong" header="Error:">
+
+  - The command `filter r/ my tag is t/buyer` would cause an error because the system interprets t/ as the start of a new prefix. 
+    </box>
+  
+</box>
+
+**Example:**
+1. Run `filter r/eat`.
+2. Persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..." are returned.
 
   <a href="images/filter/filterByRemarkScreenshot.png">
     <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:150%">
     </a>
-<p align="center">
-  <em> <code>filter r/eat</code> returns persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..."</em>
-</p>
 
-#### Filter By Birthday
-<u>Format:</u> `filter b/MONTH`
 
-- Returns the list of clients whose birthdays are in the specified month.
-- Month input should be a valid month in `MMM` format and non-empty.
-  - Filtering by month "September" should be `filter b/Sep`
-    - `filter b/SEP` matches person with Birthday in September.
-- **Comprehensive searching**, returning all persons with birthdays in the specified month.
-    - `filter b/Jan` returns all persons with birthday in January.
-- Persons who do not have a specified birthday will **not be included** in the search results.
+#### Filter By Birthday Month
+Returns the list of clients whose birthdays fall in the specified month.
 
-<u>Example:</u>
+**Format:**
+```
+filter b/MONTH
+```
+
+<box type="info" header="Things to note:">
+
+- Month input should be in 3-letter abbrieviation (MMM) format. 
+  - "Jan" for January
+  - "Feb" for February
+
+</box>
+
+
+**Example:**
+
+1. Run `filter b/Apr`
+2. Persons with birthday in April are returned.
 
 <a href="images/filter/filterByBirthday.png">
   <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:150%">
   </a>
-
-<p align="center">
-  <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
-</p>
 
 ### Listing clients : `list`
 
