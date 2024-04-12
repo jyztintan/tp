@@ -5,10 +5,21 @@
 ---
 
 # Realodex User Guide
+## Welcome to Realodex!
+**Realodex** is your ultimate client management tool tailored specifically for the dynamic needs of real estate professionals. Designed to streamline the day-to-day operations of realtors, brokers, and real estate agencies, Realodex offers seamless functionality to ***add***, ***edit***, ***search***, and ***delete*** client information effortlessly.
 
-Realodex is a **desktop app for managing client contacts, optimized for use via a
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, Realodex can get your contact management tasks done faster than traditional GUI apps.
+- **Add**: Quickly input new client data, from contact details to property preferences, building a rich, actionable database.
+- **Edit**: Easily update client information to keep profiles accurate and comprehensive, reflecting the latest changes in their needs or status.
+- **Search**: Instantly locate client profiles using robust filters, enabling swift responses and tailored service.
+- **Delete**: Safely remove outdated information, ensuring your database is current and compliant.
+
+## Why Choose Realodex?
+With our **intuitive interface** and **advanced features**, real estate users can manage their client database with unprecedented ease, enhancing their productivity and enabling them to focus on what they do best: closing deals and building lasting relationships. 
+
+Whether you're a seasoned real estate veteran or a rising star in the industry, Realodex is your partner in achieving operational excellence and superior client service.
+
+[Features](#features)**New to Realodex?** Rest assured—this user guide delivers thorough documentation on utilizing Realodex’s current features, provides answers to frequently asked questions, and sheds light on future enhancements. Kickstart your journey by delving into the [Quick Start](#quick-start
+) section, crafted to guide you through the functionalities that will elevate your real estate endeavours.
 
 <!-- * Table of Contents -->
 <page-nav-print />
