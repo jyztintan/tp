@@ -471,6 +471,10 @@ Generates a pop-up window, which is a summarized version of the User Guide and i
   <em>Help window pop up with success message</em>
 </p>
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ### Help (Individual Commands) : `COMMAND help`
 
 Shows the help message for the specified command only.
@@ -495,13 +499,21 @@ Shows the help message for the specified command only.
   <em> <code>add help</code> provides the help message for the <code>add</code> command</em>
 </p>
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Exiting the program : `exit`
 
-Exits the program.
+Exits the program and closes the window.
 
-<u>Format:</u> `exit`
-- Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
+**Format:**
+<box>exit</box>
+
+<box type="info" header="Things to note:">
+
+* Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
+  </box>
 
 ### File Data
 
