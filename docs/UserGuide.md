@@ -199,7 +199,7 @@ specific segment of your client database that fulfills a certain criteria.
 
 <box type="info" header="Things to note:">
 
-- The next following command will apply to the filtered list of clients.
+- The next command will apply to the filtered list of clients.
 - The search is **case-insensitive** for all input parameters.
 
 </box>
@@ -215,7 +215,7 @@ filter n/KEYPHRASE
 
 <box type="warning" header="Warning:">
 
-- Input should be in valid format for names (alphanumeric) and non-empty.
+- Name input should be alphanumeric and non-empty.
 </box>
 
 **Example:**
@@ -239,8 +239,8 @@ filter t/TAG(s)
 
 <box type="info" header="Things to note:">
 
-- Filtering with the "Buyer" or "Seller" tag retrieves all clients who possess the respective tag.
-- Filtering by multiple tags is supported, `filter t/Buyer t/Seller`, returns clients who are both a buyer and seller.
+- Filtering with the "Buyer" or "Seller" tag retrieves all clients with the respective tag.
+- Filtering by multiple tags is supported, `filter t/Buyer t/Seller`, returns clients who possess both buyer and seller tags.
 </box>
 
 
@@ -268,7 +268,7 @@ filter t/TAG(s)
       </a>
 
 #### Filter By Housing Type
-Returns the list of clients with the specified housing type preference.
+Returns the list of clients with the specified preferred housing type.
 
 **Format:**
 ```
@@ -304,7 +304,7 @@ filter r/KEYPHRASE
    
 <box type="warning" header="Warning:">
 
-- Remark input should be non-empty, preventing the potential misinterpretation of an empty keyphrase as a request to list all clients.
+- Input remark must be non-empty, preventing empty remark input as a request to list all clients.
 - The remarks for the filter r/ command must not contain any other prefixes which could be misconstrued as additional prefixes.
   <box type="wrong" header="Error:">
 
@@ -323,7 +323,7 @@ filter r/KEYPHRASE
 
 
 #### Filter By Birthday Month
-Returns the list of clients whose birthdays are in the specified month.
+Returns the list of clients whose birthdays fall in the specified month.
 
 **Format:**
 ```
@@ -332,19 +332,21 @@ filter b/MONTH
 
 <box type="info" header="Things to note:">
 
-- Month input should be in MMM format. For example, "Sep" for September.
+- Month input should be in 3-letter abbrieviation (MMM) format. 
+  - "Jan" for January
+  - "Feb" for February
 
-  </box>
+</box>
 
 
 **Example:**
 
+1. Run `filter b/Apr`
+2. Persons with birthday in April are returned.
+
 <a href="images/filter/filterByBirthday.png">
   <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:150%">
   </a>
-<p align="center">
-  <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
-</p>
 
 ### Listing clients : `list`
 
