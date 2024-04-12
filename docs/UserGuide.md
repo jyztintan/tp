@@ -135,6 +135,63 @@ To ensure you have a smooth and intuitive experience, this guide utilizes specif
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Realodex Tutorial
+If this is your first time here, we encourage you to follow along in this short tutorial to get a feel of how Realodex works.
+Let's begin!
+
+1. **Starting Realodex.** Launch Realodex. The app will show up as follows:
+   <a href="images/tutorial/Launch.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/Launch.png" alt="duplicate person" style="width:70%">
+   </a>
+
+
+<box type="info">If this is your first time, some sample entries will be loaded for you.</box>
+
+2. **Adding a client.** Let us try to add a new client into Realodex. Key in `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer t/seller h/HDB r/Has 3 cats b/01May2009`
+and press Enter. New client John Doe has now been added!
+   <a href="images/tutorial/AddJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/AddJohnDoe.png" alt="duplicate person" style="width:70%">
+   </a>
+
+
+3. **Add more clients.** Congratulations! You have just added your first ever client into Realodex. Feel free to try adding more clients before proceeding!
+Here are some extra clients you may try adding:
+   - `add n/James p/91234567 i/5000 e/james@gmail.com a/Jurong West Central 1 f/4 t/buyer h/HDB r/Likes to eat. b/01Sep1990`
+   - `add n/Benedict p/98877665 i/8000 e/ben@gmail.com a/University Town, NUS f/6 t/seller h/CONDOMINIUM r/Favourite colour is blue. b/24Jun2000`
+
+4. **Filter clients.** Notice that the list is a little crowded now and we want to search for John. Key in `filter n/John`
+to look for our new client.
+   <a href="images/tutorial/FilterJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/FilterJohnDoe.png" alt="duplicate person" style="width:70%">
+   </a>
+
+5. **Listing all clients.** We are now done looking at John's details, let us bring up the whole list again. Simply key in `list`.
+   <a href="images/tutorial/List.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/List.png" alt="duplicate person" style="width:70%">
+   </a>
+6. **Editing clients.** Your new client John Doe has gotten a pay raise! Let's edit his income to reflect this change. First, let's take note of his index number.
+   <a href="images/tutorial/IndexJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/IndexJohnDoe.png" alt="duplicate person" style="width:70%">
+   </a>
+Since John's index number is 7, key in `edit 7 i/88888`. Notice that his income will change to 88888!
+   <a href="images/tutorial/IncomeJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/IncomeJohnDoe.png" alt="duplicate person" style="width:70%">
+   </a>
+7. **Deleting a client.** We are now done with John Doe. Let us delete him from Realodex. Key in `delete n/John Doe`. A message will be printed to indicate successful deletion. Notice that the last client is now Roy, not John as he has been deleted.
+   <a href="images/tutorial/DeleteJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/DeleteJohnDoe.png" alt="duplicate person" style="width:70%">
+   </a>
+8. **Getting Help.** Should you need help on how to use the commands, you can key in `help`.
+   <a href="images/tutorial/HelpWindow.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/HelpWindow.png" alt="duplicate person" style="width:70%">
+   </a>
+You may also get help for individual commands. Try it out with `delete help`. A message showing you how to use the `delete` command will be shown.
+   <a href="images/tutorial/DeleteHelp.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/DeleteHelp.png" alt="duplicate person" style="width:70%">
+   </a>
+
+Congratulations! You are now ready to use Realodex! Read on to learn more about more features. 
+
 ## Features
 
 <box type="info" seamless>
