@@ -515,6 +515,10 @@ Exits the program and closes the window.
 * Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
   </box>
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ### File Data
 
 The JSON file that stores the data of your contacts can be found in a folder named `data`, in the same folder/directory as the Realodex app. (e.g. if you
