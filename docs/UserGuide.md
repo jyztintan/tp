@@ -197,9 +197,9 @@ Delete the client with the specified `NAME` in the current Realodex list (filter
 </p>
 
 <box type="info">
-💡 `NAME` is case-insensitive, i.e. `delete n/Udhaya Shanmugan` is the same as `delete n/udhAYA shanmUgAn`
-⚠️ If the current list is filtered, `delete n/NAME` for a `NAME` that is in the **unfiltered** list but not the current **filtered** list will not delete the client with `NAME`!
-⚠️ If `NAME` is **not found** in the **current** list, error message will be shown "The client name provided is invalid".
+💡 `NAME` is case-insensitive, i.e. `delete n/Udhaya Shanmugan` is the same as `delete n/udhAYA shanmUgAn` <br>
+⚠️ If the current list is filtered, `delete n/NAME` for a `NAME` that is in the **unfiltered** list but not the current **filtered** list will not delete the client with `NAME`! <br>
+⚠️ If `NAME` is **not found** in the **current** list, error message will be shown "The client name provided is invalid". <br>
 </box>
 
 #### Delete By Index
@@ -231,31 +231,55 @@ Deletes the client of the specified `INDEX` in Realodex.
 </p>
 
 <box type="info">
-💡 If you are currently filtered, the index will be based on the filtered list.
-* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
-* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
+💡 If you are currently filtered, the index will be based on the filtered list. <br>
+* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid." <br>
+* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer." <br>
 
 </box>
 
 [Back to Table of Contents](#table-of-contents)
 
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 ### Editing clients : `edit`
 
 Edits specified details of the client.
 
-<u>Format</u>: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
+**Format:**
+<box>`edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`</box>
 
-- If `INDEX` is `3`, the 3rd client's information will be edited.
-- 💡 If you are currently filtered, the index will be based on the filtered list.
-- It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
-- The current information will be overwritten with the input provided.
-- When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
-- All fields must follow the respective [Field Constraints](#field-constraints).
+**Examples:**
+* `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's (if they exist) name to "Kylie", income to "3333" and family size to "5".
 
-<u>Examples</u>:
+<p align="center">
+  <a href="images/delete/before_execute_edit.png">
+  <img src="images/delete/before_execute_edit.png" alt="before execute edit" style="width:100%">
+  </a>
+  <em> Client list before entering command <code>edit 2 n/Kylie  i/3333 f/5</code></em>
+</p>
 
-- `edit 1 p/999` will overwrite the 1st client's phone number to "999".
-- `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's name to "Kylie", income to "3333" and family size to "5".
+
+<p align="center">
+  <a href="images/delete/after_execute_edit.png">
+  <img src="images/delete/after_execute_edit.png" alt="after execute edit" style="width:100%">
+  </a>
+  <em> Client list after entering command <code>edit 2 n/Kylie  i/3333 f/5</code></em>
+</p>
+
+<box type="info">
+💡 If you are currently filtered, the index will be based on the filtered list.<br>
+
+💡 It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).<br>
+
+💡 The current information will be overwritten with the input provided. <br>
+⚠️ When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`. <br>
+🗒️ All fields must follow the respective [Field Constraints](#field-constraints).<br>
+</box>
+
+[Back to Table of Contents](#table-of-contents)
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ### Filtering clients: `filter`
 
