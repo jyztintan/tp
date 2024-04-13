@@ -164,15 +164,19 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 * Deletes the client of the specified `INDEX` in Realodex.
 * 💡 If you are currently filtered, the index will be based on the filtered list.
 * If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
-* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
+  to indicate that this client index does not exist.
+  * This does not apply to unrealistic index values of >= `2147483648` which results in integer overflow as expected
+     and will no longer be interpreted as a non-zero unsigned integer.
+    Hence, below error message applies.
+* If `INDEX` is a **non-zero unsigned integer**, error message will be shown "Index is not a non-zero unsigned integer."
 
 <u>Example</u>:
 * `delete 4` deletes the 4th client listed in Realodex, provided there are 4 or more entries.
 
 Errors:
-- If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name.".
-- If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both.".
-- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME".
+- If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name."
+- If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both."
+- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME."
 ### Editing clients : `edit`
 
 Edits specified details of the client.
@@ -180,8 +184,14 @@ Edits specified details of the client.
 <u>Format</u>: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
 
 - If `INDEX` is `3`, the 3rd client's information will be edited.
-- 💡 If you are currently filtered, the index will be based on the filtered list.
-- It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
+- If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
+    to indicate that this client index does not exist.
+  * This does not apply to unrealistic index values of >= `2147483648` which results in integer overflow as expected
+    and will no longer be interpreted as a non-zero unsigned integer.
+    Hence, below error message applies.
+- If `INDEX` is a **non-zero unsigned integer**, error message will be shown "Invalid command format..."
+- 💡 If you currently have a filtered list present, the index will be based on the filtered list.
+- It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is **at least 1**).
 - The current information will be overwritten with the input provided.
 - When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
 - All fields must follow the respective [Field Constraints](#field-constraints).
@@ -399,19 +409,21 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
 
 --------------------------------------------------------------------------------------------------------------------
 ## Field Constraints
-* NAME:
+* `NAME`:
     * Should only contain Alphanumeric characters and must be unique.
-    1. Names are case-insensitive.
+    1. While we disallow `s/o` as `/` is used as a command delimiter, a simple and reasonable work-around for this 
+       until it is supported, is to use a workaround such as using `s o` or `son of`).
+  2. Names are case-insensitive.
   2. Number of spaces between words in the name do not matter.
   3. Although names are displayed in full capitalisation, they are still recorded in a case-insensitive manner. Hence, an input with the same name but different capitalisation will be considered a duplicate entry.
     * Example: `n/John Doe` and `n/john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
-* PHONE:
+* `PHONE`:
     * Should only contain numbers, and should be at least 3 digits long.
     * Example: `p/81234567`
-* INCOME:
+* `INCOME`:
     * Income should be an integer and should be at least 0.
     * Example: `i/20000`
-* EMAIL:
+* `EMAIL`:
     * Emails should be of the format local-part@domain and adhere to the following constraints:
     1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-).
     2. The local-part may not start or end with any special characters.
@@ -421,23 +433,25 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
         * have each domain label start and end with alphanumeric characters
         * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
     * Example: `e/realodex-admin@gmail.com`
-* ADDRESS: Current residential address
+* `ADDRESS`: Current residential address
     * Must not include other command prefixes (`a/`,`b/`,`e/`,`f/`,`h/`,`i/`,`n/`,`p/`,`r/`,`t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
     * Example: `a/6 College Ave West`
-* FAMILY: Immediate family size
-    * Should be an integer greater than 1.
+* `FAMILY`: Immediate family size
+    * It should be an integer greater than 1.
+    * Value should not contain decimal points as this is not expected for whole number type data, a simple workaround is
+      to simply avoid the use of decimals.
     * Example: `f/4`
-* TAG:
+* `TAG`:
     * Only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
     * Example: `t/buyer`, `t/seller` or both
-* HOUSINGTYPE: housing type a buyer wants or housing type a seller is selling
+* `HOUSINGTYPE`: housing type a buyer wants or housing type a seller is selling
     * Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
     * Example: `h/HDB`
-* REMARK:
+* `REMARK`:
     * Can be empty if remark is not specified.
     * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `r/Prefers block b/c` may cause the command to fail, as the system will interpret `b/` as an unintended birthday prefix.
     * Example: `r/Has a cat`
-* BIRTHDAY:
+* `BIRTHDAY`:
     * Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
     * Example: `b/22Feb2002`
     1. The date must not be in the future.
