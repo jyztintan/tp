@@ -52,6 +52,11 @@ public class FamilyTest {
         assertTrue(Family.isValidFamily("1")); // Minimum valid value
         assertTrue(Family.isValidFamily("123")); // Positive integer
         assertTrue(Family.isValidFamily("999999999999999")); // Large positive integer
+        assertTrue(Family.isValidFamily("01")); // Prepended 0s
+        assertTrue(Family.isValidFamily("001")); // Double prepended 0s
+        assertTrue(Family.isValidFamily("0001")); // Three prepended 0s
+        assertTrue(Family.isValidFamily("00000000000000000000000000001")); // Many prepended 0s
+        assertTrue(Family.isValidFamily("01232132131313312313131")); // Single prepended 0 with large value
     }
 
 
