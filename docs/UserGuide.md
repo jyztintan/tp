@@ -190,7 +190,8 @@ Edits specified details of the client.
     and will no longer be interpreted as a non-zero unsigned integer.
     Hence, below error message applies.
 - If `INDEX` is a **non-zero unsigned integer**, error message will be shown "Invalid command format..."
-- 💡 If you currently have a filtered list present, the index will be based on the filtered list.
+- 💡 If you currently have a filtered list after `filter` operations, 
+      the index will be based on the filtered list.
 - It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is **at least 1**).
 - The current information will be overwritten with the input provided.
 - When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
@@ -346,6 +347,7 @@ calculated by the number of days until their next birthday relative to the curre
 - The current date is based on the local system's time.
 - If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
 - If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list.
+- If a birthday falls on February 29th (leap day), the day calculation is based on March 1st if the year does not have a leap date.
 
 
 ### Clearing Realodex : `clearRealodex`
@@ -446,6 +448,8 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
         * have each domain label start and end with alphanumeric characters
         * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
     * Example: `e/realodex-admin@gmail.com`
+    4. Top-level domain (TLD) such as `.com` are not compulsory, as according to 
+       [Internet Protocol Standards](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1)
 * `ADDRESS`: Current residential address
     * Must not include other command prefixes (`a/`,`b/`,`e/`,`f/`,`h/`,`i/`,`n/`,`p/`,`r/`,`t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
     * Example: `a/6 College Ave West`
