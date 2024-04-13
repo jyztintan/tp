@@ -125,7 +125,6 @@ public class EmailTest {
         assertTrue(Email.isValidEmail("use_.rname@example.com")); // mixed consecutive underscores and '_'
         assertTrue(Email.isValidEmail("us.er+-name@example.com")); // mixed consecutive period and hyphens and '-'
         assertTrue(Email.isValidEmail("user-.n+++++++++++-----------ame@example.com")); // mixed consecutive periods and
-        // '.'
     }
 
     @Test
