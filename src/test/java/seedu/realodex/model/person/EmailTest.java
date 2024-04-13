@@ -44,7 +44,6 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("peter@jack@example.com")); // '@' symbol in local part
         assertFalse(Email.isValidEmail("-peterjack@example.com")); // local part starts with a hyphen
         assertFalse(Email.isValidEmail("peterjack-@example.com")); // local part ends with a hyphen
-        assertFalse(Email.isValidEmail("peter..jack@example.com")); // local part has two consecutive periods
         assertFalse(Email.isValidEmail("peterjack@example@com")); // '@' symbol in domain name
         assertFalse(Email.isValidEmail("peterjack@.example.com")); // domain name starts with a period
         assertFalse(Email.isValidEmail("peterjack@example.com.")); // domain name ends with a period
@@ -64,6 +63,64 @@ public class EmailTest {
         assertTrue(Email.isValidEmail("peter_jack@very-very-very-long-example.com")); // long domain name
         assertTrue(Email.isValidEmail("if.you.dream.it_you.can.do.it@example.com")); // long local part
         assertTrue(Email.isValidEmail("e1234567@u.nus.edu")); // more than one period in domain
+
+
+        assertTrue(Email.isValidEmail("u+++u@gmail.com")); // multiple consecutive special characters
+        assertTrue(Email.isValidEmail("test..email@example.com")); // consecutive periods
+        assertTrue(Email.isValidEmail("john.doe+test@example.com")); // consecutive special characters with alphanumeric characters
+
+        assertTrue(Email.isValidEmail("a+b@example.com")); // '+' symbol in local-part
+        assertTrue(Email.isValidEmail("a_b@example.com")); // '_' symbol in local-part
+        assertTrue(Email.isValidEmail("a-b@example.com")); // '-' symbol in local-part
+        assertTrue(Email.isValidEmail("a.b@example.com")); // '.' symbol in local-part
+
+        assertTrue(Email.isValidEmail("user@localhost")); // localhost domain
+        assertTrue(Email.isValidEmail("user@sub.domain.example.com")); // subdomains
+
+        assertTrue(Email.isValidEmail("user@example.co.uk")); // UK top-level domain
+        assertTrue(Email.isValidEmail("user@example.travel")); // .travel top-level domain
+        assertTrue(Email.isValidEmail("user@example.museum")); // .museum top-level domain
+
+        assertTrue(Email.isValidEmail("peter_jack+1190@example.com")); // mixture of alphanumeric and special characters
+        assertTrue(Email.isValidEmail("user1@example.com")); // numeric local-part
+        assertTrue(Email.isValidEmail("user1@example1.com")); // numeric domain name
+
+
+        // additional symbols that are not supported
+        assertFalse(Email.isValidEmail("user%name@example.com")); // '%'
+        assertFalse(Email.isValidEmail("user!name@example.com")); // '!'
+        assertFalse(Email.isValidEmail("user#name@example.com")); // '#'
+        assertFalse(Email.isValidEmail("user$name@example.com")); // '$'
+        assertFalse(Email.isValidEmail("user^name@example.com")); // '^'
+        assertFalse(Email.isValidEmail("user&name@example.com")); // '&'
+        assertFalse(Email.isValidEmail("user*name@example.com")); // '*'
+        assertFalse(Email.isValidEmail("user=name@example.com")); // '='
+        assertFalse(Email.isValidEmail("user?name@example.com")); // '?'
+
+        // consecutive symbols
+        assertTrue(Email.isValidEmail("user..name@example.com")); // consecutive periods
+        assertTrue(Email.isValidEmail("user__name@example.com")); // consecutive underscores
+        assertTrue(Email.isValidEmail("user--name@example.com")); // consecutive hyphens
+        assertTrue(Email.isValidEmail("user++name@example.com")); // consecutive pluses
+
+        // long email addresses
+        assertTrue(Email.isValidEmail("a".repeat(64) + "@example.com")); // local-part of 64 characters
+        assertTrue(Email.isValidEmail("user." + "example".repeat(63) + "@example.com")); // domain label of 63 characters
+        assertTrue(Email.isValidEmail("user@example." + "com".repeat(63))); // top-level domain of 63 characters
+
+        // mixed valid characters
+        assertTrue(Email.isValidEmail("u_ser+name@example.com")); // mixed alphanumeric and '+'
+        assertTrue(Email.isValidEmail("user_name@example.com")); // mixed alphanumeric and '_'
+        assertTrue(Email.isValidEmail("use.rname@example.com")); // mixed alphanumeric and '.'
+        assertTrue(Email.isValidEmail("user-name@example.com")); // mixed alphanumeric and '-'
+        assertTrue(Email.isValidEmail("user@name.example.com")); // mixed alphanumeric and '.' (domain part)
+
+        // consecutive mixed valid characters
+        assertTrue(Email.isValidEmail("us..er+name@example.com")); // mixed consecutive periods and '+'
+        assertTrue(Email.isValidEmail("use_.rname@example.com")); // mixed consecutive underscores and '_'
+        assertTrue(Email.isValidEmail("us.er+-name@example.com")); // mixed consecutive period and hyphens and '-'
+        assertTrue(Email.isValidEmail("user-.n+++++++++++-----------ame@example.com")); // mixed consecutive periods and
+        // '.'
     }
 
     @Test
