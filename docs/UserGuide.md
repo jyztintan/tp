@@ -34,27 +34,86 @@ Whether you're a seasoned real estate veteran or a rising star in the industry, 
 --------------------------------------------------------------------------------------------------------------------
 ## Quick start
 
-1. Ensure you have Java `11` or above installed in your computer.
+1. **Check Java Installation** Ensure you have Java `11` or above installed in your computer.
 
-1. Download the latest `realodex.jar` from [here](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases).
+<box type="info" light>
+<tabs>
+<tab header="Windows">
 
-1. Copy the file to the folder you want to use as the _home folder_ for your Realodex.
+1. Open command-prompt, by typing cmd in your start menu.
+2. Type `java --version` and enter to check if Java is installed and to the right version.
+   Below image is the expected output if the correct version of Java is installed. 
+   The red box indicates the expected Java version you should see.
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/java-version.png" alt="java-version" style=" width: 700px; margin-bottom: 16px;">
+  </div>
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar realodex.jar`
-command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. The app should contain some sample entries.<br>
-   <a href="images/Ui.png">
-   <img src="images/Ui.png" alt="Ui Image" style="width:80%">
-   </a>
+3. If Java is not installed or the wrong version is installed,
+   please install Java 11 from the official site
+   or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
+</tab>
+<tab header="Mac"> 
 
-1. Some example commands you can try:
+1. Open Terminal.
+2. Type `java --version` and enter to check if Java is installed and to the right version.
+   Below image is the expected output if the correct version of Java is installed.
+   The red box indicates the expected Java version you should see. 
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/java-version-macs.png" alt="java-version-macs" style=" width: 900px; margin-bottom: 16px;">
+  </div>
+
+3. If Java is not installed or the wrong version is installed, please install Java 11 from the official site.
+</tab>
+</tabs>
+</box>
+
+<div style="page-break-after: always;"></div>
+
+2. **Download Realodex** You can download the latest `realodex.jar` from [here](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases).
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/release.png" alt="release" style=" width: 800px; margin-bottom: 16px;">
+  </div>
+<br>
+
+3. **Set up Realodex** You should copy the file to the folder you want to use as the _home folder_ for your Realodex.
+
+<box type="tip"><md>We highly recommend you running Realodex in an empty folder as pre-existing JSON files may cause bugs!</md></box>
+
+4. **Navigate to Workspace** Open a command terminal, change directory into the folder by using change directory command,
+   `cd`, and navigating to the folder you put the jar file in
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/cd.png" alt="cd" style=" width: 600px; margin-bottom: 16px;">
+  </div>
+<br>
+
+5. **Run Realodex** Run `java -jar realodex.jar ` in the same terminal opened to start Realodex.
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/running.png" alt="running" style=" width: 600px; margin-bottom: 16px;">
+  </div>
+<br>
+<box type="warning">While the screenshots are from Windows OS, the commands are the same for other OS as well!.</box>
+
+5. You should see a GUI similar to image below pop up. Note how the app contains some pre-populated sample data!
+   <br>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/quick-start/ui.png" alt="ui" style=" width: 550px; margin-bottom: 16px;">
+  </div>
+<br>
+
+
+5. **Try out some Realodex features!** Some example commands you can try:
 
    * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 h/HDB t/buyer r/Owes money.`
-   Adds a contact named `John Doe` to Realodex.
+   Adds a contact named `John Doe` together with his details to Realodex.
 
-   * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
+   * `delete n/john doe` : This will delete the client with name `John Doe` from Realodex.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 ----
 ## Using this Guide
 Our goal is to empower you with the knowledge and confidence to unleash the full potential of Realodex. 
@@ -84,6 +143,84 @@ We have equipped Realodex with the following features.
 ---
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
+## Navigating the GUI
+
+Realodex has a Graphical User Interface (GUI) designed to provide a seamless user experience. The GUI is divided into several components. 
+Here is a brief overview of the GUI components:
+
+### Basic Orientation
+
+<a href="images/navigating-gui/basic_orientation.png">
+  <img src="images/navigating-gui/basic_orientation.png" alt="basic orientation" style="width:100%">
+  </a>
+
+### Client Profile
+
+<a href="images/navigating-gui/client_profile.png">
+  <img src="images/navigating-gui/client_profile.png" alt="client profile" style="width:100%">
+  </a>
+
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
+## Realodex Tutorial
+If this is your first time here, we encourage you to follow along in this short tutorial to get a feel of how Realodex works.
+Let's begin!
+
+1. **Starting Realodex.** Launch Realodex. The app will show up as follows:
+   <a href="images/tutorial/Launch.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/Launch.png" alt="duplicate person" style="width:70%">
+   </a>
+
+
+<box type="info">If this is your first time, some sample entries will be loaded for you.</box>
+
+2. **Adding a client.** Let us try to add a new client into Realodex. Key in `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer t/seller h/HDB r/Has 3 cats b/01May2009`
+and press Enter. New client John Doe has now been added!
+   <a href="images/tutorial/AddJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/AddJohnDoe.png" alt="duplicate person" style="width:70%">
+   </a>
+
+
+3. **Add more clients.** Congratulations! You have just added your first ever client into Realodex. Feel free to try adding more clients before proceeding!
+Here are some extra clients you may try adding:
+   - `add n/James p/91234567 i/5000 e/james@gmail.com a/Jurong West Central 1 f/4 t/buyer h/HDB r/Likes to eat. b/01Sep1990`
+   - `add n/Benedict p/98877665 i/8000 e/ben@gmail.com a/University Town, NUS f/6 t/seller h/CONDOMINIUM r/Favourite colour is blue. b/24Jun2000`
+
+4. **Filter clients.** Notice that the list is a little crowded now and we want to search for John. Key in `filter n/John`
+to look for our new client.
+   <a href="images/tutorial/FilterJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/FilterJohnDoe.png" alt="duplicate person" style="width:70%">
+   </a>
+
+5. **Listing all clients.** We are now done looking at John's details, let us bring up the whole list again. Simply key in `list`.
+   <a href="images/tutorial/List.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/List.png" alt="duplicate person" style="width:70%">
+   </a>
+6. **Editing clients.** Your new client John Doe has gotten a pay raise! Let's edit his income to reflect this change. First, let's take note of his index number.
+   <a href="images/tutorial/IndexJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/IndexJohnDoe.png" alt="duplicate person" style="width:83.3%; margin-right: 130px;">
+   </a>
+Since John's index number is 7, key in `edit 7 i/88888`. Notice that his income will change to 88888!
+   <a href="images/tutorial/IncomeJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/IncomeJohnDoe.png" alt="duplicate person" style="width:83.4%; margin-right: 130px;">
+   </a>
+7. **Deleting a client.** We are now done with John Doe. Let us delete him from Realodex. Key in `delete n/John Doe`. A message will be printed to indicate successful deletion. Notice that the last client is now Roy, not John as he has been deleted.
+   <a href="images/tutorial/DeleteJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/DeleteJohnDoe.png" alt="duplicate person" style="width:70%">
+   </a>
+8. **Getting Help.** Should you need help on how to use the commands, you can key in `help`.
+   <a href="images/tutorial/HelpWindow.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/HelpWindow.png" alt="duplicate person" style="width:70%">
+   </a>
+You may also get help for individual commands. Try it out with `delete help`. A message showing you how to use the `delete` command will be shown.
+   <a href="images/tutorial/DeleteHelp.png" style="display: block; margin: 0 auto; text-align: center;">
+   <img src="images/tutorial/DeleteHelp.png" alt="duplicate person" style="width:70%">
+   </a>
+
+Congratulations! You are now ready to use Realodex! Read on to learn more about more features. 
 
 ## Features
 
@@ -174,178 +311,288 @@ Adds a client to Realodex.
   * ![add-example.png](add-example.png)
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+  
 ### Deleting a client : `delete`
 
 Deletes the specified client from Realodex. There are 2 ways to do so:
 
 #### Delete By Name
 
-<u>Format</u>: `delete n/NAME`
+Delete the client with the specified `NAME` in the current Realodex list (filtered/unfiltered).
 
-* Deletes the client with the specified `NAME` in Realodex.
-* `NAME` is case-insensitive.
-* If `NAME` is **not found**, error message will be shown "The client name provided is invalid".
+**Format:**
+<box>`delete n/NAME`</box>
 
-<u>Example</u>:
+**Examples:**
 * `delete n/Udhaya Shanmugam` deletes the client in Realodex with the name "Udhaya Shanmugam".
+
+
+<p align="center">
+  <a href="images/delete/before_execute_deletename.png">
+  <img src="images/delete/before_execute_deletename.png" alt="before execute delete name" style="width:100%">
+  </a>
+  <em> Client list before entering command <code>delete n/Udhaya Shanmugan</code></em>
+</p>
+
+
+<p align="center">
+  <a href="images/delete/after_execute_deletename.png">
+  <img src="images/delete/after_execute_deletename.png" alt="after execute delete name" style="width:100%">
+  </a>
+  <em> Client list after entering command <code>delete n/Udhaya Shanmugan</code></em>
+</p>
+
+<box type="info">
+💡 `NAME` is case-insensitive, i.e. `delete n/Udhaya Shanmugan` is the same as `delete n/udhAYA shanmUgAn` <br>
+⚠️ If the current list is filtered, `delete n/NAME` for a `NAME` that is in the **unfiltered** list but not the current **filtered** list will not delete the client with `NAME`! <br>
+⚠️ If `NAME` is **not found** in the **current** list, error message will be shown "The client name provided is invalid". <br>
+</box>
 
 #### Delete By Index
 
-<u>Format</u>: `delete INDEX`
+Deletes the client of the specified `INDEX` in Realodex.
 
-* Deletes the client of the specified `INDEX` in Realodex.
-* 💡 If you are currently filtered, the index will be based on the filtered list.
-* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
-* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
+**Format:**
+<box>`delete INDEX`</box>
 
-<u>Example</u>:
-* `delete 4` deletes the 4th client listed in Realodex, provided there are 4 or more entries.
+**Examples:**
+* `delete 3` deletes the 3th client listed in Realodex, provided there are 3 or more entries.
 
-Errors:
-- If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name.".
-- If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both.".
-- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME".
+<p align="center">
+
+  <a href="images/delete/before_execute_deleteindex.png">
+  <img src="images/delete/before_execute_deleteindex.png" alt="before execute delete index" style="width:100%"> 
+  </a>
+
+  <em> Client list before entering command <code>delete 3</code></em>
+</p>
+
+
+<p align="center">
+
+  <a href="images/delete/after_execute_deleteindex.png"> 
+  <img src="images/delete/after_execute_deleteindex.png" alt="after execute delete index" style="width:100%"> 
+  </a>
+
+  <em> Client list after entering command <code>delete 3</code></em>
+</p>
+
+<box type="info">
+💡 If you are currently filtered, the index will be based on the filtered list. <br>
+* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid." <br>
+* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer." <br>
+
+</box>
+
+[Back to Table of Contents](#table-of-contents)
+
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 ### Editing clients : `edit`
 
 Edits specified details of the client.
 
-<u>Format</u>: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
+**Format:**
+<box>`edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`</box>
 
-- If `INDEX` is `3`, the 3rd client's information will be edited.
-- 💡 If you are currently filtered, the index will be based on the filtered list.
-- It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
-- The current information will be overwritten with the input provided.
-- When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
-- All fields must follow the respective [Field Constraints](#field-constraints).
+**Examples:**
+* `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's (if they exist) name to "Kylie", income to "3333" and family size to "5".
 
-<u>Examples</u>:
 
-- `edit 1 p/999` will overwrite the 1st client's phone number to "999".
-- `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's name to "Kylie", income to "3333" and family size to "5".
+<p align="center">
+
+  <a href="images/edit/before_execute_edit.png">
+  <img src="images/edit/before_execute_edit.png" alt="before execute edit" style="width:100%">
+  </a>
+
+  <em> Client list before entering command <code>edit 2 n/Kylie  i/3333 f/5</code></em>
+</p>
+
+
+<p align="center">
+
+  <a href="images/edit/after_execute_edit.png">
+  <img src="images/edit/after_execute_edit.png" alt="after execute edit" style="width:100%">
+  </a>
+
+  <em> Client list after entering command <code>edit 2 n/Kylie  i/3333 f/5</code></em>
+</p>
+
+
+<box type="info">
+💡 If you are currently filtered, the index will be based on the filtered list.<br>
+
+💡 It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).<br>
+
+💡 The current information will be overwritten with the input provided. <br>
+⚠️ When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`. <br>
+🗒️ All fields must follow the respective [Field Constraints](#field-constraints).<br>
+</box>
+
+[Back to Table of Contents](#table-of-contents)
+
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ### Filtering clients: `filter`
 
-The filter command in Realodex allows you to narrow down your list of clients by specifying a keyphrase
-related to one of the client's attributes: name, remark, tag, birthday month, or housing type.
-This feature is particularly useful when you need to focus on a
-subset of your client database that meets certain criteria.
-Note that the search is **case-insensitive** for all input parameters.
+The filter command in Realodex allows you to narrow down your list of clients by specifying one of the client's attributes: name, remark, tag, birthday month, or housing type.
+This feature is particularly useful for targetting a
+specific segment of your client database that fulfills a certain criteria.
 
->
-> When performing multiple filter operations in sequence,
-> each new filter is applied to the original, full list of clients, not the subset produced by the previous filter.
-> This approach ensures clarity and consistency in search results.
+<box type="info" header="Things to note:">
+
+- The next command will apply to the filtered list of clients.
+- The search is **case-insensitive** for all input parameters.
+
+</box>
+
 
 #### Filter By Name
-<u>Format:</u> `filter n/KEYPHRASE`
+Returns the list of clients whose names contain the specified keyphrase.
 
-- Returns the list of clients whose names contain the specified keyphrase.
-- Keyphrase input should be in valid format for names (alphanumeric) and non-empty.
-  - `filter n/james` matches person with the name "James".
-- **Partial fragments** of names will still be matched.
-  - `filter n/Udh` matches a person with the name "Udhaya".
-- **Comprehensive searching**, returning all persons with names containing the keyphrase.
-  - `filter n/Al` returns persons named "Alicia", "Allysa", "Jamal".
+**Format:** 
+```
+filter n/KEYPHRASE
+```
 
-<u>Example:</u>
+<box type="warning" header="Warning:">
+
+- Name input should be alphanumeric and non-empty.
+</box>
+
+**Example:**
+1. Run `filter n/Li`.
+2. Persons with names containing "li" are returned.
+3. In this example, "Charlotte Oliveiro" and "David Li" are returned. 
 
 <a href="images/filter/filterByNameScreenshot.png">
 <img src="images/filter/filterByNameScreenshot.png" alt="filterByNameScreenshot" style="width:150%">
 </a>
-<p align="center">
-  <em> <code>filter n/Li</code> returns persons with names like "Charlotte Oliveiro" and "David Li"</em>
-</p>
+
+<br>
 
 #### Filter By Tag
-<u>Format:</u> `filter t/TAG`
+Returns the list of clients with the specified tag(s).
 
-- Returns the list of clients with the specified tag(s).
-- Tag input should be valid and non-empty - "Buyer" or "Seller".
-  - `filter t/buyer` matches person with tag "Buyer".
-- **Inclusive matching** of persons with multiple tags, as long as they possess the
-  tag(s) specified in the input.
-  - `filter t/buyer` matches person with tags "Buyer" and "Seller".
-- Supports searching with **multiple tags**.
-  - `filter t/Buyer t/Seller` only returns persons with both "Buyer" and "Seller" tags.
-- **Comprehensive searching**, returning all persons' with the specified tag(s).
+**Format:**
+```
+filter t/TAG(s)
+```
 
-<u>Examples:</u>
-<p align="center">
-      <a href="images/filter/filterByTagSeller.png">
+<box type="info" header="Things to note:">
+
+- Filtering with the "Buyer" or "Seller" tag retrieves all clients with the respective tag.
+- Filtering by multiple tags is supported, `filter t/Buyer t/Seller`, returns clients who possess both buyer and seller tags.
+</box>
+
+
+<box type="warning" header="Warning:">
+
+- Input tag(s) should only be "Buyer" or "Seller"
+</box>
+
+**Examples:**
+
+1. Run `filter t/seller`.
+2. Persons with "Seller" tag are returned.
+
+    <a href="images/filter/filterByTagSeller.png">
       <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:150%">
       </a>
-  <em> <code>filter t/seller</code> returns persons with "Seller" Tag</em>
-</p>
-      <a href="images/filter/filterByTagBuyerSeller.png">
+
+---
+
+1. Run `filter t/buyer t/seller`. 
+2. Persons with both "Buyer" and "Seller" tags are returned.
+
+   <a href="images/filter/filterByTagBuyerSeller.png">
       <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:150%">
       </a>
 
-<p align="center">
-  <em> <code>filter t/buyer t/seller</code> only returns persons with "Buyer" and "Seller" Tag</em>
-</p>
-
 #### Filter By Housing Type
-<u>Format:</u> `filter h/HOUSING_TYPE`
+Returns the list of clients with the specified preferred housing type.
 
-- Returns the list of clients with the specified housing type preference.
-- Housing Type input should be valid and non-empty - "HDB", "Condominium", "Landed Property" or "Good Class Bungalow".
-  - `filter h/hdb` matches person with housing type "HDB".
-- **Comprehensive searching**, returning all persons with the specified housing type.
-  - `filter h/Condominium` returns all persons with the "Condominium" preferred housing type.
+**Format:**
+```
+filter h/HOUSING_TYPE
+```
 
-<u>Example:</u>
+<box type="warning" header="Warning:">
+
+- Input housing type should be "HDB", "Condominium", "Landed Property" or "Good Class Bungalow"
+</box>
+
+**Examples:** 
+1. Run `filter h/Good Class Bungalow`.
+2. Persons with both "Good Class Bungalow" housing preference are returned.
 
   <a href="images/filter/filterByHousingType.png">
   <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
   </a>
-<p align="center">
-  <em> <code>filter h/Good Class Bungalow</code> returns persons with "Good Class Bungalow" Housing Type preference</em>
-</p>
 
 #### Filter By Remark
-<u>Format:</u> `filter r/KEYPHRASE`
+Returns the list of clients whose remarks include the specified keyphrase.
 
-- Returns the list of clients whose remarks include the specified keyphrase.
-- Keyphrase input should be non-empty. 
-This is an intentional design choice to ensure that the command is used for targeted searches, preventing the potential misinterpretation of an empty keyphrase as a request to list all clients.
-- Important: The remarks for the `filter r/` command must not contain any other prefixes to prevent parsing errors. 
-> The command `filter r/ my tag is t/buyer` would cause an error because the system interprets `t/` as the start of a new prefix.
-> To avoid this, ensure that the remark does not contain any spaces followed by slashes that could be misconstrued as additional prefixes.
-  - `filter r/FOOD` matches person with remark "He loves food."
-- **Partial fragments** of remarks will still be matched.
+**Format:**
+```
+filter r/KEYPHRASE
+```
+<box type="info" header="Things to note:">
+
+- Partial fragments of remarks will still be matched.
   - `filter r/hand` matches person with remark "handsome".
-- **Comprehensive searching**, returning all persons' names containing the keyword .
-  - `filter r/love` returns persons with remarks "loves to travel", "has a lovely dog".
-    
-<u>Example:</u>
+     
+  </box>
+   
+<box type="warning" header="Warning:">
+
+- Input remark must be non-empty, preventing empty remark input as a request to list all clients.
+- The remarks for the filter r/ command must not contain any other prefixes which could be misconstrued as additional prefixes.
+  <box type="wrong" header="Error:">
+
+  - The command `filter r/ my tag is t/buyer` would cause an error because the system interprets t/ as the start of a new prefix. 
+    </box>
+  
+</box>
+
+**Example:**
+1. Run `filter r/eat`.
+2. Persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..." are returned.
 
   <a href="images/filter/filterByRemarkScreenshot.png">
     <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:150%">
     </a>
-<p align="center">
-  <em> <code>filter r/eat</code> returns persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..."</em>
-</p>
 
-#### Filter By Birthday
-<u>Format:</u> `filter b/MONTH`
 
-- Returns the list of clients whose birthdays are in the specified month.
-- Month input should be a valid month in `MMM` format and non-empty.
-  - Filtering by month "September" should be `filter b/Sep`
-    - `filter b/SEP` matches person with Birthday in September.
-- **Comprehensive searching**, returning all persons with birthdays in the specified month.
-    - `filter b/Jan` returns all persons with birthday in January.
-- Persons who do not have a specified birthday will **not be included** in the search results.
+#### Filter By Birthday Month
+Returns the list of clients whose birthdays fall in the specified month.
 
-<u>Example:</u>
+**Format:**
+```
+filter b/MONTH
+```
+
+<box type="info" header="Things to note:">
+
+- Month input should be in 3-letter abbrieviation (MMM) format. 
+  - "Jan" for January
+  - "Feb" for February
+
+</box>
+
+
+**Example:**
+
+1. Run `filter b/Apr`
+2. Persons with birthday in April are returned.
 
 <a href="images/filter/filterByBirthday.png">
   <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:150%">
   </a>
-
-<p align="center">
-  <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
-</p>
 
 ### Listing clients : `list`
 
@@ -353,56 +600,134 @@ Lists all clients in Realodex.
 
 <u>Format:</u> `list`
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+
 ### Sort : `sort`
 
 Sort clients based on their proximity to their upcoming birthday,
 calculated by the number of days until their next birthday relative to the current date.
 
-<u>Format:</u> `sort`
+**Format:**
+<box>sort</box>
 
-- The current date is based on the local system's time.
-- If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
-- If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list.
+<box type="info" header="Things to note:">
+
+* The current date is based on the local system's time.
+* If their birthday has already passed,
+  the calculation is based on the number of days until their next birthday next year.
+</box>
+
+<box type="warning" header="Warning:">
+
+* If the list presented is currently a filtered list after using [filter](#filtering-clients-filter),
+  sort will work on the new filtered list.
+</box>
+
+**Example:**
+
+* Upon `sort`, the list on the screen will be filtered to return a new sorted list by nearest birthday.
+
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/sort/sort-day_showcase.png" alt="sort" style=" width: 800px; margin-bottom: 16px;">
+</div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 
 ### Clearing Realodex : `clearRealodex`
 
 Clears all clients in Realodex.
 
-💡A longer command, `clearRealodex` is used so that users understand that this command **clears all entries in Realodex**, preventing potential confusion with the delete command and accidental clearing of all entries.
+**Format:**
+<box>clearRealodex</box>
 
-<u>Format:</u> `clearRealodex`
+<box type="tip">A longer command, <code>clearRealodex</code>
+is used so that users understand that this command <b>clears all entries in Realodex</b>,
+preventing potential confusion with the delete command and accidental clearing of all entries.
+</box>
+
+<box type="warning" header="Warning:">
+Be careful with <code>clearRealodex</code>, you will be unable to undo this operation!
+  </box>
+
+**Example:**
+
+* Upon `clearRealodex`, Realodex will clear and return an empty list.
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/misc_features/clear.png" alt="clear" style=" width: 900px; margin-bottom: 16px;">
+</div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Help : `help`
 
-Generates a pop-up window which is a summarised version of the User Guide. This window can also be accessed by the "Help" button on the top menu.
+Generates a pop-up window, which is a summarized version of the User Guide and its features.
+**Format:**
+<box>help</box>
 
-<u>Format:</u> `help`
+
+<box type="tip">This window can also be accessed by the "Help" button on the top menu.
+</box>
+
+**Example:**
+* Upon `help`, Realodex will pop up a help window together with a success message.
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/misc_features/help_window.png" alt="help_window" style=" width: 900px; margin-bottom: 16px;">
+</div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Help (Individual Commands) : `COMMAND help`
 
 Shows the help message for the specified command only.
 
-<u>Format:</u> `COMMAND help`
+**Format:**
+<box>COMMAND help</box>
 
-- Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
-- Although the format is `COMMAND help`, the exception is the help message for the clear command. Use `clear help` instead of `clearRealodex help`.
+<box type="info" header="Things to note:">
 
-<u>Examples:</u>
+* Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
+* Although the format is `COMMAND help`, the exception is the help message for the clear command.
+  Use `clear help` instead of `clearRealodex help`.
+  </box>
+
+**Example:**
+1. User types in `add help`.
+2. Realodex posts the help message for `add` command as shown below.
 <p align="center">
-      <a href="images/help/clear_help.png">
-      <img src="images/help/clear_help.png" alt="filterByTagSeller" style="width:100%">
+      <a href="images/misc_features/command_help.png">
+      <img src="images/misc_features/command_help.png" alt="command_help" style="width:120%">
       </a>
-  <em> <code>clear help</code> provides the help message for the clearRealodex command</em>
 </p>
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Exiting the program : `exit`
 
-Exits the program.
+Exits the program and closes the window.
 
-<u>Format:</u> `exit`
-- Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
+**Format:**
+<box>exit</box>
+
+<box type="info" header="Things to note:">
+
+* Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
+  </box>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### File Data
 
