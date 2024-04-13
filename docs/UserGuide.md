@@ -419,6 +419,14 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
     * Example: `n/John Doe` and `n/john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
 * `PHONE`:
     * Should only contain numbers, and should be at least 3 digits long.
+    * While we disallow usage of symbols such as `+`, if you wish to use country codes, a reasonable 
+      work-around is to omit using of
+      symbols.
+      E.g., to input `+6590215365` you may simply type in `6590215635`
+    * Spaces are also not allowed.
+      However, a simple work-around for this is to omit using such spaces.
+      E.g.
+      to input `9021 5365` we can simply type in `90215365`.
     * Example: `p/81234567`
 * `INCOME`:
     * Income should be an integer and should be at least 0.
