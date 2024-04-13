@@ -470,6 +470,11 @@ Lists all clients in Realodex.
 
 <u>Format:</u> `list`
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+
 ### Sort : `sort`
 
 Sort clients based on their proximity to their upcoming birthday,
@@ -485,22 +490,19 @@ calculated by the number of days until their next birthday relative to the curre
   the calculation is based on the number of days until their next birthday next year.
 </box>
 
-<box type="warning">
+<box type="warning" header="Warning:">
 
 * If the list presented is currently a filtered list after using [filter](#filtering-clients-filter),
   sort will work on the new filtered list.
 </box>
 
-**Usage:**
+**Example:**
 
-* Upon `sort`, the list on the screen will be filtered to return a new sorted list.
+* Upon `sort`, the list on the screen will be filtered to return a new sorted list by nearest birthday.
 
 <div style="display:flex; justify-content: center; align-items:center;">
 <img src="images/sort/sort-day_showcase.png" alt="sort" style=" width: 800px; margin-bottom: 16px;">
 </div>
-<p align="center">
-  <em> <code>sort</code> returns new sorted list by nearing birthday</em>
-</p>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -519,56 +521,83 @@ is used so that users understand that this command <b>clears all entries in Real
 preventing potential confusion with the delete command and accidental clearing of all entries.
 </box>
 
-<box type="warning">
+<box type="warning" header="Warning:">
 Be careful with <code>clearRealodex</code>, you will be unable to undo this operation!
   </box>
 
-**Usage:**
+**Example:**
 
 * Upon `clearRealodex`, Realodex will clear and return an empty list.
 <div style="display:flex; justify-content: center; align-items:center;">
 <img src="images/misc_features/clear.png" alt="clear" style=" width: 900px; margin-bottom: 16px;">
 </div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+### Help : `help`
+
+Generates a pop-up window, which is a summarized version of the User Guide and its features.
+**Format:**
+<box>help</box>
+
+
+<box type="tip">This window can also be accessed by the "Help" button on the top menu.
+</box>
+
+**Example:**
+* Upon `help`, Realodex will pop up a help window together with a success message.
+<div style="display:flex; justify-content: center; align-items:center;">
+<img src="images/misc_features/help_window.png" alt="help_window" style=" width: 900px; margin-bottom: 16px;">
+</div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+### Help (Individual Commands) : `COMMAND help`
+
+Shows the help message for the specified command only.
+
+**Format:**
+<box>COMMAND help</box>
+
+<box type="info" header="Things to note:">
+
+* Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
+* Although the format is `COMMAND help`, the exception is the help message for the clear command.
+  Use `clear help` instead of `clearRealodex help`.
+  </box>
+
+**Example:**
+1. User types in `add help`.
+2. Realodex posts the help message for `add` command as shown below.
 <p align="center">
-  <em> <code>clear</code> clears list of Realodex</em>
+      <a href="images/misc_features/command_help.png">
+      <img src="images/misc_features/command_help.png" alt="command_help" style="width:120%">
+      </a>
 </p>
 
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
 
-
-
-### Help : `help`
-
-Generates a pop-up window which is a summarised version of the User Guide. This window can also be accessed by the "Help" button on the top menu.
-
-<u>Format:</u> `help`
-
-### Help (Individual Commands) : `COMMAND help`
-
-Shows the help message for the specified command only.
-
-<u>Format:</u> `COMMAND help`
-
-- Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
-- Although the format is `COMMAND help`, the exception is the help message for the clear command. Use `clear help` instead of `clearRealodex help`.
-
-<u>Examples:</u>
-<p align="center">
-      <a href="images/help/clear_help.png">
-      <img src="images/help/clear_help.png" alt="filterByTagSeller" style="width:100%">
-      </a>
-  <em> <code>clear help</code> provides the help message for the clearRealodex command</em>
-</p>
-
-
 ### Exiting the program : `exit`
 
-Exits the program.
+Exits the program and closes the window.
 
-<u>Format:</u> `exit`
-- Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
+**Format:**
+<box>exit</box>
+
+<box type="info" header="Things to note:">
+
+* Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
+  </box>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### File Data
 
