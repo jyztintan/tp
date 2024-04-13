@@ -67,7 +67,8 @@ public class EmailTest {
 
         assertTrue(Email.isValidEmail("u+++u@gmail.com")); // multiple consecutive special characters
         assertTrue(Email.isValidEmail("test..email@example.com")); // consecutive periods
-        assertTrue(Email.isValidEmail("john.doe+test@example.com")); // consecutive special characters with alphanumeric characters
+        // consecutive special characters with alphanumeric characters
+        assertTrue(Email.isValidEmail("john.doe+test@example.com"));
 
         assertTrue(Email.isValidEmail("a+b@example.com")); // '+' symbol in local-part
         assertTrue(Email.isValidEmail("a_b@example.com")); // '_' symbol in local-part
@@ -104,9 +105,13 @@ public class EmailTest {
         assertTrue(Email.isValidEmail("user++name@example.com")); // consecutive pluses
 
         // long email addresses
-        assertTrue(Email.isValidEmail("a".repeat(64) + "@example.com")); // local-part of 64 characters
-        assertTrue(Email.isValidEmail("user." + "example".repeat(63) + "@example.com")); // domain label of 63 characters
-        assertTrue(Email.isValidEmail("user@example." + "com".repeat(63))); // top-level domain of 63 characters
+        assertTrue(Email.isValidEmail("a".repeat(64)
+                                              + "@example.com")); // local-part of 64 characters
+        assertTrue(Email.isValidEmail("user."
+                                              + "example".repeat(63)
+                                              + "@example.com")); // domain label of 63 characters
+        assertTrue(Email.isValidEmail("user@example."
+                                              + "com".repeat(63))); // top-level domain of 63 characters
 
         // mixed valid characters
         assertTrue(Email.isValidEmail("u_ser+name@example.com")); // mixed alphanumeric and '+'
