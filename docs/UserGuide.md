@@ -134,6 +134,27 @@ To ensure you have a smooth and intuitive experience, this guide utilizes specif
 ---
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
+## Navigating the GUI
+
+Realodex has a Graphical User Interface (GUI) designed to provide a seamless user experience. The GUI is divided into several components. 
+Here is a brief overview of the GUI components:
+
+### Basic Orientation
+
+<a href="images/navigating-gui/basic_orientation.png">
+  <img src="images/navigating-gui/basic_orientation.png" alt="basic orientation" style="width:100%">
+  </a>
+
+### Client Profile
+
+<a href="images/navigating-gui/client_profile.png">
+  <img src="images/navigating-gui/client_profile.png" alt="client profile" style="width:100%">
+  </a>
+
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Realodex Tutorial
 If this is your first time here, we encourage you to follow along in this short tutorial to get a feel of how Realodex works.
@@ -232,10 +253,10 @@ Adds a client to Realodex.
  <a href="images/add-command/missing_fields_error.png">
    <img src="images/add-command/missing_fields_error.png" alt="missing compulsory fields" style="width:150%">
    </a>
-- Except `t/TAG`, there can only be one of each field in the add command.
-<a href="images/add-command/excessive_fields_error.png">
-  <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:100%">
-  </a>
+    - Except `t/TAG`, there can only be one of each field in the add command.
+    <a href="images/add-command/excessive_fields_error.png">
+      <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:100%">
+      </a>
 - For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive).
   - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown.
 - Note that the `r/REMARK` and `b/BIRTHDAY` fields are optional, enclosed in `[]`. You may choose to omit them.
@@ -258,54 +279,131 @@ Adds a client to Realodex.
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+  
 ### Deleting a client : `delete`
 
 Deletes the specified client from Realodex. There are 2 ways to do so:
 
 #### Delete By Name
 
-<u>Format</u>: `delete n/NAME`
+Delete the client with the specified `NAME` in the current Realodex list (filtered/unfiltered).
 
-* Deletes the client with the specified `NAME` in Realodex.
-* `NAME` is case-insensitive.
-* If `NAME` is **not found**, error message will be shown "The client name provided is invalid".
+**Format:**
+<box>`delete n/NAME`</box>
 
-<u>Example</u>:
+**Examples:**
 * `delete n/Udhaya Shanmugam` deletes the client in Realodex with the name "Udhaya Shanmugam".
+
+
+<p align="center">
+  <a href="images/delete/before_execute_deletename.png">
+  <img src="images/delete/before_execute_deletename.png" alt="before execute delete name" style="width:100%">
+  </a>
+  <em> Client list before entering command <code>delete n/Udhaya Shanmugan</code></em>
+</p>
+
+
+<p align="center">
+  <a href="images/delete/after_execute_deletename.png">
+  <img src="images/delete/after_execute_deletename.png" alt="after execute delete name" style="width:100%">
+  </a>
+  <em> Client list after entering command <code>delete n/Udhaya Shanmugan</code></em>
+</p>
+
+<box type="info">
+💡 `NAME` is case-insensitive, i.e. `delete n/Udhaya Shanmugan` is the same as `delete n/udhAYA shanmUgAn` <br>
+⚠️ If the current list is filtered, `delete n/NAME` for a `NAME` that is in the **unfiltered** list but not the current **filtered** list will not delete the client with `NAME`! <br>
+⚠️ If `NAME` is **not found** in the **current** list, error message will be shown "The client name provided is invalid". <br>
+</box>
 
 #### Delete By Index
 
-<u>Format</u>: `delete INDEX`
+Deletes the client of the specified `INDEX` in Realodex.
 
-* Deletes the client of the specified `INDEX` in Realodex.
-* 💡 If you are currently filtered, the index will be based on the filtered list.
-* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
-* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
+**Format:**
+<box>`delete INDEX`</box>
 
-<u>Example</u>:
-* `delete 4` deletes the 4th client listed in Realodex, provided there are 4 or more entries.
+**Examples:**
+* `delete 3` deletes the 3th client listed in Realodex, provided there are 3 or more entries.
 
-Errors:
-- If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name.".
-- If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both.".
-- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME".
+<p align="center">
+
+  <a href="images/delete/before_execute_deleteindex.png">
+  <img src="images/delete/before_execute_deleteindex.png" alt="before execute delete index" style="width:100%"> 
+  </a>
+
+  <em> Client list before entering command <code>delete 3</code></em>
+</p>
+
+
+<p align="center">
+
+  <a href="images/delete/after_execute_deleteindex.png"> 
+  <img src="images/delete/after_execute_deleteindex.png" alt="after execute delete index" style="width:100%"> 
+  </a>
+
+  <em> Client list after entering command <code>delete 3</code></em>
+</p>
+
+<box type="info">
+💡 If you are currently filtered, the index will be based on the filtered list. <br>
+* If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid." <br>
+* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer." <br>
+
+</box>
+
+[Back to Table of Contents](#table-of-contents)
+
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 ### Editing clients : `edit`
 
 Edits specified details of the client.
 
-<u>Format</u>: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
+**Format:**
+<box>`edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`</box>
 
-- If `INDEX` is `3`, the 3rd client's information will be edited.
-- 💡 If you are currently filtered, the index will be based on the filtered list.
-- It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
-- The current information will be overwritten with the input provided.
-- When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
-- All fields must follow the respective [Field Constraints](#field-constraints).
+**Examples:**
+* `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's (if they exist) name to "Kylie", income to "3333" and family size to "5".
 
-<u>Examples</u>:
 
-- `edit 1 p/999` will overwrite the 1st client's phone number to "999".
-- `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's name to "Kylie", income to "3333" and family size to "5".
+<p align="center">
+
+  <a href="images/edit/before_execute_edit.png">
+  <img src="images/edit/before_execute_edit.png" alt="before execute edit" style="width:100%">
+  </a>
+
+  <em> Client list before entering command <code>edit 2 n/Kylie  i/3333 f/5</code></em>
+</p>
+
+
+<p align="center">
+
+  <a href="images/edit/after_execute_edit.png">
+  <img src="images/edit/after_execute_edit.png" alt="after execute edit" style="width:100%">
+  </a>
+
+  <em> Client list after entering command <code>edit 2 n/Kylie  i/3333 f/5</code></em>
+</p>
+
+
+<box type="info">
+💡 If you are currently filtered, the index will be based on the filtered list.<br>
+
+💡 It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).<br>
+
+💡 The current information will be overwritten with the input provided. <br>
+⚠️ When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`. <br>
+🗒️ All fields must follow the respective [Field Constraints](#field-constraints).<br>
+</box>
+
+[Back to Table of Contents](#table-of-contents)
+
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ### Filtering clients: `filter`
 
