@@ -13,7 +13,12 @@
 - **Search**: Instantly locate client profiles using robust filters, enabling swift responses and tailored service.
 - **Delete**: Safely remove outdated information, ensuring your database is current and compliant.
 
-![realodex_icon.png](images%2Frealodex_icon.png)
+<div style="text-align: center;">
+    <a href="images/realodex_icon.png">
+        <img src="images/realodex_icon.png" alt='Realodex Icon' style="width:60%;" />
+    </a>
+</div>
+
 ## Why Choose Realodex?
 With our **intuitive interface** and **advanced features**, real estate users can manage their client database with unprecedented ease, enhancing their productivity and enabling them to focus on what they do best: closing deals and building lasting relationships.
 
