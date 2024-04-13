@@ -3,8 +3,6 @@ package seedu.realodex.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.realodex.commons.util.AppUtil.checkArgument;
 
-import java.util.Objects;
-
 /**
  * Represents the family size of a person in realodex.
  * Guarantees: family size is present and not null, and adheres to specific constraints.
@@ -42,7 +40,7 @@ public class Family {
      */
     public static boolean isValidFamily(String familySize) {
         // Ensure the family size matches the validation regex
-        if (!familySize.matches(VALIDATION_REGEX) ) {
+        if (!familySize.matches(VALIDATION_REGEX)) {
             return false;
         }
         return !familySize.equals("0");
