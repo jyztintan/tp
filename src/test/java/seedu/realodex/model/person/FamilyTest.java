@@ -40,6 +40,22 @@ public class FamilyTest {
     }
 
     @Test
+    public void isValidFamily_invalidFamilySizes_returnsFalse() {
+        assertFalse(Family.isValidFamily("")); // Empty string
+        assertFalse(Family.isValidFamily(" ")); // Whitespace string
+        assertFalse(Family.isValidFamily("-1")); // Negative number
+        assertFalse(Family.isValidFamily("0")); // Zero
+    }
+
+    @Test
+    public void isValidFamily_validFamilySizes_returnsTrue() {
+        assertTrue(Family.isValidFamily("1")); // Minimum valid value
+        assertTrue(Family.isValidFamily("123")); // Positive integer
+        assertTrue(Family.isValidFamily("999999999999999")); // Large positive integer
+    }
+
+
+    @Test
     public void equals() {
         Family family = new Family("999");
 
