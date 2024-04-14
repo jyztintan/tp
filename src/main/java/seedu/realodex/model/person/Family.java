@@ -11,7 +11,8 @@ public class Family {
 
     /** Message for constraints on family size. */
     public static final String MESSAGE_CONSTRAINTS = "Family size should be at least 1";
-    public static final String VALIDATION_REGEX = "^[1-9]\\d*$";
+    public static final String VALIDATION_REGEX = "^0*[1-9]\\d*$";
+    public static final String DEFAULT_FAMILY = "1";
 
     /** The family size. */
     private String familySize;
@@ -29,7 +30,7 @@ public class Family {
     }
 
     public Family() {
-        this.familySize = "1";
+        this.familySize = DEFAULT_FAMILY;
     }
 
     /**
@@ -39,7 +40,11 @@ public class Family {
      * @return True if the family size is greater than or equal to zero, false otherwise.
      */
     public static boolean isValidFamily(String familySize) {
-        return familySize.matches(VALIDATION_REGEX);
+        // Ensure the family size matches the validation regex
+        if (!familySize.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+        return !familySize.equals("0");
     }
 
     /**

@@ -40,6 +40,32 @@ public class FamilyTest {
     }
 
     @Test
+    public void isValidFamily_invalidFamilySizes_returnsFalse() {
+        assertFalse(Family.isValidFamily("")); // Empty string
+        assertFalse(Family.isValidFamily(" ")); // Whitespace string
+        assertFalse(Family.isValidFamily("-1")); // Negative number
+        assertFalse(Family.isValidFamily("0")); // Zero
+    }
+
+    @Test
+    public void isValidFamily_validFamilySizes_returnsTrue() {
+        assertTrue(Family.isValidFamily("1")); // Minimum valid value
+        assertTrue(Family.isValidFamily("123")); // Positive integer
+        assertTrue(Family.isValidFamily("999999999999999")); // Large positive integer
+        assertTrue(Family.isValidFamily("01")); // Prepended 0s
+        assertTrue(Family.isValidFamily("001")); // Double prepended 0s
+        assertTrue(Family.isValidFamily("0001")); // Three prepended 0s
+        assertTrue(Family.isValidFamily("00000000000000000000000000001")); // Many prepended 0s
+        assertTrue(Family.isValidFamily("01232132131313312313131")); // Single prepended 0 with large value
+
+
+        assertFalse(Family.isValidFamily("0000000000000000000000000000")); // Many prepended 0s with no 1-9 value
+        assertFalse(Family.isValidFamily("-0000000000000000000000000000")); // - + Many prepended 0s with no 1-9 value
+        assertFalse(Family.isValidFamily("-0000000000000000000010000000")); // - + Many prepended 0s with some 1-9 value
+    }
+
+
+    @Test
     public void equals() {
         Family family = new Family("999");
 

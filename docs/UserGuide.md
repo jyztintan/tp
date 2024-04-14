@@ -26,9 +26,9 @@ If you can type fast, Realodex can get your contact management tasks done faster
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar realodex.jar`
 command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. The app should contain some sample entries.<br>
-   <a href="images/Ui.png">
-   <img src="images/Ui.png" alt="Ui Image" style="width:80%">
-   </a>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/Ui.png" alt="Ui" style=" width: 450px; margin-bottom: 16px;">
+  </div>
 
 1. Some example commands you can try:
 
@@ -38,7 +38,10 @@ command to run the application.<br>
    * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
 
 1. Refer to the [Features](#features) below for details of each command.
-----
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 # Using this Guide
 
 To ensure you have a smooth and intuitive experience, this guide utilizes specific formatting conventions and icons. Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
@@ -72,9 +75,9 @@ To ensure you have a smooth and intuitive experience, this guide utilizes specif
 | Case-Sensitive                 | The casing of the alphabetic characters matters (e.g. “ReAlOdEx” is different from “realodex”                                                                                                            |
 | Case-Insensitive               | The casing of the alphabetic characters does not matter (e.g. “ReAlOdEx” is taken to be same as “realodex”                                                                                               |
 
----
-
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -103,6 +106,10 @@ To ensure you have a smooth and intuitive experience, this guide utilizes specif
 
 
 </box>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Adding a client: `add`
 
@@ -142,6 +149,10 @@ Adds a client to Realodex.
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ### Deleting a client : `delete`
 
 Deletes the specified client from Realodex. There are 2 ways to do so:
@@ -164,15 +175,24 @@ Deletes the specified client from Realodex. There are 2 ways to do so:
 * Deletes the client of the specified `INDEX` in Realodex.
 * 💡 If you are currently filtered, the index will be based on the filtered list.
 * If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
-* If 'INDEX` is a non-zero unsigned integer, error message will be shown "Index is not a non-zero unsigned integer."
+  to indicate that this client index does not exist.
+  * This does not apply to unrealistic index values of >= `2147483648` which results in integer overflow as expected
+     and will no longer be interpreted as a non-zero unsigned integer.
+    Hence, below error message applies.
+* If `INDEX` is a **non-zero unsigned integer**, error message will be shown "Index is not a non-zero unsigned integer."
 
 <u>Example</u>:
 * `delete 4` deletes the 4th client listed in Realodex, provided there are 4 or more entries.
 
 Errors:
-- If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name.".
-- If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both.".
-- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME".
+- If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name."
+- If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both."
+- If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME."
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ### Editing clients : `edit`
 
 Edits specified details of the client.
@@ -180,8 +200,15 @@ Edits specified details of the client.
 <u>Format</u>: `edit INDEX [n/NAME] [p/PHONE] [i/INCOME] [e/EMAIL] [a/ADDRESS] [f/FAMILY] [t/TAG] [h/HOUSINGTYPE] [r/REMARK] [b/BIRTHDAY]`
 
 - If `INDEX` is `3`, the 3rd client's information will be edited.
-- 💡 If you are currently filtered, the index will be based on the filtered list.
-- It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is at least 1).
+- If `INDEX` is **more than the number of clients in Realodex**, error message will be shown "The client index provided is invalid."
+    to indicate that this client index does not exist.
+  * This does not apply to unrealistic index values of >= `2147483648` which results in integer overflow as expected
+    and will no longer be interpreted as a non-zero unsigned integer.
+    Hence, below error message applies.
+- If `INDEX` is a **non-zero unsigned integer**, error message will be shown "Invalid command format..."
+- 💡 If you currently have a filtered list after `filter` operations, 
+      the index will be based on the filtered list.
+- It is optional to edit any field (i.e, you can choose to edit any combination of fields so long there is **at least 1**).
 - The current information will be overwritten with the input provided.
 - When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`.
 - All fields must follow the respective [Field Constraints](#field-constraints).
@@ -190,6 +217,10 @@ Edits specified details of the client.
 
 - `edit 1 p/999` will overwrite the 1st client's phone number to "999".
 - `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's name to "Kylie", income to "3333" and family size to "5".
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Filtering clients: `filter`
 
@@ -301,6 +332,13 @@ This is an intentional design choice to ensure that the command is used for targ
 - Month input should be a valid month in `MMM` format and non-empty.
   - Filtering by month "September" should be `filter b/Sep`
     - `filter b/SEP` matches person with Birthday in September.
+- Month input will also accept extraneous input, i.e. if the first 3 characters are any valid month, it will be valid.
+  E.g.,
+  This forgiving behavior allows you to type in `filter b/AprMogger` and Realodex will interpret the month as April!
+
+  ⚠️ This does not apply
+  if the extraneous input is the **same birthday prefix with spaces before** it,
+  `e.g. filter b/Sep b/mog` as that will be considered as **duplicate birthday prefixes.**
 - **Comprehensive searching**, returning all persons with birthdays in the specified month.
     - `filter b/Jan` returns all persons with birthday in January.
 - Persons who do not have a specified birthday will **not be included** in the search results.
@@ -315,11 +353,16 @@ This is an intentional design choice to ensure that the command is used for targ
   <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
 </p>
 
+--------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 ### Listing clients : `list`
 
 Lists all clients in Realodex.
 
 <u>Format:</u> `list`
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Sort : `sort`
 
@@ -331,7 +374,11 @@ calculated by the number of days until their next birthday relative to the curre
 - The current date is based on the local system's time.
 - If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
 - If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list.
+- If a birthday falls on February 29th (leap day),
+  the day calculation is based on March 1st if the year does not have a leap date
+  as realistically, most would still celebrate every year.
 
+--------------------------------------------------------------------------------------------------------------------
 
 ### Clearing Realodex : `clearRealodex`
 
@@ -340,6 +387,8 @@ Clears all clients in Realodex.
 💡A longer command, `clearRealodex` is used so that users understand that this command **clears all entries in Realodex**, preventing potential confusion with the delete command and accidental clearing of all entries.
 
 <u>Format:</u> `clearRealodex`
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### Help : `help`
 
@@ -355,6 +404,7 @@ Shows the help message for the specified command only.
 
 - Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
 - Although the format is `COMMAND help`, the exception is the help message for the clear command. Use `clear help` instead of `clearRealodex help`.
+  <br>Any other valid command followed by `help` that is not included in this feature will simply execute the command as per normal.
 
 <u>Examples:</u>
 <p align="center">
@@ -364,6 +414,7 @@ Shows the help message for the specified command only.
   <em> <code>clear help</code> provides the help message for the clearRealodex command</em>
 </p>
 
+--------------------------------------------------------------------------------------------------------------------
 
 ### Exiting the program : `exit`
 
@@ -371,6 +422,8 @@ Exits the program.
 
 <u>Format:</u> `exit`
 - Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ### File Data
 
@@ -398,20 +451,33 @@ Should you want to re-enter your contacts in a fresh JSON file in the event of f
 simply delete `realodex.json`, which can be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ## Field Constraints
-* NAME:
+* `NAME`:
     * Should only contain Alphanumeric characters and must be unique.
-    1. Names are case-insensitive.
+    1. While we disallow `s/o` as `/` is used as a command delimiter, a simple and reasonable work-around for this 
+       until it is supported, is to use a workaround such as using `s o` or `son of`).
+  2. Names are case-insensitive.
   2. Number of spaces between words in the name do not matter.
   3. Although names are displayed in full capitalisation, they are still recorded in a case-insensitive manner. Hence, an input with the same name but different capitalisation will be considered a duplicate entry.
     * Example: `n/John Doe` and `n/john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
-* PHONE:
+* `PHONE`:
     * Should only contain numbers, and should be at least 3 digits long.
+    * While we disallow usage of symbols such as `+`, if you wish to use country codes, a reasonable 
+      work-around is to omit using of
+      symbols.
+      E.g., to input `+6590215365` you may simply type in `6590215635`
+    * Spaces are also not allowed.
+      However, a simple work-around for this is to omit using such spaces.
+      E.g.
+      to input `9021 5365` we can simply type in `90215365`.
     * Example: `p/81234567`
-* INCOME:
+* `INCOME`:
     * Income should be an integer and should be at least 0.
     * Example: `i/20000`
-* EMAIL:
+* `EMAIL`:
     * Emails should be of the format local-part@domain and adhere to the following constraints:
     1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-).
     2. The local-part may not start or end with any special characters.
@@ -421,23 +487,27 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
         * have each domain label start and end with alphanumeric characters
         * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
     * Example: `e/realodex-admin@gmail.com`
-* ADDRESS: Current residential address
+    4. Top-level domain (TLD) such as `.com` are not compulsory, as according to 
+       [Internet Protocol Standards](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1)
+* `ADDRESS`: Current residential address
     * Must not include other command prefixes (`a/`,`b/`,`e/`,`f/`,`h/`,`i/`,`n/`,`p/`,`r/`,`t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
     * Example: `a/6 College Ave West`
-* FAMILY: Immediate family size
-    * Should be an integer greater than 1.
+* `FAMILY`: Immediate family size
+    * It should be an integer greater than 0.
+    * Value should not contain decimal points as this is not expected for whole number type data, a simple workaround is
+      to simply avoid the use of decimals.
     * Example: `f/4`
-* TAG:
+* `TAG`:
     * Only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
     * Example: `t/buyer`, `t/seller` or both
-* HOUSINGTYPE: housing type a buyer wants or housing type a seller is selling
+* `HOUSINGTYPE`: housing type a buyer wants or housing type a seller is selling
     * Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
     * Example: `h/HDB`
-* REMARK:
+* `REMARK`:
     * Can be empty if remark is not specified.
     * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `r/Prefers block b/c` may cause the command to fail, as the system will interpret `b/` as an unintended birthday prefix.
     * Example: `r/Has a cat`
-* BIRTHDAY:
+* `BIRTHDAY`:
     * Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
     * Example: `b/22Feb2002`
     1. The date must not be in the future.
@@ -447,6 +517,9 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
     5. The year "YYYY" must be in full and greater than or equal to 1000. (`b/29Feb02` is not allowed)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ## Command summary
 
 | Action                         | Format, Examples                                                                                                                                                                                                                                |

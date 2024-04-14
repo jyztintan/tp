@@ -239,7 +239,6 @@ public class ParserUtil {
         if (!Family.isValidFamily(trimmedFamily)) {
             throw new ParseException(Family.MESSAGE_CONSTRAINTS);
         }
-        assert Integer.parseInt(trimmedFamily) >= 1;
         return new Family(trimmedFamily);
     }
 
@@ -257,7 +256,6 @@ public class ParserUtil {
         if (!Family.isValidFamily(trimmedFamily)) {
             return new ParserUtilResult<>(Family.MESSAGE_CONSTRAINTS, new Family());
         }
-        assert Integer.parseInt(trimmedFamily) >= 1;
         return new ParserUtilResult<>("", new Family(trimmedFamily));
     }
 
