@@ -128,7 +128,7 @@ How the parsing works:
 <br>
 
 In the context of our developer guide, the provided class diagram illustrates the structure of the `Person` class,
-encompassing essential attributes that real-estate agents would require from their clients for official documents and for better understanding of their requirements.  
+encompassing essential attributes that real-estate agents would require from their clients for official documents and for better understanding of their requirements. 
 This detailed depiction allows developers
 to grasp the internal composition of the `Person` entity
 without needing to replicate `Person` in higher-level model interactions,
@@ -188,13 +188,13 @@ The `add` feature, that was morphed from the original AddressBook3, allows users
 4. The UI reflects this new list with added person.
 
 #### Example Usage Scenario
-1. The user launches the application. 
+1. The user launches the application.
 2. The user inputs `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer t/seller h/HDB r/Has 3 cats b/01May2009`, intending to add a person with the specified details.
    3. The UI reflects this new list with added person John Doe.
 
 #### Design Considerations
 
-**Compulsory fields** include: Name, Phone Number, Income, Email, Address, Family Size, Buyer / Seller Tag, Housing Type 
+**Compulsory fields** include: Name, Phone Number, Income, Email, Address, Family Size, Buyer / Seller Tag, Housing Type
 We are cautious to choose compulsory fields that are important for real-estate agents, making them compulsory fields.
 While they may not be **absolutely necessary** for all clients, we believe that the cost of missing out on these fields outweighs the hassle of making them compulsory.
 For example, missing out on the family size may not be critical for a buyer who is single and is searching for a bachelor pad, but is critical for a family of 7 who needs a large enough house for all 7 of them.
@@ -203,7 +203,7 @@ it is important information if the agent would like to make recommendations for 
 
 **Optional fields** include: Remark, Birthday
 A real estate agent may not have any remark for a client yet, and wishes to leave Remark empty.
-A real estate agent may also only want to track birthdays of their esteemed clients, and wishes to not include Birthday for the rest. 
+A real estate agent may also only want to track birthdays of their esteemed clients, and wishes to not include Birthday for the rest.
 
 **Field Constraints**
 Specific field constraints are described below. They are designed with the users in mind.
@@ -229,11 +229,11 @@ Specific field constraints are described below. They are designed with the users
 * TAG:
   * Should be restricted to case-insensitive "buyer" or "seller" using enums.
 * HOUSINGTYPE: housing type a buyer wants or housing type a seller is selling
-  * Should be restricted to "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive) using enums. 
+  * Should be restricted to "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive) using enums.
   * Only one housing type is allowed.
 * REMARK:
   * Represented as a String
-  * If remark is not specified, an empty string is used for representation 
+  * If remark is not specified, an empty string is used for representation
 * BIRTHDAY:
   * Implemented as an Optional Date, making use of Java SimpleDateFormat and Calendar classes for input and output validation.
 
