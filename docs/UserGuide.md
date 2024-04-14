@@ -5,16 +5,33 @@
 ---
 
 # Realodex User Guide
+## Welcome to Realodex!
+**Realodex** is your ultimate client management tool tailored specifically for the dynamic needs of real estate professionals. Designed to streamline the day-to-day operations of realtors, brokers, and real estate agencies, Realodex offers seamless functionality to ***add***, ***edit***, ***search***, and ***delete*** client information effortlessly.
 
-Realodex is a **desktop app for managing client contacts, optimized for use via a
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, Realodex can get your contact management tasks done faster than traditional GUI apps.
+- **Add**: Quickly input new client data, from contact details to property preferences, building a rich, actionable database.
+- **Edit**: Easily update client information to keep profiles accurate and comprehensive, reflecting the latest changes in their needs or status.
+- **Search**: Instantly locate client profiles using robust filters, enabling swift responses and tailored service.
+- **Delete**: Safely remove outdated information, ensuring your database is current and compliant.
+
+<div style="text-align: center;">
+    <a href="images/realodex_icon.png">
+        <img src="images/realodex_icon.png" alt='Realodex Icon' style="width:60%;" />
+    </a>
+</div>
+
+## Why Choose Realodex?
+With our **intuitive interface** and **advanced features**, real estate users can manage their client database with unprecedented ease, enhancing their productivity and enabling them to focus on what they do best: closing deals and building lasting relationships.
+
+Whether you're a seasoned real estate veteran or a rising star in the industry, Realodex is your partner in achieving operational excellence and superior client service.
+
+**New to Realodex?** Rest assured—this user guide delivers thorough documentation on utilizing Realodex’s current features, provides answers to frequently asked questions, and sheds light on future enhancements. Kickstart your journey by delving into the [Quick Start](#quick-start
+) section, crafted to guide you through the functionalities that will elevate your real estate endeavours.
+
 
 <!-- * Table of Contents -->
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
-
 ## Quick start
 
 1. **Check Java Installation** Ensure you have Java `11` or above installed in your computer.
@@ -98,26 +115,18 @@ If you can type fast, Realodex can get your contact management tasks done faster
 
 6. Refer to the [Features](#features) below for details of each command.
 ----
-# Using this Guide
+## Using this Guide
+Our goal is to empower you with the knowledge and confidence to unleash the full potential of Realodex. 
 
-To ensure you have a smooth and intuitive experience, this guide utilizes specific formatting conventions and icons. Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
-
-## Formatting Conventions
-| Format        | Meaning                                                                                                                                                                                                                 |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Bold**      | Used to **draw attention** to key concepts and actions you need to perform. When you see text in bold, it emphasises **important information.**                                                                         |
-| _Italics_     | Reserved for introducing new terms and phrases that are essential to understanding Realodex. Italicized text may also appear in subheadings beneath screenshots to succinctly describe what you're seeing in the image. |
-| `Code blocks` | Actual commands that you may enter into the Realodex CLI will be referred to in these code blocks.                                                                                                                      |
-
-
-## Icon Legend
-
-| Icon | Meaning                                                                                                    |
-|------|------------------------------------------------------------------------------------------------------------|
-| 💡   | Tips, helpful suggestions and best practices to optimize the Realodex user experience experience.          |
-| ⚠️   | Warning for potential pitfalls or important considerations that could impact the Realodex user experience. |
-| 🗒️  | Additional Notes to keep track of in the features.                                                         |
-| 👀   | Upcoming Features to look out for. Stay tuned for exciting new features and enhancements in Realodex.      |
+We have equipped Realodex with the following features.
+- **Effortless Navigation**: Use the table of contents for seamless navigation between sections.
+- **Quick Start for New Users**: New to Realodex? Get started with our Quick Start Guide as we handhold you through the process of setting up Realodex.
+- **Features**: Learn more about Realodex's features and how to use them with our Features section.
+- **Tutorial**: Get a step-by-step walkthrough of Realodex's features with our Tutorial.
+  <box type="info">Look out for these boxes for things to note when using Realodex</box>
+  <box type="tip">Look out for these boxes for tips and tricks on how to best use Realodex</box>
+  <box type="warning">These boxes are for more context and warnings</box>
+  <box type="wrong">These boxes are for errors and failure messages</box>
 
 ## Glossary
 
@@ -230,7 +239,7 @@ Congratulations! You are now ready to use Realodex! Read on to learn more about 
    e.g. `a/6 College Avenue Westr/Has a dog` will only recognise the `a/` prefix as the `r/` prefix is preceded by `t` which is not a whitespace character.
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME ....`, `NAME` is a parameter which can be used as `add n/John Doe ....`.
-  <br>For more details on the parameters, do refer to the [Field Constraints](#field-constraints).
+  <br> For more details on the parameters, do refer to the [Field Constraints](#field-constraints).
 
 * Parameters enclosed in `[]` are optional to input.<br>e.g. `[r/REMARK]` indicates an optional input field for that command.
 
@@ -247,36 +256,59 @@ Adds a client to Realodex.
 
 <u>Format</u>: `add n/NAME p/PHONE i/INCOME e/EMAIL a/ADDRESS f/FAMILY t/TAG h/HOUSING_TYPE [r/REMARK] [b/BIRTHDAY]`
 
-- `n/NAME`,`p/PHONE`,`i/INCOME`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG` and `h/HOUSING_TYPE` are compulsory fields.
-  - If any of the above fields are missed out in the `add` command, you will receive an error message informing you of the compulsory fields that you missed.
-  - For example, if only `n/NAME` and `i/INCOME` are present, you will be alerted that you are missing the fields `p/PHONE`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG`and`h/HOUSINGTYPE`.
- <a href="images/add-command/missing_fields_error.png">
-   <img src="images/add-command/missing_fields_error.png" alt="missing compulsory fields" style="width:150%">
-   </a>
-    - Except `t/TAG`, there can only be one of each field in the add command.
-    <a href="images/add-command/excessive_fields_error.png">
-      <img src="images/add-command/excessive_fields_error.png" alt="excessive fields" style="width:100%">
-      </a>
-- For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` (case insensitive).
-  - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown.
-- Note that the `r/REMARK` and `b/BIRTHDAY` fields are optional, enclosed in `[]`. You may choose to omit them.
-  - If you include the prefix with a blank input, the birthday and remark fields will be taken as not specified.
-    - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified.
-- Each field has constraints to the inputs it can accept. Do refer to the [Field Constraints](#field-constraints) for more information.
-  - If any of the constraints are violated, you will receive an error message detailing the fields with invalid formats.
-  - For example, if `n/NAME`,`p/PHONE` and `t/TAG` fields do not fulfil the contraints, you will receive 3 error messages as shown.
-    <a href="parsing_errors.png">
-    <img src="parsing_errors.png" alt="duplicate person" style="width:150%">
-    </a>
-- You **cannot** have duplicate persons with the same name in Realodex.
-  - Names are case-insensitive as described in [Field Constraints](#field-constraints).
-  - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".
-    <a href="images/add-command/duplicate_person_error.png">
-    <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:100%">
-    </a>
+<box type="info">
+
+  * `n/NAME`,`p/PHONE`,`i/INCOME`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG` and `h/HOUSING_TYPE` are compulsory fields. 
+    * If any of the above fields are missed out in the `add` command, you will receive an error message informing you of the compulsory fields that you missed. 
+  * Except `t/TAG`, there can only be one of each field in the add command.
+  * 
+</box>
+
+<box type="warning">
+
+* There are specific requirements for each field. 
+* Refer to [Field Constraints](#field-constraints) for more information.
+</box>
+
+
+[//]: # (- For `t/TAG`, you may input both `t/BUYER` and/or `t/SELLER` &#40;case insensitive&#41;.)
+
+[//]: # (  - If either tag is repeated more than once, for e.g. `t/BUYER t/BUYER`, the tag will only be recorded once and no error will be thrown.)
+
+[//]: # (- Note that the `r/REMARK` and `b/BIRTHDAY` fields are optional, enclosed in `[]`. You may choose to omit them.)
+
+[//]: # (  - If you include the prefix with a blank input, the birthday and remark fields will be taken as not specified.)
+
+[//]: # (    - Example: `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/ b/` will successfully add John Doe but remarks and birthday will be not specified.)
+
+[//]: # (- Each field has constraints to the inputs it can accept. Do refer to the [Field Constraints]&#40;#field-constraints&#41; for more information.)
+
+[//]: # (  - If any of the constraints are violated, you will receive an error message detailing the fields with invalid formats.)
+
+[//]: # (  - For example, if `n/NAME`,`p/PHONE` and `t/TAG` fields do not fulfil the contraints, you will receive 3 error messages as shown.)
+
+[//]: # (    <a href="parsing_errors.png">)
+
+[//]: # (    <img src="parsing_errors.png" alt="duplicate person" style="width:150%">)
+
+[//]: # (    </a>)
+
+[//]: # (- You **cannot** have duplicate persons with the same name in Realodex.)
+
+[//]: # (  - Names are case-insensitive as described in [Field Constraints]&#40;#field-constraints&#41;.)
+
+[//]: # (  - If you try to add duplicate persons, you will get the error message "This client already exists in Realodex".)
+
+[//]: # (    <a href="images/add-command/duplicate_person_error.png">)
+
+[//]: # (    <img src="images/add-command/duplicate_person_error.png" alt="duplicate person" style="width:100%">)
+
+[//]: # (    </a>)
 
 <u>Examples</u>:
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
+  * Adds John Doe with specified details into Realodex
+  * ![add-example.png](add-example.png)
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
 --------------------------------------------------------------------------------------------------------------------
@@ -715,61 +747,30 @@ Realodex data is saved automatically as a JSON file `[JAR file location]/data/re
 **Caution:**
 If your **manual changes to the data file makes its format invalid**, Realodex will **discard all data and start with an empty data file at the next run.**  Hence, it is recommended to make a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-
+ be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 </box>
 
 #### Restarting with New Data
 Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit causing the format to be incorrect,
-simply delete `realodex.json`, which can be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
+simply delete `realodex.json`, which can be found in the data folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## Field Constraints
-* NAME:
-    * Should only contain Alphanumeric characters and must be unique.
-    1. Names are case-insensitive.
-  2. Number of spaces between words in the name do not matter.
-  3. Although names are displayed in full capitalisation, they are still recorded in a case-insensitive manner. Hence, an input with the same name but different capitalisation will be considered a duplicate entry.
-    * Example: `n/John Doe` and `n/john   doe` are both considered the same valid name but both will be displayed as `JOHN DOE`.
-* PHONE:
-    * Should only contain numbers, and should be at least 3 digits long.
-    * Example: `p/81234567`
-* INCOME:
-    * Income should be an integer and should be at least 0.
-    * Example: `i/20000`
-* EMAIL:
-    * Emails should be of the format local-part@domain and adhere to the following constraints:
-    1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-).
-    2. The local-part may not start or end with any special characters.
-    3. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods.\
-       The domain name must:
-        * end with a domain label at least 2 characters long
-        * have each domain label start and end with alphanumeric characters
-        * have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
-    * Example: `e/realodex-admin@gmail.com`
-* ADDRESS: Current residential address
-    * Must not include other command prefixes (`a/`,`b/`,`e/`,`f/`,`h/`,`i/`,`n/`,`p/`,`r/`,`t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
-    * Example: `a/6 College Ave West`
-* FAMILY: Immediate family size
-    * Should be an integer greater than 1.
-    * Example: `f/4`
-* TAG:
-    * Only accept "buyer" or "seller" as the input (case-insensitive). Multiple tags are accepted.
-    * Example: `t/buyer`, `t/seller` or both
-* HOUSINGTYPE: housing type a buyer wants or housing type a seller is selling
-    * Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed.
-    * Example: `h/HDB`
-* REMARK:
-    * Can be empty if remark is not specified.
-    * Must not include other command prefixes (`a/`, `b/`, `f/`, `h/`, `i/`, `n/`, `p/`, `r/`, `t/`) to prevent parsing errors. For instance, `r/Prefers block b/c` may cause the command to fail, as the system will interpret `b/` as an unintended birthday prefix.
-    * Example: `r/Has a cat`
-* BIRTHDAY:
-    * Should be in the form "DDMMMYYYY", and can be empty if the birthday is not specified.
-    * Example: `b/22Feb2002`
-    1. The date must not be in the future.
-    2. The date must exist in the Gregorian calendar. (`b/29Feb2023` is not allowed as it is not a valid day to begin with)
-    3. The day "DD" must be numeric. For 1st-9th day of the month, the 0 need not be present. (Example: `2Feb2002`)
-    4. The month "MMM" refers to the first 3 letters of the month (case-insensitive)
-    5. The year "YYYY" must be in full and greater than or equal to 1000. (`b/29Feb02` is not allowed)
+Summarized in the table below are the attributes of a client along with their constraints. These constraints are important and are used for the `add`, `edit`, `delete` and `filter` functions!
+
+| Format          | Constraints                                                                                                                                       | Example                                                                                                  |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `n/Name`        | Alphanumeric, unique, case-insensitive                                                                                                            | <ul><li>✅ <code>n/John Doe</code></li><li>✅ <code>n/JoJo Siwa 1</code></li><li>❌ <code>n/Han$el</code></li></ul> |
+| `p/Phone`       | Only numbers, at least 3-digit long                                                                                                     | <ul><li>✅ <code>i/1234</code></li><li>❌ <code>i/123A</code></li></ul>                                    |
+| `i/Income`      | Integer and should be at least 0.                                                                                                                 | <ul><li>✅ <code>i/10000</code></li><li>❌ <code>i/10,000</code></li><li>❌ <code>i/-1</code></li></ul>     |
+| `e/Email`       | Format `local-part@domain`                                                                                                                        | <ul><li>✅ <code>e/admin@realodex</code></li><li>❌ <code>e/hello@gmail</code></li></ul>                   |
+| `a/Address`     | No constraints                                                                                                                                    | <ul><li>✅ <code>a/6 College Avenue West</code></li>                                                      |
+| `f/Family`      | Should be an integer greater than 1                                                                                                               | <ul><li>✅ <code>f/4</code></li><li>❌ <code>f/five</code></li></ul>                                       |
+| `t/Tag`         | Only accept "buyer" or "seller" as the input                                                                                                      | <ul><li>✅ <code>t/buyer</code></li></ul>                                                                 |
+| `h/HousingType` | Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed. | <ul><li>✅ <code>h/HDB</code></li></ul><ul><li>❌ <code>h/big house</code></li></ul>                       |
+| `r/Remark`      | Can be empty if remark is not specified.                                                                                                          | <ul><li>✅ <code>r/Likes to eat cake</code></li></ul>                                                     |
+| `b/Birthday`    | `ddMMMyyyy` format. Not in the future.<br/>Not earlier than year 1000                                                                             | <ul><li>✅ <code>b/23Apr1972</code></li></ul>                                                             |
 
 --------------------------------------------------------------------------------------------------------------------
 ## Command summary
