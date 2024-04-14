@@ -33,36 +33,67 @@ This guide provides detailed documentation on Realodex's features, FAQs, and upc
 
 ## Table of Contents
 
-- [Using this Guide](#using-this-guide)
+- [Welcome to Realodex!](#-welcome-to-realodex-)
+
+- [Why Choose Realodex?](#why-choose-realodex)
+
+- [Navigating this User Guide](#navigating-this-user-guide)
+     
     - [Formatting Conventions](#formatting-conventions)
+  
     - [Icon Legend](#icon-legend)
+  
+    - [Key Sections](#key-sections)
+  
+    - [Glossary](#glossary)
+
 - [Getting Started](#getting-started)
+   
   - [Downloading Realodex](#downloading-realodex)
+   
   - [Introduction to Realodex GUI](#introduction-to-realodex-gui)
+   
   - [Realodex Tutorial](#realodex-tutorial)
+   
 - [Features](#features)
+   
+    - [Command Format and Usage](#command-format-and-usage)
+   
     - [Adding a Client](#adding-a-client-add)
+   
     - [Deleting a Client](#deleting-a-client-delete)
-    - [Editing Clients](#editing-clients-edit)
+   
+    - [Editing a Client](#editing-a-client-edit)
+   
     - [Filtering Clients](#filtering-clients-filter)
+   
     - [Listing Clients](#listing-clients-list)
-    - [Sorting](#sorting-sort)
+   
+    - [Sorting Clients](#sorting-clients-sort)
+   
     - [Clearing Realodex](#clearing-realodex-clearrealodex)
+   
     - [Help](#help-help)
+   
     - [Help (Individual Commands)](#help-individual-commands-command-help)
+   
     - [Exiting the Program](#exiting-the-program-exit)
+   
     - [File Data](#file-data)
+   
 - [Field Constraints](#field-constraints)
+   
 - [Command Summary](#command-summary)
+   
 - [FAQ](#faq)
+   
 - [Known Issues](#known-issues)
 
 --------------------------------------------------------------------------------------------------------------------
 ## Navigating this User Guide
-Welcome to the Realodex User Guide! 
+**Welcome** to the Realodex User Guide! 
 We hope this user guide empowers you with the knowledge and confidence to **unleash the full potential of Realodex**.
 To ensure you have a **smooth and intuitive experience**, this guide utilizes **specific formatting conventions and icons**. 
-Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
 
 #### Formatting Conventions
 | Format        | Meaning                                                                                                                                                                                                                 |
@@ -73,10 +104,10 @@ Familiarizing yourself with these will enhance your understanding and efficiency
 
 
 #### Icon Legend
-<box type="tip">These boxes provide useful tips and tricks on how to optimise Realodex</box>
-<box type="info">These boxes provide important things to note when using Realodex</box>
-<box type="warning">These boxes provide precautionary warnings to avoid potential pitfalls</box>
-<box type="wrong">These boxes highlight error messages and critical failure information</box>
+<box type="tip">These boxes provide **useful tips and tricks** on how to optimise Realodex</box>
+<box type="info">These boxes provide **important things to note** when using Realodex</box>
+<box type="warning">These boxes provide **precautionary warnings** to **avoid potential pitfalls**</box>
+<box type="wrong">These boxes **highlight error messages** and critical failure information</box>
 
 #### Key Sections
 This guide also includes:
@@ -117,7 +148,7 @@ This table provides definitions of key terms and abbreviations used throughout t
 
    a. Open _command-prompt_ by typing `cmd` in your Windows start menu.
 
-   b. Type `java --version` in the command-prompt and press enter to check if Java is installed and to the correct version.
+   b. Type `java --version` in the command-prompt and press enter to **check if Java is installed** and to the **correct version**.
    Please see below for the expected output if the correct version of Java is installed.
    The red box indicates the expected Java version you should see.
    <br>
@@ -126,7 +157,7 @@ This table provides definitions of key terms and abbreviations used throughout t
       </div>
    
    c. If Java is not installed or the wrong version is installed,
-      please install Java 11 from the official site or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
+      **please install Java 11** from the official site or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
 
 </tab>
 <tab header="Mac/Linux"> 
@@ -135,7 +166,7 @@ This table provides definitions of key terms and abbreviations used throughout t
 
    a. Open _Terminal_.
 
-   b. Type `java --version` and press enter to check if Java is installed and to the right version.
+   b. Type `java --version` and press enter to **check if Java is installed** and to the **right version**.
    Below image is the expected output if the correct version of Java is installed.
    The red box indicates the expected Java version you should see.
    <br>
@@ -144,17 +175,17 @@ This table provides definitions of key terms and abbreviations used throughout t
       </div>
 
    c. If Java is not installed or the wrong version is installed, 
-        please install Java 11 from the official site or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
+        **please install Java 11** from the official site or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
 
 </tab>
 </tabs>
 
 <div style="page-break-after: always;"></div>
 
-2. **Create a New Folder**: On your desktop, create a new folder and title it "Realodex". This will be the dedicated location for storing the Realodex application and its associated files.
+2. **Create a New Folder**: On your desktop, **create a new folder** and title it "Realodex". This will be the dedicated location for **storing the Realodex application** and its associated files.
 
 3. **Download Realodex**:
-   Download the latest version of `realodex.jar` from the [official release page](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases). Below is an image of what the download page looks like:
+   Download the **latest version** of `realodex.jar` from the [official release page](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases). Below is an image of what the download page looks like:
       <br>
       <div style="display:flex; justify-content: center; align-items:center;">
         <img src="images/quick-start/release.png" alt="Realodex Release" style="width: 800px; margin-bottom: 16px;">
@@ -162,12 +193,12 @@ This table provides definitions of key terms and abbreviations used throughout t
       <br>
 
 4. **Set Up Realodex**:
-   Copy the downloaded `realodex.jar` file to the newly created "Realodex" folder on your desktop. This helps to keep your application organized and prevents potential conflicts with files from other applications.
+   Copy the downloaded `realodex.jar` file to the newly created **"Realodex" folder on your desktop**. This helps to keep your application organized and prevents potential conflicts with files from other applications.
 
 
 5. **Navigate to Workspace**: 
 
-    a. Open a command terminal.
+    a. Open a **command terminal**.
     
     b. Enter the following command: `cd Desktop/Realodex`. You may refer to the screenshot below.
       <br>
@@ -176,7 +207,7 @@ This table provides definitions of key terms and abbreviations used throughout t
   </div>
 <br>
 
-6. **Run Realodex**: Now enter `java -jar realodex.jar` to run the application.
+6. **Run Realodex**: Now enter `java -jar realodex.jar` to **run the application**.
    <br>
   <div style="display:flex; justify-content: center; align-items:center;">
     <img src="images/quick-start/running.png" alt="running" style=" width: 600px; margin-bottom: 16px;">
@@ -197,8 +228,8 @@ You should see a _GUI_ similar to image below pop up.
 
 ### Introduction to Realodex GUI
 
-Realodex features a Graphical User Interface (GUI) crafted to deliver a seamless user experience. 
-The GUI is structured into several distinct components, each designed to enhance your interactions and efficiency.
+Realodex features a GUI crafted to deliver a **seamless user experience**. 
+The GUI is structured into several distinct components, each designed to **enhance your interactions and efficiency**.
 
 
 <a href="images/navigating-gui/basic_orientation.png">
@@ -216,7 +247,7 @@ The GUI is structured into several distinct components, each designed to enhance
 ---
 
 ### Realodex Tutorial
-Welcome to your first session with Realodex.
+**Welcome** to your first session with Realodex.
 We've designed this tutorial to **help new users familiarize themselves** with the functionality and flow of the application. 
 Follow along in this short tutorial to get a feel of how Realodex works. Let's begin!
 
@@ -227,10 +258,10 @@ Follow along in this short tutorial to get a feel of how Realodex works. Let's b
 
 <box type="info" header="Notes">
 
-- If this is your first time, some sample entries will be loaded for you.
+- If this is your first time, some **sample entries** will be loaded for you.
 </box>
 
-2. **Adding a client.** Let us try to add a new client into Realodex. Run the following command:
+2. **Adding a client.** Let us try to **add a new client** into Realodex. Run the following command:
 `
 add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer t/seller h/HDB r/Has 3 cats b/01May2009
 `
@@ -242,15 +273,15 @@ add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02
 
 <br>
 
-Congratulations, you have just added your first ever client into Realodex!
+**Congratulations**, you have just added your first ever client into Realodex!
 
 <box type="tip" header="Tip">
 
-  - Try adding new clients with different parameters to familiarise yourself with the add command.
+  - Try adding new clients with **different parameters** to familiarise yourself with the add command.
 </box>
 
 3. **Filter clients.** Notice that the list may start to feel a bit crowded as more clients are added. 
-We can utilise the filter feature to efficiently locate specific clients. 
+We can utilise the filter feature to **efficiently locate specific clients**. 
 Let's search for our new client John, by simply keying in the command: `filter n/John`.
 
    <a href="images/tutorial/FilterJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
@@ -261,13 +292,13 @@ Let's search for our new client John, by simply keying in the command: `filter n
 
 <box type="tip" header="Tip">
 
-- You may filter by name but also by remarks, housing type preference, and even birthdays.
+- You may filter by **name** but also by **remarks, housing type preference**, and even **birthdays**.
   </box>
 
 <br>
 
 4. **Listing all clients.** We are now done reviewing John Doe's details. 
-Let us view the entire client list again. To do this, simply enter the command: `list`.
+Let us **view the entire client list** again. To do this, simply enter the command: `list`.
 
 <a href="images/tutorial/List.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/List.png" alt="duplicate person" style="width:70%">
@@ -276,8 +307,8 @@ Let us view the entire client list again. To do this, simply enter the command: 
 
 <br>
 
-5. **Editing clients.** Suppose our new client John Doe has gotten a pay raise! Let's edit his income to reflect this change. 
-First, let's take note of his index number in the client list.
+5. **Editing clients.** Suppose our new client John Doe has gotten a pay raise! Let's **edit** his income to **reflect this change**. 
+First, let's take note of his **index number in the client list**.
    <a href="images/tutorial/IndexJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/IndexJohnDoe.png" alt="duplicate person" style="width:83.3%; margin-right: 130px;">
    </a>
@@ -293,11 +324,11 @@ Since John's index number is 7, enter the command `edit 7 i/88888`.
 
 <box type="tip" header="Tip">
 
-- You may also edit multiple fields of a client at once.
+- You may also **edit multiple fields** of a client at once.
   </box>
 
 6. **Deleting a client.** 
-We can also remove client profiles from Realodex. 
+We can also **remove client profiles** from Realodex. 
 Let us try deleting John Doe from the Realodex by entering `delete n/John Doe`. 
    <a href="images/tutorial/DeleteJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/DeleteJohnDoe.png" alt="duplicate person" style="width:70%">
@@ -307,17 +338,17 @@ Let us try deleting John Doe from the Realodex by entering `delete n/John Doe`.
 
 <box type="info" header="Notes">
 
-- Notice that the client list has been automatically modified after John's deletion, with the last client now being Roy.
+- Notice that the client list has been **automatically modified** after John's deletion, with the last client now being Roy.
 </box>
 
-  7. **Getting Help.** Should you need assistance on any of the commands at anytime while using Realodex, simply enter the `help` command.
+  7. **Getting Help.** Should you **need assistance** on any of the commands at anytime while using Realodex, simply enter the `help` command.
      <a href="images/tutorial/HelpWindow.png" style="display: block; margin: 0 auto; text-align: center;">
      <img src="images/tutorial/HelpWindow.png" alt="duplicate person" style="width:70%">
      </a>
 <div style="text-align: center; font-style: italic;">A help window is displayed explaining each command usage.</div>
      <br>
 
-For specific guidance on individual commands, you can also enter `COMMAND help`.
+For specific **guidance on individual commands**, you can also enter `COMMAND help`.
 Let's try it out with `delete help`. 
      <a href="images/tutorial/DeleteHelp.png" style="display: block; margin: 0 auto; text-align: center;">
      <img src="images/tutorial/DeleteHelp.png" alt="duplicate person" style="width:70%">
@@ -325,39 +356,37 @@ Let's try it out with `delete help`.
 <div style="text-align: center; font-style: italic;">A message on the delete command usage will be shown.</div>
      <br>
 
-Congratulations! You have finished the Realodex tutorial and are now ready to use Realodex. 
-Feel free to continue exploring the in-depth features of Realodex to fully leverage its capabilities in your real estate operations!
+**Congratulations**! You have finished the Realodex tutorial and are now ready to use Realodex. 
+Feel free to **continue exploring the in-depth features** of Realodex to fully leverage its capabilities in your real estate operations!
 
 ## Features
 
-
-
 ### Command Format and Usage
 
-Understanding the command format in Realodex is crucial for effectively managing your client data. Here are the key aspects of our command structure:
+Understanding the **command format** in Realodex is crucial for effectively managing your client data. Here are the key aspects of our command structure:
 
 **General Command Structure:**
 
-Commands typically follow this format: `COMMANDWORD PREFIX_ONE/UPPER_CASE PREFIX_TWO/UPPER_CASE ....` This structure helps in executing specific actions within the application.
+Commands typically follow this format: `COMMANDWORD PREFIX_ONE/UPPER_CASE PREFIX_TWO/UPPER_CASE ....` This structure helps in **executing specific actions** within the application.
 
 **Command Words:**
 
-`COMMANDWORD` refers to the base commands that the user can input, such as `add`, `delete`, `filter`. These commands are _case-insensitive_, meaning both `add` and `ADD` will perform the addition operation.
+`COMMANDWORD` refers to the **base commands** that the user can input, such as `add`, `delete`, `filter`. These commands are _case-insensitive_, meaning both `add` and `ADD` will perform the addition operation.
 
 **Prefix Usage:**
 
-`PREFIX/` tags are used to specify the type of data being entered. For example, in `add n/John Doe p/98765432`, `n/` stands for name, and `p/` stands for phone number. Like command words, prefixes are also case-insensitive (`n/` and `N/` are treated the same).
+`PREFIX/` tags are used to **specify the type of data being entered**. For example, in `add n/John Doe p/98765432`, `n/` stands for name, and `p/` stands for phone number. Like command words, prefixes are also case-insensitive (`n/` and `N/` are treated the same).
 
 **Parameter Input:**
 
-Parameters must follow the prefix they are associated with and are typically in `UPPER_CASE` in documentation to indicate where user-supplied data should be inserted. For instance, in the command `add n/NAME`, `NAME` is where you would place the actual name of the client.
+Parameters must follow the prefix they are associated with and are typically in `UPPER_CASE` in documentation to indicate where **user-supplied data should be inserted**. For instance, in the command `add n/NAME`, `NAME` is where you would place the actual name of the client.
 
 
 </box>
 
 ### Adding a client: `add`
 
-Adds a client to Realodex.
+**Adds a client** to Realodex.
 
 **Format:**
 <box>
@@ -367,18 +396,18 @@ Adds a client to Realodex.
 
 <box type="info" header="Notes">
 
-  * There can only be one of each field in the add command except for `t/TAG`, where up to 2 tags are accepted.
+  * There can only be **one of each field** in the add command except for `t/TAG`, where up to **2 tags are accepted**.
 </box>
 
 <box type="warning" header="Caution">
 
-* Ensure that each field input adheres to their respective [constraints](#field-constraints).
+* Ensure that each field input adheres to their **respective [constraints](#field-constraints)**.
 </box>
 
 <box type="wrong" header="Error">
 
-* `n/NAME`,`p/PHONE`,`i/INCOME`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG` and `h/HOUSING_TYPE` are compulsory fields.
-    * If you missed out any of the fields mentioned above, you will be notified with an error message indicating the overlooked fields.
+* `n/NAME`,`p/PHONE`,`i/INCOME`,`e/EMAIL`,`a/ADDRESS`,`f/FAMILY`,`t/TAG` and `h/HOUSING_TYPE` are **compulsory fields**.
+    * If you missed out any of the fields mentioned above, you will be notified with an error message **indicating the overlooked fields**.
 </box>
 
 
@@ -419,6 +448,7 @@ Adds a client to Realodex.
 **Example**:
 
 `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
+
 ![add-example.png](add-example.png)
   <div style="text-align: center; font-style: italic;">John Doe has been added into Realodex.</div>
 <br>
@@ -430,7 +460,7 @@ Adds a client to Realodex.
   
 ### Deleting a client : `delete`
 
-Deletes the specified client from Realodex. There are 2 ways to do so:
+**Deletes the specified client** from Realodex. There are 2 ways to do so:
 
 #### Delete By Name
 
@@ -440,11 +470,6 @@ Deletes the client with the specified `NAME`.
 <box>
 
 `delete n/NAME`
-</box>
-
-<box type="wrong" header="Error">
-
-If there is **no client with the specified** `NAME` in the current list, error message will be shown "The client name provided is invalid". <br>
 </box>
 
 **Example:**
@@ -467,6 +492,12 @@ If there is **no client with the specified** `NAME` in the current list, error m
   <em> Client list after entering command <code>delete n/John Doe</code></em>
 </p>
 
+
+<box type="wrong" header="Error">
+
+If there is **no client with the specified** `NAME` in the current list, an **error message** will be shown: "The client name provided is invalid". <br>
+</box>
+
 #### Delete By Index
 
 Deletes the client of the specified `INDEX`.
@@ -477,11 +508,6 @@ Deletes the client of the specified `INDEX`.
 `delete INDEX`
 </box>
 
-</box>
-
-<box type="wrong" header="Error">
-
-If there is **no client with the specified** `INDEX` in the current list, error message will be shown "The client index provided is invalid". <br>
 </box>
 
 **Example:**
@@ -503,6 +529,12 @@ If there is **no client with the specified** `INDEX` in the current list, error 
   <em> Client list after entering command <code>delete 3</code></em>
 </p>
 
+
+<box type="wrong" header="Error">
+
+If there is **no client with the specified** `INDEX` in the current list, an error message will be shown: "The client index provided is invalid". <br>
+</box>
+
 [//]: # (<box type="info" header="">)
 
 [//]: # ()
@@ -517,9 +549,9 @@ If there is **no client with the specified** `INDEX` in the current list, error 
 --------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
 
-### Editing clients : `edit`
+### Editing a client : `edit`
 
-Edits specified details of the client.
+**Edits specified details** of the client.
 
 **Format:**
 <box>
@@ -529,8 +561,8 @@ Edits specified details of the client.
 
 <box type="info" header="Notes">
 
-- It is optional to edit any field, but you must have at least 1.<br>
-- When editing the `TAG`, all existing tags will be overwritten with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`. <br>
+- It is optional to edit any field, but you must have **at least 1**.<br>
+- When editing the `TAG`, all **existing tags will be overwritten** with the new tag(s) provided. If you want to edit the client to be both a buyer and seller, include both tags i.e. `t/Buyer t/Seller`. <br>
 </box>
 
 **Example:**
@@ -560,12 +592,17 @@ Edits specified details of the client.
 
 ### Filtering clients: `filter`
 
-The filter command in Realodex allows you to narrow down your list of clients by **one** specified field. 
-Currently, we support filtering by name, remark, tag, birthday month, or housing type.
+The filter command in Realodex allows you to **narrow down your list** of clients by **one** specified field. 
+Currently, we support **filtering by name, remark, tag, birthday month, or housing type**.
+
+<box type="tip" header="Tip">
+
+  - Regular use of the filter command can significantly **streamline** your client management processes!
+</box>
 
 
 #### Filter By Name
-Returns the list of only the clients whose names contain the specified keyphrase.
+Returns the list of only the clients whose **names contain the specified keyphrase**.
 
 **Format:**
 <box>
@@ -575,7 +612,7 @@ Returns the list of only the clients whose names contain the specified keyphrase
 
 **Example:**
 
-`filter n/Li` will return a list of people whose names contain "li".
+`filter n/Li` will return a list of clients whose names contain "li".
  
 
 <p align="center">
@@ -588,7 +625,7 @@ Returns the list of only the clients whose names contain the specified keyphrase
 <br>
 
 #### Filter By Tag
-Returns the list of clients with the specified tag(s).
+Returns the list of clients with the **specified tag(s)**.
 
 **Format:**
 <box>
@@ -598,13 +635,15 @@ Returns the list of clients with the specified tag(s).
 
 <box type="info" header="Notes">
 
-- Filtering with the "Buyer" or "Seller" tag retrieves all clients with the respective tag.
-- Filtering by multiple tags is supported, `filter t/Buyer t/Seller`, returns clients who possess both buyer and seller tags.
-</box>
+- **Filtering by Single Tag**: Filtering by a single tag displays all clients who have that tag. 
+This **includes** clients who may have **both "Buyer" and "Seller" tags.**
+- **Filtering by Multiple Tags**: Realodex supports filtering by **multiple tags**.
+Entering `filter t/Buyer t/Seller` will show only clients who are **tagged as both "Buyer" and "Seller"**.
+  </box>
 
 **Examples:**
 
-`filter t/seller`.
+`filter t/seller` will return a list of clients tagged as "Seller".
 
 <p align="center">
     <a href="images/filter/filterByTagSeller.png">
@@ -615,7 +654,7 @@ Returns the list of clients with the specified tag(s).
 
 ---
 
-`filter t/buyer t/seller`. 
+`filter t/buyer t/seller` will return a list of clients tagged as both "Buyer" and "Seller". 
 
 <p align="center">
     <a href="images/filter/filterByTagBuyerSeller.png">
@@ -625,7 +664,7 @@ Returns the list of clients with the specified tag(s).
 </p>
 
 #### Filter By Housing Type
-Returns the list of clients with the specified preferred housing type.
+Returns the list of clients with the **specified preferred housing type**.
 
 **Format:**
 <box>
@@ -635,7 +674,7 @@ Returns the list of clients with the specified preferred housing type.
 
 **Example:** 
 
-`filter h/Good Class Bungalow`.
+`filter h/Good Class Bungalow` will return a list of clients with a housing type preference for "Good Class Bungalow".
 
 <p align="center">
     <a href="images/filter/filterByHousingType.png">
@@ -645,7 +684,7 @@ Returns the list of clients with the specified preferred housing type.
 </p>
 
 #### Filter By Remark
-Returns the list of clients whose remarks include the specified keyphrase.
+Returns the list of clients whose **remarks include** the **specified keyphrase**.
 
 **Format:**
 
@@ -656,24 +695,13 @@ Returns the list of clients whose remarks include the specified keyphrase.
 
 <box type="info" header="Notes">
 
-- Partial fragments of remarks will still be matched.
-  - `filter r/hand` matches person with remark "handsome".
-</box>
-   
-<box type="warning" header="Warning">
-
-- Input remark must be non-empty, preventing empty remark input as a request to list all clients.
-- The remarks for the filter r/ command must not contain any other prefixes which could be misconstrued as additional prefixes.
-</box>
-
-<box type="wrong" header="Error">
-
-- The command `filter r/ my tag is t/buyer` would cause an error because the system interprets t/ as the start of a new prefix.
+- When filtering by remarks, even **partial keywords are matched**.
+    - `filter r/hand` matches person with remark "handsome".
 </box>
 
 **Example:**
 
-`filter r/eat`.
+`filter r/eat` will return a list of clients with remarks containing "eat".
 
 <p align="center">
     <a href="images/filter/filterByRemarkScreenshot.png">
@@ -682,8 +710,20 @@ Returns the list of clients whose remarks include the specified keyphrase.
     <em>Persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..." are returned.</em>
 </p>
 
+
+<box type="warning" header="Warning">
+
+- Input remark must be **non-empty**, preventing empty remark input as a request to list all clients.
+- The remarks for the `filter r/` command **must not contain any other prefixes** which could be misconstrued as additional prefixes.
+  </box>
+
+<box type="wrong" header="Error">
+
+- The command `filter r/ my tag is t/buyer` would cause an error because the system interprets `t/` as the start of a new prefix.
+  </box>
+
 #### Filter By Birthday Month
-Returns the list of clients whose birthdays fall in the specified month.
+Returns the list of clients whose **birthdays** fall in the **specified month**.
 
 **Format:**
 
@@ -694,14 +734,14 @@ Returns the list of clients whose birthdays fall in the specified month.
 
 <box type="info" header="Notes">
 
-- Month input should be in 3-letter abbrieviation (MMM) format. 
+- Month input should be in **3-letter abbrieviation (MMM)** format. 
   - "Jan" for January
   - "Feb" for February
 </box>
 
 **Example:**
 
-`filter b/Apr`
+`filter b/Apr` will return a list of clients with birthdays in April.
 
 <p align="center">
     <a href="images/filter/filterByBirthday.png">
@@ -718,7 +758,16 @@ Returns the list of clients whose birthdays fall in the specified month.
 
 Lists all clients in Realodex.
 
-<u>Format:</u> `list`
+**Format:**
+<box>
+
+`list` 
+</box>
+
+<box type="tip" header="Tip">
+
+- Use the `list` command to **clear any active filters** and view all clients again.
+  </box>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -726,65 +775,82 @@ Lists all clients in Realodex.
 
 <div style="page-break-after: always;"></div>
 
+### Sorting Clients : `sort`
 
-### Sort : `sort`
-
-Sort clients based on their proximity to their upcoming birthday,
-calculated by the number of days until their next birthday relative to the current date.
+This feature **organises clients** based on **how soon their next birthday** will occur. 
 
 **Format:**
-<box>sort</box>
+<box>
 
-<box type="info" header="Things to note:">
+`sort`
+</box>
+
+<box type="info" header="Notes">
 
 * The current date is based on the local system's time.
-* If their birthday has already passed,
-  the calculation is based on the number of days until their next birthday next year.
+* The calculation is based on the number of days until their next upcoming birthday.
 </box>
 
-<box type="warning" header="Warning:">
+[//]: # ()
+[//]: # (<box type="warning" header="Warning">)
 
-* If the list presented is currently a filtered list after using [filter](#filtering-clients-filter),
-  sort will work on the new filtered list.
-</box>
+[//]: # ()
+[//]: # (* If the list presented is currently a filtered list after using [filter]&#40;#filtering-clients-filter&#41;,)
 
-**Example:**
+[//]: # (  sort will work on the new filtered list.)
 
-* Upon `sort`, the list on the screen will be filtered to return a new sorted list by nearest birthday.
+[//]: # (</box>)
 
-<div style="display:flex; justify-content: center; align-items:center;">
-<img src="images/sort/sort-day_showcase.png" alt="sort" style=" width: 800px; margin-bottom: 16px;">
-</div>
+**Example**
+
+`sort` will return a new sorted list of clients by their nearest birthday.
+
+
+<p align="center">
+    <a href="images/sort/sort-day_showcase.png">
+    <img src="images/sort/sort-day_showcase.png" alt="filterByBirthday" style="width:100%">
+    </a>
+    <em>Client lists is sorted by upcoming birthday.</em>
+</p>
+
 
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
-
 
 ### Clearing Realodex : `clearRealodex`
 
-Clears all clients in Realodex.
+**Clears all existing clients** in Realodex, returning an **empty client list**.
 
 **Format:**
-<box>clearRealodex</box>
+<box>
 
-<box type="tip">A longer command, <code>clearRealodex</code>
-is used so that users understand that this command <b>clears all entries in Realodex</b>,
-preventing potential confusion with the delete command and accidental clearing of all entries.
+`clearRealodex`
 </box>
 
-<box type="warning" header="Warning:">
-Be careful with <code>clearRealodex</code>, you will be unable to undo this operation!
+<box type="tip" header="Notes">
+
+- A longer command, <code>clearRealodex</code>
+is used so that users understand that this command <b>clears all entries in Realodex</b>,
+**preventing potential confusion** with the **delete** command and **accidental clearing** of all entries.
+</box>
+
+<box type="warning" header="Warning">
+
+- Be careful when using <code>clearRealodex</code>, you will **not be able to undo** this operation!
   </box>
 
 **Example:**
 
-* Upon `clearRealodex`, Realodex will clear and return an empty list.
-<div style="display:flex; justify-content: center; align-items:center;">
-<img src="images/misc_features/clear.png" alt="clear" style=" width: 900px; margin-bottom: 16px;">
-</div>
+Upon `clearRealodex`, Realodex will clear and return an empty client list.
+<p align="center">
+    <a href="images/misc_features/clear.png">
+    <img src="images/misc_features/clear.png" alt="clear" style="width:100%">
+    </a>
+    <em>An empty client list is returned.</em>
+</p>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -794,19 +860,29 @@ Be careful with <code>clearRealodex</code>, you will be unable to undo this oper
 
 ### Help : `help`
 
-Generates a pop-up window, which is a summarized version of the User Guide and its features.
+Generates a pop-up window, which is a summarized version of the User Guide and **feature descriptions**.
+
 **Format:**
-<box>help</box>
+<box>
 
+`help`
+</box>
 
-<box type="tip">This window can also be accessed by the "Help" button on the top menu.
+<box type="tip" header ="Tip">
+
+The help window can also be accessed by the **"Help" button on the top menu**.
 </box>
 
 **Example:**
-* Upon `help`, Realodex will pop up a help window together with a success message.
-<div style="display:flex; justify-content: center; align-items:center;">
-<img src="images/misc_features/help_window.png" alt="help_window" style=" width: 900px; margin-bottom: 16px;">
-</div>
+
+Upon `help`, Realodex will **pop up a help window** together with a success message.
+
+<p align="center">
+    <a href="images/misc_features/help_window.png">
+    <img src="images/misc_features/help_window.png" alt="help_window" style="width:100%">
+    </a>
+    <em>The pop out of the help window.</em>
+</p>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -816,25 +892,32 @@ Generates a pop-up window, which is a summarized version of the User Guide and i
 
 ### Help (Individual Commands) : `COMMAND help`
 
-Shows the help message for the specified command only.
+Displays the **help message** for the **specified command** only.
 
 **Format:**
-<box>COMMAND help</box>
+<box>
 
-<box type="info" header="Things to note:">
+`COMMAND help`
+</box>
+
+<box type="info" header="Notes">
 
 * Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
-* Although the format is `COMMAND help`, the exception is the help message for the clear command.
-  Use `clear help` instead of `clearRealodex help`.
+
+[//]: # (* Although the format is `COMMAND help`, the exception is the help message for the clear command.)
+
+[//]: # (  Use `clear help` instead of `clearRealodex help`.)
   </box>
 
 **Example:**
-1. User types in `add help`.
-2. Realodex posts the help message for `add` command as shown below.
+`add help` returns the help message for `add` command as shown below.
+
+
 <p align="center">
-      <a href="images/misc_features/command_help.png">
-      <img src="images/misc_features/command_help.png" alt="command_help" style="width:120%">
-      </a>
+    <a href="images/misc_features/command_help.png">
+    <img src="images/misc_features/command_help.png" alt="help_window" style="width:100%">
+    </a>
+    <em>The help message for the add command is returned.</em>
 </p>
 
 [Back to Table of Contents](#table-of-contents)
@@ -845,12 +928,15 @@ Shows the help message for the specified command only.
 
 ### Exiting the program : `exit`
 
-Exits the program and closes the window.
+**Exits the program** and closes the window.
 
 **Format:**
-<box>exit</box>
+<box>
 
-<box type="info" header="Things to note:">
+`exit`
+</box>
+
+<box type="info" header="Notes">
 
 * Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
   </box>
@@ -863,48 +949,61 @@ Exits the program and closes the window.
 
 ### File Data
 
-The JSON file that stores the data of your contacts can be found in a folder named `data`, in the same folder/directory as the Realodex app. (e.g. if you
-have Realodex installed in your Desktop, the `data` folder containing the file can be found in your Desktop as well.)
+The _JSON file_ that **stores the data** of your contacts can be found in a folder named `data`, in the **same folder/directory as the Realodex app**. 
+
+[//]: # (&#40;e.g. if you have Realodex installed in your Desktop, the `data` folder containing the file can be found in your Desktop as well.&#41;)
 
 #### Saving Data
 
-Realodex data is saved in the hard disk as a JSON file automatically after any command that modifies it. There is no need to save manually.
+Realodex **data is saved** in the hard disk as a JSON file **automatically** after any command that modifies it. There is **no need for manual saving**.
 
 #### Editing Data
 
-Realodex data is saved automatically as a JSON file `[JAR file location]/data/realodex.json`. Advanced users are welcome to update data directly by editing that data file.
+Realodex data is **saved automatically** as a JSON file `[JAR file location]/data/realodex.json`. Advanced users may choose to **modify this file directly** to update data.
 
-<box type="warning" seamless>
+<box type="warning" header="Caution">
 
-**Caution:**
-If your **manual changes to the data file makes its format invalid**, Realodex will **discard all data and start with an empty data file at the next run.**  Hence, it is recommended to make a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the Realodex to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
- be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
+- **Invalid Format**: If manual changes to the data file result in an invalid format, Realodex will **discard all data** and start with an **empty data file** on the next run. 
+It is strongly recommended to **make a backup of the file** before making any edits.
+- **Unexpected Behavior**: **Incorrect edits** may cause Realodex to behave unpredictably, for instance, if a value **outside the acceptable range** is entered.
+- **Proceed With Caution**: Only edit the data file if you are **confident in your ability** to maintain its correct format.
 </box>
 
 #### Restarting with New Data
-Should you want to re-enter your contacts in a fresh JSON file in the event of file corruption or a bad edit causing the format to be incorrect,
-simply delete `realodex.json`, which can be found in the data folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
+You may want to **re-enter your client data in a fresh JSON file** in the event of file corruption or a bad edit which caused the format to be incorrect:
+
+1. **Delete the `realodex.json` file**, which can be found in the data folder
+2. **Restart** the Realodex application. 
+3. A **new JSON file with sample contacts** will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Field Constraints
-Summarized in the table below are the attributes of a client along with their constraints. These constraints are important and are used for the `add`, `edit`, `delete` and `filter` functions!
+Summarized in the table below are the attributes of a client along with their constraints. These constraints are **important** and **should be adhered** to when performing Realodex functions!
 
-| Format          | Constraints                                                                                                                                       | Example                                                                                                  |
-|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| `n/Name`        | Alphanumeric, unique, case-insensitive                                                                                                            | <ul><li>✅ <code>n/John Doe</code></li><li>✅ <code>n/JoJo Siwa 1</code></li><li>❌ <code>n/Han$el</code></li></ul> |
-| `p/Phone`       | Only numbers, at least 3-digit long                                                                                                     | <ul><li>✅ <code>i/1234</code></li><li>❌ <code>i/123A</code></li></ul>                                    |
-| `i/Income`      | Integer and should be at least 0.                                                                                                                 | <ul><li>✅ <code>i/10000</code></li><li>❌ <code>i/10,000</code></li><li>❌ <code>i/-1</code></li></ul>     |
-| `e/Email`       | Format `local-part@domain`                                                                                                                        | <ul><li>✅ <code>e/admin@realodex</code></li><li>❌ <code>e/hello@gmail</code></li></ul>                   |
-| `a/Address`     | No constraints                                                                                                                                    | <ul><li>✅ <code>a/6 College Avenue West</code></li>                                                      |
-| `f/Family`      | Should be an integer greater than 1                                                                                                               | <ul><li>✅ <code>f/4</code></li><li>❌ <code>f/five</code></li></ul>                                       |
-| `t/Tag`         | Only accept "buyer" or "seller" as the input                                                                                                      | <ul><li>✅ <code>t/buyer</code></li></ul>                                                                 |
-| `h/HousingType` | Must be one of the following: "HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW" (case-insensitive). Only one housing type is allowed. | <ul><li>✅ <code>h/HDB</code></li></ul><ul><li>❌ <code>h/big house</code></li></ul>                       |
-| `r/Remark`      | Can be empty if remark is not specified.                                                                                                          | <ul><li>✅ <code>r/Likes to eat cake</code></li></ul>                                                     |
-| `b/Birthday`    | `ddMMMyyyy` format. Not in the future.<br/>Not earlier than year 1000                                                                             | <ul><li>✅ <code>b/23Apr1972</code></li></ul>                                                             |
+| Format          | Constraints                                                                                                                                                | Example                                                                                                  |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `n/Name`        | **Alphanumeric**, **unique**, **case-insensitive**                                                                                                         | <ul><li>✅ <code>n/John Doe</code></li><li>✅ <code>n/JoJo Siwa 1</code></li><li>❌ <code>n/Han$el</code></li></ul> |
+| `p/Phone`       | Only **numbers**, at least **3-digit long**                                                                                                                | <ul><li>✅ <code>i/1234</code></li><li>❌ <code>i/123A</code></li></ul>                                    |
+| `i/Income`      | **Integer** and should be **at least 0**.                                                                                                                  | <ul><li>✅ <code>i/10000</code></li><li>❌ <code>i/10,000</code></li><li>❌ <code>i/-1</code></li></ul>     |
+| `e/Email`       | **Format `local-part@domain`**                                                                                                                             | <ul><li>✅ <code>e/admin@realodex</code></li><li>❌ <code>e/hello@gmail</code></li></ul>                   |
+| `a/Address`     | No constraints                                                                                                                                             | <ul><li>✅ <code>a/6 College Avenue West</code></li>                                                      |
+| `f/Family`      | Should be an **integer greater than 1**                                                                                                                    | <ul><li>✅ <code>f/4</code></li><li>❌ <code>f/five</code></li></ul>                                       |
+| `t/Tag`         | Only accept **"buyer" or "seller"** as the input                                                                                                           | <ul><li>✅ <code>t/buyer</code></li></ul>                                                                 |
+| `h/HousingType` | Must be one of the following: **"HDB", "CONDOMINIUM", "LANDED PROPERTY", "GOOD CLASS BUNGALOW"** (case-insensitive). Only **one housing type** is allowed. | <ul><li>✅ <code>h/HDB</code></li></ul><ul><li>❌ <code>h/big house</code></li></ul>                       |
+| `r/Remark`      | **Can be empty** if remark is not specified.                                                                                                               | <ul><li>✅ <code>r/Likes to eat cake</code></li></ul>                                                     |
+| `b/Birthday`    | `ddMMMyyyy` format. **Not** in the **future**.<br/>**Not** earlier than **year 1000**                                                                          | <ul><li>✅ <code>b/23Apr1972</code></li></ul>                                                             |
+
+<box type="warning" header="Caution">
+
+  - Realodex checks that all **data constraints are met** before performing any operations. This **ensures data integrity** and **prevents errors** during the application's use. 
+  - Ensure that your **inputs comply with the established constraints** to avoid operation failures.
+</box>
+
 
 --------------------------------------------------------------------------------------------------------------------
+
+
 ## Command summary
 
 | Action                         | Format, Examples                                                                                                                                                                                                                                |
@@ -921,7 +1020,6 @@ Summarized in the table below are the attributes of a client along with their co
 | **Clear**                      | `clearRealodex`                                                                                                                                                                                                                                 |
 | **Exit**                       | `exit`                                                                                                                                                                                                                                          |
 
-
 --------------------------------------------------------------------------------------------------------------------
 ## FAQ
 
@@ -932,6 +1030,5 @@ Summarized in the table below are the attributes of a client along with their co
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 --------------------------------------------------------------------------------------------------------------------
