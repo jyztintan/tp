@@ -4,14 +4,7 @@
   pageNav: 3
 ---
 
-# Realodex User Guide
-## Welcome to Realodex!
-**Realodex** is your ultimate client management tool tailored specifically for the dynamic needs of real estate professionals. Designed to streamline the day-to-day operations of realtors, brokers, and real estate agencies, Realodex offers seamless functionality to ***add***, ***edit***, ***search***, and ***delete*** client information effortlessly.
-
-- **Add**: Quickly input new client data, from contact details to property preferences, building a rich, actionable database.
-- **Edit**: Easily update client information to keep profiles accurate and comprehensive, reflecting the latest changes in their needs or status.
-- **Search**: Instantly locate client profiles using robust filters, enabling swift responses and tailored service.
-- **Delete**: Safely remove outdated information, ensuring your database is current and compliant.
+# 🚀 Welcome to Realodex! 🚀
 
 <div style="text-align: center;">
     <a href="images/realodex_icon.png">
@@ -19,78 +12,174 @@
     </a>
 </div>
 
-## Why Choose Realodex?
-With our **intuitive interface** and **advanced features**, real estate users can manage their client database with unprecedented ease, enhancing their productivity and enabling them to focus on what they do best: closing deals and building lasting relationships.
+**Realodex** is your ultimate client management tool tailored specifically for the **dynamic needs of real estate professionals**. 
+Realodex offers seamless functionality to ***add***, ***edit***, ***filter***, and ***delete*** client information efficiently,
+thereby **optimising and streamlining your day-to-day operations** of real estate agents. 
 
-Whether you're a seasoned real estate veteran or a rising star in the industry, Realodex is your partner in achieving operational excellence and superior client service.
-
-**New to Realodex?** Rest assured—this user guide delivers thorough documentation on utilizing Realodex’s current features, provides answers to frequently asked questions, and sheds light on future enhancements. Kickstart your journey by delving into the [Quick Start](#quick-start
-) section, crafted to guide you through the functionalities that will elevate your real estate endeavours.
-
-
-<!-- * Table of Contents -->
-<page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
-## Quick start
+## Why Choose Realodex?
+Realodex is **tailor-made for the real estate industry**, offering **custom tools and features** that align with the everyday workflows of real estate agents. 
 
-1. **Check Java Installation** Ensure you have Java `11` or above installed in your computer.
+- **Enhanced Productivity**: Access and manage your client database efficiently. 
+- **Intuitive Interface & Features**: Our user-friendly interface is designed for quick learning, enabling you to navigate and utilize Realodex with ease.
+- **Focus on Core Goals**: Allows you to dedicate more time to closing deals and fostering client relationships.
 
-<box type="info" light>
+<box type="tip" header = "**New to Realodex?**">
+This guide provides detailed documentation on Realodex's features, FAQs, and upcoming updates. Start enhancing your real estate operations today by exploring the <a href="#quick-start">Quick Start</a> section.
+</box>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Table of Contents
+
+- [Using this Guide](#using-this-guide)
+    - [Formatting Conventions](#formatting-conventions)
+    - [Icon Legend](#icon-legend)
+- [Quick Start](#quick-start)
+- [Navigating the GUI](#navigating-the-gui)
+    - [Basic Orientation](#basic-orientation)
+    - [Client Profile](#client-profile)
+- [Realodex Tutorial](#realodex-tutorial)
+- [Features](#features)
+    - [Adding a Client](#adding-a-client-add)
+    - [Deleting a Client](#deleting-a-client-delete)
+    - [Editing Clients](#editing-clients-edit)
+    - [Filtering Clients](#filtering-clients-filter)
+    - [Listing Clients](#listing-clients-list)
+    - [Sorting](#sorting-sort)
+    - [Clearing Realodex](#clearing-realodex-clearrealodex)
+    - [Help](#help-help)
+    - [Help (Individual Commands)](#help-individual-commands-command-help)
+    - [Exiting the Program](#exiting-the-program-exit)
+    - [File Data](#file-data)
+- [Field Constraints](#field-constraints)
+- [Command Summary](#command-summary)
+- [FAQ](#faq)
+- [Known Issues](#known-issues)
+
+--------------------------------------------------------------------------------------------------------------------
+## Navigating this User Guide
+Welcome to the Realodex User Guide! 
+We hope this user guide empowers you with the knowledge and confidence to **unleash the full potential of Realodex**.
+To ensure you have a **smooth and intuitive experience**, this guide utilizes **specific formatting conventions and icons**. 
+Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
+
+#### Formatting Conventions
+| Format        | Meaning                                                                                                                                                                                                                 |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Bold**      | Used to **draw attention** to key concepts and actions you need to perform. When you see text in bold, it emphasises **important information.**                                                                         |
+| _Italics_     | Reserved for introducing new terms and phrases that are essential to understanding Realodex. Italicized text may also appear in subheadings beneath screenshots to succinctly describe what you're seeing in the image. |
+| `Code blocks` | Actual commands that you may enter into the Realodex CLI will be referred to in these code blocks.                                                                                                                      |
+
+
+#### Icon Legend
+<box type="tip">These boxes provide useful tips and tricks on how to optimise Realodex</box>
+<box type="info">These boxes provide important things to note when using Realodex</box>
+<box type="warning">These boxes provide precautionary warnings to avoid potential pitfalls</box>
+<box type="wrong">These boxes highlight error messages and critical failure information</box>
+
+#### Key Sections
+This guide also includes:
+- **Effortless Navigation**: Seamlessly navigate between sections using the [Table of Contents](#table-of-contents).
+- **Quick Start for New Users**: If you are new to Realodex, begin your journey by exploring our [Quick Start Guide](#quick-start), which provides a comprehensive introduction to setting up Realodex.
+- **Tutorial**: Dive into a detailed, step-by-step walkthrough of Realodex’s features in our [Tutorial](#realodex-tutorial) section.
+- **Features**: Discover and learn how to utilize all the functionalities of Realodex in our detailed [Features](#features) section.
+- **FAQ**: Find answers to common questions and helpful tips in the [FAQ](#faq) section.
+
+
+#### Glossary
+
+This table provides definitions of key terms and abbreviations used throughout the Realodex user guide:
+
+| Abbreviation/Nomenclature      | Meaning                                                                                                                                                                 |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GUI (Graphical User Interface) | The digital interface through which you interact with Realodex.                                                                                                         |
+| CLI (Command Line Interface)   | A text-based interface that allows users to interact with the application using commands typed into a command prompt or terminal.                                       |
+| Command                        | An instruction given by the user that prompts Realodex to perform a specific action. See the [Command Summary](#command-summary) for details.                           |
+| Prefix                         | Initial parts of commands in Realodex that specify the type of information to follow (e.g., `n/` for name). View our [Prefix Summary](#prefix-summary) for more details. |
+| Case-Sensitive                 | Indicates that the casing of letters matters; for example, “ReAlOdEx” would be recognized differently from “realodex”.                                                  |
+| Case-Insensitive               | Indicates that the casing of letters does not affect how they are interpreted; “ReAlOdEx” and “realodex” would be treated as the same.                                  |
+| Command Prompt                 | A command line interpreter application available in most Windows operating systems. It allows users to execute commands and scripts.                                    |
+| Terminal                       | The command line interface used in Unix and MacOS systems, allowing users to execute commands and scripts similar to Command Prompt in Windows.                         |
+| JSON File                      | The file format Realodex uses to store client data.                                                                                                          |
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Getting Start
+
+### Downloading Realodex
+
 <tabs>
 <tab header="Windows">
 
-1. Open command-prompt, by typing cmd in your start menu.
-2. Type `java --version` and enter to check if Java is installed and to the right version.
-   Below image is the expected output if the correct version of Java is installed. 
+1. **Check Java Installation**:
+
+   a. Open _command-prompt_ by typing `cmd` in your Windows start menu.
+
+   b. Type `java --version` in the command-prompt and press enter to check if Java is installed and to the correct version.
+   Please see below for the expected output if the correct version of Java is installed.
    The red box indicates the expected Java version you should see.
    <br>
-  <div style="display:flex; justify-content: center; align-items:center;">
-    <img src="images/quick-start/java-version.png" alt="java-version" style=" width: 700px; margin-bottom: 16px;">
-  </div>
+      <div style="display:flex; justify-content: center; align-items:center;">
+        <img src="images/quick-start/java-version.png" alt="java-version" style="width: 700px; margin-bottom: 16px;">
+      </div>
+   
+   c. If Java is not installed or the wrong version is installed,
+      please install Java 11 from the official site or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
 
-3. If Java is not installed or the wrong version is installed,
-   please install Java 11 from the official site
-   or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
 </tab>
-<tab header="Mac"> 
+<tab header="Mac/Linux"> 
 
-1. Open Terminal.
-2. Type `java --version` and enter to check if Java is installed and to the right version.
+1. **Check Java Installation**:
+
+   a. Open _Terminal_.
+
+   b. Type `java --version` and press enter to check if Java is installed and to the right version.
    Below image is the expected output if the correct version of Java is installed.
-   The red box indicates the expected Java version you should see. 
+   The red box indicates the expected Java version you should see.
    <br>
-  <div style="display:flex; justify-content: center; align-items:center;">
-    <img src="images/quick-start/java-version-macs.png" alt="java-version-macs" style=" width: 900px; margin-bottom: 16px;">
-  </div>
+      <div style="display:flex; justify-content: center; align-items:center;">
+        <img src="images/quick-start/java-version-macs.png" alt="java-version-macs" style="width: 900px; margin-bottom: 16px;">
+      </div>
 
-3. If Java is not installed or the wrong version is installed, please install Java 11 from the official site.
+   c. If Java is not installed or the wrong version is installed, 
+        please install Java 11 from the official site or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
+
 </tab>
 </tabs>
-</box>
 
 <div style="page-break-after: always;"></div>
 
-2. **Download Realodex** You can download the latest `realodex.jar` from [here](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases).
-   <br>
-  <div style="display:flex; justify-content: center; align-items:center;">
-    <img src="images/quick-start/release.png" alt="release" style=" width: 800px; margin-bottom: 16px;">
-  </div>
-<br>
+2. **Create a New Folder**: On your desktop, create a new folder and title it "Realodex". This will be the dedicated location for storing the Realodex application and its associated files.
 
-3. **Set up Realodex** You should copy the file to the folder you want to use as the _home folder_ for your Realodex.
+3. **Download Realodex**:
+    - Download the latest version of `realodex.jar` from the [official release page](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases).
+    - Below is an image of what the download page looks like:
+      <br>
+      <div style="display:flex; justify-content: center; align-items:center;">
+        <img src="images/quick-start/release.png" alt="Realodex Release" style="width: 800px; margin-bottom: 16px;">
+      </div>
+      <br>
 
-<box type="tip"><md>We highly recommend you running Realodex in an empty folder as pre-existing JSON files may cause bugs!</md></box>
+4. **Set Up Realodex**:
+    - Copy the downloaded `realodex.jar` file to the newly created "Realodex" folder on your desktop. This helps to keep your application organized and prevents potential conflicts with files from other applications.
 
-4. **Navigate to Workspace** Open a command terminal, change directory into the folder by using change directory command,
-   `cd`, and navigating to the folder you put the jar file in
-   <br>
+
+5. **Navigate to Workspace**: 
+
+    a. Open a command terminal.
+    
+    b. change directory into the folder by using change directory command,
+      `cd`, and navigating to the folder you put the jar file in
+      <br>
   <div style="display:flex; justify-content: center; align-items:center;">
     <img src="images/quick-start/cd.png" alt="cd" style=" width: 600px; margin-bottom: 16px;">
   </div>
 <br>
 
-5. **Run Realodex** Run `java -jar realodex.jar ` in the same terminal opened to start Realodex.
+5. **Run Realodex**: Run `java -jar realodex.jar `.
    <br>
   <div style="display:flex; justify-content: center; align-items:center;">
     <img src="images/quick-start/running.png" alt="running" style=" width: 600px; margin-bottom: 16px;">
@@ -98,129 +187,152 @@ Whether you're a seasoned real estate veteran or a rising star in the industry, 
 <br>
 <box type="warning">While the screenshots are from Windows OS, the commands are the same for other OS as well!.</box>
 
-5. You should see a GUI similar to image below pop up. Note how the app contains some pre-populated sample data!
+6. You should see a _GUI_ similar to image below pop up. Note how the app contains some pre-populated sample data!
    <br>
   <div style="display:flex; justify-content: center; align-items:center;">
     <img src="images/quick-start/ui.png" alt="ui" style=" width: 550px; margin-bottom: 16px;">
   </div>
 <br>
 
+7. Explore our tutorial to learn how to effectively use Realodex and try out its features.
 
-5. **Try out some Realodex features!** Some example commands you can try:
-
-   * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 h/HDB t/buyer r/Owes money.`
-   Adds a contact named `John Doe` together with his details to Realodex.
-
-   * `delete n/john doe` : This will delete the client with name `John Doe` from Realodex.
-
-6. Refer to the [Features](#features) below for details of each command.
-----
-## Using this Guide
-Our goal is to empower you with the knowledge and confidence to unleash the full potential of Realodex. 
-
-We have equipped Realodex with the following features.
-- **Effortless Navigation**: Use the table of contents for seamless navigation between sections.
-- **Quick Start for New Users**: New to Realodex? Get started with our Quick Start Guide as we handhold you through the process of setting up Realodex.
-- **Features**: Learn more about Realodex's features and how to use them with our Features section.
-- **Tutorial**: Get a step-by-step walkthrough of Realodex's features with our Tutorial.
-  <box type="info">Look out for these boxes for things to note when using Realodex</box>
-  <box type="tip">Look out for these boxes for tips and tricks on how to best use Realodex</box>
-  <box type="warning">These boxes are for more context and warnings</box>
-  <box type="wrong">These boxes are for errors and failure messages</box>
-
-## Glossary
-
-| Abbreviation/Nomenclature      | Meaning                                                                                                                                                                                                  |
-|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| GUI (Graphical User Interface) | It is the digital interface which you interact with when using Realodex!                                                                                                                                 |
-| GUI Components                 | A specific component of the GUI. For more information on specific GUI components, refer to this section.                                                                                                 |
-| CLI (Command Line Interface)   | A text-based user interface to interact with the application.                                                                                                                                            |
-| Command                        | An input from you that tells Realodex to execute an action. You can refer to the command summary [here](#command-summary)!                                                                               |
-| Prefix                         | Prefixes are like fields in a form you are required to fill up. They are information needed to be passes together with the command so that it can be executed. View our Prefix Summary for more details! |
-| Case-Sensitive                 | The casing of the alphabetic characters matters (e.g. “ReAlOdEx” is different from “realodex”                                                                                                            |
-| Case-Insensitive               | The casing of the alphabetic characters does not matter (e.g. “ReAlOdEx” is taken to be same as “realodex”                                                                                               |
+<div style="page-break-after: always;"></div>
 
 ---
 
---------------------------------------------------------------------------------------------------------------------
-<div style="page-break-after: always;"></div>
+### Introduction to Realodex GUI
 
-## Navigating the GUI
+Realodex features a Graphical User Interface (GUI) crafted to deliver a seamless user experience. 
+The GUI is structured into several distinct components, each designed to enhance your interactions and efficiency.
 
-Realodex has a Graphical User Interface (GUI) designed to provide a seamless user experience. The GUI is divided into several components. 
-Here is a brief overview of the GUI components:
-
-### Basic Orientation
+#### Basic Orientation
 
 <a href="images/navigating-gui/basic_orientation.png">
   <img src="images/navigating-gui/basic_orientation.png" alt="basic orientation" style="width:100%">
   </a>
 
-### Client Profile
+#### Client Profile
 
 <a href="images/navigating-gui/client_profile.png">
   <img src="images/navigating-gui/client_profile.png" alt="client profile" style="width:100%">
   </a>
 
---------------------------------------------------------------------------------------------------------------------
 <div style="page-break-after: always;"></div>
 
-## Realodex Tutorial
-If this is your first time here, we encourage you to follow along in this short tutorial to get a feel of how Realodex works.
-Let's begin!
+---
+
+### Realodex Tutorial
+Welcome to your first session with Realodex.
+We've designed this tutorial to **help new users familiarize themselves** with the functionality and flow of the application. 
+Follow along in this short tutorial to get a feel of how Realodex works. Let's begin!
 
 1. **Starting Realodex.** Launch Realodex. The app will show up as follows:
    <a href="images/tutorial/Launch.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/Launch.png" alt="duplicate person" style="width:70%">
    </a>
 
+<box type="info" header="Things to note:">
 
-<box type="info">If this is your first time, some sample entries will be loaded for you.</box>
+- If this is your first time, some sample entries will be loaded for you.
+</box>
 
-2. **Adding a client.** Let us try to add a new client into Realodex. Key in `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer t/seller h/HDB r/Has 3 cats b/01May2009`
-and press Enter. New client John Doe has now been added!
+2. **Adding a client.** Let us try to add a new client into Realodex. Run the following command:
+`
+add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/buyer t/seller h/HDB r/Has 3 cats b/01May2009
+`
+
    <a href="images/tutorial/AddJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/AddJohnDoe.png" alt="duplicate person" style="width:70%">
    </a>
+<div style="text-align: center; font-style: italic;">New client John Doe has now been added!</div>
 
+<br>
 
-3. **Add more clients.** Congratulations! You have just added your first ever client into Realodex. Feel free to try adding more clients before proceeding!
-Here are some extra clients you may try adding:
-   - `add n/James p/91234567 i/5000 e/james@gmail.com a/Jurong West Central 1 f/4 t/buyer h/HDB r/Likes to eat. b/01Sep1990`
-   - `add n/Benedict p/98877665 i/8000 e/ben@gmail.com a/University Town, NUS f/6 t/seller h/CONDOMINIUM r/Favourite colour is blue. b/24Jun2000`
+Congratulations, you have just added your first ever client into Realodex!
 
-4. **Filter clients.** Notice that the list is a little crowded now and we want to search for John. Key in `filter n/John`
-to look for our new client.
+<box type="tip" header="Tip">
+
+  - Try adding new clients with different parameters to familiarise yourself with the add command.
+</box>
+
+3. **Filter clients.** Notice that the list may start to feel a bit crowded as more clients are added. 
+We can utilise the filter feature to efficiently locate specific clients. 
+Let's search for our new client John, by simply keying in the command: `filter n/John`.
+
    <a href="images/tutorial/FilterJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/FilterJohnDoe.png" alt="duplicate person" style="width:70%">
    </a>
+<div style="text-align: center; font-style: italic;">The filter command outputs our new client John Doe.</div>
 
-5. **Listing all clients.** We are now done looking at John's details, let us bring up the whole list again. Simply key in `list`.
-   <a href="images/tutorial/List.png" style="display: block; margin: 0 auto; text-align: center;">
+
+<box type="tip" header="Tip">
+
+- You may filter by name but also by remarks, housing type preference, and even birthdays.
+  </box>
+
+<br>
+
+4. **Listing all clients.** We are now done reviewing John Doe's details. 
+Let us view the entire client list again. To do this, simply enter the command: `list`.
+
+<a href="images/tutorial/List.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/List.png" alt="duplicate person" style="width:70%">
    </a>
-6. **Editing clients.** Your new client John Doe has gotten a pay raise! Let's edit his income to reflect this change. First, let's take note of his index number.
+<div style="text-align: center; font-style: italic;">The list command outputs the entire client list.</div>
+
+<br>
+
+5. **Editing clients.** Suppose our new client John Doe has gotten a pay raise! Let's edit his income to reflect this change. 
+First, let's take note of his index number in the client list.
    <a href="images/tutorial/IndexJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/IndexJohnDoe.png" alt="duplicate person" style="width:83.3%; margin-right: 130px;">
    </a>
-Since John's index number is 7, key in `edit 7 i/88888`. Notice that his income will change to 88888!
+   <br>
+
+Since John's index number is 7, enter the command `edit 7 i/88888`. 
    <a href="images/tutorial/IncomeJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/IncomeJohnDoe.png" alt="duplicate person" style="width:83.4%; margin-right: 130px;">
    </a>
-7. **Deleting a client.** We are now done with John Doe. Let us delete him from Realodex. Key in `delete n/John Doe`. A message will be printed to indicate successful deletion. Notice that the last client is now Roy, not John as he has been deleted.
+<div style="text-align: center; font-style: italic;">The edit command modifies John Doe's income to 88888.</div>
+   <br>
+
+
+<box type="tip" header="Tip">
+
+- You may also edit multiple fields of a client at once.
+  </box>
+
+6. **Deleting a client.** 
+We can also remove client profiles from Realodex. 
+Let us try deleting John Doe from the Realodex by entering `delete n/John Doe`. 
    <a href="images/tutorial/DeleteJohnDoe.png" style="display: block; margin: 0 auto; text-align: center;">
    <img src="images/tutorial/DeleteJohnDoe.png" alt="duplicate person" style="width:70%">
    </a>
-8. **Getting Help.** Should you need help on how to use the commands, you can key in `help`.
-   <a href="images/tutorial/HelpWindow.png" style="display: block; margin: 0 auto; text-align: center;">
-   <img src="images/tutorial/HelpWindow.png" alt="duplicate person" style="width:70%">
-   </a>
-You may also get help for individual commands. Try it out with `delete help`. A message showing you how to use the `delete` command will be shown.
-   <a href="images/tutorial/DeleteHelp.png" style="display: block; margin: 0 auto; text-align: center;">
-   <img src="images/tutorial/DeleteHelp.png" alt="duplicate person" style="width:70%">
-   </a>
+<div style="text-align: center; font-style: italic;">The delete command deletes client John Doe with a successful deletion message.</div>
+   <br>
 
-Congratulations! You are now ready to use Realodex! Read on to learn more about more features. 
+<box type="info" header="Things to note:">
+
+- Notice that the client list has been automatically modified after John's deletion, with the last client now being Roy.
+</box>
+
+  7. **Getting Help.** Should you need assistance on any of the commands at anytime while using Realodex, simply enter the `help` command.
+     <a href="images/tutorial/HelpWindow.png" style="display: block; margin: 0 auto; text-align: center;">
+     <img src="images/tutorial/HelpWindow.png" alt="duplicate person" style="width:70%">
+     </a>
+<div style="text-align: center; font-style: italic;">A help window is displayed explaining each command usage.</div>
+     <br>
+
+For specific guidance on individual commands, you can also enter `COMMAND help`.
+Let's try it out with `delete help`. 
+     <a href="images/tutorial/DeleteHelp.png" style="display: block; margin: 0 auto; text-align: center;">
+     <img src="images/tutorial/DeleteHelp.png" alt="duplicate person" style="width:70%">
+     </a>
+<div style="text-align: center; font-style: italic;">A message on the delete command usage will be shown.</div>
+     <br>
+
+Congratulations! You have finished the Realodex tutorial and are now ready to use Realodex. 
+Feel free to continue exploring the in-depth features of Realodex to fully leverage its capabilities in your real estate operations!
 
 ## Features
 
