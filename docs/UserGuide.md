@@ -455,7 +455,7 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
     * Must not include other command prefixes (`a/`,`b/`,`e/`,`f/`,`h/`,`i/`,`n/`,`p/`,`r/`,`t/`) to prevent parsing errors. For instance, `a/lemontree street t/1` may cause the command to fail, as the system will interpret `t/` as an unintended tag prefix.
     * Example: `a/6 College Ave West`
 * `FAMILY`: Immediate family size
-    * It should be an integer greater than 1.
+    * It should be an integer greater than 0.
     * Value should not contain decimal points as this is not expected for whole number type data, a simple workaround is
       to simply avoid the use of decimals.
     * Example: `f/4`
