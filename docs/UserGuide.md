@@ -313,7 +313,8 @@ This is an intentional design choice to ensure that the command is used for targ
   - Filtering by month "September" should be `filter b/Sep`
     - `filter b/SEP` matches person with Birthday in September.
 - Month input will also accept extraneous input,
-  as long as it is not the same prefix as that will be considered as duplicate prefixes.
+  as long as it is not the same birthday prefix with spaces before, <br>`e.g. filter b/Sep b/mog`,
+  as that will be considered as duplicate prefixes.
   If the first few characters are any valid month, it will be valid. 
   E.g.,
   This forgiving behavior allows you to type in `filter b/AprMogger` and Realodex will interpret the month as April!
