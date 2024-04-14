@@ -13,8 +13,7 @@
 </div>
 
 **Realodex** is your ultimate client management tool tailored specifically for the **dynamic needs of real estate professionals**. 
-Realodex offers seamless functionality to ***add***, ***edit***, ***filter***, and ***delete*** client information efficiently,
-thereby **optimising and streamlining your day-to-day operations** of real estate agents. 
+Realodex offers seamless functionality to ***add***, ***edit***, ***filter***, and ***delete*** client information efficiently, **optimising and streamlining your day-to-day operations** as real estate agents. 
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -22,11 +21,11 @@ thereby **optimising and streamlining your day-to-day operations** of real estat
 Realodex is **tailor-made for the real estate industry**, offering **custom tools and features** that align with the everyday workflows of real estate agents. 
 
 - **Enhanced Productivity**: Access and manage your client database efficiently. 
-- **Intuitive Interface & Features**: Our user-friendly interface is designed for quick learning, enabling you to navigate and utilize Realodex with ease.
+- **Intuitive Interface & Features**: Our user-friendly interface is designed for quick learning, enabling you to navigate and utilise Realodex with ease.
 - **Focus on Core Goals**: Allows you to dedicate more time to closing deals and fostering client relationships.
 
 <box type="tip" header = "**New to Realodex?**">
-This guide provides detailed documentation on Realodex's features, FAQs, and upcoming updates. Start enhancing your real estate operations today by exploring the <a href="#quick-start">Quick Start</a> section.
+This guide provides detailed documentation on Realodex's features, FAQs, and upcoming updates. <a href="#getting-started">Start</a> enhancing your real estate operations today!
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
@@ -93,26 +92,34 @@ This guide provides detailed documentation on Realodex's features, FAQs, and upc
 ## Navigating this User Guide
 **Welcome** to the Realodex User Guide! 
 We hope this user guide empowers you with the knowledge and confidence to **unleash the full potential of Realodex**.
-To ensure you have a **smooth and intuitive experience**, this guide utilizes **specific formatting conventions and icons**. 
+To ensure you have a **smooth and intuitive experience**, we recommend you to familiarise yourself with the **specific formatting conventions and icons** that this guide uses. 
 
 #### Formatting Conventions
-| Format        | Meaning                                                                                                                                                                                                                 |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Bold**      | Used to **draw attention** to key concepts and actions you need to perform. When you see text in bold, it emphasises **important information.**                                                                         |
-| _Italics_     | Reserved for introducing new terms and phrases that are essential to understanding Realodex. Italicized text may also appear in subheadings beneath screenshots to succinctly describe what you're seeing in the image. |
-| `Code blocks` | Actual commands that you may enter into the Realodex CLI will be referred to in these code blocks.                                                                                                                      |
+| Format        | Meaning                                                                                                                                                                                                                |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Bold**      | Used to **draw attention** to key concepts and actions you need to perform. When you see text in bold, it emphasises **important information.**                                                                        |
+| _Italics_     | Reserved for introducing _new terms and phrases_ that are essential to understanding Realodex. Italicized text may also appear in subheadings beneath screenshots to succinctly describe what you're seeing in the image. |
+| `Code blocks` | Actual commands that you may run in Realodex will be referred to in these code blocks.                                                                                                                              |
 
 
 #### Icon Legend
-<box type="tip">These boxes provide **useful tips and tricks** on how to optimise Realodex</box>
-<box type="info">These boxes provide **important things to note** when using Realodex</box>
-<box type="warning">These boxes provide **precautionary warnings** to **avoid potential pitfalls**</box>
-<box type="wrong">These boxes **highlight error messages** and critical failure information</box>
+<box type="tip">
+
+These boxes provide **useful tips and tricks** on how to optimise Realodex</box>
+<box type="info">
+
+These boxes provide **important things to note** when using Realodex</box>
+<box type="warning">
+
+These boxes provide **precautionary warnings** to **avoid potential pitfalls**</box>
+<box type="wrong">
+
+These boxes **highlight error messages** and critical failure information</box>
 
 #### Key Sections
 This guide also includes:
 - **Effortless Navigation**: Seamlessly navigate between sections using the [Table of Contents](#table-of-contents).
-- **Quick Start for New Users**: If you are new to Realodex, begin your journey by exploring our [Quick Start Guide](#quick-start), which provides a comprehensive introduction to setting up Realodex.
+- **Getting Started for New Users**: If you are new to Realodex, begin your journey by exploring our [Getting Started Guide](#getting-started), which provides comprehensive instructions to set up Realodex.
 - **Tutorial**: Dive into a detailed, step-by-step walkthrough of Realodex’s features in our [Tutorial](#realodex-tutorial) section.
 - **Features**: Discover and learn how to utilize all the functionalities of Realodex in our detailed [Features](#features) section.
 - **FAQ**: Find answers to common questions and helpful tips in the [FAQ](#faq) section.
@@ -120,19 +127,19 @@ This guide also includes:
 
 #### Glossary
 
-This table provides definitions of key terms and abbreviations used throughout the Realodex user guide:
+This table provides **definitions** of **key terms and abbreviations** used throughout the Realodex user guide.
 
-| Abbreviation/Nomenclature      | Meaning                                                                                                                                                                 |
-|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| GUI (Graphical User Interface) | The digital interface through which you interact with Realodex.                                                                                                         |
-| CLI (Command Line Interface)   | A text-based interface that allows users to interact with the application using commands typed into a command prompt or terminal.                                       |
-| Command                        | An instruction given by the user that prompts Realodex to perform a specific action. See the [Command Summary](#command-summary) for details.                           |
-| Prefix                         | Initial parts of commands in Realodex that specify the type of information to follow (e.g., `n/` for name). View our [Prefix Summary](#prefix-summary) for more details. |
-| Case-Sensitive                 | Indicates that the casing of letters matters; for example, “ReAlOdEx” would be recognized differently from “realodex”.                                                  |
-| Case-Insensitive               | Indicates that the casing of letters does not affect how they are interpreted; “ReAlOdEx” and “realodex” would be treated as the same.                                  |
-| Command Prompt                 | A command line interpreter application available in most Windows operating systems. It allows users to execute commands and scripts.                                    |
-| Terminal                       | The command line interface used in Unix and MacOS systems, allowing users to execute commands and scripts similar to Command Prompt in Windows.                         |
-| JSON File                      | The file format Realodex uses to store client data.                                                                                                          |
+| Abbreviation/Nomenclature      | Meaning                                                                                                                                                                  |
+|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GUI (Graphical User Interface) | The **digital interface** through which you interact with Realodex.                                                                                                      |
+| CLI (Command Line Interface)   | A **text-based interface** that allows users to interact with the application using commands typed into a command prompt or terminal.                                    |
+| Command                        | An **instruction** given by the user that prompts Realodex to perform a specific action. See the [Command Summary](#command-summary) for more details.                   |
+| Prefix                         | Initial parts of commands in Realodex that **specify the type of information** to follow (e.g., `n/` for name). View our [Prefix Summary](#prefix-summary) for more details. |
+| Case-Sensitive                 | Indicates that the casing of letters **matters**; for example, “ReAlOdEx” would be recognized differently from “realodex”.                                                   |
+| Case-Insensitive               | Indicates that the casing of letters **does not affect** how they are interpreted; “ReAlOdEx” and “realodex” would be treated as the same.                                   |
+| Command Prompt                 | A command line interpreter application available in most Windows operating systems. It allows users to **execute commands** and scripts.                                     |
+| Terminal                       | The command line interface used in **Unix and MacOS** systems, allowing users to execute commands and scripts similar to Command Prompt in Windows.                          |
+| JSON File                      | The file format Realodex uses to **store client data.**                                                                                                                      |
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -148,7 +155,7 @@ This table provides definitions of key terms and abbreviations used throughout t
 
    a. Open _command-prompt_ by typing `cmd` in your Windows start menu.
 
-   b. Type `java --version` in the command-prompt and press enter to **check if Java is installed** and to the **correct version**.
+   b. Type `java --version` in the command-prompt and press enter to **check if Java is installed** and is the **correct version**.
    Please see below for the expected output if the correct version of Java is installed.
    The red box indicates the expected Java version you should see.
    <br>
@@ -157,7 +164,7 @@ This table provides definitions of key terms and abbreviations used throughout t
       </div>
    
    c. If Java is not installed or the wrong version is installed,
-      **please install Java 11** from the official site or click [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
+      **please install Java 11** from [here](https://www.oracle.com/sg/java/technologies/javase/jdk11-archive-downloads.html).
 
 </tab>
 <tab header="Mac/Linux"> 
@@ -182,7 +189,7 @@ This table provides definitions of key terms and abbreviations used throughout t
 
 <div style="page-break-after: always;"></div>
 
-2. **Create a New Folder**: On your desktop, **create a new folder** and title it "Realodex". This will be the dedicated location for **storing the Realodex application** and its associated files.
+2. **Create a New Folder**: On your desktop, **create a new folder** titled "Realodex". This will be the dedicated location for **storing the Realodex application** and its associated files.
 
 3. **Download Realodex**:
    Download the **latest version** of `realodex.jar` from the [official release page](https://github.com/AY2324S2-CS2103T-W10-1/tp/releases). Below is an image of what the download page looks like:
@@ -249,7 +256,7 @@ The GUI is structured into several distinct components, each designed to **enhan
 ### Realodex Tutorial
 **Welcome** to your first session with Realodex.
 We've designed this tutorial to **help new users familiarize themselves** with the functionality and flow of the application. 
-Follow along in this short tutorial to get a feel of how Realodex works. Let's begin!
+Follow along to get a feel of how Realodex works. Let's begin!
 
 1. **Starting Realodex.** Launch Realodex. The app will show up as follows:
    <a href="images/tutorial/Launch.png" style="display: block; margin: 0 auto; text-align: center;">
@@ -649,7 +656,7 @@ Entering `filter t/Buyer t/Seller` will show only clients who are **tagged as bo
     <a href="images/filter/filterByTagSeller.png">
     <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:150%">
     </a>
-    <em> Persons with "Seller" tag are returned.</em>
+    <em>Clients with "Seller" tag are returned.</em>
 </p>
 
 ---
@@ -660,7 +667,7 @@ Entering `filter t/Buyer t/Seller` will show only clients who are **tagged as bo
     <a href="images/filter/filterByTagBuyerSeller.png">
     <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:150%">
     </a>
-    <em> Persons with both "Buyer" and "Seller" tags are returned.</em>
+    <em>Clients with both "Buyer" and "Seller" tags are returned.</em>
 </p>
 
 #### Filter By Housing Type
@@ -680,7 +687,7 @@ Returns the list of clients with the **specified preferred housing type**.
     <a href="images/filter/filterByHousingType.png">
     <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
     </a>
-    <em>Persons with both "Good Class Bungalow" housing preference are returned.</em>
+    <em>Clients with housing preference of "Good Class Bungalow" are returned.</em>
 </p>
 
 #### Filter By Remark
@@ -707,7 +714,7 @@ Returns the list of clients whose **remarks include** the **specified keyphrase*
     <a href="images/filter/filterByRemarkScreenshot.png">
     <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:150%">
     </a>
-    <em>Persons with remarks like "Eats alot" and "Likes to eat nasi lemak ..." are returned.</em>
+    <em>Clients with remarks like "Eats alot" and "Likes to eat nasi lemak" are returned.</em>
 </p>
 
 
@@ -747,7 +754,7 @@ Returns the list of clients whose **birthdays** fall in the **specified month**.
     <a href="images/filter/filterByBirthday.png">
     <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:150%">
     </a>
-    <em>Persons with birthday in April are returned.</em>
+    <em>Clients with birthdays in April are returned.</em>
 </p>
 
 [Back to Table of Contents](#table-of-contents)
@@ -803,14 +810,14 @@ This feature **organises clients** based on **how soon their next birthday** wil
 
 **Example**
 
-`sort` will return a new sorted list of clients by their nearest birthday.
+`sort` will return a new sorted list of clients by their upcoming birthday.
 
 
 <p align="center">
     <a href="images/sort/sort-day_showcase.png">
     <img src="images/sort/sort-day_showcase.png" alt="filterByBirthday" style="width:100%">
     </a>
-    <em>Client lists is sorted by upcoming birthday.</em>
+    <em>Client list is sorted by upcoming birthday.</em>
 </p>
 
 
@@ -844,12 +851,12 @@ is used so that users understand that this command <b>clears all entries in Real
 
 **Example:**
 
-Upon `clearRealodex`, Realodex will clear and return an empty client list.
+Upon running `clearRealodex`, Realodex will clear and return an empty client list.
 <p align="center">
     <a href="images/misc_features/clear.png">
     <img src="images/misc_features/clear.png" alt="clear" style="width:100%">
     </a>
-    <em>An empty client list is returned.</em>
+    <em>Client list is now empty.</em>
 </p>
 
 [Back to Table of Contents](#table-of-contents)
@@ -875,13 +882,13 @@ The help window can also be accessed by the **"Help" button on the top menu**.
 
 **Example:**
 
-Upon `help`, Realodex will **pop up a help window** together with a success message.
+Upon running `help`, **a help window will pop up** together with a success message.
 
 <p align="center">
     <a href="images/misc_features/help_window.png">
     <img src="images/misc_features/help_window.png" alt="help_window" style="width:100%">
     </a>
-    <em>The pop out of the help window.</em>
+    <em>The Help Window.</em>
 </p>
 
 [Back to Table of Contents](#table-of-contents)
@@ -917,7 +924,7 @@ Displays the **help message** for the **specified command** only.
     <a href="images/misc_features/command_help.png">
     <img src="images/misc_features/command_help.png" alt="help_window" style="width:100%">
     </a>
-    <em>The help message for the add command is returned.</em>
+    <em>The help message for the add command.</em>
 </p>
 
 [Back to Table of Contents](#table-of-contents)
@@ -997,7 +1004,7 @@ Summarized in the table below are the attributes of a client along with their co
 <box type="warning" header="Caution">
 
   - Realodex checks that all **data constraints are met** before performing any operations. This **ensures data integrity** and **prevents errors** during the application's use. 
-  - Ensure that your **inputs comply with the established constraints** to avoid operation failures.
+  - Ensure that your **inputs comply with the established constraints** to avoid errors.
 </box>
 
 
