@@ -32,7 +32,7 @@ This guide provides detailed documentation on Realodex's features, FAQs, and upc
 
 ## Table of Contents
 
-- [Welcome to Realodex!](#-welcome-to-realodex-)
+- [Welcome to Realodex!](#-welcome-to-realodex)
 
 - [Why Choose Realodex?](#why-choose-realodex)
 
