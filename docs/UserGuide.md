@@ -332,12 +332,13 @@ This is an intentional design choice to ensure that the command is used for targ
 - Month input should be a valid month in `MMM` format and non-empty.
   - Filtering by month "September" should be `filter b/Sep`
     - `filter b/SEP` matches person with Birthday in September.
-- Month input will also accept extraneous input,
-  as long as it is not the same birthday prefix with spaces before, <br>`e.g. filter b/Sep b/mog`,
-  as that will be considered as duplicate prefixes.
-  If the first few characters are any valid month, it will be valid. 
+- Month input will also accept extraneous input, i.e. if the first 3 characters are any valid month, it will be valid.
   E.g.,
   This forgiving behavior allows you to type in `filter b/AprMogger` and Realodex will interpret the month as April!
+
+  ⚠️ This does not apply
+  if the extraneous input is the **same birthday prefix with spaces before** it,
+  `e.g. filter b/Sep b/mog` as that will be considered as **duplicate birthday prefixes.**
 - **Comprehensive searching**, returning all persons with birthdays in the specified month.
     - `filter b/Jan` returns all persons with birthday in January.
 - Persons who do not have a specified birthday will **not be included** in the search results.
@@ -353,6 +354,7 @@ This is an intentional design choice to ensure that the command is used for targ
 </p>
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ### Listing clients : `list`
 
@@ -360,6 +362,7 @@ Lists all clients in Realodex.
 
 <u>Format:</u> `list`
 
+--------------------------------------------------------------------------------------------------------------------
 
 ### Sort : `sort`
 
@@ -383,6 +386,8 @@ Clears all clients in Realodex.
 
 <u>Format:</u> `clearRealodex`
 
+--------------------------------------------------------------------------------------------------------------------
+
 ### Help : `help`
 
 Generates a pop-up window which is a summarised version of the User Guide. This window can also be accessed by the "Help" button on the top menu.
@@ -397,6 +402,8 @@ Shows the help message for the specified command only.
 
 - Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
 - Although the format is `COMMAND help`, the exception is the help message for the clear command. Use `clear help` instead of `clearRealodex help`.
+  <br>Exception also includes `help` command where `help help` will simply open up the window as expected
+      and `exit` command where `exit help` will simply exit the application as expected.
 
 <u>Examples:</u>
 <p align="center">
@@ -406,6 +413,7 @@ Shows the help message for the specified command only.
   <em> <code>clear help</code> provides the help message for the clearRealodex command</em>
 </p>
 
+--------------------------------------------------------------------------------------------------------------------
 
 ### Exiting the program : `exit`
 
