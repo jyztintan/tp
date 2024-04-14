@@ -27,7 +27,7 @@ If you can type fast, Realodex can get your contact management tasks done faster
 command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. The app should contain some sample entries.<br>
    <a href="images/Ui.png">
-   <img src="images/Ui.png" alt="Ui Image" style="width:80%">
+   <img src="images/Ui.png" alt="Ui Image" style="width:50%">
    </a>
 
 1. Some example commands you can try:
@@ -38,7 +38,10 @@ command to run the application.<br>
    * `delete n/john doe` : Deletes the client with name `John Doe` from Realodex.
 
 1. Refer to the [Features](#features) below for details of each command.
-----
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 # Using this Guide
 
 To ensure you have a smooth and intuitive experience, this guide utilizes specific formatting conventions and icons. Familiarizing yourself with these will enhance your understanding and efficiency as you navigate through the functionalities of Realodex.
@@ -72,9 +75,9 @@ To ensure you have a smooth and intuitive experience, this guide utilizes specif
 | Case-Sensitive                 | The casing of the alphabetic characters matters (e.g. “ReAlOdEx” is different from “realodex”                                                                                                            |
 | Case-Insensitive               | The casing of the alphabetic characters does not matter (e.g. “ReAlOdEx” is taken to be same as “realodex”                                                                                               |
 
----
-
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -103,6 +106,10 @@ To ensure you have a smooth and intuitive experience, this guide utilizes specif
 
 
 </box>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Adding a client: `add`
 
@@ -142,6 +149,10 @@ Adds a client to Realodex.
 * `add n/John Doe p/98765432 i/20000 e/johnd@example.com a/311, Clementi Ave 2, #02-25 f/4 t/Buyer h/HDB r/Owes $1000. b/27May2003`
 * `add n/Betsy Crowe a/Newgate Prison i/0 f/1 p/94859694 e/betsyc@rocketmail.com t/Seller h/CONDOMINIUM t/Buyer`
 
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ### Deleting a client : `delete`
 
 Deletes the specified client from Realodex. There are 2 ways to do so:
@@ -177,6 +188,11 @@ Errors:
 - If neither index nor name is provided `delete` will show an error message "Please provide either an index or a name."
 - If both an index and name is provided `delete INDEX n/NAME` will show an error message "Please provide either an index or a name, not both."
 - If both an index and name is provided `delete n/NAME INDEX ` will show an error message "The client name provided is invalid" as INDEX is considered part of the NAME."
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ### Editing clients : `edit`
 
 Edits specified details of the client.
@@ -201,6 +217,10 @@ Edits specified details of the client.
 
 - `edit 1 p/999` will overwrite the 1st client's phone number to "999".
 - `edit 2 n/Kylie  i/3333 f/5` will overwrite the 2nd client's name to "Kylie", income to "3333" and family size to "5".
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Filtering clients: `filter`
 
@@ -332,11 +352,14 @@ This is an intentional design choice to ensure that the command is used for targ
   <em> <code>filter b/Apr</code> returns persons with Birthday in April</em>
 </p>
 
+--------------------------------------------------------------------------------------------------------------------
+
 ### Listing clients : `list`
 
 Lists all clients in Realodex.
 
 <u>Format:</u> `list`
+
 
 ### Sort : `sort`
 
@@ -350,6 +373,7 @@ calculated by the number of days until their next birthday relative to the curre
 - If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list.
 - If a birthday falls on February 29th (leap day), the day calculation is based on March 1st if the year does not have a leap date.
 
+--------------------------------------------------------------------------------------------------------------------
 
 ### Clearing Realodex : `clearRealodex`
 
@@ -390,6 +414,8 @@ Exits the program.
 <u>Format:</u> `exit`
 - Note that keying in `exit` followed by any random string, such as `exit wrelvwrvn` will also cause the app to exit.
 
+--------------------------------------------------------------------------------------------------------------------
+
 ### File Data
 
 The JSON file that stores the data of your contacts can be found in a folder named `data`, in the same folder/directory as the Realodex app. (e.g. if you
@@ -416,6 +442,9 @@ Should you want to re-enter your contacts in a fresh JSON file in the event of f
 simply delete `realodex.json`, which can be found in the `data` folder, and restart the app. A new JSON file with sample contacts will be generated and you may proceed from there.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ## Field Constraints
 * `NAME`:
     * Should only contain Alphanumeric characters and must be unique.
@@ -479,6 +508,9 @@ simply delete `realodex.json`, which can be found in the `data` folder, and rest
     5. The year "YYYY" must be in full and greater than or equal to 1000. (`b/29Feb02` is not allowed)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
 ## Command summary
 
 | Action                         | Format, Examples                                                                                                                                                                                                                                |
