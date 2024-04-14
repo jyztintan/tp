@@ -11,7 +11,7 @@ Given below are my contributions to the project.
 
 * **New Feature**: Added the ability to add Tags to clients.
     * What it does: allows the user to add 'Buyer' or 'Seller' tags.
-    * Justification: This feature improves the product significantly because the real-estate agent user can clearly differentiate the buyer and sellers. 
+    * Justification: This feature improves the product significantly because the real-estate agent user can clearly differentiate the buyer and sellers.
     * Highlights: This enhancement affects existing commands and commands to be added in the future. It required the non-trivial use of Enums. The implementation required changes to existing commands.
 
 * **New Feature**: Added the ability to add Birthdays to clients.

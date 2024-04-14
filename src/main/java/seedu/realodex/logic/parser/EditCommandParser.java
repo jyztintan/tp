@@ -89,15 +89,23 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setRemark(ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get()));
         }
 
+        handleErrorMessage(errorMessageBuilder);
+
+        checkIfAnyFieldEdited(editPersonDescriptor);
+
+        return editPersonDescriptor;
+    }
+
+    private void handleErrorMessage(StringBuilder errorMessageBuilder) throws ParseException {
         if (errorMessageBuilder.length() > 0) {
             throw new ParseException(errorMessageBuilder.toString());
         }
+    }
 
+    private void checkIfAnyFieldEdited(EditPersonDescriptor editPersonDescriptor) throws ParseException {
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
-
-        return editPersonDescriptor;
     }
 
     private <T> void parseAndSetField(ArgumentMultimap argMultimap, Prefix prefix, Consumer<T> setter,

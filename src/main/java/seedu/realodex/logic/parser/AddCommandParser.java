@@ -38,6 +38,11 @@ import seedu.realodex.model.person.Tag;
  */
 public class AddCommandParser implements Parser<AddCommand> {
 
+    public static final Prefix[] COMPULSORY_PREFIXES =
+            new Prefix[]{PREFIX_NAME, PREFIX_ADDRESS, PREFIX_INCOME, PREFIX_PHONE,
+                PREFIX_FAMILY, PREFIX_EMAIL,
+                PREFIX_TAG, PREFIX_HOUSINGTYPE};
+
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
@@ -77,11 +82,8 @@ public class AddCommandParser implements Parser<AddCommand> {
      * @throws ParseException If any compulsory prefix is missing.
      */
     private void validateCompulsoryPrefixes(ArgumentMultimap argMultimap) throws ParseException {
-        Prefix[] compulsoryPrefixes = {PREFIX_NAME, PREFIX_ADDRESS, PREFIX_INCOME, PREFIX_PHONE,
-            PREFIX_FAMILY, PREFIX_EMAIL,
-            PREFIX_TAG, PREFIX_HOUSINGTYPE};
-        if (!arePrefixesPresent(argMultimap, compulsoryPrefixes)) {
-            String missingPrefixesMessage = argMultimap.returnMessageOfMissingPrefixes(compulsoryPrefixes) + "\n";
+        if (!arePrefixesPresent(argMultimap, COMPULSORY_PREFIXES)) {
+            String missingPrefixesMessage = argMultimap.returnMessageOfMissingPrefixes(COMPULSORY_PREFIXES) + "\n";
             throw new ParseException(Messages.getErrorMessageForMissingPrefixes(missingPrefixesMessage)
                                              + AddCommand.MESSAGE_USAGE);
         }
@@ -122,13 +124,17 @@ public class AddCommandParser implements Parser<AddCommand> {
                                                    .getValueOrDefault(PREFIX_BIRTHDAY)
                                                    .orElseThrow());
         birthdayStored.buildErrorMessage(errorMessageBuilder, "birthday");
+        handleErrorMessage(errorMessageBuilder);
 
-        if (errorMessageBuilder.length() > 0) {
-            throw new ParseException(errorMessageBuilder.toString().trim());
-        }
         Birthday birthday = birthdayStored.returnStoredResult();
 
         return new Person(name, phone, income, email, address, family, tags, housingType, remark, birthday);
+    }
+
+    private void handleErrorMessage(StringBuilder errorMessageBuilder) throws ParseException {
+        if (errorMessageBuilder.length() > 0) {
+            throw new ParseException(errorMessageBuilder.toString().trim());
+        }
     }
 
     // Methods for parsing individual fields

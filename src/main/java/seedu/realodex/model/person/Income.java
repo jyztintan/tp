@@ -12,6 +12,7 @@ public class Income {
     /** Message for constraints on income. */
     public static final String MESSAGE_CONSTRAINTS = "Income should be an integer and should be at least 0";
     public static final String VALIDATION_REGEX = "^[0-9]+$";
+    public static final String DEFAULT_INCOME = "0";
 
     /** The income value. */
     private final String incomeValue;
@@ -28,7 +29,7 @@ public class Income {
     }
 
     public Income() {
-        this.incomeValue = "1";
+        this.incomeValue = DEFAULT_INCOME;
     }
 
     /**
