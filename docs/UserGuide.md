@@ -26,9 +26,9 @@ If you can type fast, Realodex can get your contact management tasks done faster
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar realodex.jar`
 command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. The app should contain some sample entries.<br>
-   <a href="images/Ui.png">
-   <img src="images/Ui.png" alt="Ui Image" style="width:50%">
-   </a>
+  <div style="display:flex; justify-content: center; align-items:center;">
+    <img src="images/Ui.png" alt="Ui" style=" width: 450px; margin-bottom: 16px;">
+  </div>
 
 1. Some example commands you can try:
 
