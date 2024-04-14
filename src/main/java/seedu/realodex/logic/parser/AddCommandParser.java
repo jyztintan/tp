@@ -122,13 +122,17 @@ public class AddCommandParser implements Parser<AddCommand> {
                                                    .getValueOrDefault(PREFIX_BIRTHDAY)
                                                    .orElseThrow());
         birthdayStored.buildErrorMessage(errorMessageBuilder, "birthday");
+        handleErrorMessage(errorMessageBuilder);
 
-        if (errorMessageBuilder.length() > 0) {
-            throw new ParseException(errorMessageBuilder.toString().trim());
-        }
         Birthday birthday = birthdayStored.returnStoredResult();
 
         return new Person(name, phone, income, email, address, family, tags, housingType, remark, birthday);
+    }
+
+    private void handleErrorMessage(StringBuilder errorMessageBuilder) throws ParseException {
+        if (errorMessageBuilder.length() > 0) {
+            throw new ParseException(errorMessageBuilder.toString().trim());
+        }
     }
 
     // Methods for parsing individual fields
