@@ -374,7 +374,9 @@ calculated by the number of days until their next birthday relative to the curre
 - The current date is based on the local system's time.
 - If their birthday has already passed, the calculation is based on the number of days until their next birthday next year.
 - If the list presented is currently a filtered list after using `filter`, sort will work on the new filtered list.
-- If a birthday falls on February 29th (leap day), the day calculation is based on March 1st if the year does not have a leap date.
+- If a birthday falls on February 29th (leap day),
+  the day calculation is based on March 1st if the year does not have a leap date
+  as realistically, most would still celebrate every year.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -402,8 +404,7 @@ Shows the help message for the specified command only.
 
 - Note that this feature is only available for the `add`,`clearRealodex`,`delete`,`edit`,`filter`,`list` and `sort` commands.
 - Although the format is `COMMAND help`, the exception is the help message for the clear command. Use `clear help` instead of `clearRealodex help`.
-  <br>Exception also includes `help` command where `help help` will simply open up the window as expected
-      and `exit` command where `exit help` will simply exit the application as expected.
+  <br>Any other valid command followed by `help` that is not included in this feature will simply execute the command as per normal.
 
 <u>Examples:</u>
 <p align="center">
