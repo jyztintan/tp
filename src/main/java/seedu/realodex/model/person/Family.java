@@ -11,7 +11,7 @@ public class Family {
 
     /** Message for constraints on family size. */
     public static final String MESSAGE_CONSTRAINTS = "Family size should be at least 1";
-    public static final String VALIDATION_REGEX = "^\\d+$";
+    public static final String VALIDATION_REGEX = "^0*[1-9]\\d*$";
 
     /** The family size. */
     private String familySize;

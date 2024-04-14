@@ -57,6 +57,11 @@ public class FamilyTest {
         assertTrue(Family.isValidFamily("0001")); // Three prepended 0s
         assertTrue(Family.isValidFamily("00000000000000000000000000001")); // Many prepended 0s
         assertTrue(Family.isValidFamily("01232132131313312313131")); // Single prepended 0 with large value
+
+
+        assertFalse(Family.isValidFamily("0000000000000000000000000000")); // Many prepended 0s with no 1-9 value
+        assertFalse(Family.isValidFamily("-0000000000000000000000000000")); // - + Many prepended 0s with no 1-9 value
+        assertFalse(Family.isValidFamily("-0000000000000000000010000000")); // - + Many prepended 0s with some 1-9 value
     }
 
 
