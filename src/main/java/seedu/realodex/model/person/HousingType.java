@@ -12,6 +12,7 @@ public class HousingType {
     public static final String MESSAGE_CONSTRAINTS = "Housing type should be either 'HDB', 'CONDOMINIUM', "
             + "'LANDED PROPERTY' or 'GOOD CLASS BUNGALOW'";
     public static final String VALIDATION_REGEX = "[\\p{Alnum} ]+";
+    public static final House DEFAULT_HOUSE = House.HDB;
     private House housingType;
 
     /**
@@ -33,7 +34,7 @@ public class HousingType {
     }
 
     public HousingType() {
-        this.housingType = House.HDB;
+        this.housingType = DEFAULT_HOUSE;
     }
 
     /**

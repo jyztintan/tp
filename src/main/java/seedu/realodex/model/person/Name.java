@@ -17,10 +17,11 @@ public class Name {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String DEFAULT_NAME = "Denzel";
 
     public final String fullName;
 
-    private final String defaultValidName = "Denzel";
+    private final String defaultValidName = DEFAULT_NAME;
 
     /**
      * Constructs a {@code Name}.

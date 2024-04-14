@@ -34,6 +34,7 @@ public class Email {
     private static final String DOMAIN_LAST_PART_REGEX = "(" + DOMAIN_PART_REGEX + "){2,}$"; // At least two chars
     private static final String DOMAIN_REGEX = "(" + DOMAIN_PART_REGEX + "\\.)*" + DOMAIN_LAST_PART_REGEX;
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@" + DOMAIN_REGEX;
+    private static final String DEFAULT_EMAIL = "denzel@gmail.com";
 
     public final String value;
 
@@ -49,7 +50,7 @@ public class Email {
     }
 
     public Email() {
-        value = "denzel@gmail.com";
+        value = DEFAULT_EMAIL;
     }
 
     /**
