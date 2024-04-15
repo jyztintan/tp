@@ -628,7 +628,7 @@ Returns the list of only the clients whose **names contain the specified keyphra
 
 <p align="center">
     <a href="images/filter/filterByNameScreenshot.png">
-    <img src="images/filter/filterByNameScreenshot.png" alt="filterByNameScreenshot" style="width:150%">
+    <img src="images/filter/filterByNameScreenshot.png" alt="filterByNameScreenshot" style="width:100%">
     </a>
     <em> "Charlotte Oliveiro" and "David Li" are returned.</em>
 </p>
@@ -658,7 +658,7 @@ Entering `filter t/Buyer t/Seller` will show only clients who are **tagged as bo
 
 <p align="center">
     <a href="images/filter/filterByTagSeller.png">
-    <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:150%">
+    <img src="images/filter/filterByTagSeller.png" alt="filterByTagSeller" style="width:100%">
     </a>
     <em>Clients with "Seller" tag are returned.</em>
 </p>
@@ -669,7 +669,7 @@ Entering `filter t/Buyer t/Seller` will show only clients who are **tagged as bo
 
 <p align="center">
     <a href="images/filter/filterByTagBuyerSeller.png">
-    <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:150%">
+    <img src="images/filter/filterByTagBuyerSeller.png" alt="filterByTagBuyerSeller" style="width:100%">
     </a>
     <em>Clients with both "Buyer" and "Seller" tags are returned.</em>
 </p>
@@ -689,7 +689,7 @@ Returns the list of clients with the **specified preferred housing type**.
 
 <p align="center">
     <a href="images/filter/filterByHousingType.png">
-    <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:150%">
+    <img src="images/filter/filterByHousingType.png" alt="filterByHousingType" style="width:100%">
     </a>
     <em>Clients with housing preference of "Good Class Bungalow" are returned.</em>
 </p>
@@ -716,7 +716,7 @@ Returns the list of clients whose **remarks include** the **specified keyphrase*
 
 <p align="center">
     <a href="images/filter/filterByRemarkScreenshot.png">
-    <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:150%">
+    <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:100%">
     </a>
     <em>Clients with remarks like "Eats alot" and "Likes to eat nasi lemak" are returned.</em>
 </p>
@@ -756,7 +756,7 @@ Returns the list of clients whose **birthdays** fall in the **specified month**.
 
 <p align="center">
     <a href="images/filter/filterByBirthday.png">
-    <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:150%">
+    <img src="images/filter/filterByBirthday.png" alt="filterByBirthday" style="width:100%">
     </a>
     <em>Clients with birthdays in April are returned.</em>
 </p>
