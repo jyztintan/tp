@@ -29,6 +29,8 @@ Realodex is **tailor-made for the real estate industry**, offering **custom tool
 This guide provides a beginner-friendly introduction on Realodex's features, tutorial, and FAQ. <a href="#getting-started">Start</a> enhancing your real estate operations today!
 </box>
 
+<div style="page-break-after: always;"></div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Table of Contents
@@ -89,6 +91,8 @@ This guide provides a beginner-friendly introduction on Realodex's features, tut
    
 - [Known Issues](#known-issues)
 
+<div style="page-break-after: always;"></div>
+
 --------------------------------------------------------------------------------------------------------------------
 ## Navigating this User Guide
 **Welcome** to the Realodex User Guide! 
@@ -142,6 +146,7 @@ This table provides **definitions** of **key terms and abbreviations** used thro
 | Terminal                       | The command line interface used in **Unix and MacOS** systems, allowing users to execute commands and scripts similar to Command Prompt in Windows.                          |
 | JSON File                      | The file format Realodex uses to **store client data.**                                                                                                                      |
 
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -233,6 +238,8 @@ You should see a _GUI_ similar to image below pop up.
   </div>
 <br>
 
+
+<div style="page-break-after: always;"></div>
 
 <div style="page-break-after: always;"></div>
 
@@ -370,6 +377,8 @@ Let's try it out with `delete help`.
 
 **Congratulations**! You have finished the Realodex tutorial and are now ready to use Realodex. 
 Feel free to **continue exploring the in-depth features** of Realodex to fully leverage its capabilities in your real estate operations!
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -953,6 +962,8 @@ Displays the **help message** for the **specified command** only.
   </box>
 
 [Back to Table of Contents](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
