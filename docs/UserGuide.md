@@ -119,11 +119,11 @@ These boxes **highlight error messages** and critical failure information</box>
 
 #### Key Sections
 This guide also includes:
-- **Table of Contents**: Seamlessly navigate between sections using the [Table of Contents](#table-of-contents).
-- **Guide to Downloading Realodex**: Begin your journey with Realodex by following our [installation guide](#downloading-realodex), which provides step-by-step instructions to set up Realodex smoothly.
-- **Tutorial**: Dive into a beginner-friendly walkthrough of Realodex’s features with the [Realodex Tutorial](#realodex-tutorial).
-- **Features**: Explore the full capabilities of Realodex in our detailed [Features](#features) section, designed to help you maximise your use of the application.
-- **FAQ**: Find answers to common questions and helpful tips in the [FAQ](#faq) section.
+- **Table of Contents**: Seamlessly **navigate** between sections using the [Table of Contents](#table-of-contents).
+- **Guide to Downloading Realodex**: Begin your journey with Realodex by following our [installation guide](#downloading-realodex), which provides step-by-step instructions to **set up Realodex**.
+- **Tutorial**: Dive into a **beginner-friendly walkthrough** of Realodex’s features with the [Realodex Tutorial](#realodex-tutorial).
+- **Features**: Explore the **full capabilities of Realodex** in our detailed [Features](#features) section, designed to help you maximise your use of the application.
+- **FAQ**: Find **answers to common questions** and **helpful tips** in the [FAQ](#faq) section.
 
 
 #### Glossary
