@@ -5,8 +5,8 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":RealodexParser" as RealodexParser LOGIC_COLOR
 participant ":FilterCommandParser" as FilterCommandParser LOGIC_COLOR
-participant ":FilterCommand" as FilterCommand LOGIC_COLOR
-participant ":CommandResult" as CommandResult LOGIC_COLOR
+participant "c:FilterCommand" as FilterCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
 participant ":PrefixChecker" as PrefixChecker LOGIC_COLOR
 participant ":PredicateProducer" as PredicateProducer LOGIC_COLOR
 end box
@@ -79,13 +79,13 @@ create FilterCommand
 FilterCommandParser -> FilterCommand :
 activate FilterCommand
 
-FilterCommand --> FilterCommandParser : c::FilterCommand
+FilterCommand --> FilterCommandParser : c
 deactivate FilterCommand
 
-FilterCommandParser --> RealodexParser : c::FilterCommand
+FilterCommandParser --> RealodexParser : c
 deactivate FilterCommandParser
 
-RealodexParser --> LogicManager : c::FilterCommand
+RealodexParser --> LogicManager : c
 deactivate RealodexParser
 
 LogicManager -> FilterCommand : execute()
@@ -101,10 +101,10 @@ create CommandResult
 FilterCommand -> CommandResult :
 activate CommandResult
 
-CommandResult --> FilterCommand : r::CommandResult
+CommandResult --> FilterCommand : r
 deactivate CommandResult
 
-FilterCommand --> LogicManager : r::CommandResult
+FilterCommand --> LogicManager : r
 deactivate FilterCommand
 
 [<--LogicManager
