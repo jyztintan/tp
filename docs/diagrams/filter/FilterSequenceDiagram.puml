@@ -79,13 +79,13 @@ create FilterCommand
 FilterCommandParser -> FilterCommand :
 activate FilterCommand
 
-FilterCommand --> FilterCommandParser : c
+FilterCommand --> FilterCommandParser : c::FilterCommand
 deactivate FilterCommand
 
-FilterCommandParser --> RealodexParser : c
+FilterCommandParser --> RealodexParser : c::FilterCommand
 deactivate FilterCommandParser
 
-RealodexParser --> LogicManager : c
+RealodexParser --> LogicManager : c::FilterCommand
 deactivate RealodexParser
 
 LogicManager -> FilterCommand : execute()
@@ -101,10 +101,10 @@ create CommandResult
 FilterCommand -> CommandResult :
 activate CommandResult
 
-CommandResult --> FilterCommand
+CommandResult --> FilterCommand : r::CommandResult
 deactivate CommandResult
 
-FilterCommand --> LogicManager : result
+FilterCommand --> LogicManager : r::CommandResult
 deactivate FilterCommand
 
 [<--LogicManager
