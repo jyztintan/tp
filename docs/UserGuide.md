@@ -377,10 +377,6 @@ Feel free to **continue exploring the in-depth features** of Realodex to fully l
 
 Understanding the **command format** in Realodex is crucial for effectively managing your client data. Here are the key aspects of our command structure:
 
-**General Command Structure:**
-
-Commands typically follow this format: `COMMANDWORD PREFIX_ONE/UPPER_CASE PREFIX_TWO/UPPER_CASE ....` This structure helps in **executing specific actions** within the application.
-
 **Command Words:**
 
 `COMMANDWORD` refers to the **base commands** that the user can input, such as `add`, `delete`, `filter`. These commands are _case-insensitive_, meaning both `add` and `ADD` will perform the addition operation.
@@ -393,6 +389,9 @@ Commands typically follow this format: `COMMANDWORD PREFIX_ONE/UPPER_CASE PREFIX
 
 Parameters must follow the prefix they are associated with and are typically in `UPPER_CASE` in documentation to indicate where **user-supplied data should be inserted**. For instance, in the command `add n/NAME`, `NAME` is where you would place the actual name of the client.
 
+**General Command Structure:**
+
+Commands typically follow this format: `COMMANDWORD PREFIX_ONE/UPPER_CASE PREFIX_TWO/UPPER_CASE ....` This structure helps in **executing specific actions** within the application.
 
 </box>
 
