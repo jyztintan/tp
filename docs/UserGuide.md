@@ -147,6 +147,10 @@ This table provides **definitions** of **key terms and abbreviations** used thro
 
 ## Getting Started
 
+In this section, we will guide you through the [initial setup of Realodex](#downloading-realodex) and [introduce our Realodex GUI](#introduction-to-realodex-gui).
+We also provide a [hands-on Realodex tutorial](#realodex-tutorial), designed to give you your first experience with the platform.
+Let’s get started!
+
 ### Downloading Realodex
 
 <tabs>
