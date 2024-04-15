@@ -22,7 +22,7 @@ LogicManager -> RealodexParser : parseCommand("filter...")
 activate RealodexParser
 
 create FilterCommandParser
-RealodexParser -> FilterCommandParser : new
+RealodexParser -> FilterCommandParser :
 activate FilterCommandParser
 
 FilterCommandParser --> RealodexParser
@@ -32,7 +32,7 @@ RealodexParser -> FilterCommandParser : parse("filter...")
 activate FilterCommandParser
 
 create PrefixChecker
-FilterCommandParser -> PrefixChecker : new
+FilterCommandParser -> PrefixChecker :
 activate PrefixChecker
 
 PrefixChecker --> FilterCommandParser
@@ -63,7 +63,7 @@ PrefixChecker --> FilterCommandParser
 deactivate PrefixChecker
 
 create PredicateProducer
-FilterCommandParser -> PredicateProducer : new
+FilterCommandParser -> PredicateProducer :
 activate PredicateProducer
 
 PredicateProducer --> FilterCommandParser :
@@ -76,7 +76,7 @@ PredicateProducer --> FilterCommandParser : predicate
 deactivate PredicateProducer
 
 create FilterCommand
-FilterCommandParser -> FilterCommand : new(predicate)
+FilterCommandParser -> FilterCommand :
 activate FilterCommand
 
 FilterCommand --> FilterCommandParser : c
