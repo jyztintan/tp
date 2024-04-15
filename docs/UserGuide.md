@@ -259,9 +259,9 @@ The GUI is structured into several distinct components, each designed to **enhan
 ---
 
 ### Realodex Tutorial
-**Welcome** to your first session with Realodex.
+**Welcome** to your first session with Realodex!
 We've designed this tutorial to **help new users familiarize themselves** with the functionality and flow of the application. 
-Follow along to get a feel of how Realodex works. Let's begin!
+Follow along to get a feel of how Realodex works.
 
 1. **Starting Realodex.** Launch Realodex. The app will show up as follows:
    <a href="images/tutorial/Launch.png" style="display: block; margin: 0 auto; text-align: center;">
