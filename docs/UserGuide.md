@@ -630,7 +630,7 @@ Returns the list of only the clients whose **names contain the specified keyphra
     <a href="images/filter/filterByNameScreenshot.png">
     <img src="images/filter/filterByNameScreenshot.png" alt="filterByNameScreenshot" style="width:100%">
     </a>
-    <em> "Charlotte Oliveiro" and "David Li" are returned.</em>
+    <em> "Charlotte O<b>li</b>veiro" and "David <b>Li</b>" are returned.</em>
 </p>
 
 <br>
@@ -707,7 +707,7 @@ Returns the list of clients whose **remarks include** the **specified keyphrase*
 <box type="info" header="Notes">
 
 - When filtering by remarks, even **partial keywords are matched**.
-    - `filter r/hand` matches person with remark "handsome".
+    - `filter r/hand` matches person with remark "<b>hand</b>some".
 </box>
 
 **Example:**
@@ -718,7 +718,7 @@ Returns the list of clients whose **remarks include** the **specified keyphrase*
     <a href="images/filter/filterByRemarkScreenshot.png">
     <img src="images/filter/filterByRemarkScreenshot.png" alt="filterByRemarkScreenshot" style="width:100%">
     </a>
-    <em>Clients with remarks like "Eats alot" and "Likes to eat nasi lemak" are returned.</em>
+    <em>Clients with remarks like "<b>Eat</b>s alot" and "Likes to <b>eat</b> nasi lemak" are returned.</em>
 </p>
 
 
