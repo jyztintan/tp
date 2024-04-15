@@ -3,8 +3,9 @@
   title: "User Guide"
   pageNav: 3
 ---
+# Realodex User Guide
 
-# 🚀 Welcome to Realodex! 🚀
+## Welcome to Realodex!
 
 <div style="text-align: center;">
     <a href="images/realodex_icon.png">
@@ -25,7 +26,7 @@ Realodex is **tailor-made for the real estate industry**, offering **custom tool
 - **Focus on Core Goals**: Allows you to dedicate more time to closing deals and fostering client relationships.
 
 <box type="tip" header = "**New to Realodex?**">
-This guide provides detailed documentation on Realodex's features, FAQs, and upcoming updates. <a href="#getting-started">Start</a> enhancing your real estate operations today!
+This guide provides a beginner-friendly introduction on Realodex's features, tutorial, and FAQ. <a href="#getting-started">Start</a> enhancing your real estate operations today!
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
